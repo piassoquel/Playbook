@@ -1,0 +1,375 @@
+:root {
+  --showcase-orange: #ff6a00;
+  --showcase-blue: #2b83d5;
+  --showcase-green: #6aa837;
+  --showcase-yellow: #ffb000;
+  --showcase-purple: #7c55d9;
+}
+
+body {
+  background:
+    radial-gradient(circle at top center, rgba(22, 135, 255, 0.08), transparent 26rem),
+    #02070d;
+}
+
+.app-header {
+  display: none;
+}
+
+.showcase-home {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-top: 0.25rem;
+}
+
+.showcase-home__logo-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 1rem 0.75rem;
+}
+
+.showcase-home__logo {
+  width: min(34rem, 92vw);
+  height: auto;
+}
+
+.showcase-sports {
+  display: grid;
+  gap: 1rem;
+}
+
+.showcase-sport-card {
+  position: relative;
+  display: grid;
+  min-height: 18rem;
+  overflow: hidden;
+  isolation: isolate;
+  align-items: end;
+  padding: 1.5rem;
+  color: white;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 1.35rem;
+  box-shadow: 0 18px 44px rgba(0,0,0,.38);
+  background-position: center;
+  background-size: cover;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.showcase-sport-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(0,7,14,.96) 0%, rgba(0,7,14,.78) 42%, rgba(0,7,14,.08) 78%),
+    linear-gradient(0deg, rgba(0,0,0,.38), transparent 55%);
+}
+
+.showcase-sport-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,106,0,.45);
+  box-shadow: 0 24px 58px rgba(0,0,0,.5);
+}
+
+.showcase-sport-card:active {
+  transform: scale(.988);
+}
+
+.showcase-sport-card--skiing {
+  background-image: url("../assets/sports/skiing-home.webp");
+}
+
+.showcase-sport-card--snowboarding {
+  background-image: url("../assets/sports/snowboarding-home.webp");
+}
+
+.showcase-sport-card__content {
+  max-width: 25rem;
+}
+
+.showcase-sport-card__badge {
+  display: grid;
+  width: 3.6rem;
+  height: 3.6rem;
+  margin-bottom: 1.1rem;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.showcase-sport-card__badge svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.showcase-sport-card__badge--orange {
+  background: var(--showcase-orange);
+}
+
+.showcase-sport-card__badge--blue {
+  background: var(--showcase-blue);
+}
+
+.showcase-sport-card h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 3.35rem);
+  line-height: .95;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+}
+
+.showcase-sport-card p {
+  max-width: 22rem;
+  margin: .85rem 0 0;
+  color: #d8e0ea;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.showcase-sport-card__arrow {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  background: rgba(2,7,13,.9);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.showcase-sport-card__arrow--orange {
+  color: var(--showcase-orange);
+}
+
+.showcase-sport-card__arrow--blue {
+  color: var(--showcase-blue);
+}
+
+.showcase-learning {
+  padding-top: .35rem;
+}
+
+.showcase-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .8rem;
+}
+
+.showcase-kicker {
+  margin: 0;
+  color: var(--showcase-orange);
+  font-size: .78rem;
+  font-weight: 850;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.showcase-section-heading h2 {
+  margin: .25rem 0 0;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  letter-spacing: -.035em;
+}
+
+.showcase-learning-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: .75rem;
+}
+
+.showcase-learning-card {
+  display: grid;
+  min-height: 8.5rem;
+  padding: 1rem;
+  place-items: center;
+  align-content: center;
+  gap: .85rem;
+  color: white;
+  text-align: center;
+  background:
+    linear-gradient(160deg, rgba(255,255,255,.055), rgba(255,255,255,.015)),
+    #0b121a;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 1rem;
+  box-shadow: 0 10px 28px rgba(0,0,0,.28);
+  cursor: pointer;
+  transition: transform 170ms ease, border-color 170ms ease;
+}
+
+.showcase-learning-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,106,0,.45);
+}
+
+.showcase-learning-card__icon {
+  color: var(--showcase-orange);
+}
+
+.showcase-learning-card:nth-child(2) .showcase-learning-card__icon {
+  color: var(--showcase-blue);
+}
+
+.showcase-learning-card:nth-child(3) .showcase-learning-card__icon {
+  color: var(--showcase-green);
+}
+
+.showcase-learning-card:nth-child(4) .showcase-learning-card__icon {
+  color: var(--showcase-yellow);
+}
+
+.showcase-learning-card:nth-child(5) .showcase-learning-card__icon {
+  color: var(--showcase-purple);
+}
+
+.showcase-learning-card__icon svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.showcase-learning-card span:last-child {
+  font-size: .9rem;
+  font-weight: 780;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.showcase-daily-focus {
+  margin-top: .25rem;
+}
+
+.showcase-focus-card {
+  position: relative;
+  display: grid;
+  min-height: 15rem;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 1.5rem;
+  color: white;
+  background:
+    linear-gradient(90deg, rgba(1,6,10,.97) 0%, rgba(1,6,10,.82) 56%, rgba(1,6,10,.25) 100%),
+    radial-gradient(circle at 88% 20%, rgba(255,106,0,.19), transparent 12rem),
+    #0b121a;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 1.25rem;
+  box-shadow: 0 18px 44px rgba(0,0,0,.34);
+}
+
+.showcase-focus-card__content {
+  position: relative;
+  z-index: 2;
+  max-width: 31rem;
+}
+
+.showcase-focus-card__label {
+  margin: 0;
+  color: var(--showcase-orange);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.showcase-focus-card small {
+  display: block;
+  margin-top: .2rem;
+  color: #b9c3cf;
+}
+
+.showcase-focus-card h2 {
+  margin: 1.1rem 0 .35rem;
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  line-height: 1;
+  letter-spacing: -.045em;
+}
+
+.showcase-focus-card p {
+  max-width: 26rem;
+  margin: .55rem 0 0;
+  color: #cbd5df;
+  line-height: 1.5;
+}
+
+.showcase-focus-card__button {
+  display: inline-flex;
+  min-height: 3rem;
+  margin-top: 1.25rem;
+  padding: 0 1rem;
+  align-items: center;
+  gap: .9rem;
+  color: var(--showcase-orange);
+  border: 1px solid var(--showcase-orange);
+  border-radius: .55rem;
+  font-size: .86rem;
+  font-weight: 850;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.showcase-focus-card__art {
+  position: absolute;
+  right: -1rem;
+  bottom: -1rem;
+  display: grid;
+  width: 14rem;
+  height: 14rem;
+  place-items: center;
+  color: rgba(255,255,255,.65);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.015));
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 2rem;
+  transform: rotate(-12deg);
+}
+
+.showcase-focus-card__art span {
+  max-width: 8rem;
+  font-size: 1.15rem;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (min-width: 48rem) {
+  .showcase-learning-grid {
+    grid-template-columns: repeat(5, minmax(0,1fr));
+  }
+
+  .showcase-sport-card {
+    min-height: 21rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .page {
+    padding-top: .75rem;
+  }
+
+  .showcase-sport-card {
+    min-height: 16rem;
+  }
+
+  .showcase-sport-card__badge {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .showcase-focus-card__art {
+    opacity: .5;
+  }
+}

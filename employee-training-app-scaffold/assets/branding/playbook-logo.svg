@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 180" role="img" aria-labelledby="title desc">
+  <title id="title">Playbook</title>
+  <desc id="desc">Playbook employee training logo</desc>
+
+  <g transform="translate(245 0)">
+    <path d="M0 58 62 2l37 37 24-23 48 42h-35l-15-13-22 22-37-36-30 27Z" fill="#ffffff"/>
+    <path d="m102 38 26-25 49 45h-34l-16-14-12 12Z" fill="#ff6a00"/>
+  </g>
+
+  <text
+    x="26"
+    y="132"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="104"
+    font-weight="900"
+    letter-spacing="-5"
+    fill="#ffffff"
+  >PLAY</text>
+
+  <text
+    x="305"
+    y="132"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="104"
+    font-weight="900"
+    letter-spacing="-5"
+    fill="#ff6a00"
+  >BOOK</text>
+
+  <text
+    x="188"
+    y="170"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="22"
+    font-weight="700"
+    letter-spacing="9"
+    fill="#cbd5e1"
+  >LEARN IT. KNOW IT. SELL IT.</text>
+</svg>

@@ -1,0 +1,89 @@
+{
+  "dailyFocus": {
+    "enabled": true,
+    "label": "Daily Focus",
+    "brand": "Blizzard",
+    "name": "Anomaly 88",
+    "summary": "A versatile all-mountain ski for intermediate through advanced skiers.",
+    "time": "2 min read",
+    "productId": "blizzard-anomaly-88"
+  },
+  "sports": [
+    {
+      "id": "skiing",
+      "name": "Skiing",
+      "description": "Skis \u2022 Boots \u2022 Bindings \u2022 Helmets \u2022 Outerwear",
+      "image": "assets/sports/skiing.svg",
+      "categories": [
+        {
+          "id": "skis",
+          "name": "Skis",
+          "description": "All-mountain, carving, powder, and junior skis."
+        },
+        {
+          "id": "boots",
+          "name": "Boots",
+          "description": "Fit, flex, volume, and performance guidance."
+        },
+        {
+          "id": "bindings",
+          "name": "Bindings",
+          "description": "Compatibility, DIN range, and customer matching."
+        },
+        {
+          "id": "helmets",
+          "name": "Helmets",
+          "description": "Protection, fit systems, vents, and features."
+        },
+        {
+          "id": "outerwear",
+          "name": "Outerwear",
+          "description": "Jackets, pants, insulation, and waterproofing."
+        },
+        {
+          "id": "accessories",
+          "name": "Accessories",
+          "description": "Goggles, gloves, poles, socks, and essentials."
+        }
+      ]
+    },
+    {
+      "id": "snowboarding",
+      "name": "Snowboarding",
+      "description": "Boards \u2022 Boots \u2022 Bindings \u2022 Helmets \u2022 Outerwear",
+      "image": "assets/sports/snowboarding.svg",
+      "categories": [
+        {
+          "id": "boards",
+          "name": "Boards",
+          "description": "All-mountain, freestyle, freeride, and beginner boards."
+        },
+        {
+          "id": "boots",
+          "name": "Boots",
+          "description": "Fit, flex, closure systems, and riding style."
+        },
+        {
+          "id": "bindings",
+          "name": "Bindings",
+          "description": "Flex, compatibility, response, and comfort."
+        },
+        {
+          "id": "helmets",
+          "name": "Helmets",
+          "description": "Protection, fit systems, vents, and features."
+        },
+        {
+          "id": "outerwear",
+          "name": "Outerwear",
+          "description": "Jackets, pants, insulation, and waterproofing."
+        },
+        {
+          "id": "accessories",
+          "name": "Accessories",
+          "description": "Goggles, gloves, socks, bags, and essentials."
+        }
+      ]
+    }
+  ]
+}

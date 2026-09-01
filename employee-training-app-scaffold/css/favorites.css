@@ -1,0 +1,136 @@
+.favorite-toggle-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+  display: inline-flex;
+  min-height: 2.85rem;
+  padding: 0 0.9rem;
+  align-items: center;
+  gap: 0.55rem;
+  color: white;
+  background: rgba(2, 7, 13, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 800;
+  backdrop-filter: blur(14px);
+}
+
+.favorite-toggle-button svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.favorite-toggle-button[aria-pressed="true"] {
+  color: #ff6a00;
+  background: rgba(255, 106, 0, 0.11);
+  border-color: rgba(255, 106, 0, 0.36);
+}
+
+.favorite-toggle-button[aria-pressed="true"] svg {
+  fill: rgba(255, 106, 0, 0.25);
+}
+
+.product-detail-hero {
+  position: relative;
+}
+
+.favorites-list {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.favorite-product-row {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.favorite-remove-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  padding: 0 0.9rem;
+  justify-self: end;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.favorite-remove-button:hover {
+  color: white;
+  border-color: rgba(255, 106, 0, 0.42);
+}
+
+.favorite-remove-button svg {
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+}
+
+.favorites-empty {
+  display: grid;
+  min-height: 18rem;
+  place-items: center;
+  place-content: center;
+  text-align: center;
+}
+
+.favorites-empty__icon {
+  display: grid;
+  width: 4rem;
+  height: 4rem;
+  place-items: center;
+  color: #ff6a00;
+  background: rgba(255, 106, 0, 0.09);
+  border: 1px solid rgba(255, 106, 0, 0.22);
+  border-radius: 50%;
+}
+
+.favorites-empty__icon svg {
+  width: 2rem;
+  height: 2rem;
+  fill: rgba(255, 106, 0, 0.14);
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.favorites-empty__button {
+  display: inline-flex;
+  min-height: 3rem;
+  margin-top: 0.5rem;
+  padding: 0 1rem;
+  align-items: center;
+  gap: 0.8rem;
+  color: #ff6a00;
+  border: 1px solid #ff6a00;
+  border-radius: 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 40rem) {
+  .favorite-toggle-button {
+    position: static;
+    width: fit-content;
+    margin: 1rem 1rem 0 auto;
+  }
+}

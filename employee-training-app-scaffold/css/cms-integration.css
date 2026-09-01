@@ -1,0 +1,18 @@
+.data-status-banner {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.7rem 1rem;
+  color: #fff3e8;
+  background: #5a2b05;
+  border-bottom: 1px solid rgba(255, 106, 0, 0.45);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.data-status-banner strong {
+  color: #ff9a52;
+}
+
+.data-status-banner span {
+  color: #f5d7c0;
+}

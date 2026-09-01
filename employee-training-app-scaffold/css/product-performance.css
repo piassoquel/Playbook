@@ -1,0 +1,343 @@
+/* Playbook v1.2.3 — performance graphics and layout refinement */
+
+.performance-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+  margin-top: 1.25rem;
+  padding: 1.15rem;
+  background: rgba(4, 12, 20, 0.58);
+  border: 1px solid rgba(119, 167, 205, 0.18);
+  border-radius: 1.05rem;
+}
+
+.performance-label {
+  margin: 0 0 .7rem;
+  color: #dce8f4;
+  font-size: .74rem;
+  font-weight: 900;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.ability-visual {
+  min-width: 0;
+  text-align: center;
+}
+
+.ability-gauge {
+  display: block;
+  width: min(16.5rem, 100%);
+  margin: -.15rem auto -.15rem;
+  overflow: visible;
+}
+
+.ability-gauge__track,
+.ability-gauge__value {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.ability-gauge__track {
+  stroke: rgba(255,255,255,.09);
+}
+
+.ability-gauge__value {
+  stroke: url(#abilityGaugeGradient);
+}
+
+.ability-gauge__tick {
+  stroke: rgba(255,255,255,.82);
+  stroke-width: 1.8;
+}
+
+.ability-gauge__needle {
+  stroke: #f8fbff;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.ability-gauge__hub {
+  fill: #f8fbff;
+}
+
+.ability-gauge__marker {
+  fill: #ff4d37;
+  stroke: white;
+  stroke-width: 3;
+}
+
+.ability-visual__level {
+  display: block;
+  margin-top: -.25rem;
+  color: white;
+  font-size: 1.1rem;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+.ability-visual__range {
+  display: flex;
+  justify-content: space-between;
+  max-width: 16rem;
+  margin: .45rem auto 0;
+  color: #8293a5;
+  font-size: .64rem;
+  font-weight: 750;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+/* Terrain remains full-width and keeps its existing box dimensions. */
+.terrain-performance {
+  min-width: 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,.09);
+}
+
+.terrain-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(7.1rem, 1fr));
+  gap: .75rem;
+  align-items: stretch;
+}
+
+.terrain-item {
+  display: grid;
+  min-width: 0;
+  min-height: 8.5rem;
+  grid-template-rows: auto auto auto;
+  place-items: center;
+  align-content: center;
+  gap: .55rem;
+  padding: .8rem .55rem;
+  text-align: center;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.026),
+      rgba(255,255,255,.012)
+    );
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: .9rem;
+}
+
+.terrain-item__icon {
+  width: 4.1rem;
+  height: 4.1rem;
+  color: #63c9ff;
+  opacity: var(--terrain-opacity);
+  transition:
+    opacity 180ms ease,
+    filter 180ms ease;
+}
+
+.terrain-item__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.terrain-item strong {
+  min-width: 0;
+  color: #eef6ff;
+  font-size: .7rem;
+  letter-spacing: .035em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.terrain-rating {
+  display: flex;
+  justify-content: center;
+  gap: .28rem;
+}
+
+.terrain-dot {
+  width: .48rem;
+  height: .48rem;
+  background: #70808e;
+  border-radius: 50%;
+  opacity: .16;
+}
+
+.terrain-dot--active {
+  background: #63c9ff;
+  box-shadow: 0 0 .45rem rgba(99,201,255,.24);
+  opacity: var(--active-dot-opacity);
+}
+
+.terrain-item[style*="--active-dot-opacity:1.00"] .terrain-item__icon {
+  filter: drop-shadow(0 0 .42rem rgba(99,201,255,.28));
+}
+
+.performance-lower-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+  align-items: stretch;
+}
+
+.performance-lower-grid > .ability-visual,
+.performance-lower-grid > .secondary-spec--width {
+  min-width: 0;
+  min-height: 13.5rem;
+  padding: 1rem;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.026),
+      rgba(255,255,255,.012)
+    );
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: .9rem;
+}
+
+.performance-lower-grid > .ability-visual {
+  display: grid;
+  align-content: center;
+}
+
+.performance-lower-grid > .secondary-spec--width {
+  display: grid;
+  align-content: center;
+  gap: .45rem;
+}
+
+.performance-lower-grid__empty {
+  min-width: 0;
+}
+
+.secondary-spec__heading {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  color: #8ba0b5;
+  font-size: .68rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.secondary-spec__heading svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: #63c9ff;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.secondary-spec > strong {
+  color: white;
+  font-size: 1.15rem;
+}
+
+.secondary-spec > small {
+  color: #8ba0b5;
+}
+
+.width-scale {
+  margin: .55rem 0 .3rem;
+}
+
+.width-scale__labels {
+  display: flex;
+  justify-content: space-between;
+  color: #798a9a;
+  font-size: .58rem;
+  text-transform: uppercase;
+}
+
+.width-scale__rail {
+  position: relative;
+  height: .28rem;
+  margin: .55rem .2rem;
+  background:
+    linear-gradient(
+      90deg,
+      #526271,
+      #ff6a00 32%,
+      #ff6a00 68%,
+      #526271
+    );
+  border-radius: 999px;
+}
+
+.width-scale__marker {
+  position: absolute;
+  top: 50%;
+  width: .85rem;
+  height: .85rem;
+  background: #ff6a00;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 .6rem rgba(255,106,0,.45);
+  transform: translate(-50%, -50%);
+}
+
+/* Flex remains deliberately hidden. */
+
+@media (max-width: 54rem) {
+  .terrain-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 38rem) {
+  .performance-panel {
+    padding: .9rem;
+  }
+
+  .performance-lower-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .55rem;
+  }
+
+  .performance-lower-grid > .ability-visual,
+  .performance-lower-grid > .secondary-spec--width {
+    min-height: 11.5rem;
+    padding: .75rem;
+  }
+
+  .ability-visual__range {
+    font-size: .56rem;
+  }
+
+  .secondary-spec__heading {
+    font-size: .62rem;
+  }
+
+  .secondary-spec > strong {
+    font-size: 1rem;
+  }
+}
+
+
+/* ShapeOrWidth compatibility */
+.secondary-spec--shape,
+.secondary-spec--characteristic {
+  display: grid;
+  align-content: center;
+  gap: .55rem;
+}
+.shape-visual { display:grid; min-height:3.3rem; place-items:center; }
+.shape-visual span {
+  display:block;
+  width:min(7rem,72%);
+  height:2rem;
+  background:linear-gradient(90deg,transparent 0 8%,rgba(99,201,255,.18) 8% 92%,transparent 92% 100%);
+  border:1px solid rgba(99,201,255,.48);
+  border-radius:48% 48% 42% 42% / 55% 55% 45% 45%;
+  box-shadow:inset 0 0 1rem rgba(99,201,255,.08),0 0 .8rem rgba(99,201,255,.08);
+}
+.secondary-spec--shape > strong,
+.secondary-spec--characteristic > strong { line-height:1.25; }

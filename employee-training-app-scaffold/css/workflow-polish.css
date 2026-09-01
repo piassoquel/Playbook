@@ -1,0 +1,223 @@
+.category-hero,
+.path-hero {
+  position: relative;
+  display: grid;
+  min-height: 15rem;
+  margin-bottom: 1.4rem;
+  overflow: hidden;
+  isolation: isolate;
+  align-items: end;
+  padding: 1.5rem;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 1.35rem;
+  box-shadow: 0 18px 44px rgba(0,0,0,.34);
+}
+
+.category-hero::before,
+.path-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(0,7,14,.95), rgba(0,7,14,.55) 56%, rgba(0,7,14,.14)),
+    linear-gradient(0deg, rgba(0,0,0,.4), transparent 55%);
+}
+
+.category-hero--skiing,
+.path-hero--skiing {
+  background-image: url("../assets/sports/skiing-home.webp");
+}
+
+.category-hero--snowboarding,
+.path-hero--snowboarding {
+  background-image: url("../assets/sports/snowboarding-home.webp");
+}
+
+.category-hero__content,
+.path-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+}
+
+.category-hero h1,
+.path-hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 3.6rem);
+  line-height: .95;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+}
+
+.category-hero p,
+.path-hero p {
+  max-width: 28rem;
+  margin: .8rem 0 0;
+  color: #d5dee9;
+  line-height: 1.5;
+}
+
+.path-hero {
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+}
+
+.path-hero__count {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-width: 6rem;
+  min-height: 6rem;
+  place-content: center;
+  text-align: center;
+  background: rgba(2,7,13,.82);
+  border: 1px solid rgba(255,106,0,.35);
+  border-radius: 50%;
+}
+
+.path-hero__count strong {
+  color: #ff6a00;
+  font-size: 1.7rem;
+}
+
+.path-hero__count span {
+  color: #c8d1dc;
+  font-size: .72rem;
+  text-transform: uppercase;
+}
+
+.category-card {
+  min-height: 8rem;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.012)),
+    #0b121a;
+  border-color: rgba(255,255,255,.13);
+}
+
+.category-card:hover {
+  border-color: rgba(255,106,0,.48);
+}
+
+.learning-path-card {
+  min-height: 8.25rem;
+  background:
+    linear-gradient(155deg, rgba(255,255,255,.05), rgba(255,255,255,.012)),
+    #0b121a;
+  border-color: rgba(255,255,255,.13);
+}
+
+.learning-path-card--orange .learning-path-card__icon {
+  color: #ff6a00;
+  background: rgba(255,106,0,.1);
+  border-color: rgba(255,106,0,.22);
+}
+
+.learning-path-card--blue .learning-path-card__icon {
+  color: #2b83d5;
+  background: rgba(43,131,213,.1);
+  border-color: rgba(43,131,213,.22);
+}
+
+.learning-path-card--green .learning-path-card__icon {
+  color: #6aa837;
+  background: rgba(106,168,55,.1);
+  border-color: rgba(106,168,55,.22);
+}
+
+.learning-path-card--yellow .learning-path-card__icon {
+  color: #ffb000;
+  background: rgba(255,176,0,.1);
+  border-color: rgba(255,176,0,.22);
+}
+
+.learning-path-card--purple .learning-path-card__icon {
+  color: #7c55d9;
+  background: rgba(124,85,217,.1);
+  border-color: rgba(124,85,217,.22);
+}
+
+.product-card--visual {
+  display: grid;
+  min-height: 10rem;
+  grid-template-columns: 7.5rem 1fr auto;
+  padding: 0;
+  overflow: hidden;
+  align-items: stretch;
+}
+
+.product-card__visual {
+  min-height: 10rem;
+  background:
+    radial-gradient(circle at top, rgba(255,106,0,.12), transparent 7rem),
+    #111922;
+}
+
+.product-card__visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: .75rem;
+}
+
+.product-card__placeholder {
+  display: grid;
+  height: 100%;
+  min-height: 10rem;
+  padding: .8rem;
+  place-content: center;
+  text-align: center;
+  background:
+    linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+}
+
+.product-card__placeholder span {
+  color: #ff6a00;
+  font-size: .68rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.product-card__placeholder strong {
+  margin-top: .35rem;
+  font-size: 1rem;
+  line-height: 1.05;
+}
+
+.product-card__body {
+  padding: 1.1rem;
+  align-self: center;
+}
+
+.product-card--visual > .circle-arrow {
+  align-self: center;
+  margin-right: 1rem;
+}
+
+@media (max-width: 38rem) {
+  .path-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .path-hero__count {
+    width: 5rem;
+    min-width: 5rem;
+    min-height: 5rem;
+  }
+
+  .product-card--visual {
+    grid-template-columns: 5.5rem 1fr auto;
+  }
+
+  .product-card__visual,
+  .product-card__placeholder {
+    min-height: 9rem;
+  }
+
+  .product-card__summary {
+    display: none;
+  }
+}
