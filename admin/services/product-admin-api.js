@@ -1,5 +1,5 @@
-// Product writes are intentionally isolated here. Set this to the future
-// authenticated CMS write endpoint when it becomes available.
+// Product writes are intentionally isolated here. See ../CMS_WRITE_CONTRACT.md
+// for the authenticated endpoint and patch schema required by Admin.
 const PRODUCT_WRITE_URL = "";
 
 export class ProductWriteUnavailableError extends Error {
@@ -9,7 +9,7 @@ export class ProductWriteUnavailableError extends Error {
   }
 }
 
-export async function saveProductChanges(productId, changes) {
+export async function updateProduct(productId, changes, options = {}) {
   if (!PRODUCT_WRITE_URL) {
     throw new ProductWriteUnavailableError();
   }
@@ -17,7 +17,12 @@ export async function saveProductChanges(productId, changes) {
   const response = await fetch(PRODUCT_WRITE_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ productId, changes }),
+    body: JSON.stringify({
+      action: "updateProduct",
+      productId,
+      changes,
+      expectedLastUpdated: options.expectedLastUpdated || "",
+    }),
   });
 
   if (!response.ok) {
