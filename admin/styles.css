@@ -537,6 +537,17 @@ a:focus-visible {
 .form-field > span { color: #475569; font-size: .72rem; font-weight: 700; }
 .missing-field-badge { display: inline-block; margin-left: .45rem; padding: .08rem .35rem; border-radius: 999px; background: #fef3c7; color: #92400e; font-size: .62rem; font-style: normal; text-transform: uppercase; }
 .form-field.is-missing input, .form-field.is-missing select, .form-field.is-missing textarea { border-color: #f59e0b; background: #fffbeb; }
+.derived-field { display: grid; align-content: start; min-height: 2.7rem; padding: .55rem .75rem; border: 1px solid var(--border); border-radius: .45rem; background: #f8fafc; gap: .12rem; }
+.derived-field > span, .terrain-selector legend { color: #475569; font-size: .72rem; font-weight: 700; }
+.derived-field strong { font-size: .82rem; }
+.derived-field small, .terrain-selector > small { color: var(--text-muted); font-size: .68rem; }
+.terrain-selector { margin: 0; padding: .8rem; border: 1px solid var(--border); border-radius: .55rem; }
+.terrain-selector > div { display: flex; flex-wrap: wrap; margin: .4rem 0; gap: .45rem; }
+.terrain-selector label { position: relative; cursor: pointer; }
+.terrain-selector input { position: absolute; opacity: 0; pointer-events: none; }
+.terrain-selector label span { display: block; padding: .4rem .65rem; border: 1px solid #cbd5e1; border-radius: 999px; background: #fff; color: #475569; font-size: .72rem; font-weight: 700; }
+.terrain-selector input:checked + span { border-color: var(--accent); background: #e8f1ff; color: var(--accent); }
+.terrain-selector input:focus-visible + span { box-shadow: 0 0 0 3px rgba(22, 119, 255, .15); }
 .form-field input, .form-field select, .form-field textarea {
   width: 100%;
   border: 1px solid #cbd5e1;
