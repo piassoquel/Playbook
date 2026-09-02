@@ -4,9 +4,12 @@ import {
   getFlexOptions,
 } from "./config/product-fields.js";
 import {
+  ProductWriteError,
   ProductWriteUnavailableError,
   updateProduct,
 } from "./services/product-admin-api.js";
+
+const GOOGLE_OAUTH_CLIENT_ID = "739744165564-k3i9gq2ivhb1namdl7jf65rgplk59oo7.apps.googleusercontent.com";
 
 const pageContent = {
   import: ["Import", "Bring product information into Playbook."],
@@ -58,11 +61,100 @@ const main = document.querySelector("#main-content");
 const navItems = [...document.querySelectorAll("[data-page]")];
 const menuButton = document.querySelector(".menu-button");
 const backdrop = document.querySelector(".sidebar-backdrop");
+const googleSignInContainer = document.querySelector("[data-google-signin]");
+const signedInAccount = document.querySelector("[data-signed-in-account]");
+const accountLabel = document.querySelector("[data-account-label]");
+const accountAvatar = document.querySelector("[data-account-avatar]");
+const signOutButton = document.querySelector("[data-sign-out]");
 
 let appData = null;
 let dataError = null;
 let editorState = null;
 let navigationApproved = false;
+let adminIdentity = null;
+
+function initializeGoogleSignIn(attempt = 0) {
+  if (!window.google?.accounts?.id) {
+    if (attempt < 50) window.setTimeout(() => initializeGoogleSignIn(attempt + 1), 100);
+    else googleSignInContainer.textContent = "Google Sign-In could not load.";
+    return;
+  }
+
+  window.google.accounts.id.initialize({
+    client_id: GOOGLE_OAUTH_CLIENT_ID,
+    callback: handleGoogleCredential,
+    auto_select: false,
+    cancel_on_tap_outside: true,
+  });
+  renderGoogleSignInButton();
+}
+
+function renderGoogleSignInButton() {
+  googleSignInContainer.hidden = false;
+  googleSignInContainer.replaceChildren();
+  window.google.accounts.id.renderButton(googleSignInContainer, {
+    type: "standard",
+    theme: "outline",
+    size: "medium",
+    text: "signin_with",
+    shape: "rectangular",
+  });
+}
+
+function handleGoogleCredential(response) {
+  const claims = decodeGoogleCredential(response?.credential);
+  if (!claims?.email || !claims?.exp) {
+    adminIdentity = null;
+    renderGoogleSignInButton();
+    return;
+  }
+
+  adminIdentity = {
+    token: response.credential,
+    email: String(claims.email),
+    expiresAt: Number(claims.exp) * 1000,
+  };
+  googleSignInContainer.hidden = true;
+  signedInAccount.hidden = false;
+  accountLabel.textContent = adminIdentity.email;
+  accountAvatar.textContent = accountInitials(adminIdentity.email);
+}
+
+function decodeGoogleCredential(token) {
+  try {
+    const payload = String(token || "").split(".")[1];
+    if (!payload) return null;
+    const base64 = payload.replaceAll("-", "+").replaceAll("_", "/");
+    const normalized = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
+    return JSON.parse(decodeURIComponent(atob(normalized).split("").map((character) =>
+      `%${character.charCodeAt(0).toString(16).padStart(2, "0")}`
+    ).join("")));
+  } catch (error) {
+    console.error("Google credential could not be read.", error);
+    return null;
+  }
+}
+
+function accountInitials(email) {
+  return String(email).split("@")[0].split(/[._-]/).map((part) => part[0] || "").join("").slice(0, 2).toUpperCase() || "PA";
+}
+
+function getAdminAuthToken() {
+  if (!adminIdentity?.token || adminIdentity.expiresAt <= Date.now() + 30000) {
+    adminIdentity = null;
+    signedInAccount.hidden = true;
+    if (window.google?.accounts?.id) renderGoogleSignInButton();
+    return "";
+  }
+  return adminIdentity.token;
+}
+
+function signOutAdmin() {
+  adminIdentity = null;
+  signedInAccount.hidden = true;
+  window.google?.accounts?.id?.disableAutoSelect();
+  if (window.google?.accounts?.id) renderGoogleSignInButton();
+}
 
 function getRouteParts() {
   return window.location.hash.replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent);
@@ -310,7 +402,10 @@ function renderSelectField(label, field, value, options) {
 }
 
 function renderTerrainField(label, field, value) {
-  return renderSelectField(label, field, value, [["", "Not set"], ...Array.from({ length: 6 }, (_, rating) => [String(rating), `${rating} / 5`])]);
+  return renderSelectField(label, field, value, [["", "Not set"], ...Array.from({ length: 5 }, (_, index) => {
+    const rating = index + 1;
+    return [String(rating), `${rating} / 5`];
+  })]);
 }
 
 function renderShapeOrWidthField(draft) {
@@ -415,10 +510,16 @@ function bindProductEditor(product, sportSlug, typeSlug) {
 
     try {
       const changes = buildProductChanges(editorState.draft, editorState.touched);
-      await updateProduct(product.ProductID, changes, {
+      const authToken = getAdminAuthToken();
+      if (!authToken) {
+        throw new ProductWriteError("Sign in with Google before saving.", "UNAUTHORIZED");
+      }
+      const result = await updateProduct(product.ProductID, changes, {
         expectedLastUpdated: product.LastUpdated,
+        authToken,
       });
-      Object.assign(product, changes);
+      Object.assign(product, result.product || changes);
+      product.LastUpdated = result.lastUpdated;
       editorState.original = { ...editorState.draft };
       editorState.touched.clear();
       editorState.dirty = false;
@@ -426,6 +527,10 @@ function bindProductEditor(product, sportSlug, typeSlug) {
     } catch (error) {
       if (error instanceof ProductWriteUnavailableError) {
         showSaveFeedback("Saving is not connected to the CMS yet. Your edits remain in this browser and have not been persisted.", "warning");
+      } else if (error instanceof ProductWriteError) {
+        console.error("Product save failed.", error);
+        if (error.code === "UNAUTHORIZED") signOutAdmin();
+        showSaveFeedback(error.message, "error");
       } else {
         console.error("Product save failed.", error);
         showSaveFeedback("The product could not be saved. Your edits remain in this browser.", "error");
@@ -467,7 +572,7 @@ function buildProductChanges(draft, touched) {
   const changes = {};
 
   touched.forEach((field) => {
-    const apiField = field === "Status" ? "RowStatus" : field;
+    const apiField = field;
     const value = draft[field];
     const isSkiWidth = field === "ShapeOrWidth" && normalize(draft.SportID) === "SKI";
     changes[apiField] = (numericFields.has(field) || isSkiWidth) && value !== "" ? Number(value) : value;
@@ -665,3 +770,5 @@ async function startApp() {
 }
 
 startApp();
+initializeGoogleSignIn();
+signOutButton.addEventListener("click", signOutAdmin);
