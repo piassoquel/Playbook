@@ -13,6 +13,8 @@ import {
 } from "./services/product-admin-api.js";
 
 const GOOGLE_OAUTH_CLIENT_ID = "739744165564-k3i9gq2ivhb1namdl7jf65rgplk59oo7.apps.googleusercontent.com";
+const ABILITY_BY_LEVEL = { "1": "Beginner", "2": "Beginner|Intermediate", "3": "Intermediate", "4": "Intermediate|Advanced", "5": "Advanced|Expert" };
+const TERRAIN_OPTIONS = ["Groomers", "All Mountain", "Powder", "Trees", "Park"];
 
 const pageContent = {
   import: ["Import", "Bring product information into Playbook."],
@@ -344,7 +346,9 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
 
       ${renderEditorSection("Performance", "Customer fit and on-snow performance ratings.", `
         <div class="editor-grid">
-          ${renderSelectField("Ability Level", "AbilityLevel", draft.AbilityLevel, [["", "— Not set"], ["1", "1 — Beginner"], ["2", "2 — Beginner / Intermediate"], ["3", "3 — Intermediate"], ["4", "4 — Advanced"], ["5", "5 — Expert"]])}
+          ${renderSelectField("Ability Level", "AbilityLevel", draft.AbilityLevel, [["", "— Not set"], ...Object.entries(ABILITY_BY_LEVEL).map(([level, label]) => [level, `${level} — ${label.replace("|", " / ")}`])])}
+          ${renderDerivedAbilityField(draft.AbilityLevel)}
+          ${renderTerrainSelector(draft.Terrain)}
           ${renderTerrainField("Groomers", "TerrainGroomers", draft.TerrainGroomers)}
           ${renderTerrainField("All Mountain", "TerrainAllMountain", draft.TerrainAllMountain)}
           ${renderTerrainField("Powder", "TerrainPowder", draft.TerrainPowder)}
@@ -395,6 +399,8 @@ function createProductDraft(product) {
     ImageURL: String(product.ImageURL || product.HeroImage || product.ThumbnailImage || ""),
     Status: mapCmsStatus(product),
     AbilityLevel: String(ability ?? ""),
+    Ability: String(product.Ability ?? ""),
+    Terrain: String(product.Terrain ?? ""),
     TerrainGroomers: String(product.TerrainGroomers ?? ""),
     TerrainAllMountain: String(product.TerrainAllMountain ?? ""),
     TerrainPowder: String(product.TerrainPowder ?? ""),
@@ -453,6 +459,16 @@ function renderTerrainField(label, field, value) {
     const rating = index + 1;
     return [String(rating), `${rating} / 5`];
   })]);
+}
+
+function renderDerivedAbilityField(level) {
+  const label = ABILITY_BY_LEVEL[String(level)] || "—";
+  return `<div class="derived-field"><span>Ability range</span><strong data-derived-ability>${escapeHtml(label.replaceAll("|", " / "))}</strong><small>Generated automatically from Ability Level</small></div>`;
+}
+
+function renderTerrainSelector(value) {
+  const selected = new Set(String(value || "").split("|").map((item) => item.trim()).filter(Boolean));
+  return `<fieldset class="terrain-selector form-field--wide"><legend>Primary terrain</legend><div>${TERRAIN_OPTIONS.map((option) => `<label><input type="checkbox" value="${escapeHtml(option)}" data-terrain-option ${selected.has(option) ? "checked" : ""}><span>${escapeHtml(option)}</span></label>`).join("")}</div><small>Select every terrain category that defines this product's intended use.</small></fieldset>`;
 }
 
 function renderShapeOrWidthField(draft) {
@@ -541,6 +557,12 @@ function bindProductEditor(product, sportSlug, typeSlug) {
         updateImagePreview(control.value);
       }
 
+      if (control.dataset.field === "AbilityLevel") {
+        editorState.draft.Ability = ABILITY_BY_LEVEL[control.value] || "";
+        const derived = form.querySelector("[data-derived-ability]");
+        if (derived) derived.textContent = (editorState.draft.Ability || "—").replaceAll("|", " / ");
+      }
+
       if (control.dataset.field === "SportID") {
         const categoryControl = form.querySelector('[data-field="CategoryID"]');
         const categoryOptions = getCategoryOptions(control.value);
@@ -551,6 +573,15 @@ function bindProductEditor(product, sportSlug, typeSlug) {
         return;
       }
 
+      feedback.hidden = true;
+      updateEditorDirtyUi();
+    });
+  });
+
+  form.querySelectorAll("[data-terrain-option]").forEach((control) => {
+    control.addEventListener("change", () => {
+      const selected = TERRAIN_OPTIONS.filter((option) => form.querySelector(`[data-terrain-option][value="${option}"]`)?.checked);
+      updateDraftField("Terrain", selected.join("|"));
       feedback.hidden = true;
       updateEditorDirtyUi();
     });
