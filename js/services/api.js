@@ -92,6 +92,7 @@ function normalizeCmsData(data) {
     products: Array.isArray(data.products)
       ? data.products
       : [],
+    recommendationCandidates: data.recommendationCandidates || { Binding: [], Boot: [] },
     dailyFocus: normalizeDailyFocus(data.dailyFocus),
     settings: data.settings || {},
     version: data.version || {},
