@@ -64,3 +64,33 @@ export async function updateProduct(productId, changes, options = {}) {
   }
   return result;
 }
+
+export async function validateImportPackage(importPackage, options = {}) {
+  return sendAdminAction("validateImport", { importPackage }, options.authToken);
+}
+
+export async function commitImportPackage(importPackage, packageFingerprint, options = {}) {
+  return sendAdminAction("commitImport", { importPackage, packageFingerprint }, options.authToken);
+}
+
+async function sendAdminAction(action, payload, authToken) {
+  if (!PRODUCT_WRITE_URL) throw new ProductWriteUnavailableError();
+  if (!authToken) throw new ProductWriteError("Sign in before continuing.", "UNAUTHORIZED");
+  const response = await fetch(PRODUCT_WRITE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=UTF-8" },
+    body: JSON.stringify({ action, ...payload, authToken }),
+  });
+  let result;
+  try {
+    result = await response.json();
+  } catch (error) {
+    throw new ProductWriteError(`The CMS returned an unreadable response (${response.status}).`, "INVALID_RESPONSE");
+  }
+  if (!result || result.success !== true) {
+    throw new ProductWriteError(result?.error || `CMS request failed (${response.status}).`, result?.code, {
+      errors: result?.errors || [], summary: result?.summary || null,
+    });
+  }
+  return result;
+}
