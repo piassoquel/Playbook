@@ -6,7 +6,9 @@ import {
 import {
   ProductWriteError,
   ProductWriteUnavailableError,
+  commitImportPackage,
   updateProduct,
+  validateImportPackage,
 } from "./services/product-admin-api.js";
 
 const GOOGLE_OAUTH_CLIENT_ID = "739744165564-k3i9gq2ivhb1namdl7jf65rgplk59oo7.apps.googleusercontent.com";
@@ -72,6 +74,7 @@ let dataError = null;
 let editorState = null;
 let navigationApproved = false;
 let adminIdentity = null;
+let importState = { importPackage: null, preview: null, fileName: "" };
 
 function initializeGoogleSignIn(attempt = 0) {
   if (!window.google?.accounts?.id) {
@@ -633,6 +636,98 @@ function showSaveFeedback(message, type) {
   feedback.hidden = false;
 }
 
+function renderImportWizard() {
+  main.innerHTML = `${renderHeading("Import Products", "Upload a Playbook Import Package, review validation, then confirm the import.", "Import Wizard")}
+    <section class="import-panel">
+      <div class="import-step"><span>1</span><div><h3>Select an Excel workbook</h3><p>The workbook must contain a Products worksheet. Unknown worksheets are safely ignored.</p></div></div>
+      <label class="import-dropzone"><strong>Choose Playbook Import Package</strong><span>.xlsx files only</span><input type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-import-file></label>
+      <p class="import-file">${importState.fileName ? escapeHtml(importState.fileName) : "No file selected"}</p>
+      <div class="save-feedback" role="status" aria-live="polite" data-import-feedback hidden></div>
+      <div>${renderImportPreview()}</div>
+    </section>`;
+  bindImportWizard();
+}
+
+function renderImportPreview() {
+  const preview = importState.preview;
+  if (!preview) return "";
+  const summary = preview.summary || {};
+  const errors = preview.errors || [];
+  const updates = preview.updates || [];
+  return `<div class="import-preview">
+    <div class="import-summary">
+      <div><strong>${summary.newProducts || 0}</strong><span>New Products</span></div>
+      <div><strong>${summary.existingProducts || 0}</strong><span>Existing Products</span></div>
+      <div class="${errors.length ? "has-errors" : ""}"><strong>${errors.length}</strong><span>Errors</span></div>
+    </div>
+    ${preview.ignoredWorksheets?.length ? `<p class="import-note">Ignored worksheets: ${escapeHtml(preview.ignoredWorksheets.join(", "))}</p>` : ""}
+    ${updates.length ? `<div class="import-list"><h3>Products that will be updated</h3>${updates.map((item) => `<div><code>${escapeHtml(item.ProductID)}</code><span>${escapeHtml(`${item.Brand} ${item.Model}`)}</span></div>`).join("")}</div>` : ""}
+    ${errors.length ? `<div class="import-errors"><h3>Items to fix</h3>${errors.map((error) => `<div><strong>${error.row ? `Row ${error.row}` : "Workbook"} · ${escapeHtml(error.field)}</strong><span>${escapeHtml(error.message)}</span></div>`).join("")}</div>` : ""}
+    <button class="save-button import-confirm" type="button" data-import-confirm ${preview.valid ? "" : "disabled"}>Import ${Number(summary.newProducts || 0) + Number(summary.existingProducts || 0)} Products</button>
+  </div>`;
+}
+
+function bindImportWizard() {
+  const input = main.querySelector("[data-import-file]");
+  input?.addEventListener("change", async () => {
+    const file = input.files?.[0];
+    if (!file) return;
+    importState = { importPackage: null, preview: null, fileName: file.name };
+    setImportFeedback("Reading and validating the workbook…", "warning");
+    try {
+      const authToken = getAdminAuthToken();
+      if (!authToken) throw new ProductWriteError("Sign in with Google before importing.", "UNAUTHORIZED");
+      const importPackage = await readImportWorkbook(file);
+      const preview = await validateImportPackage(importPackage, { authToken });
+      importState = { importPackage, preview, fileName: file.name };
+      renderImportWizard();
+      setImportFeedback(preview.valid ? "Validation passed. Review the summary, then confirm the import." : "Nothing was imported. Fix the listed items and upload a corrected workbook.", preview.valid ? "success" : "error");
+    } catch (error) {
+      console.error("Import validation failed.", error);
+      setImportFeedback(error.message || "The workbook could not be validated.", "error");
+    }
+  });
+  main.querySelector("[data-import-confirm]")?.addEventListener("click", commitValidatedImport);
+}
+
+async function readImportWorkbook(file) {
+  if (!window.XLSX) throw new Error("The Excel workbook reader did not load. Refresh and try again.");
+  const workbook = window.XLSX.read(await file.arrayBuffer(), { type: "array", cellDates: true });
+  const worksheets = {};
+  workbook.SheetNames.forEach((name) => {
+    worksheets[name] = window.XLSX.utils.sheet_to_json(workbook.Sheets[name], { defval: "", raw: true });
+  });
+  return { schemaVersion: "2.0", fileName: file.name, worksheets };
+}
+
+async function commitValidatedImport() {
+  const button = main.querySelector("[data-import-confirm]");
+  button.disabled = true;
+  button.textContent = "Importing…";
+  try {
+    const authToken = getAdminAuthToken();
+    if (!authToken) throw new ProductWriteError("Sign in with Google before importing.", "UNAUTHORIZED");
+    const result = await commitImportPackage(importState.importPackage, importState.preview.packageFingerprint, { authToken });
+    setImportFeedback(`${result.imported.newProducts} new and ${result.imported.updatedProducts} existing products imported successfully. New products are waiting for review.`, "success");
+    importState = { importPackage: null, preview: null, fileName: "" };
+    appData = await loadAppData();
+    button.remove();
+  } catch (error) {
+    console.error("Import failed.", error);
+    setImportFeedback(error.message || "The import failed. No products should have been changed.", "error");
+    button.disabled = false;
+    button.textContent = "Try Import Again";
+  }
+}
+
+function setImportFeedback(message, type) {
+  const feedback = main.querySelector("[data-import-feedback]");
+  if (!feedback) return;
+  feedback.textContent = message;
+  feedback.className = `save-feedback save-feedback--${type}`;
+  feedback.hidden = false;
+}
+
 function renderPlaceholder(page) {
   const [title, description] = pageContent[page];
   main.innerHTML = `${renderHeading(title, description)}<section class="empty-state"><div><span class="empty-state__icon" aria-hidden="true">${title.charAt(0)}</span><h3>${title} workspace</h3><p>This area is ready for the next phase of Playbook Admin development.</p></div></section>`;
@@ -746,6 +841,7 @@ function renderRoute() {
   else if (root === "products" && parts.length === 2) renderProductTypes(parts[1]);
   else if (root === "products" && parts.length === 3) renderProductList(parts[1], parts[2]);
   else if (root === "products" && parts[3] === "product" && parts.length === 5) renderProductDetail(parts[1], parts[2], parts[4]);
+  else if (root === "import" && parts.length === 1) renderImportWizard();
   else if (pageContent[root] && parts.length === 1) renderPlaceholder(root);
   else renderNotFound("Page not found", "#/products");
   closeNavigation();
