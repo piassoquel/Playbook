@@ -639,7 +639,7 @@ function showSaveFeedback(message, type) {
 function renderImportWizard() {
   main.innerHTML = `${renderHeading("Import Products", "Upload a Playbook Import Package, review validation, then confirm the import.", "Import Wizard")}
     <section class="import-panel">
-      <div class="import-step"><span>1</span><div><h3>Select an Excel workbook</h3><p>The workbook must contain a Products worksheet. Unknown worksheets are safely ignored.</p></div></div>
+      <div class="import-step"><span>1</span><div><h3>Select an Excel workbook</h3><p>The workbook may use the existing BatchUpload sheet or the new Products sheet. Reference and unknown worksheets are safely ignored.</p></div></div>
       <label class="import-dropzone"><strong>Choose Playbook Import Package</strong><span>.xlsx files only</span><input type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-import-file></label>
       <p class="import-file">${importState.fileName ? escapeHtml(importState.fileName) : "No file selected"}</p>
       <div class="save-feedback" role="status" aria-live="polite" data-import-feedback hidden></div>
