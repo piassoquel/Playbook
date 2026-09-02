@@ -509,16 +509,18 @@ a:focus-visible {
 .import-dropzone span, .import-file, .import-note { color: var(--text-muted); font-size: .75rem; }
 .import-dropzone input { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
 .import-file { margin: .65rem 0 1rem; text-align: center; }
-.import-summary { display: grid; grid-template-columns: repeat(3, 1fr); margin: 1rem 0; gap: .75rem; }
+.import-summary { display: grid; grid-template-columns: repeat(4, 1fr); margin: 1rem 0; gap: .75rem; }
 .import-summary > div { padding: 1rem; border-radius: .6rem; background: #f8fafc; text-align: center; }
 .import-summary strong, .import-summary span { display: block; }
 .import-summary strong { font-size: 1.5rem; }
 .import-summary span { margin-top: .2rem; color: var(--text-muted); font-size: .7rem; }
 .import-summary .has-errors { background: #fef2f2; color: #991b1b; }
-.import-list, .import-errors { margin-top: 1rem; border: 1px solid var(--border); border-radius: .6rem; overflow: hidden; }
-.import-list h3, .import-errors h3 { padding: .8rem 1rem; background: #f8fafc; }
-.import-list > div, .import-errors > div { display: grid; grid-template-columns: minmax(8rem, auto) 1fr; padding: .7rem 1rem; border-top: 1px solid var(--border); font-size: .78rem; gap: .8rem; }
+.import-summary .has-warnings { background: #fffbeb; color: #92400e; }
+.import-list, .import-errors, .import-warnings { margin-top: 1rem; border: 1px solid var(--border); border-radius: .6rem; overflow: hidden; }
+.import-list h3, .import-errors h3, .import-warnings h3 { padding: .8rem 1rem; background: #f8fafc; }
+.import-list > div, .import-errors > div, .import-warnings > div { display: grid; grid-template-columns: minmax(8rem, auto) 1fr; padding: .7rem 1rem; border-top: 1px solid var(--border); font-size: .78rem; gap: .8rem; }
 .import-errors > div { grid-template-columns: minmax(10rem, auto) 1fr; color: #991b1b; }
+.import-warnings > div { grid-template-columns: minmax(10rem, auto) 1fr; color: #92400e; }
 .import-confirm { margin-top: 1rem; }
 
 .product-editor { display: grid; gap: 1.25rem; }
@@ -533,6 +535,8 @@ a:focus-visible {
 .form-field { display: grid; align-content: start; gap: .4rem; }
 .form-field--wide, .form-field--textarea:last-child { grid-column: 1 / -1; }
 .form-field > span { color: #475569; font-size: .72rem; font-weight: 700; }
+.missing-field-badge { display: inline-block; margin-left: .45rem; padding: .08rem .35rem; border-radius: 999px; background: #fef3c7; color: #92400e; font-size: .62rem; font-style: normal; text-transform: uppercase; }
+.form-field.is-missing input, .form-field.is-missing select, .form-field.is-missing textarea { border-color: #f59e0b; background: #fffbeb; }
 .form-field input, .form-field select, .form-field textarea {
   width: 100%;
   border: 1px solid #cbd5e1;
