@@ -331,6 +331,7 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
           ${renderInputField("Model", "Model", draft.Model)}
           ${renderSelectField("Sport", "SportID", draft.SportID, [["SNB", "Snowboarding"], ["SKI", "Skiing"]])}
           ${renderSelectField("Category", "CategoryID", draft.CategoryID, getCategoryOptions(draft.SportID))}
+          ${renderSelectField("Gender", "Gender", draft.Gender, [["", "— Not set"], ["Unisex", "Unisex"], ["Men's", "Men's"], ["Women's", "Women's"], ["Youth", "Youth"]])}
           ${renderInputField("Season", "Season", draft.Season, "number")}
           ${renderInputField("Price", "MSRP", draft.MSRP, "number", { step: "0.01", min: "0" })}
           ${renderInputField("Image URL", "ImageURL", draft.ImageURL, "url", { wide: true })}
