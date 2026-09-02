@@ -326,14 +326,14 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
 
       ${renderEditorSection("Performance", "Customer fit and on-snow performance ratings.", `
         <div class="editor-grid">
-          ${renderSelectField("Ability Level", "AbilityLevel", draft.AbilityLevel, [["", "Not set"], ["1", "1 — Beginner"], ["2", "2 — Beginner / Intermediate"], ["3", "3 — Intermediate"], ["4", "4 — Advanced"], ["5", "5 — Expert"]])}
+          ${renderSelectField("Ability Level", "AbilityLevel", draft.AbilityLevel, [["", "— Not set"], ["1", "1 — Beginner"], ["2", "2 — Beginner / Intermediate"], ["3", "3 — Intermediate"], ["4", "4 — Advanced"], ["5", "5 — Expert"]])}
           ${renderTerrainField("Groomers", "TerrainGroomers", draft.TerrainGroomers)}
           ${renderTerrainField("All Mountain", "TerrainAllMountain", draft.TerrainAllMountain)}
           ${renderTerrainField("Powder", "TerrainPowder", draft.TerrainPowder)}
           ${renderTerrainField("Trees", "TerrainTrees", draft.TerrainTrees)}
           ${renderTerrainField("Park", "TerrainPark", draft.TerrainPark)}
           <div data-shape-or-width-field>${renderShapeOrWidthField(draft)}</div>
-          ${renderSelectField("Flex", "Flex", draft.Flex, [["", "Not set"], ...getFlexOptions(appData, draft.Flex).map((value) => [value, value])])}
+          ${renderSelectField("Flex", "Flex", draft.Flex, [["", "— Not set"], ...getFlexOptions(appData, draft.Flex).map((value) => [value, value])])}
         </div>
         ${variants.length ? renderVariants(variants) : `<div class="editor-empty-inline"><strong>Variants / sizes</strong><span>Not currently exposed by the CMS API.</span></div>`}
       `)}
@@ -417,15 +417,20 @@ function renderEditorSection(title, description, content) {
 
 function renderInputField(label, field, value, type = "text", options = {}) {
   const attributes = Object.entries(options).filter(([key]) => key !== "wide").map(([key, item]) => `${key}="${escapeHtml(item)}"`).join(" ");
-  return `<label class="form-field ${options.wide ? "form-field--wide" : ""}"><span>${label}</span><input type="${type}" value="${escapeHtml(value)}" data-field="${field}" ${attributes}></label>`;
+  return `<label class="form-field ${isBlankField(value) ? "is-missing" : ""} ${options.wide ? "form-field--wide" : ""}">${renderFieldLabel(label, value)}<input type="${type}" value="${escapeHtml(value)}" data-field="${field}" ${attributes}></label>`;
 }
 
 function renderSelectField(label, field, value, options) {
-  return `<label class="form-field"><span>${label}</span><select data-field="${field}">${options.map(([optionValue, optionLabel]) => `<option value="${escapeHtml(optionValue)}" ${String(optionValue) === String(value) ? "selected" : ""}>${escapeHtml(optionLabel)}</option>`).join("")}</select></label>`;
+  return `<label class="form-field ${isBlankField(value) ? "is-missing" : ""}">${renderFieldLabel(label, value)}<select data-field="${field}">${options.map(([optionValue, optionLabel]) => `<option value="${escapeHtml(optionValue)}" ${String(optionValue) === String(value) ? "selected" : ""}>${escapeHtml(optionLabel)}</option>`).join("")}</select></label>`;
+}
+
+function isBlankField(value) { return value === null || value === undefined || String(value).trim() === ""; }
+function renderFieldLabel(label, value) {
+  return `<span>${escapeHtml(label)}${isBlankField(value) ? '<em class="missing-field-badge">Missing</em>' : ""}</span>`;
 }
 
 function renderTerrainField(label, field, value) {
-  return renderSelectField(label, field, value, [["", "Not set"], ...Array.from({ length: 5 }, (_, index) => {
+  return renderSelectField(label, field, value, [["", "— Not set"], ...Array.from({ length: 5 }, (_, index) => {
     const rating = index + 1;
     return [String(rating), `${rating} / 5`];
   })]);
@@ -439,11 +444,11 @@ function renderShapeOrWidthField(draft) {
 
   const options = [...SNOWBOARD_SHAPES];
   if (draft.ShapeOrWidth && !options.includes(draft.ShapeOrWidth)) options.push(draft.ShapeOrWidth);
-  return renderSelectField("Shape", "ShapeOrWidth", draft.ShapeOrWidth, [["", "Not set"], ...options.map((value) => [value, value])]);
+  return renderSelectField("Shape", "ShapeOrWidth", draft.ShapeOrWidth, [["", "— Not set"], ...options.map((value) => [value, value])]);
 }
 
 function renderTextareaField(label, field, value) {
-  return `<label class="form-field form-field--textarea"><span>${label}</span><textarea rows="6" data-field="${field}">${escapeHtml(value)}</textarea></label>`;
+  return `<label class="form-field form-field--textarea ${isBlankField(value) ? "is-missing" : ""}">${renderFieldLabel(label, value)}<textarea rows="6" data-field="${field}">${escapeHtml(value)}</textarea></label>`;
 }
 
 function renderRecommendationGroup(productType, draft) {
@@ -653,16 +658,19 @@ function renderImportPreview() {
   if (!preview) return "";
   const summary = preview.summary || {};
   const errors = preview.errors || [];
+  const warnings = preview.warnings || [];
   const updates = preview.updates || [];
   return `<div class="import-preview">
     <div class="import-summary">
       <div><strong>${summary.newProducts || 0}</strong><span>New Products</span></div>
       <div><strong>${summary.existingProducts || 0}</strong><span>Existing Products</span></div>
+      <div class="${warnings.length ? "has-warnings" : ""}"><strong>${warnings.length}</strong><span>Review Warnings</span></div>
       <div class="${errors.length ? "has-errors" : ""}"><strong>${errors.length}</strong><span>Errors</span></div>
     </div>
     ${preview.ignoredWorksheets?.length ? `<p class="import-note">Ignored worksheets: ${escapeHtml(preview.ignoredWorksheets.join(", "))}</p>` : ""}
     ${updates.length ? `<div class="import-list"><h3>Products that will be updated</h3>${updates.map((item) => `<div><code>${escapeHtml(item.ProductID)}</code><span>${escapeHtml(`${item.Brand} ${item.Model}`)}</span></div>`).join("")}</div>` : ""}
     ${errors.length ? `<div class="import-errors"><h3>Items to fix</h3>${errors.map((error) => `<div><strong>${error.row ? `Row ${error.row}` : "Workbook"} · ${escapeHtml(error.field)}</strong><span>${escapeHtml(error.message)}</span></div>`).join("")}</div>` : ""}
+    ${warnings.length ? `<div class="import-warnings"><h3>Items to complete during review</h3>${warnings.map((warning) => `<div><strong>${warning.row ? `Row ${warning.row}` : "Workbook"} · ${escapeHtml(warning.field)}</strong><span>${escapeHtml(warning.message)}</span></div>`).join("")}</div>` : ""}
     <button class="save-button import-confirm" type="button" data-import-confirm ${preview.valid ? "" : "disabled"}>Import ${Number(summary.newProducts || 0) + Number(summary.existingProducts || 0)} Products</button>
   </div>`;
 }
@@ -681,7 +689,8 @@ function bindImportWizard() {
       const preview = await validateImportPackage(importPackage, { authToken });
       importState = { importPackage, preview, fileName: file.name };
       renderImportWizard();
-      setImportFeedback(preview.valid ? "Validation passed. Review the summary, then confirm the import." : "Nothing was imported. Fix the listed items and upload a corrected workbook.", preview.valid ? "success" : "error");
+      const warningCount = preview.warnings?.length || 0;
+      setImportFeedback(preview.valid ? (warningCount ? `Validation passed with ${warningCount} review warning${warningCount === 1 ? "" : "s"}. You may import now and complete those fields in Product Editor.` : "Validation passed. Review the summary, then confirm the import.") : "Nothing was imported. Fix the listed errors and upload a corrected workbook.", preview.valid ? (warningCount ? "warning" : "success") : "error");
     } catch (error) {
       console.error("Import validation failed.", error);
       setImportFeedback(error.message || "The workbook could not be validated.", "error");
