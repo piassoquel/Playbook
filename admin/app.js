@@ -389,6 +389,7 @@ function createProductDraft(product) {
     Model: String(product.Model ?? ""),
     SportID: String(product.SportID ?? ""),
     CategoryID: String(product.CategoryID ?? ""),
+    Gender: String(product.Gender ?? ""),
     Season: String(product.Season ?? ""),
     MSRP: String(product.MSRP ?? ""),
     ImageURL: String(product.ImageURL || product.HeroImage || product.ThumbnailImage || ""),
