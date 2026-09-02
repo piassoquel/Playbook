@@ -271,7 +271,7 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
     editorState = {
       productId: product.ProductID,
       route,
-      original: { ...draft },
+      original: cloneProductDraft(draft),
       draft,
       touched: new Set(),
       dirty: false,
@@ -347,10 +347,10 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
 
       ${renderEditorSection("Recommendations", "Pair this product with recommended bindings and boots.", `
         <div class="recommendation-groups">
-          ${renderRecommendationGroup("Binding")}
-          ${renderRecommendationGroup("Boot")}
+          ${renderRecommendationGroup("Binding", draft)}
+          ${renderRecommendationGroup("Boot", draft)}
         </div>
-        <p class="recommendation-note">Recommendation fields are not currently exposed by the CMS API. These slots are ready to connect when support is added.</p>
+        <p class="recommendation-note">Only active, published snowboarding bindings and boots are available.</p>
       `)}
     </form>`;
 
@@ -385,7 +385,27 @@ function createProductDraft(product) {
     ComparisonNotes: String(product.ComparisonNotes ?? ""),
     TalkingPoints: String(product.TalkingPoints ?? ""),
     CommonQuestions: String(product.CommonQuestions ?? ""),
+    Recommendations: normalizeRecommendationDraft(product.Recommendations),
   };
+}
+
+function normalizeRecommendationDraft(recommendations = {}) {
+  return {
+    Binding: {
+      Recommended: String(recommendations?.Binding?.Recommended || ""),
+      Upgrade: String(recommendations?.Binding?.Upgrade || ""),
+      Budget: String(recommendations?.Binding?.Budget || ""),
+    },
+    Boot: {
+      Recommended: String(recommendations?.Boot?.Recommended || ""),
+      Upgrade: String(recommendations?.Boot?.Upgrade || ""),
+      Budget: String(recommendations?.Boot?.Budget || ""),
+    },
+  };
+}
+
+function cloneProductDraft(draft) {
+  return { ...draft, Recommendations: normalizeRecommendationDraft(draft.Recommendations) };
 }
 
 function renderEditorSection(title, description, content) {
@@ -423,8 +443,17 @@ function renderTextareaField(label, field, value) {
   return `<label class="form-field form-field--textarea"><span>${label}</span><textarea rows="6" data-field="${field}">${escapeHtml(value)}</textarea></label>`;
 }
 
-function renderRecommendationGroup(productType) {
-  return `<div class="recommendation-group"><h4>${productType}</h4><div class="recommendation-slots">${["Recommended", "Upgrade", "Budget"].map((tier) => `<div class="recommendation-slot"><span>${tier}</span><strong>Not configured</strong><small>CMS field required</small></div>`).join("")}</div></div>`;
+function renderRecommendationGroup(productType, draft) {
+  const candidates = appData?.recommendationCandidates?.[productType] || [];
+  const options = candidates.map((product) => {
+    const brand = String(product.Brand || getBrandName(product));
+    const label = `${brand} ${product.Model || product.ProductID}${product.Season ? ` (${product.Season})` : ""}`;
+    return [String(product.ProductID || ""), label];
+  });
+  return `<div class="recommendation-group"><h4>${productType}</h4><div class="recommendation-slots">${["Recommended", "Upgrade", "Budget"].map((tier) => {
+    const value = draft.Recommendations?.[productType]?.[tier] || "";
+    return `<label class="recommendation-slot"><span>${tier}</span><select data-recommendation-type="${productType}" data-recommendation-tier="${tier}"><option value="">No recommendation</option>${options.map(([id, label]) => `<option value="${escapeHtml(id)}" ${id === value ? "selected" : ""}>${escapeHtml(label)}</option>`).join("")}</select></label>`;
+  }).join("")}</div></div>`;
 }
 
 function renderVariants(variants) {
@@ -500,6 +529,21 @@ function bindProductEditor(product, sportSlug, typeSlug) {
     });
   });
 
+  form.querySelectorAll("[data-recommendation-type]").forEach((control) => {
+    control.addEventListener("change", () => {
+      const type = control.dataset.recommendationType;
+      const tier = control.dataset.recommendationTier;
+      editorState.draft.Recommendations[type][tier] = control.value;
+      const unchanged = JSON.stringify(editorState.draft.Recommendations) ===
+        JSON.stringify(editorState.original.Recommendations);
+      if (unchanged) editorState.touched.delete("Recommendations");
+      else editorState.touched.add("Recommendations");
+      editorState.dirty = editorState.touched.size > 0;
+      feedback.hidden = true;
+      updateEditorDirtyUi();
+    });
+  });
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!editorState.dirty) return;
@@ -520,7 +564,7 @@ function bindProductEditor(product, sportSlug, typeSlug) {
       });
       Object.assign(product, result.product || changes);
       product.LastUpdated = result.lastUpdated;
-      editorState.original = { ...editorState.draft };
+      editorState.original = cloneProductDraft(editorState.draft);
       editorState.touched.clear();
       editorState.dirty = false;
       showSaveFeedback("Changes saved to Playbook CMS.", "success");

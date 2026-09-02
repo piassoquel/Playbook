@@ -539,11 +539,10 @@ a:focus-visible {
 .recommendation-group { padding: 1rem; border: 1px solid var(--border); border-radius: .6rem; }
 .recommendation-group h4 { margin: 0 0 .8rem; font-size: .85rem; }
 .recommendation-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
-.recommendation-slot { min-height: 7rem; padding: .75rem; border: 1px dashed #cbd5e1; border-radius: .5rem; background: #f8fafc; }
-.recommendation-slot span, .recommendation-slot strong, .recommendation-slot small { display: block; }
+.recommendation-slot { display: block; min-height: 7rem; padding: .75rem; border: 1px dashed #cbd5e1; border-radius: .5rem; background: #f8fafc; }
+.recommendation-slot span { display: block; }
 .recommendation-slot span { color: var(--accent); font-size: .62rem; font-weight: 750; text-transform: uppercase; }
-.recommendation-slot strong { margin-top: 1.3rem; color: #64748b; font-size: .78rem; }
-.recommendation-slot small { margin-top: .2rem; color: #94a3b8; font-size: .65rem; }
+.recommendation-slot select { width: 100%; min-height: 2.5rem; margin-top: 1rem; padding: .35rem .45rem; border: 1px solid #cbd5e1; border-radius: .45rem; background: #fff; color: var(--text); font: inherit; font-size: .72rem; }
 .recommendation-note { margin: 1rem 0 0; color: var(--text-muted); font-size: .75rem; }
 
 @media (max-width: 68rem) {
