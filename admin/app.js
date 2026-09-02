@@ -1,7 +1,11 @@
 import { loadAppData } from "../js/services/api.js";
 import {
+  SNOWBOARD_SHAPES,
+  getFlexOptions,
+} from "./config/product-fields.js";
+import {
   ProductWriteUnavailableError,
-  saveProductChanges,
+  updateProduct,
 } from "./services/product-admin-api.js";
 
 const pageContent = {
@@ -233,8 +237,8 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
           ${renderTerrainField("Powder", "TerrainPowder", draft.TerrainPowder)}
           ${renderTerrainField("Trees", "TerrainTrees", draft.TerrainTrees)}
           ${renderTerrainField("Park", "TerrainPark", draft.TerrainPark)}
-          ${renderInputField("Shape or Width", "ShapeOrWidth", draft.ShapeOrWidth)}
-          ${renderInputField("Flex", "Flex", draft.Flex)}
+          <div data-shape-or-width-field>${renderShapeOrWidthField(draft)}</div>
+          ${renderSelectField("Flex", "Flex", draft.Flex, [["", "Not set"], ...getFlexOptions(appData, draft.Flex).map((value) => [value, value])])}
         </div>
         ${variants.length ? renderVariants(variants) : `<div class="editor-empty-inline"><strong>Variants / sizes</strong><span>Not currently exposed by the CMS API.</span></div>`}
       `)}
@@ -263,6 +267,10 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
 
 function createProductDraft(product) {
   const ability = firstValue(product.AbilityLevel, product["Ability Level"]);
+  const shapeOrWidth = String(product.ShapeOrWidth ?? product.Width ?? "");
+  const controlledShapeOrWidth = normalize(product.SportID) === "SKI"
+    ? shapeOrWidth.replace(/\s*mm\s*$/i, "")
+    : shapeOrWidth;
   return {
     BrandID: String(product.BrandID ?? ""),
     Model: String(product.Model ?? ""),
@@ -278,7 +286,7 @@ function createProductDraft(product) {
     TerrainPowder: String(product.TerrainPowder ?? ""),
     TerrainTrees: String(product.TerrainTrees ?? ""),
     TerrainPark: String(product.TerrainPark ?? ""),
-    ShapeOrWidth: String(product.ShapeOrWidth ?? product.Width ?? ""),
+    ShapeOrWidth: controlledShapeOrWidth,
     Flex: String(product.Flex ?? ""),
     CustomerProfile: String(product.CustomerProfile ?? ""),
     SellingTips: String(product.SellingTips ?? ""),
@@ -303,6 +311,17 @@ function renderSelectField(label, field, value, options) {
 
 function renderTerrainField(label, field, value) {
   return renderSelectField(label, field, value, [["", "Not set"], ...Array.from({ length: 6 }, (_, rating) => [String(rating), `${rating} / 5`])]);
+}
+
+function renderShapeOrWidthField(draft) {
+  if (normalize(draft.SportID) === "SKI") {
+    const numericWidth = String(draft.ShapeOrWidth || "").replace(/\s*mm\s*$/i, "");
+    return renderInputField("Width", "ShapeOrWidth", numericWidth, "number", { min: "0", step: "1" });
+  }
+
+  const options = [...SNOWBOARD_SHAPES];
+  if (draft.ShapeOrWidth && !options.includes(draft.ShapeOrWidth)) options.push(draft.ShapeOrWidth);
+  return renderSelectField("Shape", "ShapeOrWidth", draft.ShapeOrWidth, [["", "Not set"], ...options.map((value) => [value, value])]);
 }
 
 function renderTextareaField(label, field, value) {
@@ -377,6 +396,8 @@ function bindProductEditor(product, sportSlug, typeSlug) {
         categoryControl.innerHTML = categoryOptions.map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join("");
         categoryControl.value = categoryOptions[0]?.[0] || "";
         updateDraftField("CategoryID", categoryControl.value);
+        renderProductDetail(sportSlug, typeSlug, product.ProductID);
+        return;
       }
 
       feedback.hidden = true;
@@ -394,7 +415,9 @@ function bindProductEditor(product, sportSlug, typeSlug) {
 
     try {
       const changes = buildProductChanges(editorState.draft, editorState.touched);
-      await saveProductChanges(product.ProductID, changes);
+      await updateProduct(product.ProductID, changes, {
+        expectedLastUpdated: product.LastUpdated,
+      });
       Object.assign(product, changes);
       editorState.original = { ...editorState.draft };
       editorState.touched.clear();
@@ -446,7 +469,8 @@ function buildProductChanges(draft, touched) {
   touched.forEach((field) => {
     const apiField = field === "Status" ? "RowStatus" : field;
     const value = draft[field];
-    changes[apiField] = numericFields.has(field) && value !== "" ? Number(value) : value;
+    const isSkiWidth = field === "ShapeOrWidth" && normalize(draft.SportID) === "SKI";
+    changes[apiField] = (numericFields.has(field) || isSkiWidth) && value !== "" ? Number(value) : value;
   });
 
   return changes;
