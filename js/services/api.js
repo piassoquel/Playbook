@@ -76,7 +76,7 @@ async function fetchCmsData() {
   }
 }
 
-function normalizeCmsData(data) {
+export function normalizeCmsData(data) {
   const sports = Array.isArray(data.sports)
     ? data.sports.map(normalizeSport)
     : [];

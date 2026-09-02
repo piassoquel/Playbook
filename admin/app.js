@@ -7,6 +7,7 @@ import {
   ProductWriteError,
   ProductWriteUnavailableError,
   commitImportPackage,
+  loadAdminCatalog,
   updateProduct,
   validateImportPackage,
 } from "./services/product-admin-api.js";
@@ -104,7 +105,7 @@ function renderGoogleSignInButton() {
   });
 }
 
-function handleGoogleCredential(response) {
+async function handleGoogleCredential(response) {
   const claims = decodeGoogleCredential(response?.credential);
   if (!claims?.email || !claims?.exp) {
     adminIdentity = null;
@@ -121,6 +122,15 @@ function handleGoogleCredential(response) {
   signedInAccount.hidden = false;
   accountLabel.textContent = adminIdentity.email;
   accountAvatar.textContent = accountInitials(adminIdentity.email);
+  try {
+    appData = await loadAdminCatalog(adminIdentity.token);
+    dataError = null;
+    renderRoute();
+  } catch (error) {
+    console.error("Admin catalog load failed.", error);
+    dataError = error;
+    renderRoute();
+  }
 }
 
 function decodeGoogleCredential(token) {
@@ -152,11 +162,18 @@ function getAdminAuthToken() {
   return adminIdentity.token;
 }
 
-function signOutAdmin() {
+async function signOutAdmin() {
   adminIdentity = null;
   signedInAccount.hidden = true;
   window.google?.accounts?.id?.disableAutoSelect();
   if (window.google?.accounts?.id) renderGoogleSignInButton();
+  try {
+    appData = await loadAppData();
+    dataError = null;
+  } catch (error) {
+    dataError = error;
+  }
+  renderRoute();
 }
 
 function getRouteParts() {
@@ -735,7 +752,7 @@ async function commitValidatedImport() {
     const result = await commitImportPackage(importState.importPackage, importState.preview.packageFingerprint, { authToken });
     setImportFeedback(`${result.imported.newProducts} new and ${result.imported.updatedProducts} existing products imported successfully. New products are waiting for review.`, "success");
     importState = { importPackage: null, preview: null, fileName: "" };
-    appData = await loadAppData();
+    appData = await loadAdminCatalog(authToken);
     button.remove();
   } catch (error) {
     console.error("Import failed.", error);

@@ -1,3 +1,5 @@
+import { normalizeCmsData } from "../../js/services/api.js";
+
 // Configure this with the /exec URL from the Apps Script web-app deployment.
 export const PRODUCT_WRITE_URL = "https://script.google.com/macros/s/AKfycbySTeySHlA3PXVL7QCvGsTg-mi0BitTXr0nWG2-SzUNqMk1D5Wg4TvZsi8W35pRHChVHQ/exec";
 
@@ -71,6 +73,10 @@ export async function validateImportPackage(importPackage, options = {}) {
 
 export async function commitImportPackage(importPackage, packageFingerprint, options = {}) {
   return sendAdminAction("commitImport", { importPackage, packageFingerprint }, options.authToken);
+}
+
+export async function loadAdminCatalog(authToken) {
+  return normalizeCmsData(await sendAdminAction("adminCatalog", {}, authToken));
 }
 
 async function sendAdminAction(action, payload, authToken) {
