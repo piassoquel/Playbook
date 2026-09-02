@@ -1,4 +1,8 @@
 import { loadAppData } from "../js/services/api.js";
+import {
+  ProductWriteUnavailableError,
+  saveProductChanges,
+} from "./services/product-admin-api.js";
 
 const pageContent = {
   import: ["Import", "Bring product information into Playbook."],
@@ -53,6 +57,8 @@ const backdrop = document.querySelector(".sidebar-backdrop");
 
 let appData = null;
 let dataError = null;
+let editorState = null;
+let navigationApproved = false;
 
 function getRouteParts() {
   return window.location.hash.replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent);
@@ -162,21 +168,296 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
   const product = (appData.products || []).find((item) => normalize(item.ProductID) === normalize(productId));
   if (!product) return renderNotFound("Product not found", `#/products/${sportSlug}/${typeSlug}`);
   const [typeName] = type;
-  const brand = getBrandName(product);
-  const model = product.Model || "Unnamed product";
-  const image = getProductImage(product);
-  const status = getStatus(product);
+  const route = window.location.hash;
+
+  if (!editorState || normalize(editorState.productId) !== normalize(product.ProductID)) {
+    const draft = createProductDraft(product);
+    editorState = {
+      productId: product.ProductID,
+      route,
+      original: { ...draft },
+      draft,
+      touched: new Set(),
+      dirty: false,
+    };
+  } else {
+    editorState.route = route;
+  }
+
+  const draft = editorState.draft;
+  const brand = getBrandName({ BrandID: draft.BrandID });
+  const neighbors = getProductNeighbors(sportSlug, typeSlug, product.ProductID);
+  const variants = getAvailableVariants(product);
 
   main.innerHTML = `
-    ${renderBreadcrumbs([["Products", "#/products"], [sport.name, `#/products/${sportSlug}`], [typeName, `#/products/${sportSlug}/${typeSlug}`], [model]])}
-    <article class="product-view">
-      <div class="product-view__media">${image ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(`${brand} ${model}`)}" data-product-image>` : productPlaceholder(brand, model)}</div>
-      <div class="product-view__content"><p class="eyebrow">${escapeHtml(brand)}</p><h2>${escapeHtml(model)}</h2><span class="status-pill ${statusClass(status)}">${escapeHtml(status)}</span>
-        <dl class="detail-facts"><div><dt>Sport</dt><dd>${sport.name}</dd></div><div><dt>Product type</dt><dd>${typeName}</dd></div><div><dt>Season</dt><dd>${escapeHtml(product.Season || "—")}</dd></div><div><dt>Product ID</dt><dd>${escapeHtml(product.ProductID || "—")}</dd></div></dl>
-        <div class="read-only-note"><strong>View only</strong><p>Product editing will be added in a future phase.</p></div>
+    ${renderBreadcrumbs([["Products", "#/products"], [sport.name, `#/products/${sportSlug}`], [typeName, `#/products/${sportSlug}/${typeSlug}`], [draft.Model || "Product Editor"]])}
+    <header class="editor-header">
+      <a class="editor-neighbor ${neighbors.previous ? "" : "is-disabled"}" ${neighbors.previous ? `href="${neighbors.previous.href}"` : 'aria-disabled="true"'}>
+        <span aria-hidden="true">←</span><span><small>Previous Product</small>${escapeHtml(neighbors.previous?.name || "None")}</span>
+      </a>
+      <div class="editor-header__title">
+        <p class="eyebrow">Product Editor</p>
+        <h2>${escapeHtml(draft.Model || "Unnamed product")}</h2>
+        <div class="editor-header__status"><span class="status-pill ${statusClass(draft.Status)}" data-editor-status>${escapeHtml(draft.Status)}</span><span class="unsaved-label" data-unsaved-label hidden>Unsaved changes</span></div>
       </div>
-    </article>`;
-  bindImageFallbacks();
+      <a class="editor-neighbor editor-neighbor--next ${neighbors.next ? "" : "is-disabled"}" ${neighbors.next ? `href="${neighbors.next.href}"` : 'aria-disabled="true"'}>
+        <span><small>Next Product</small>${escapeHtml(neighbors.next?.name || "None")}</span><span aria-hidden="true">→</span>
+      </a>
+      <button class="save-button" type="submit" form="product-editor-form" data-save-button disabled>Save Changes</button>
+    </header>
+
+    <div class="save-feedback" role="status" aria-live="polite" data-save-feedback hidden></div>
+
+    <form class="product-editor" id="product-editor-form">
+      ${renderEditorSection("Product Information", "Core catalog identity and publishing information.", `
+        <div class="editor-grid">
+          ${renderSelectField("Brand", "BrandID", draft.BrandID, getBrandOptions())}
+          ${renderInputField("Model", "Model", draft.Model)}
+          ${renderSelectField("Sport", "SportID", draft.SportID, [["SNB", "Snowboarding"], ["SKI", "Skiing"]])}
+          ${renderSelectField("Category", "CategoryID", draft.CategoryID, getCategoryOptions(draft.SportID))}
+          ${renderInputField("Season", "Season", draft.Season, "number")}
+          ${renderInputField("Price", "MSRP", draft.MSRP, "number", { step: "0.01", min: "0" })}
+          ${renderInputField("Image URL", "ImageURL", draft.ImageURL, "url", { wide: true })}
+          ${renderSelectField("Status", "Status", draft.Status, [["Needs Review", "Needs Review"], ["Published", "Published"], ["Archived", "Archived"]])}
+        </div>
+        <div class="editor-image-preview" data-image-preview>
+          ${draft.ImageURL ? `<img src="${escapeHtml(draft.ImageURL)}" alt="${escapeHtml(`${brand} ${draft.Model}`)}">` : productPlaceholder(brand, draft.Model)}
+        </div>
+      `)}
+
+      ${renderEditorSection("Performance", "Customer fit and on-snow performance ratings.", `
+        <div class="editor-grid">
+          ${renderSelectField("Ability Level", "AbilityLevel", draft.AbilityLevel, [["", "Not set"], ["1", "1 — Beginner"], ["2", "2 — Beginner / Intermediate"], ["3", "3 — Intermediate"], ["4", "4 — Advanced"], ["5", "5 — Expert"]])}
+          ${renderTerrainField("Groomers", "TerrainGroomers", draft.TerrainGroomers)}
+          ${renderTerrainField("All Mountain", "TerrainAllMountain", draft.TerrainAllMountain)}
+          ${renderTerrainField("Powder", "TerrainPowder", draft.TerrainPowder)}
+          ${renderTerrainField("Trees", "TerrainTrees", draft.TerrainTrees)}
+          ${renderTerrainField("Park", "TerrainPark", draft.TerrainPark)}
+          ${renderInputField("Shape or Width", "ShapeOrWidth", draft.ShapeOrWidth)}
+          ${renderInputField("Flex", "Flex", draft.Flex)}
+        </div>
+        ${variants.length ? renderVariants(variants) : `<div class="editor-empty-inline"><strong>Variants / sizes</strong><span>Not currently exposed by the CMS API.</span></div>`}
+      `)}
+
+      ${renderEditorSection("Sales Dashboard", "Editable customer-facing guidance for the employee experience.", `
+        <div class="editor-grid editor-grid--textareas">
+          ${renderTextareaField("Customer Profile", "CustomerProfile", draft.CustomerProfile)}
+          ${renderTextareaField("Selling Tips", "SellingTips", draft.SellingTips)}
+          ${renderTextareaField("Comparison Notes", "ComparisonNotes", draft.ComparisonNotes)}
+          ${renderTextareaField("Talking Points", "TalkingPoints", draft.TalkingPoints)}
+          ${renderTextareaField("Common Questions", "CommonQuestions", draft.CommonQuestions)}
+        </div>
+      `)}
+
+      ${renderEditorSection("Recommendations", "Pair this product with recommended bindings and boots.", `
+        <div class="recommendation-groups">
+          ${renderRecommendationGroup("Binding")}
+          ${renderRecommendationGroup("Boot")}
+        </div>
+        <p class="recommendation-note">Recommendation fields are not currently exposed by the CMS API. These slots are ready to connect when support is added.</p>
+      `)}
+    </form>`;
+
+  bindProductEditor(product, sportSlug, typeSlug);
+}
+
+function createProductDraft(product) {
+  const ability = firstValue(product.AbilityLevel, product["Ability Level"]);
+  return {
+    BrandID: String(product.BrandID ?? ""),
+    Model: String(product.Model ?? ""),
+    SportID: String(product.SportID ?? ""),
+    CategoryID: String(product.CategoryID ?? ""),
+    Season: String(product.Season ?? ""),
+    MSRP: String(product.MSRP ?? ""),
+    ImageURL: String(product.ImageURL || product.HeroImage || product.ThumbnailImage || ""),
+    Status: mapCmsStatus(product),
+    AbilityLevel: String(ability ?? ""),
+    TerrainGroomers: String(product.TerrainGroomers ?? ""),
+    TerrainAllMountain: String(product.TerrainAllMountain ?? ""),
+    TerrainPowder: String(product.TerrainPowder ?? ""),
+    TerrainTrees: String(product.TerrainTrees ?? ""),
+    TerrainPark: String(product.TerrainPark ?? ""),
+    ShapeOrWidth: String(product.ShapeOrWidth ?? product.Width ?? ""),
+    Flex: String(product.Flex ?? ""),
+    CustomerProfile: String(product.CustomerProfile ?? ""),
+    SellingTips: String(product.SellingTips ?? ""),
+    ComparisonNotes: String(product.ComparisonNotes ?? ""),
+    TalkingPoints: String(product.TalkingPoints ?? ""),
+    CommonQuestions: String(product.CommonQuestions ?? ""),
+  };
+}
+
+function renderEditorSection(title, description, content) {
+  return `<section class="editor-section"><header><div><h3>${title}</h3><p>${description}</p></div></header><div class="editor-section__body">${content}</div></section>`;
+}
+
+function renderInputField(label, field, value, type = "text", options = {}) {
+  const attributes = Object.entries(options).filter(([key]) => key !== "wide").map(([key, item]) => `${key}="${escapeHtml(item)}"`).join(" ");
+  return `<label class="form-field ${options.wide ? "form-field--wide" : ""}"><span>${label}</span><input type="${type}" value="${escapeHtml(value)}" data-field="${field}" ${attributes}></label>`;
+}
+
+function renderSelectField(label, field, value, options) {
+  return `<label class="form-field"><span>${label}</span><select data-field="${field}">${options.map(([optionValue, optionLabel]) => `<option value="${escapeHtml(optionValue)}" ${String(optionValue) === String(value) ? "selected" : ""}>${escapeHtml(optionLabel)}</option>`).join("")}</select></label>`;
+}
+
+function renderTerrainField(label, field, value) {
+  return renderSelectField(label, field, value, [["", "Not set"], ...Array.from({ length: 6 }, (_, rating) => [String(rating), `${rating} / 5`])]);
+}
+
+function renderTextareaField(label, field, value) {
+  return `<label class="form-field form-field--textarea"><span>${label}</span><textarea rows="6" data-field="${field}">${escapeHtml(value)}</textarea></label>`;
+}
+
+function renderRecommendationGroup(productType) {
+  return `<div class="recommendation-group"><h4>${productType}</h4><div class="recommendation-slots">${["Recommended", "Upgrade", "Budget"].map((tier) => `<div class="recommendation-slot"><span>${tier}</span><strong>Not configured</strong><small>CMS field required</small></div>`).join("")}</div></div>`;
+}
+
+function renderVariants(variants) {
+  return `<div class="editor-variants"><strong>Available variants / sizes</strong><div>${variants.map((variant) => `<span>${escapeHtml(variant)}</span>`).join("")}</div></div>`;
+}
+
+function getAvailableVariants(product) {
+  const value = firstValue(product.Variants, product.Sizes, product.AvailableSizes, product.Lengths);
+  if (!value) return [];
+  if (Array.isArray(value)) return value.map(String).filter(Boolean);
+  return String(value).split(/[|,]/).map((item) => item.trim()).filter(Boolean);
+}
+
+function getBrandOptions() {
+  return (appData.brands || []).map((brand) => [String(brand.BrandID || brand.id || ""), String(brand.Name || brand.name || "Unknown brand")]);
+}
+
+function getCategoryOptions(sportId) {
+  const isSnowboarding = normalize(sportId) === "SNB";
+  const sport = productTaxonomy[isSnowboarding ? "snowboarding" : "skiing"];
+  return Object.values(sport.types).map(([name, ids]) => [ids[0], name]);
+}
+
+function getProductNeighbors(sportSlug, typeSlug, productId) {
+  const products = getProductsForType(sportSlug, typeSlug).sort((a, b) => getBrandName(a).localeCompare(getBrandName(b)) || String(a.Model || "").localeCompare(String(b.Model || "")));
+  const index = products.findIndex((item) => normalize(item.ProductID) === normalize(productId));
+  const createNeighbor = (item) => item ? { name: `${getBrandName(item)} ${item.Model || ""}`, href: `#/products/${sportSlug}/${typeSlug}/product/${encodeURIComponent(item.ProductID)}` } : null;
+  return { previous: createNeighbor(products[index - 1]), next: createNeighbor(products[index + 1]) };
+}
+
+function mapCmsStatus(product) {
+  const status = normalize(product.RowStatus || product.Status || (isTruthy(product.Active) ? "Active" : "Archived"));
+  if (status.includes("REVIEW") || status === "DRAFT") return "Needs Review";
+  if (status === "ARCHIVED" || status === "INACTIVE") return "Archived";
+  return "Published";
+}
+
+function firstValue(...values) {
+  return values.find((value) => value !== undefined && value !== null && String(value).trim() !== "");
+}
+
+function bindProductEditor(product, sportSlug, typeSlug) {
+  const form = main.querySelector("#product-editor-form");
+  const saveButton = main.querySelector("[data-save-button]");
+  const feedback = main.querySelector("[data-save-feedback]");
+
+  form.querySelectorAll("[data-field]").forEach((control) => {
+    control.addEventListener("input", () => {
+      updateDraftField(control.dataset.field, control.value);
+
+      if (control.dataset.field === "Status") {
+        const status = main.querySelector("[data-editor-status]");
+        status.textContent = control.value;
+        status.className = `status-pill ${statusClass(control.value)}`;
+      }
+
+      if (control.dataset.field === "ImageURL") {
+        updateImagePreview(control.value);
+      }
+
+      if (control.dataset.field === "SportID") {
+        const categoryControl = form.querySelector('[data-field="CategoryID"]');
+        const categoryOptions = getCategoryOptions(control.value);
+        categoryControl.innerHTML = categoryOptions.map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join("");
+        categoryControl.value = categoryOptions[0]?.[0] || "";
+        updateDraftField("CategoryID", categoryControl.value);
+      }
+
+      feedback.hidden = true;
+      updateEditorDirtyUi();
+    });
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!editorState.dirty) return;
+
+    saveButton.disabled = true;
+    saveButton.textContent = "Saving…";
+    feedback.hidden = true;
+
+    try {
+      const changes = buildProductChanges(editorState.draft, editorState.touched);
+      await saveProductChanges(product.ProductID, changes);
+      Object.assign(product, changes);
+      editorState.original = { ...editorState.draft };
+      editorState.touched.clear();
+      editorState.dirty = false;
+      showSaveFeedback("Changes saved to Playbook CMS.", "success");
+    } catch (error) {
+      if (error instanceof ProductWriteUnavailableError) {
+        showSaveFeedback("Saving is not connected to the CMS yet. Your edits remain in this browser and have not been persisted.", "warning");
+      } else {
+        console.error("Product save failed.", error);
+        showSaveFeedback("The product could not be saved. Your edits remain in this browser.", "error");
+      }
+    } finally {
+      saveButton.textContent = "Save Changes";
+      updateEditorDirtyUi();
+    }
+  });
+
+  updateEditorDirtyUi();
+}
+
+function updateDraftField(field, value) {
+  editorState.draft[field] = value;
+  if (String(value) === String(editorState.original[field])) editorState.touched.delete(field);
+  else editorState.touched.add(field);
+  editorState.dirty = editorState.touched.size > 0;
+}
+
+function updateEditorDirtyUi() {
+  const saveButton = main.querySelector("[data-save-button]");
+  const label = main.querySelector("[data-unsaved-label]");
+  if (saveButton) saveButton.disabled = !editorState?.dirty;
+  if (label) label.hidden = !editorState?.dirty;
+}
+
+function updateImagePreview(url) {
+  const preview = main.querySelector("[data-image-preview]");
+  if (!preview) return;
+  const brand = getBrandName({ BrandID: editorState.draft.BrandID });
+  preview.innerHTML = String(url).trim()
+    ? `<img src="${escapeHtml(url)}" alt="${escapeHtml(`${brand} ${editorState.draft.Model}`)}">`
+    : productPlaceholder(brand, editorState.draft.Model);
+}
+
+function buildProductChanges(draft, touched) {
+  const numericFields = new Set(["Season", "MSRP", "AbilityLevel", "TerrainGroomers", "TerrainAllMountain", "TerrainPowder", "TerrainTrees", "TerrainPark"]);
+  const changes = {};
+
+  touched.forEach((field) => {
+    const apiField = field === "Status" ? "RowStatus" : field;
+    const value = draft[field];
+    changes[apiField] = numericFields.has(field) && value !== "" ? Number(value) : value;
+  });
+
+  return changes;
+}
+
+function showSaveFeedback(message, type) {
+  const feedback = main.querySelector("[data-save-feedback]");
+  if (!feedback) return;
+  feedback.textContent = message;
+  feedback.className = `save-feedback save-feedback--${type}`;
+  feedback.hidden = false;
 }
 
 function renderPlaceholder(page) {
@@ -305,7 +586,46 @@ menuButton.addEventListener("click", () => {
   menuButton.setAttribute("aria-expanded", String(isOpen));
 });
 backdrop.addEventListener("click", closeNavigation);
-window.addEventListener("hashchange", renderRoute);
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a[href^='#/']");
+  if (!link || !editorState?.dirty || link.hash === window.location.hash) return;
+
+  if (!window.confirm("You have unsaved changes. Leave this product without saving?")) {
+    event.preventDefault();
+    return;
+  }
+
+  navigationApproved = true;
+  editorState = null;
+});
+
+window.addEventListener("hashchange", () => {
+  if (navigationApproved) {
+    navigationApproved = false;
+    renderRoute();
+    return;
+  }
+
+  if (editorState?.dirty && window.location.hash !== editorState.route) {
+    if (window.confirm("You have unsaved changes. Leave this product without saving?")) {
+      editorState = null;
+      renderRoute();
+    } else {
+      navigationApproved = true;
+      window.location.hash = editorState.route;
+    }
+    return;
+  }
+
+  if (editorState && window.location.hash !== editorState.route) editorState = null;
+  renderRoute();
+});
+
+window.addEventListener("beforeunload", (event) => {
+  if (!editorState?.dirty) return;
+  event.preventDefault();
+  event.returnValue = "";
+});
 window.addEventListener("keydown", (event) => { if (event.key === "Escape") closeNavigation(); });
 
 async function startApp() {
