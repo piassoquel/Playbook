@@ -176,6 +176,33 @@ a:focus-visible {
   gap: 0.6rem;
 }
 
+.signed-in-account {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.signed-in-account[hidden],
+.google-signin[hidden] {
+  display: none;
+}
+
+.sign-out-button {
+  padding: .4rem .65rem;
+  border: 1px solid var(--border);
+  border-radius: .45rem;
+  background: #fff;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: .72rem;
+  font-weight: 650;
+}
+
+.sign-out-button:hover {
+  border-color: #c4d5e9;
+  color: var(--text);
+}
+
 .avatar {
   display: grid;
   width: 2rem;
