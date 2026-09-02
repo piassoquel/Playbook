@@ -695,7 +695,23 @@ async function readImportWorkbook(file) {
   const workbook = window.XLSX.read(await file.arrayBuffer(), { type: "array", cellDates: true });
   const worksheets = {};
   workbook.SheetNames.forEach((name) => {
-    worksheets[name] = window.XLSX.utils.sheet_to_json(workbook.Sheets[name], { defval: "", raw: true });
+    const rows = window.XLSX.utils.sheet_to_json(workbook.Sheets[name], { header: 1, defval: "", raw: true });
+    const headerIndex = rows.findIndex((row) => {
+      const headings = row.map((value) => String(value || "").trim());
+      return headings.includes("Model") &&
+        (headings.includes("ProductID") || headings.includes("BrandID")) &&
+        (headings.includes("SportID") || headings.includes("CategoryID"));
+    });
+    if (headerIndex < 0) {
+      worksheets[name] = [];
+      return;
+    }
+    const headers = rows[headerIndex].map((value) => String(value || "").trim());
+    worksheets[name] = rows.slice(headerIndex + 1).map((row, offset) => {
+      const item = { __PlaybookSourceRow: headerIndex + offset + 2 };
+      headers.forEach((header, column) => { if (header) item[header] = row[column] ?? ""; });
+      return item;
+    }).filter((item) => Object.entries(item).some(([key, value]) => key !== "__PlaybookSourceRow" && value !== ""));
   });
   return { schemaVersion: "2.0", fileName: file.name, worksheets };
 }
