@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Manage Playbook products, brands, categories, and publishing workflows.">
+  <title>Playbook Admin</title>
+
+  <link rel="icon" href="../assets/branding/playbook-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <span class="sidebar__logo" aria-hidden="true">
+          <img src="../assets/branding/playbook-mark.svg" alt="" width="28" height="28">
+        </span>
+        <span class="sidebar__brand-name">PLAYBOOK</span>
+      </div>
+
+      <nav class="sidebar__nav" aria-label="Admin navigation">
+        <a class="nav-item" href="#/dashboard" data-page="dashboard">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a class="nav-item" href="#/products" data-page="products">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 8-4 8 4-8 4z"/><path d="m4 7 8 4 8-4v10l-8 4-8-4z"/><path d="M12 11v10"/></svg>
+          <span>Products</span>
+        </a>
+        <a class="nav-item" href="#/import" data-page="import">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2"/></svg>
+          <span>Import</span>
+        </a>
+        <a class="nav-item" href="#/brands" data-page="brands">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13 11 22l-9-9V4a2 2 0 0 1 2-2h9z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+          <span>Brands</span>
+        </a>
+        <a class="nav-item" href="#/categories" data-page="categories">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7l2 3h9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          <span>Categories</span>
+        </a>
+        <a class="nav-item nav-item--settings" href="#/settings" data-page="settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6 1.7 1.7 0 0 0 10 3V2.8h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1z"/></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <button class="menu-button" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <h1>Playbook Admin</h1>
+        <div class="topbar__account" aria-label="Signed in account">
+          <span class="avatar" aria-hidden="true">PA</span>
+          <span class="account-label">Admin</span>
+        </div>
+      </header>
+
+      <main class="content" id="main-content" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <button class="sidebar-backdrop" type="button" aria-label="Close navigation" tabindex="-1"></button>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
