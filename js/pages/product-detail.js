@@ -148,6 +148,7 @@ function createProductImage(product, brandName) {
         data-product-image
         src="${escapeHtml(image)}"
         alt="${escapeHtml(images[0]?.AltText || `${brandName} ${product.Model || ""}`)}"
+        referrerpolicy="no-referrer"
       >
       ${images.length > 1 ? `
         <div class="product-gallery__thumbs" aria-label="Product images">
@@ -161,7 +162,7 @@ function createProductImage(product, brandName) {
               aria-label="Show image ${index + 1}"
               aria-pressed="${index === 0}"
             >
-              <img src="${escapeHtml(item.ImageURL)}" alt="">
+              <img src="${escapeHtml(item.ImageURL)}" alt="" referrerpolicy="no-referrer">
             </button>
           `).join("")}
         </div>
@@ -461,6 +462,7 @@ function createSuggestedImage(product, brandName) {
       src="${escapeHtml(image)}"
       alt=""
       loading="lazy"
+      referrerpolicy="no-referrer"
       onerror="this.remove();"
     >
   `;

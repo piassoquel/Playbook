@@ -151,6 +151,7 @@ function createProductCharacteristic(product, value) {
 }
 
 function createSpecCard(spec) {
+  if (spec.kind === "brakeWidth") return createBrakeWidthCharacteristic(spec);
   if (spec.kind === "width") return createWidthCharacteristic(spec.value);
   if (spec.kind === "shape") return createShapeCharacteristic(spec.value);
   if (spec.kind === "profile") return createGenericCharacteristic(spec.value, "Profile", profileIcon());
@@ -212,6 +213,24 @@ function createGenericCharacteristic(value, label = "Product Characteristic", ic
     </div>`;
 }
 
+function createBrakeWidthCharacteristic(spec) {
+  const options = Array.isArray(spec.options) ? spec.options : [];
+  return `
+    <div class="secondary-spec secondary-spec--characteristic secondary-spec--brake-width">
+      <div class="secondary-spec__heading">
+        ${characteristicIcon()}
+        <span>Brake Width</span>
+      </div>
+      ${hasValue(spec.value) ? `<strong>${escapeHtml(String(spec.value))}</strong>` : ""}
+      ${options.length ? `
+        <small>
+          <span>Carried widths</span>
+          <strong>${options.map((item) => escapeHtml(item)).join("</strong><strong>")}</strong>
+        </small>
+      ` : ""}
+    </div>`;
+}
+
 function getShapeOrWidthValue(product) {
   if (product.ShapeOrWidth !== "" && product.ShapeOrWidth !== null && product.ShapeOrWidth !== undefined) {
     return product.ShapeOrWidth;
@@ -252,13 +271,15 @@ function resolveProductSpecs(product) {
     addSpec(specs, "Entry", product.EntryStyle);
     addSpec(specs, "Response", product.Response);
     addSpec(specs, "DIN Range", product.DINRange);
-    addSpec(specs, "Brake Width", formatMillimeters(product.BrakeWidth));
     const brakeVariants = getVariantValues(product, "Brake Width")
       .map(formatMillimeters)
       .filter(Boolean);
-    if (brakeVariants.length) {
-      addSpec(specs, "Available Brake Widths", brakeVariants.join(" / "));
-    }
+    if (hasValue(product.BrakeWidth) || brakeVariants.length) specs.push({
+      kind: "brakeWidth",
+      label: "Brake Width",
+      value: formatMillimeters(product.BrakeWidth),
+      options: brakeVariants
+    });
   }
 
   return specs;
