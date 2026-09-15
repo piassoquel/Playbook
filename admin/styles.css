@@ -583,8 +583,9 @@ a:focus-visible {
 .editor-image-preview { display: grid; min-height: 13rem; margin-top: 1rem; padding: 1rem; place-items: center; border: 1px dashed #cbd5e1; border-radius: .6rem; background: #f8fafc; }
 .editor-image-preview img { display: block; max-width: 100%; max-height: 16rem; object-fit: contain; }
 .editor-image-preview .product-placeholder { max-width: 15rem; min-height: 10rem; border-radius: .5rem; }
-.product-images-editor { display: grid; gap: .8rem; }
+.product-images-editor, .product-variants-editor { display: grid; gap: .8rem; }
 .product-image-row { display: grid; grid-template-columns: 5.75rem minmax(0, 1.5fr) minmax(10rem, .8fr) minmax(8rem, .55fr) 2.5rem; gap: .75rem; align-items: end; padding: .85rem; border: 1px solid var(--border); border-radius: .6rem; background: #f8fafc; }
+.product-variant-row { display: grid; grid-template-columns: minmax(10rem, .55fr) minmax(0, 1fr) 2.5rem; gap: .75rem; align-items: end; padding: .85rem; border: 1px solid var(--border); border-radius: .6rem; background: #f8fafc; }
 .image-role-badge { align-self: center; justify-self: start; padding: .3rem .55rem; color: var(--accent); background: #eff6ff; border-radius: 999px; font-size: .65rem; font-weight: 800; text-transform: uppercase; }
 .secondary-action, .icon-action { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: .5rem; background: #fff; color: var(--text); font: inherit; font-weight: 750; cursor: pointer; }
 .secondary-action { min-height: 2.5rem; margin-top: .9rem; padding: 0 .9rem; }
@@ -667,6 +668,7 @@ a:focus-visible {
   .recommendation-slot { min-height: 5rem; }
   .recommendation-slot strong { margin-top: .8rem; }
   .product-image-row { grid-template-columns: 1fr; align-items: stretch; }
+  .product-variant-row { grid-template-columns: 1fr; align-items: stretch; }
   .icon-action { width: 100%; }
 
   .sidebar-backdrop {

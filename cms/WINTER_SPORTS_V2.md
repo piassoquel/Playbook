@@ -39,6 +39,11 @@ The API exposes active variants as `product.Variants`. Import packages may
 include a `ProductVariants` worksheet; each ProductID must already exist or be
 included explicitly in the same package.
 
+For ski bindings with multiple carried brake widths, use `VariantType` =
+`Brake Width` and store the numeric width only in `VariantValue`, such as
+`95`, `105`, or `115`. `BrakeWidth` on `SnowsportsAttributes` remains the
+default/main displayed spec.
+
 ## Product images
 
 Multiple product images are normalized in `ProductImages` with one row per

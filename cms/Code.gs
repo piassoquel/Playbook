@@ -238,6 +238,17 @@ function buildAdminCatalog_() {
   attachImages_(products, imageRows);
   return {
     ...payload,
+    brands: brandRows
+      .sort((a, b) => String(a.Name || "").localeCompare(String(b.Name || "")))
+      .map((brand) => ({
+        BrandID: String(brand.BrandID || ""),
+        Name: String(brand.Name || ""),
+        LogoURL: String(brand.LogoURL || ""),
+        WebsiteURL: String(brand.WebsiteURL || ""),
+        Description: String(brand.Description || ""),
+        DisplayOrder: toNumber_(brand.DisplayOrder),
+        Active: true
+      })),
     products,
     recommendationCandidates: buildRecommendationCandidates_(
       products, payload.categories, brandRows
@@ -1655,7 +1666,8 @@ const ADMIN_WRITE = {
     TalkingPoints: { sheet: "snow", column: "TalkingPoints", type: "longText", max: 5000 },
     CommonQuestions: { sheet: "snow", column: "CommonQuestions", type: "longText", max: 5000 },
     Recommendations: { sheet: "recommendations", column: "Recommendations", type: "recommendations" },
-    Images: { sheet: "images", column: "Images", type: "images" }
+    Images: { sheet: "images", column: "Images", type: "images" },
+    Variants: { sheet: "variants", column: "Variants", type: "variants" }
   },
   STATUS: {
     "Needs Review": { Active: false, RowStatus: "Needs Review" },
@@ -1744,6 +1756,7 @@ function updateProduct_(request) {
     const snowUpdates = {};
     let recommendationUpdates = null;
     let imageUpdates = null;
+    let variantUpdates = null;
 
     Object.keys(validated).forEach((requestKey) => {
       const field = ADMIN_WRITE.PRODUCT_FIELDS[requestKey];
@@ -1752,6 +1765,7 @@ function updateProduct_(request) {
       if (field.sheet === "virtual") applyStatusUpdate_(productUpdates, validated[requestKey]);
       if (field.sheet === "recommendations") recommendationUpdates = validated[requestKey];
       if (field.sheet === "images") imageUpdates = validated[requestKey];
+      if (field.sheet === "variants") variantUpdates = validated[requestKey];
     });
 
     const now = new Date();
@@ -1759,7 +1773,7 @@ function updateProduct_(request) {
       productUpdates.ImageURL = imageUpdates[0].ImageURL;
     }
     productUpdates.LastUpdated = now;
-    preflightPatchSchema_(ss, products, productUpdates, snowUpdates, recommendationUpdates, imageUpdates);
+    preflightPatchSchema_(ss, products, productUpdates, snowUpdates, recommendationUpdates, imageUpdates, variantUpdates);
     writePatch_(products, productMatch.rowNumber, productUpdates);
 
     if (Object.keys(snowUpdates).length) {
@@ -1770,6 +1784,9 @@ function updateProduct_(request) {
     }
     if (imageUpdates !== null) {
       reconcileProductImages_(ss, productId, imageUpdates, now);
+    }
+    if (variantUpdates !== null) {
+      reconcileProductVariants_(ss, productId, variantUpdates, now);
     }
 
     SpreadsheetApp.flush();
@@ -1863,6 +1880,7 @@ function validateChanges_(changes, currentProduct, refs) {
       case "dinRange": result[key] = dinRangeValue_(raw); break;
       case "recommendations": result[key] = validateRecommendationPayload_(raw, currentProduct.ProductID, refs); break;
       case "images": result[key] = validateImagesPayload_(raw); break;
+      case "variants": result[key] = validateVariantsPayload_(raw); break;
       case "requiredText": result[key] = requiredTextValue_(raw, key, definition.max || 500); break;
       default: result[key] = textValue_(raw, key, definition.max || 500);
     }
@@ -1919,7 +1937,7 @@ function writeSnowPatch_(ss, productId, updates, now, productsTable) {
   writePatch_(snow, rowNumber, resolvedUpdates);
 }
 
-function preflightPatchSchema_(ss, products, productUpdates, snowUpdates, recommendationUpdates, imageUpdates) {
+function preflightPatchSchema_(ss, products, productUpdates, snowUpdates, recommendationUpdates, imageUpdates, variantUpdates) {
   Object.keys(productUpdates).forEach((column) => {
     if (column === "Status" && products.map.Status === undefined) return;
     if (column === "RowStatus" && products.map.RowStatus === undefined) return;
@@ -1945,6 +1963,9 @@ function preflightPatchSchema_(ss, products, productUpdates, snowUpdates, recomm
   }
   if (imageUpdates !== null) {
     requireProductImagesTable_(ss);
+  }
+  if (variantUpdates !== null) {
+    requireProductVariantsTable_(ss);
   }
 }
 
@@ -2172,6 +2193,36 @@ function validateImagesPayload_(value) {
   }).filter(Boolean);
 }
 
+function validateVariantsPayload_(value) {
+  if (!Array.isArray(value)) {
+    throw apiError_("Variants must be an array.", "VALIDATION_ERROR");
+  }
+  if (value.length > 50) {
+    throw apiError_("Use no more than 50 product variants.", "VALIDATION_ERROR");
+  }
+  const seen = new Set();
+  return value.map((variant, index) => {
+    if (!variant || typeof variant !== "object" || Array.isArray(variant)) {
+      throw apiError_("Each variant must be an object.", "VALIDATION_ERROR");
+    }
+    const variantType = textValue_(variant.VariantType || "Size", "VariantType", 80);
+    const variantValue = textValue_(variant.VariantValue || "", "VariantValue", 120);
+    if (!variantValue) return null;
+    const key = `${variantType.toLowerCase()}|${variantValue.toLowerCase()}`;
+    if (seen.has(key)) {
+      throw apiError_("Duplicate variants are not allowed.", "VALIDATION_ERROR");
+    }
+    seen.add(key);
+    return {
+      ProductVariantID: textValue_(variant.ProductVariantID || "", "ProductVariantID", 80),
+      VariantType: variantType,
+      VariantValue: variantValue,
+      DisplayOrder: index + 1,
+      Active: true
+    };
+  }).filter(Boolean);
+}
+
 function isPublishedProduct_(product) {
   return isTrue_(product.Active) && statusFromRow_(product) === "Published";
 }
@@ -2205,6 +2256,17 @@ function requireProductImagesTable_(ss) {
   return table;
 }
 
+function requireProductVariantsTable_(ss) {
+  const sheet = ss.getSheetByName(PLAYBOOK.SHEETS.PRODUCT_VARIANTS);
+  if (!sheet) throw apiError_("Missing required sheet: ProductVariants", "SCHEMA_ERROR");
+  const table = requireTable_(
+    ss, PLAYBOOK.SHEETS.PRODUCT_VARIANTS, "ProductVariantID"
+  );
+  ["ProductID", "VariantType", "VariantValue", "DisplayOrder", "Active", "LastUpdated"]
+    .forEach((column) => requireTableColumn_(table, column));
+  return table;
+}
+
 function reconcileProductImages_(ss, productId, desired, now) {
   const table = requireProductImagesTable_(ss);
   const sourceId = normalizeId_(productId);
@@ -2232,6 +2294,35 @@ function reconcileProductImages_(ss, productId, desired, now) {
       return "";
     });
     table.sheet.getRange(nextLogicalRow_(table, "ProductID"), 1, 1, row.length).setValues([row]);
+  });
+}
+
+function reconcileProductVariants_(ss, productId, desired, now) {
+  const table = requireProductVariantsTable_(ss);
+  const sourceId = normalizeId_(productId);
+  const rows = table.sheet.getLastRow() < 2 ? [] : table.sheet
+    .getRange(2, 1, table.sheet.getLastRow() - 1, table.headers.length)
+    .getValues()
+    .map((values, index) => ({ values, rowNumber: index + 2 }))
+    .filter((entry) => normalizeId_(entry.values[table.map.ProductID]) === sourceId);
+  rows.forEach((entry) => {
+    writePatch_(table, entry.rowNumber, {
+      Active: false,
+      LastUpdated: now
+    });
+  });
+  desired.forEach((variant, index) => {
+    const row = table.headers.map((header) => {
+      if (header === "ProductVariantID") return variant.ProductVariantID || `${sourceId}-VAR${String(index + 1).padStart(2, "0")}`;
+      if (header === "ProductID") return sourceId;
+      if (header === "VariantType") return variant.VariantType;
+      if (header === "VariantValue") return variant.VariantValue;
+      if (header === "DisplayOrder") return index + 1;
+      if (header === "Active") return true;
+      if (header === "LastUpdated") return now;
+      return "";
+    });
+    table.sheet.getRange(nextLogicalRow_(table, "ProductVariantID"), 1, 1, row.length).setValues([row]);
   });
 }
 
