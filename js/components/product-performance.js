@@ -16,14 +16,12 @@ const TERRAIN_DEFINITIONS = [
 
 export function createPerformancePanel(product) {
   const abilityLevel = resolveAbilityLevel(product);
-  const terrainRatings = resolveTerrainRatings(product);
-  const characteristicValue = getShapeOrWidthValue(product);
-  const hasCharacteristic =
-    characteristicValue !== "" &&
-    characteristicValue !== null &&
-    characteristicValue !== undefined;
+  const terrainRatings = shouldShowTerrainPerformance(product)
+    ? resolveTerrainRatings(product)
+    : [];
+  const productSpecs = resolveProductSpecs(product);
 
-  if (!abilityLevel && !terrainRatings.length && !hasCharacteristic) {
+  if (!abilityLevel && !terrainRatings.length && !productSpecs.length) {
     return "";
   }
 
@@ -36,7 +34,7 @@ export function createPerformancePanel(product) {
       }
 
       ${
-        abilityLevel || hasCharacteristic
+        abilityLevel || productSpecs.length
           ? `
             <div class="performance-lower-grid">
               ${
@@ -46,8 +44,8 @@ export function createPerformancePanel(product) {
               }
 
               ${
-                hasCharacteristic
-                  ? createProductCharacteristic(product, characteristicValue)
+                productSpecs.length
+                  ? productSpecs.map(createSpecCard).join("")
                   : `<div class="performance-lower-grid__empty" aria-hidden="true"></div>`
               }
             </div>
@@ -152,6 +150,14 @@ function createProductCharacteristic(product, value) {
   return createGenericCharacteristic(value);
 }
 
+function createSpecCard(spec) {
+  if (spec.kind === "width") return createWidthCharacteristic(spec.value);
+  if (spec.kind === "shape") return createShapeCharacteristic(spec.value);
+  if (spec.kind === "profile") return createGenericCharacteristic(spec.value, "Profile", profileIcon());
+  if (spec.kind === "flex") return createGenericCharacteristic(spec.value, "Flex", flexIcon());
+  return createGenericCharacteristic(spec.value, spec.label);
+}
+
 function createWidthCharacteristic(value) {
   const numericWidth = Number(value);
   const safeWidth = Number.isFinite(numericWidth)
@@ -195,11 +201,11 @@ function createShapeCharacteristic(value) {
     </div>`;
 }
 
-function createGenericCharacteristic(value, label = "Product Characteristic") {
+function createGenericCharacteristic(value, label = "Product Characteristic", icon = characteristicIcon()) {
   return `
     <div class="secondary-spec secondary-spec--characteristic">
       <div class="secondary-spec__heading">
-        ${characteristicIcon()}
+        ${icon}
         <span>${escapeHtml(label)}</span>
       </div>
       <strong>${escapeHtml(String(value || ""))}</strong>
@@ -211,6 +217,70 @@ function getShapeOrWidthValue(product) {
     return product.ShapeOrWidth;
   }
   return product.Width;
+}
+
+function resolveProductSpecs(product) {
+  const sportId = normalize(product.SportID);
+  const categoryId = normalize(product.CategoryID);
+  const specs = [];
+  const shapeOrWidth = getShapeOrWidthValue(product);
+  const profile = getProfileValue(product);
+  const flex = getFlexValue(product);
+
+  if (hasValue(shapeOrWidth)) {
+    specs.push({
+      kind: sportId === "SKI" ? "width" : sportId === "SNB" ? "shape" : "characteristic",
+      label: sportId === "SKI" ? "Width" : sportId === "SNB" ? "Shape" : "Product Characteristic",
+      value: shapeOrWidth
+    });
+  }
+
+  if (hasValue(profile)) {
+    specs.push({ kind: "profile", label: "Profile", value: profile });
+  }
+
+  if (hasValue(flex)) {
+    specs.push({ kind: "flex", label: "Flex", value: flex });
+  }
+
+  if (categoryId.includes("BOOT")) {
+    addSpec(specs, "Closure", product.ClosureSystem || product.LacingSystem);
+    addSpec(specs, "Last Width", formatMillimeters(product.LastWidth));
+  }
+
+  if (categoryId.includes("BIND")) {
+    addSpec(specs, "Entry", product.EntryStyle);
+    addSpec(specs, "Response", product.Response);
+    addSpec(specs, "DIN Range", product.DINRange);
+    addSpec(specs, "Brake Width", formatMillimeters(product.BrakeWidth));
+  }
+
+  return specs;
+}
+
+function addSpec(specs, label, value) {
+  if (hasValue(value)) specs.push({ kind: "characteristic", label, value });
+}
+
+function getProfileValue(product) {
+  return product.Profile || product.CamberProfile || product.RockerProfile || "";
+}
+
+function getFlexValue(product) {
+  return product.Flex || product.BootFlex || product.BootFlexIndex || product.BindingFlex || "";
+}
+
+function shouldShowTerrainPerformance(product) {
+  const categoryId = normalize(product.CategoryID);
+  return !categoryId.includes("BOOT") && !categoryId.includes("BIND");
+}
+
+function hasValue(value) {
+  return value !== "" && value !== null && value !== undefined;
+}
+
+function normalize(value) {
+  return String(value || "").trim().toUpperCase();
 }
 
 function formatMillimeters(value) {
@@ -229,6 +299,14 @@ function shapeIcon() {
 
 function characteristicIcon() {
   return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path><circle cx="8" cy="7" r="1"></circle><circle cx="15" cy="12" r="1"></circle><circle cx="11" cy="17" r="1"></circle></svg>`;
+}
+
+function profileIcon() {
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15c3-6 5-6 8 0s5 6 8 0"></path><path d="M4 9c3 6 5 6 8 0s5-6 8 0"></path></svg>`;
+}
+
+function flexIcon() {
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4c-3 5-3 11 0 16"></path><path d="M17 4c3 5 3 11 0 16"></path><path d="M7 12h10"></path></svg>`;
 }
 function resolveAbilityLevel(product) {
   const explicit = toInteger(product.AbilityLevel, 1, 5);

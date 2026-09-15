@@ -324,8 +324,8 @@
 
 /* =========================================================
    SUGGESTED PRODUCTS
-   Reads RecommendedProductIDs, with RelatedProductIDs as a
-   temporary backward-compatible fallback.
+   Reads normalized recommendations, with RecommendedProductIDs
+   and RelatedProductIDs as backward-compatible fallbacks.
    ========================================================= */
 
 .suggested-products-section {
