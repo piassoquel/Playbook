@@ -9,6 +9,7 @@ import {
 import {
   getPrimaryImage,
   getProductBadges,
+  getProductImages,
   parseRelatedProductIds
 } from "../components/product-detail-layout.js";
 import {
@@ -115,22 +116,57 @@ export function renderProductDetailPage(
       media.innerHTML = createImagePlaceholder(product, brandName);
     }, { once: true });
   }
+
+  container.querySelectorAll("[data-product-thumbnail]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const imageUrl = button.dataset.imageUrl || "";
+      const imageAlt = button.dataset.imageAlt || `${brandName} ${product.Model || ""}`;
+      const mainImage = container.querySelector("[data-product-image]");
+      if (!mainImage || !imageUrl) return;
+      mainImage.src = imageUrl;
+      mainImage.alt = imageAlt;
+      container.querySelectorAll("[data-product-thumbnail]").forEach((item) => {
+        item.classList.toggle("is-active", item === button);
+        item.setAttribute("aria-pressed", String(item === button));
+      });
+    });
+  });
 }
 
 function createProductImage(product, brandName) {
-  const image = getPrimaryImage(product);
+  const images = getProductImages(product);
+  const image = images[0]?.ImageURL || getPrimaryImage(product);
 
   if (!image) {
     return createImagePlaceholder(product, brandName);
   }
 
   return `
-    <img
-      class="product-detail-v2__image"
-      data-product-image
-      src="${escapeHtml(image)}"
-      alt="${escapeHtml(`${brandName} ${product.Model || ""}`)}"
-    >
+    <div class="product-gallery">
+      <img
+        class="product-detail-v2__image"
+        data-product-image
+        src="${escapeHtml(image)}"
+        alt="${escapeHtml(images[0]?.AltText || `${brandName} ${product.Model || ""}`)}"
+      >
+      ${images.length > 1 ? `
+        <div class="product-gallery__thumbs" aria-label="Product images">
+          ${images.map((item, index) => `
+            <button
+              class="product-gallery__thumb ${index === 0 ? "is-active" : ""}"
+              type="button"
+              data-product-thumbnail
+              data-image-url="${escapeHtml(item.ImageURL)}"
+              data-image-alt="${escapeHtml(item.AltText || `${brandName} ${product.Model || ""}`)}"
+              aria-label="Show image ${index + 1}"
+              aria-pressed="${index === 0}"
+            >
+              <img src="${escapeHtml(item.ImageURL)}" alt="">
+            </button>
+          `).join("")}
+        </div>
+      ` : ""}
+    </div>
   `;
 }
 
@@ -406,6 +442,7 @@ function createSuggestedProducts(suggestedProducts, brands) {
 
 function createSuggestedImage(product, brandName) {
   const image =
+    getPrimaryImage(product) ||
     product.ThumbnailImage ||
     product.ImageURL ||
     product.HeroImage ||

@@ -1,5 +1,5 @@
 /**
- * Playbook CMS API v2.1.1 — Admin review queue and recommendations
+ * Playbook CMS API v2.2.0 — Product images
  *
  * Backward-compatible with CMS v1.0 and v1.1.
  * Product payload and batch imports are header-driven, so the added
@@ -19,7 +19,8 @@ const PLAYBOOK = {
     SNOWSPORTS_ATTRIBUTES: "SnowsportsAttributes",
     DATA_DICTIONARY: "DataDictionary",
     PRODUCT_RECOMMENDATIONS: "ProductRecommendations",
-    PRODUCT_VARIANTS: "ProductVariants"
+    PRODUCT_VARIANTS: "ProductVariants",
+    PRODUCT_IMAGES: "ProductImages"
   },
   ID_DIGITS: 4
 };
@@ -102,6 +103,9 @@ function buildPlaybookPayload_() {
   const variantRows = getOptionalRows_(
     spreadsheet, PLAYBOOK.SHEETS.PRODUCT_VARIANTS
   );
+  const imageRows = getOptionalRows_(
+    spreadsheet, PLAYBOOK.SHEETS.PRODUCT_IMAGES
+  );
   const hasRecommendationSheet = Boolean(
     spreadsheet.getSheetByName(PLAYBOOK.SHEETS.PRODUCT_RECOMMENDATIONS)
   );
@@ -148,6 +152,7 @@ function buildPlaybookPayload_() {
     activeProducts, recommendationRows, activeBrands, hasRecommendationSheet
   );
   attachVariants_(activeProducts, variantRows);
+  attachImages_(activeProducts, imageRows);
 
   const sports = activeSports.map((sport) => ({
     id: String(sport.SportID || ""),
@@ -218,6 +223,7 @@ function buildAdminCatalog_() {
   const snowRows = getOptionalRows_(spreadsheet, PLAYBOOK.SHEETS.SNOWSPORTS_ATTRIBUTES);
   const recommendationRows = getOptionalRows_(spreadsheet, PLAYBOOK.SHEETS.PRODUCT_RECOMMENDATIONS);
   const variantRows = getOptionalRows_(spreadsheet, PLAYBOOK.SHEETS.PRODUCT_VARIANTS);
+  const imageRows = getOptionalRows_(spreadsheet, PLAYBOOK.SHEETS.PRODUCT_IMAGES);
   const brandRows = getRows_(spreadsheet, PLAYBOOK.SHEETS.BRANDS).filter(isActive_);
   const products = getRows_(spreadsheet, PLAYBOOK.SHEETS.PRODUCTS)
     .map((product) => normalizeProduct_(mergeSnowProduct_(product, snowRows)))
@@ -229,6 +235,7 @@ function buildAdminCatalog_() {
     Boolean(spreadsheet.getSheetByName(PLAYBOOK.SHEETS.PRODUCT_RECOMMENDATIONS))
   );
   attachVariants_(products, variantRows);
+  attachImages_(products, imageRows);
   return {
     ...payload,
     products,
@@ -237,6 +244,41 @@ function buildAdminCatalog_() {
     ),
     adminCatalog: true
   };
+}
+
+function attachImages_(products, rows) {
+  const byId = {};
+  products.forEach((product) => {
+    byId[normalizeId_(product.ProductID)] = product;
+    product.Images = [];
+    const primary = String(product.ImageURL || product.HeroImage || product.ThumbnailImage || "").trim();
+    if (primary) {
+      product.Images.push({
+        ProductImageID: "",
+        ProductID: String(product.ProductID || ""),
+        ImageURL: primary,
+        AltText: String(product.Model || ""),
+        ImageRole: "Primary",
+        DisplayOrder: 0,
+        Active: true
+      });
+    }
+  });
+  rows.filter(isActive_).sort(sortByDisplayOrder_).forEach((row) => {
+    const product = byId[normalizeId_(row.ProductID)];
+    const imageUrl = String(row.ImageURL || "").trim();
+    if (!product || !imageUrl) return;
+    if (product.Images.some((image) => String(image.ImageURL || "") === imageUrl)) return;
+    product.Images.push({
+      ProductImageID: String(row.ProductImageID || ""),
+      ProductID: String(row.ProductID || ""),
+      ImageURL: imageUrl,
+      AltText: String(row.AltText || ""),
+      ImageRole: String(row.ImageRole || "Alternate"),
+      DisplayOrder: toNumber_(row.DisplayOrder),
+      Active: true
+    });
+  });
 }
 
 function attachVariants_(products, rows) {
@@ -891,6 +933,8 @@ function setupWinterSportsV21() {
     .setHorizontalAlignment("center").setVerticalAlignment("middle").setWrap(true);
   variants.setFrozenRows(1);
 
+  setupProductImagesSheet_(ss);
+
   let dictionary = ss.getSheetByName(PLAYBOOK.SHEETS.DATA_DICTIONARY);
   if (!dictionary) dictionary = ss.insertSheet(PLAYBOOK.SHEETS.DATA_DICTIONARY);
   if (!String(dictionary.getRange(1, 1).getValue()).trim()) {
@@ -904,6 +948,27 @@ function setupWinterSportsV21() {
   applyWinterSportsValidations_(ss, snow);
   SpreadsheetApp.flush();
   SpreadsheetApp.getUi().alert("Winter Sports v2.1 schema is ready.");
+}
+
+function setupProductImagesSheet_(ss) {
+  let images = ss.getSheetByName(PLAYBOOK.SHEETS.PRODUCT_IMAGES);
+  if (!images) images = ss.insertSheet(PLAYBOOK.SHEETS.PRODUCT_IMAGES);
+  const imageHeaders = [
+    "ProductImageID", "ProductID", "ImageURL", "AltText",
+    "ImageRole", "DisplayOrder", "Active", "LastUpdated"
+  ];
+  if (!String(images.getRange(1, 1).getValue()).trim()) {
+    images.getRange(1, 1, 1, imageHeaders.length).setValues([imageHeaders]);
+  } else {
+    appendMissingHeaders_(images, imageHeaders);
+  }
+  images.getRange(1, 1, 1, images.getLastColumn())
+    .setBackground("#17324D").setFontColor("#FFFFFF").setFontWeight("bold")
+    .setHorizontalAlignment("center").setVerticalAlignment("middle").setWrap(true);
+  images.setFrozenRows(1);
+  images.getRange(2, 7, Math.max(images.getMaxRows() - 1, 1), 1).insertCheckboxes();
+  images.getRange(2, 8, Math.max(images.getMaxRows() - 1, 1), 1)
+    .setNumberFormat("yyyy-mm-dd hh:mm:ss");
 }
 
 function appendMissingHeaders_(sheet, required) {
@@ -1094,7 +1159,7 @@ function commitImport_(request) {
         valid: false, summary: analysis.summary, errors: analysis.errors, warnings: analysis.warnings
       });
     }
-    const result = applyImportPlan_(analysis.plan, analysis.variantPlan);
+    const result = applyImportPlan_(analysis.plan, analysis.variantPlan, analysis.imagePlan);
     return { success: true, imported: result, summary: analysis.summary, warnings: analysis.warnings };
   } finally {
     lock.releaseLock();
@@ -1111,8 +1176,9 @@ function analyzeImportPackage_(importPackage) {
     : (sheets && Array.isArray(sheets.BatchUpload) ? "BatchUpload" : "");
   const products = sourceWorksheet ? sheets[sourceWorksheet] : null;
   const variants = sheets && Array.isArray(sheets.ProductVariants) ? sheets.ProductVariants : [];
+  const images = sheets && Array.isArray(sheets.ProductImages) ? sheets.ProductImages : [];
   const ignoredWorksheets = sheets && typeof sheets === "object"
-    ? Object.keys(sheets).filter((name) => name !== sourceWorksheet && name !== "ProductVariants") : [];
+    ? Object.keys(sheets).filter((name) => name !== sourceWorksheet && name !== "ProductVariants" && name !== "ProductImages") : [];
   if (!Array.isArray(products)) {
     errors.push(importError_(0, "Products", "A Products or BatchUpload worksheet is required."));
     return emptyImportAnalysis_(errors, ignoredWorksheets, sourceWorksheet);
@@ -1214,11 +1280,14 @@ function analyzeImportPackage_(importPackage) {
   const newCount = plan.filter((item) => !item.existing).length;
   const updateCount = plan.filter((item) => item.existing).length;
   const variantAnalysis = analyzeVariantRows_(variants, reservedIds, ss);
+  const imageAnalysis = analyzeImageRows_(images, reservedIds, ss);
   errors.push(...variantAnalysis.errors);
+  errors.push(...imageAnalysis.errors);
   return {
     errors, warnings, updates, ignoredWorksheets, sourceWorksheet, plan,
     variantPlan: variantAnalysis.plan,
-    summary: { newProducts: newCount, existingProducts: updateCount, variants: variantAnalysis.plan.length, errors: errors.length, warnings: warnings.length }
+    imagePlan: imageAnalysis.plan,
+    summary: { newProducts: newCount, existingProducts: updateCount, variants: variantAnalysis.plan.length, images: imageAnalysis.plan.length, errors: errors.length, warnings: warnings.length }
   };
 }
 
@@ -1250,6 +1319,35 @@ function analyzeVariantRows_(rows, validProductIds, ss) {
       ProductID: productId,
       VariantType: textValue_(row.VariantType || "Size", "VariantType", 80),
       VariantValue: textValue_(row.VariantValue, "VariantValue", 120),
+      DisplayOrder: row.DisplayOrder === "" || row.DisplayOrder === null || row.DisplayOrder === undefined ? 0 : numericValue_(row.DisplayOrder, "DisplayOrder", 0, 10000),
+      Active: row.Active === "" || row.Active === null || row.Active === undefined ? true : isTrue_(row.Active)
+    });
+  });
+  return { errors, plan };
+}
+
+function analyzeImageRows_(rows, validProductIds, ss) {
+  const errors = [];
+  const plan = [];
+  if (!rows.length) return { errors, plan };
+  const table = requireProductImagesTable_(ss);
+  const packageIds = new Set();
+  rows.forEach((row, index) => {
+    const rowNumber = Number(row && row.__PlaybookSourceRow) || index + 2;
+    const imageId = normalizeId_(row && row.ProductImageID);
+    const productId = normalizeId_(row && row.ProductID);
+    if (!imageId) errors.push(importError_(rowNumber, "ProductImageID", "ProductImageID is required."));
+    if (!productId || !validProductIds.has(productId)) errors.push(importError_(rowNumber, "ProductID", "ProductID must identify a product in the CMS or this package."));
+    if (!String(row && row.ImageURL || "").trim()) errors.push(importError_(rowNumber, "ImageURL", "ImageURL is required."));
+    if (packageIds.has(imageId)) errors.push(importError_(rowNumber, "ProductImageID", `Duplicate ProductImageID in package: ${imageId}`));
+    packageIds.add(imageId);
+    if (!imageId || !productId || !validProductIds.has(productId) || !String(row && row.ImageURL || "").trim()) return;
+    plan.push({
+      ProductImageID: imageId,
+      ProductID: productId,
+      ImageURL: urlValue_(row.ImageURL, "ImageURL"),
+      AltText: textValue_(row.AltText || "", "AltText", 240),
+      ImageRole: optionalEnumValue_(row.ImageRole || "Alternate", ADMIN_WRITE.IMAGE_ROLES, "ImageRole") || "Alternate",
       DisplayOrder: row.DisplayOrder === "" || row.DisplayOrder === null || row.DisplayOrder === undefined ? 0 : numericValue_(row.DisplayOrder, "DisplayOrder", 0, 10000),
       Active: row.Active === "" || row.Active === null || row.Active === undefined ? true : isTrue_(row.Active)
     });
@@ -1307,7 +1405,7 @@ function validateImportDestinations_(values, productTable, snowTable, rowNumber,
   });
 }
 
-function applyImportPlan_(plan, variantPlan) {
+function applyImportPlan_(plan, variantPlan, imagePlan) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const products = requireTable_(ss, PLAYBOOK.SHEETS.PRODUCTS, "ProductID");
   const snowSheet = ss.getSheetByName(PLAYBOOK.SHEETS.SNOWSPORTS_ATTRIBUTES);
@@ -1318,6 +1416,8 @@ function applyImportPlan_(plan, variantPlan) {
   const variantSheet = ss.getSheetByName(PLAYBOOK.SHEETS.PRODUCT_VARIANTS);
   const variants = variantSheet ? tableFromSheet_(variantSheet, "ProductVariantID") : null;
   const originalVariants = variants ? variants.sheet.getDataRange().getValues() : null;
+  const images = imagePlan && imagePlan.length ? requireProductImagesTable_(ss) : null;
+  const originalImages = images ? images.sheet.getDataRange().getValues() : null;
   try {
     plan.forEach((item) => {
       let productMatches = findRows_(products, "ProductID", item.productId);
@@ -1351,18 +1451,26 @@ function applyImportPlan_(plan, variantPlan) {
       const rowNumber = matches.length ? matches[0].rowNumber : nextLogicalRow_(variants, "ProductVariantID");
       writePatch_(variants, rowNumber, { ...item, LastUpdated: now });
     });
+    (imagePlan || []).forEach((item) => {
+      const matches = findRows_(images, "ProductImageID", item.ProductImageID);
+      if (matches.length > 1) throw apiError_(`Duplicate ProductImageID: ${item.ProductImageID}`, "DATA_INTEGRITY_ERROR");
+      const rowNumber = matches.length ? matches[0].rowNumber : nextLogicalRow_(images, "ProductImageID");
+      writePatch_(images, rowNumber, { ...item, LastUpdated: now });
+    });
     SpreadsheetApp.flush();
     return {
       total: plan.length,
       newProducts: plan.filter((item) => !item.existing).length,
       updatedProducts: plan.filter((item) => item.existing).length,
       variants: (variantPlan || []).length,
+      images: (imagePlan || []).length,
       importedAt: now.toISOString()
     };
   } catch (error) {
     restoreSheetSnapshot_(products.sheet, originalProducts);
     if (snow && originalSnow) restoreSheetSnapshot_(snow.sheet, originalSnow);
     if (variants && originalVariants) restoreSheetSnapshot_(variants.sheet, originalVariants);
+    if (images && originalImages) restoreSheetSnapshot_(images.sheet, originalImages);
     SpreadsheetApp.flush();
     throw error;
   }
@@ -1421,7 +1529,7 @@ function buildReferenceDictionary_() {
 }
 
 function emptyImportAnalysis_(errors, ignoredWorksheets, sourceWorksheet) {
-  return { errors, warnings: [], ignoredWorksheets, sourceWorksheet, updates: [], plan: [], variantPlan: [], summary: { newProducts: 0, existingProducts: 0, variants: 0, errors: errors.length, warnings: 0 } };
+  return { errors, warnings: [], ignoredWorksheets, sourceWorksheet, updates: [], plan: [], variantPlan: [], imagePlan: [], summary: { newProducts: 0, existingProducts: 0, variants: 0, images: 0, errors: errors.length, warnings: 0 } };
 }
 
 function importError_(row, field, message) { return { row, field, message, code: "VALIDATION_ERROR" }; }
@@ -1546,7 +1654,8 @@ const ADMIN_WRITE = {
     ComparisonNotes: { sheet: "snow", column: "ComparisonNotes", type: "longText", max: 5000 },
     TalkingPoints: { sheet: "snow", column: "TalkingPoints", type: "longText", max: 5000 },
     CommonQuestions: { sheet: "snow", column: "CommonQuestions", type: "longText", max: 5000 },
-    Recommendations: { sheet: "recommendations", column: "Recommendations", type: "recommendations" }
+    Recommendations: { sheet: "recommendations", column: "Recommendations", type: "recommendations" },
+    Images: { sheet: "images", column: "Images", type: "images" }
   },
   STATUS: {
     "Needs Review": { Active: false, RowStatus: "Needs Review" },
@@ -1577,7 +1686,8 @@ const ADMIN_WRITE = {
   },
   TERRAIN_OPTIONS: ["Groomers", "All Mountain", "Powder", "Trees", "Park"],
   RECOMMENDATION_TYPES: ["Binding", "Boot"],
-  RECOMMENDATION_TIERS: ["Recommended", "Upgrade", "Budget"]
+  RECOMMENDATION_TIERS: ["Recommended", "Upgrade", "Budget"],
+  IMAGE_ROLES: ["Primary", "Alternate", "Detail", "Lifestyle"]
 };
 
 function updateProduct_(request) {
@@ -1633,6 +1743,7 @@ function updateProduct_(request) {
     const productUpdates = {};
     const snowUpdates = {};
     let recommendationUpdates = null;
+    let imageUpdates = null;
 
     Object.keys(validated).forEach((requestKey) => {
       const field = ADMIN_WRITE.PRODUCT_FIELDS[requestKey];
@@ -1640,11 +1751,15 @@ function updateProduct_(request) {
       if (field.sheet === "snow") snowUpdates[field.column] = validated[requestKey];
       if (field.sheet === "virtual") applyStatusUpdate_(productUpdates, validated[requestKey]);
       if (field.sheet === "recommendations") recommendationUpdates = validated[requestKey];
+      if (field.sheet === "images") imageUpdates = validated[requestKey];
     });
 
     const now = new Date();
+    if (imageUpdates !== null && imageUpdates.length) {
+      productUpdates.ImageURL = imageUpdates[0].ImageURL;
+    }
     productUpdates.LastUpdated = now;
-    preflightPatchSchema_(ss, products, productUpdates, snowUpdates, recommendationUpdates);
+    preflightPatchSchema_(ss, products, productUpdates, snowUpdates, recommendationUpdates, imageUpdates);
     writePatch_(products, productMatch.rowNumber, productUpdates);
 
     if (Object.keys(snowUpdates).length) {
@@ -1652,6 +1767,9 @@ function updateProduct_(request) {
     }
     if (recommendationUpdates !== null) {
       reconcileRecommendations_(ss, productId, recommendationUpdates, now);
+    }
+    if (imageUpdates !== null) {
+      reconcileProductImages_(ss, productId, imageUpdates, now);
     }
 
     SpreadsheetApp.flush();
@@ -1744,6 +1862,7 @@ function validateChanges_(changes, currentProduct, refs) {
       case "brakeWidth": result[key] = numericValue_(raw, key, 50, 160); break;
       case "dinRange": result[key] = dinRangeValue_(raw); break;
       case "recommendations": result[key] = validateRecommendationPayload_(raw, currentProduct.ProductID, refs); break;
+      case "images": result[key] = validateImagesPayload_(raw); break;
       case "requiredText": result[key] = requiredTextValue_(raw, key, definition.max || 500); break;
       default: result[key] = textValue_(raw, key, definition.max || 500);
     }
@@ -1800,7 +1919,7 @@ function writeSnowPatch_(ss, productId, updates, now, productsTable) {
   writePatch_(snow, rowNumber, resolvedUpdates);
 }
 
-function preflightPatchSchema_(ss, products, productUpdates, snowUpdates, recommendationUpdates) {
+function preflightPatchSchema_(ss, products, productUpdates, snowUpdates, recommendationUpdates, imageUpdates) {
   Object.keys(productUpdates).forEach((column) => {
     if (column === "Status" && products.map.Status === undefined) return;
     if (column === "RowStatus" && products.map.RowStatus === undefined) return;
@@ -1823,6 +1942,9 @@ function preflightPatchSchema_(ss, products, productUpdates, snowUpdates, recomm
     validateRecommendationTableIntegrity_(
       requireRecommendationTable_(ss), recommendationUpdates
     );
+  }
+  if (imageUpdates !== null) {
+    requireProductImagesTable_(ss);
   }
 }
 
@@ -1870,6 +1992,7 @@ function buildSingleProduct_(ss, productRow) {
     Boolean(recommendationSheet)
   );
   attachVariants_(products, getOptionalRows_(ss, PLAYBOOK.SHEETS.PRODUCT_VARIANTS));
+  attachImages_(products, getOptionalRows_(ss, PLAYBOOK.SHEETS.PRODUCT_IMAGES));
   return products[0];
 }
 
@@ -2014,6 +2137,41 @@ function validateRecommendationPayload_(value, sourceProductId, refs) {
   return normalized;
 }
 
+function validateImagesPayload_(value) {
+  if (!Array.isArray(value)) {
+    throw apiError_("Images must be an array.", "VALIDATION_ERROR");
+  }
+  if (value.length > 12) {
+    throw apiError_("Use no more than 12 product images.", "VALIDATION_ERROR");
+  }
+  const seen = new Set();
+  return value.map((image, index) => {
+    if (!image || typeof image !== "object" || Array.isArray(image)) {
+      throw apiError_("Each image must be an object.", "VALIDATION_ERROR");
+    }
+    const url = urlValue_(image.ImageURL, `Images[${index + 1}].ImageURL`);
+    if (!url) return null;
+    const key = url.toLowerCase();
+    if (seen.has(key)) {
+      throw apiError_("Duplicate image URLs are not allowed.", "VALIDATION_ERROR");
+    }
+    seen.add(key);
+    const role = optionalEnumValue_(
+      image.ImageRole || (index === 0 ? "Primary" : "Alternate"),
+      ADMIN_WRITE.IMAGE_ROLES,
+      "ImageRole"
+    ) || (index === 0 ? "Primary" : "Alternate");
+    return {
+      ProductImageID: textValue_(image.ProductImageID || "", "ProductImageID", 80),
+      ImageURL: url,
+      AltText: textValue_(image.AltText || "", "AltText", 240),
+      ImageRole: index === 0 ? "Primary" : role,
+      DisplayOrder: index + 1,
+      Active: true
+    };
+  }).filter(Boolean);
+}
+
 function isPublishedProduct_(product) {
   return isTrue_(product.Active) && statusFromRow_(product) === "Published";
 }
@@ -2035,6 +2193,46 @@ function requireRecommendationTable_(ss) {
   ["RecommendationType", "RecommendationTier", "TargetProductID", "Active", "LastUpdated"]
     .forEach((column) => requireTableColumn_(table, column));
   return table;
+}
+
+function requireProductImagesTable_(ss) {
+  setupProductImagesSheet_(ss);
+  const table = requireTable_(
+    ss, PLAYBOOK.SHEETS.PRODUCT_IMAGES, "ProductID"
+  );
+  ["ProductImageID", "ImageURL", "AltText", "ImageRole", "DisplayOrder", "Active", "LastUpdated"]
+    .forEach((column) => requireTableColumn_(table, column));
+  return table;
+}
+
+function reconcileProductImages_(ss, productId, desired, now) {
+  const table = requireProductImagesTable_(ss);
+  const sourceId = normalizeId_(productId);
+  const rows = table.sheet.getLastRow() < 2 ? [] : table.sheet
+    .getRange(2, 1, table.sheet.getLastRow() - 1, table.headers.length)
+    .getValues()
+    .map((values, index) => ({ values, rowNumber: index + 2 }))
+    .filter((entry) => normalizeId_(entry.values[table.map.ProductID]) === sourceId);
+  rows.forEach((entry) => {
+    writePatch_(table, entry.rowNumber, {
+      Active: false,
+      LastUpdated: now
+    });
+  });
+  desired.forEach((image, index) => {
+    const row = table.headers.map((header) => {
+      if (header === "ProductImageID") return image.ProductImageID || `${sourceId}-IMG${String(index + 1).padStart(2, "0")}`;
+      if (header === "ProductID") return sourceId;
+      if (header === "ImageURL") return image.ImageURL;
+      if (header === "AltText") return image.AltText;
+      if (header === "ImageRole") return index === 0 ? "Primary" : image.ImageRole;
+      if (header === "DisplayOrder") return index + 1;
+      if (header === "Active") return true;
+      if (header === "LastUpdated") return now;
+      return "";
+    });
+    table.sheet.getRange(nextLogicalRow_(table, "ProductID"), 1, 1, row.length).setValues([row]);
+  });
 }
 
 function reconcileRecommendations_(ss, sourceProductId, desired, now) {

@@ -24,12 +24,27 @@ export function parseRelatedProductIds(value) {
 }
 
 export function getPrimaryImage(product) {
-  return (
+  const images = getProductImages(product);
+  return images[0]?.ImageURL || (
     product.HeroImage ||
     product.ImageURL ||
     product.ThumbnailImage ||
     ""
   );
+}
+
+export function getProductImages(product) {
+  const rows = Array.isArray(product.Images) ? product.Images : [];
+  const images = rows
+    .map((image) => ({
+      ImageURL: String(image.ImageURL || "").trim(),
+      AltText: String(image.AltText || ""),
+      ImageRole: String(image.ImageRole || ""),
+    }))
+    .filter((image) => image.ImageURL);
+  if (images.length) return images;
+  const fallback = String(product.HeroImage || product.ImageURL || product.ThumbnailImage || "").trim();
+  return fallback ? [{ ImageURL: fallback, AltText: "", ImageRole: "Primary" }] : [];
 }
 
 export function isTrue(value) {
