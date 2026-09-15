@@ -1,82 +1,36 @@
 # Playbook Admin product-update contract
 
-The current Playbook CMS integration is read-only. The repository contains a
-GET client only, and the live CMS response does not advertise a write action,
-write URL, authentication mechanism, DataDictionary, product variants, or
-ProductRecommendations.
+The connected implementation is in `cms/Code.gs`. Admin sends authenticated
+`text/plain` JSON requests to the existing Apps Script deployment.
 
-## Endpoint required
-
-Provide an authenticated HTTPS endpoint that accepts `POST` requests from the
-Admin origin. The URL can then be assigned to `PRODUCT_WRITE_URL` in
-`admin/services/product-admin-api.js`.
-
-Request body:
+The `updateProduct` request uses patch semantics:
 
 ```json
 {
   "action": "updateProduct",
   "productId": "SNB0004",
   "changes": {
-    "ShapeOrWidth": "True Twin",
-    "Flex": "Medium"
+    "Profile": "CamRock",
+    "SnowboardWidth": "Wide"
   },
-  "expectedLastUpdated": "2026-07-14"
+  "expectedLastUpdated": "2026-09-10T18:30:00Z",
+  "authToken": "Google ID token"
 }
 ```
 
-- `productId` is required and must identify exactly one Products record.
-- `changes` uses patch semantics. Omitted fields must remain untouched.
-- `expectedLastUpdated` supports optimistic concurrency and should reject a
-  stale edit instead of overwriting a newer change.
-- The backend must allowlist and validate editable fields rather than accepting
-  arbitrary spreadsheet column names.
-- Shape, Flex, terrain, status, sport, category, brand, and relationship values
-  must be validated against CMS reference data.
-- Authentication and authorization must be checked on the server. No write
-  secret may be embedded in the static Admin JavaScript.
-- CORS must allow the deployed Admin origin and local development origin.
+Only fields present in `changes` are written. The backend verifies the Google
+identity, checks its allowlist, validates controlled values, locks writes, and
+uses `expectedLastUpdated` to prevent stale overwrites.
 
-Successful response:
+Winter Sports v2.1 accepts `Profile`, `SnowboardWidth`, `TurnRadius`,
+`BootFlex`, `ClosureSystem`, `BootFlexIndex`, `LastWidth`, `BindingFlex`,
+`EntryStyle`, `Response`, `DINRange`, and `BrakeWidth`, in addition to the
+existing product, performance, sales-dashboard, status, and recommendation
+fields.
 
-```json
-{
-  "success": true,
-  "product": {},
-  "lastUpdated": "2026-09-01T18:30:00Z"
-}
-```
+The CMS DataDictionary is authoritative for controlled values. Code defaults
+exist only so older workbooks can be migrated without breaking Admin.
 
-Error responses should use an appropriate HTTP status and return:
-
-```json
-{
-  "success": false,
-  "error": "Human-readable explanation",
-  "code": "VALIDATION_ERROR"
-}
-```
-
-## Reference data required
-
-Add a reference-data block to the existing GET response, preferably:
-
-```json
-{
-  "settings": {
-    "DataDictionary": {
-      "Flex": ["Soft", "Medium", "Medium-Stiff", "Stiff"]
-    }
-  }
-}
-```
-
-The current Flex fallback in `admin/config/product-fields.js` is based on values
-observed in the live product payload and can be replaced by this reference data.
-
-## Recommendation support required
-
-Add CMS-backed ProductRecommendations records with a source `ProductID`, a
-relationship type (`Binding` or `Boot`), a tier (`Recommended`, `Upgrade`, or
-`Budget`), and a target `ProductID`. Admin will use searchable product pickers
-and save only these ProductID relationships once the API supports them.
+Product recommendations remain ProductID relationships in the normalized
+`ProductRecommendations` sheet. Product sizes and lengths use the normalized
+`ProductVariants` sheet and are returned as `product.Variants`.

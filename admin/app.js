@@ -1,6 +1,7 @@
 import { loadAppData } from "../js/services/api.js";
 import {
   SNOWBOARD_SHAPES,
+  getControlledOptions,
   getFlexOptions,
 } from "./config/product-fields.js";
 import {
@@ -355,7 +356,7 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
           ${renderTerrainField("Trees", "TerrainTrees", draft.TerrainTrees)}
           ${renderTerrainField("Park", "TerrainPark", draft.TerrainPark)}
           <div data-shape-or-width-field>${renderShapeOrWidthField(draft)}</div>
-          ${renderSelectField("Flex", "Flex", draft.Flex, [["", "— Not set"], ...getFlexOptions(appData, draft.Flex).map((value) => [value, value])])}
+          ${renderCategoryAttributes(draft)}
         </div>
         ${variants.length ? renderVariants(variants) : `<div class="editor-empty-inline"><strong>Variants / sizes</strong><span>Not currently exposed by the CMS API.</span></div>`}
       `)}
@@ -408,6 +409,18 @@ function createProductDraft(product) {
     TerrainPark: String(product.TerrainPark ?? ""),
     ShapeOrWidth: controlledShapeOrWidth,
     Flex: String(product.Flex ?? ""),
+    Profile: String(product.Profile ?? product.CamberProfile ?? product.RockerProfile ?? ""),
+    SnowboardWidth: String(product.SnowboardWidth ?? ""),
+    TurnRadius: String(product.TurnRadius ?? ""),
+    BootFlex: String(product.BootFlex ?? ""),
+    ClosureSystem: String(product.ClosureSystem ?? product.LacingSystem ?? ""),
+    BootFlexIndex: String(product.BootFlexIndex ?? ""),
+    LastWidth: String(product.LastWidth ?? ""),
+    BindingFlex: String(product.BindingFlex ?? ""),
+    EntryStyle: String(product.EntryStyle ?? ""),
+    Response: String(product.Response ?? ""),
+    DINRange: String(product.DINRange ?? ""),
+    BrakeWidth: String(product.BrakeWidth ?? ""),
     CustomerProfile: String(product.CustomerProfile ?? ""),
     SellingTips: String(product.SellingTips ?? ""),
     ComparisonNotes: String(product.ComparisonNotes ?? ""),
@@ -472,6 +485,8 @@ function renderTerrainSelector(value) {
 }
 
 function renderShapeOrWidthField(draft) {
+  const category = normalize(draft.CategoryID);
+  if (category.includes("BOOT") || category.includes("BIND")) return "";
   if (normalize(draft.SportID) === "SKI") {
     const numericWidth = String(draft.ShapeOrWidth || "").replace(/\s*mm\s*$/i, "");
     return renderInputField("Width", "ShapeOrWidth", numericWidth, "number", { min: "0", step: "1" });
@@ -480,6 +495,51 @@ function renderShapeOrWidthField(draft) {
   const options = [...SNOWBOARD_SHAPES];
   if (draft.ShapeOrWidth && !options.includes(draft.ShapeOrWidth)) options.push(draft.ShapeOrWidth);
   return renderSelectField("Shape", "ShapeOrWidth", draft.ShapeOrWidth, [["", "— Not set"], ...options.map((value) => [value, value])]);
+}
+
+function optionPairs(field, value) {
+  return [["", "— Not set"], ...getControlledOptions(appData, field, value).map((item) => [item, item])];
+}
+
+function renderCategoryAttributes(draft) {
+  const category = normalize(draft.CategoryID);
+  const profileOptions = normalize(draft.SportID) === "SNB" ? "SnowboardProfile" : "SkiProfile";
+  if (category === "SNBBOARD") return [
+    renderSelectField("Profile", "Profile", draft.Profile, optionPairs(profileOptions, draft.Profile)),
+    renderSelectField("Snowboard Width", "SnowboardWidth", draft.SnowboardWidth, optionPairs("SnowboardWidth", draft.SnowboardWidth)),
+    renderSelectField("Flex", "Flex", draft.Flex, [["", "— Not set"], ...getFlexOptions(appData, draft.Flex).map((value) => [value, value])]),
+  ].join("");
+  if (category === "SKIS") return [
+    renderSelectField("Profile", "Profile", draft.Profile, optionPairs(profileOptions, draft.Profile)),
+    renderInputField("Turn Radius", "TurnRadius", draft.TurnRadius, "number", { min: "5", max: "50", step: "0.1" }),
+    renderSelectField("Flex", "Flex", draft.Flex, [["", "— Not set"], ...getFlexOptions(appData, draft.Flex).map((value) => [value, value])]),
+  ].join("");
+  if (category === "SNBBOOT") return [
+    renderRatingField("Boot Flex", "BootFlex", draft.BootFlex),
+    renderSelectField("Closure System", "ClosureSystem", draft.ClosureSystem, optionPairs("ClosureSystem", draft.ClosureSystem)),
+  ].join("");
+  if (category === "SKIBOOT") return [
+    renderInputField("Boot Flex Index", "BootFlexIndex", draft.BootFlexIndex, "number", { min: "40", max: "180", step: "1" }),
+    renderInputField("Last Width", "LastWidth", draft.LastWidth, "number", { min: "85", max: "110", step: "0.1" }),
+    renderSelectField("Closure System", "ClosureSystem", draft.ClosureSystem, optionPairs("ClosureSystem", draft.ClosureSystem)),
+  ].join("");
+  if (category === "SNBBIND") return [
+    renderRatingField("Binding Flex", "BindingFlex", draft.BindingFlex),
+    renderSelectField("Entry Style", "EntryStyle", draft.EntryStyle, optionPairs("EntryStyle", draft.EntryStyle)),
+    renderSelectField("Response", "Response", draft.Response, optionPairs("Response", draft.Response)),
+  ].join("");
+  if (category === "SKIBIND") return [
+    renderInputField("DIN Range", "DINRange", draft.DINRange, "text", { placeholder: "4-12" }),
+    renderInputField("Brake Width", "BrakeWidth", draft.BrakeWidth, "number", { min: "50", max: "160", step: "1" }),
+  ].join("");
+  return renderSelectField("Flex", "Flex", draft.Flex, [["", "— Not set"], ...getFlexOptions(appData, draft.Flex).map((value) => [value, value])]);
+}
+
+function renderRatingField(label, field, value) {
+  return renderSelectField(label, field, value, [["", "— Not set"], ...Array.from({ length: 5 }, (_, index) => {
+    const rating = String(index + 1);
+    return [rating, `${rating} / 5`];
+  })]);
 }
 
 function renderTextareaField(label, field, value) {
@@ -506,7 +566,10 @@ function renderVariants(variants) {
 function getAvailableVariants(product) {
   const value = firstValue(product.Variants, product.Sizes, product.AvailableSizes, product.Lengths);
   if (!value) return [];
-  if (Array.isArray(value)) return value.map(String).filter(Boolean);
+  if (Array.isArray(value)) return value.map((variant) => {
+    if (variant && typeof variant === "object") return String(variant.VariantValue || variant.Value || "");
+    return String(variant);
+  }).filter(Boolean);
   return String(value).split(/[|,]/).map((item) => item.trim()).filter(Boolean);
 }
 
@@ -569,6 +632,11 @@ function bindProductEditor(product, sportSlug, typeSlug) {
         categoryControl.innerHTML = categoryOptions.map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join("");
         categoryControl.value = categoryOptions[0]?.[0] || "";
         updateDraftField("CategoryID", categoryControl.value);
+        renderProductDetail(sportSlug, typeSlug, product.ProductID);
+        return;
+      }
+
+      if (control.dataset.field === "CategoryID") {
         renderProductDetail(sportSlug, typeSlug, product.ProductID);
         return;
       }
@@ -670,7 +738,7 @@ function updateImagePreview(url) {
 }
 
 function buildProductChanges(draft, touched) {
-  const numericFields = new Set(["Season", "MSRP", "AbilityLevel", "TerrainGroomers", "TerrainAllMountain", "TerrainPowder", "TerrainTrees", "TerrainPark"]);
+  const numericFields = new Set(["Season", "MSRP", "AbilityLevel", "TerrainGroomers", "TerrainAllMountain", "TerrainPowder", "TerrainTrees", "TerrainPark", "TurnRadius", "BootFlex", "BootFlexIndex", "LastWidth", "BindingFlex", "BrakeWidth"]);
   const changes = {};
 
   touched.forEach((field) => {
@@ -714,6 +782,7 @@ function renderImportPreview() {
     <div class="import-summary">
       <div><strong>${summary.newProducts || 0}</strong><span>New Products</span></div>
       <div><strong>${summary.existingProducts || 0}</strong><span>Existing Products</span></div>
+      <div><strong>${summary.variants || 0}</strong><span>Product Variants</span></div>
       <div class="${warnings.length ? "has-warnings" : ""}"><strong>${warnings.length}</strong><span>Review Warnings</span></div>
       <div class="${errors.length ? "has-errors" : ""}"><strong>${errors.length}</strong><span>Errors</span></div>
     </div>
@@ -721,7 +790,7 @@ function renderImportPreview() {
     ${updates.length ? `<div class="import-list"><h3>Products that will be updated</h3>${updates.map((item) => `<div><code>${escapeHtml(item.ProductID)}</code><span>${escapeHtml(`${item.Brand} ${item.Model}`)}</span></div>`).join("")}</div>` : ""}
     ${errors.length ? `<div class="import-errors"><h3>Items to fix</h3>${errors.map((error) => `<div><strong>${error.row ? `Row ${error.row}` : "Workbook"} · ${escapeHtml(error.field)}</strong><span>${escapeHtml(error.message)}</span></div>`).join("")}</div>` : ""}
     ${warnings.length ? `<div class="import-warnings"><h3>Items to complete during review</h3>${warnings.map((warning) => `<div><strong>${warning.row ? `Row ${warning.row}` : "Workbook"} · ${escapeHtml(warning.field)}</strong><span>${escapeHtml(warning.message)}</span></div>`).join("")}</div>` : ""}
-    <button class="save-button import-confirm" type="button" data-import-confirm ${preview.valid ? "" : "disabled"}>Import ${Number(summary.newProducts || 0) + Number(summary.existingProducts || 0)} Products</button>
+    <button class="save-button import-confirm" type="button" data-import-confirm ${preview.valid ? "" : "disabled"}>Import ${Number(summary.newProducts || 0) + Number(summary.existingProducts || 0)} Products${Number(summary.variants || 0) ? ` + ${Number(summary.variants)} Variants` : ""}</button>
   </div>`;
 }
 
@@ -755,8 +824,13 @@ async function readImportWorkbook(file) {
   const worksheets = {};
   workbook.SheetNames.forEach((name) => {
     const rows = window.XLSX.utils.sheet_to_json(workbook.Sheets[name], { header: 1, defval: "", raw: true });
+    const isVariantSheet = name === "ProductVariants";
     const headerIndex = rows.findIndex((row) => {
       const headings = row.map((value) => String(value || "").trim());
+      if (isVariantSheet) {
+        return headings.includes("ProductVariantID") &&
+          headings.includes("ProductID") && headings.includes("VariantValue");
+      }
       return headings.includes("Model") &&
         (headings.includes("ProductID") || headings.includes("BrandID")) &&
         (headings.includes("SportID") || headings.includes("CategoryID"));
@@ -772,7 +846,7 @@ async function readImportWorkbook(file) {
       return item;
     }).filter((item) => Object.entries(item).some(([key, value]) => key !== "__PlaybookSourceRow" && value !== ""));
   });
-  return { schemaVersion: "2.0", fileName: file.name, worksheets };
+  return { schemaVersion: "2.1", fileName: file.name, worksheets };
 }
 
 async function commitValidatedImport() {
@@ -783,7 +857,7 @@ async function commitValidatedImport() {
     const authToken = getAdminAuthToken();
     if (!authToken) throw new ProductWriteError("Sign in with Google before importing.", "UNAUTHORIZED");
     const result = await commitImportPackage(importState.importPackage, importState.preview.packageFingerprint, { authToken });
-    setImportFeedback(`${result.imported.newProducts} new and ${result.imported.updatedProducts} existing products imported successfully. New products are waiting for review.`, "success");
+    setImportFeedback(`${result.imported.newProducts} new and ${result.imported.updatedProducts} existing products imported successfully${result.imported.variants ? `, with ${result.imported.variants} product variants` : ""}. New products are waiting for review.`, "success");
     importState = { importPackage: null, preview: null, fileName: "" };
     appData = await loadAdminCatalog(authToken);
     button.remove();
