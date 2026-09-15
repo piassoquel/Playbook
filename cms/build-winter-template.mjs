@@ -79,6 +79,28 @@ variants.getRange("C5:C504").dataValidation = { rule: { type: "list", values: ["
 variants.getRange("F5:F504").dataValidation = { rule: { type: "list", values: ["TRUE", "FALSE"] } };
 variants.dataValidations.add({ range: "E5:E504", rule: { type: "whole", operator: "between", formula1: 0, formula2: 10000 } });
 
+let images;
+try { images = workbook.worksheets.getItem("ProductImages"); }
+catch { images = workbook.worksheets.add("ProductImages"); }
+images.getRange("A1:H504").clear({ applyTo: "all" });
+images.getRange("A1:H1").merge();
+images.getRange("A1").values = [["PRODUCT IMAGES — Optional. Add one row per extra image. The first active image is treated as primary. ProductID must match a BatchUpload row."]];
+images.getRange("A4:H5").values = [[
+  "ProductImageID", "ProductID", "ImageURL", "AltText", "ImageRole", "DisplayOrder", "Active", "LastUpdated",
+], ["", "", "", "", "", "", "", ""]];
+images.getRange("A1:H1").format = { fill: "#E8F0FE", font: { bold: true, color: "#17324D", size: 12 }, wrapText: true };
+images.getRange("A4:H4").format = { fill: "#17324D", font: { bold: true, color: "#FFFFFF" }, horizontalAlignment: "center", verticalAlignment: "center", wrapText: true };
+images.getRange("A1:H5").format.autofitColumns();
+images.getRange("A1:A5").format.columnWidth = 25;
+images.getRange("B1:B5").format.columnWidth = 16;
+images.getRange("C1:D5").format.columnWidth = 36;
+images.getRange("E1:H5").format.columnWidth = 16;
+images.getRange("A1").format.rowHeight = 34;
+images.freezePanes.freezeRows(4);
+images.getRange("E5:E504").dataValidation = { rule: { type: "list", values: ["Primary", "Alternate", "Detail", "Lifestyle"] } };
+images.getRange("G5:G504").dataValidation = { rule: { type: "list", values: ["TRUE", "FALSE"] } };
+images.dataValidations.add({ range: "F5:F504", rule: { type: "whole", operator: "between", formula1: 0, formula2: 10000 } });
+
 let dictionary;
 try { dictionary = workbook.worksheets.getItem("DataDictionary"); }
 catch { dictionary = workbook.worksheets.add("DataDictionary"); }
@@ -112,6 +134,8 @@ const dictionaryRows = [
   ["Boolean fields", "TRUE|FALSE", "Use actual Boolean values for Active, StoreFavorite, NewThisSeason, and Featured."],
   ["Season", "Four-digit ending year", "Use 2027 for the 2026/27 season."],
   ["URLs", "HTTPS URL", "Applies to ThumbnailImage, HeroImage, ImageURL, and VideoURL. Leave blank rather than inventing a URL."],
+  ["ProductImages", "ProductImageID|ProductID|ImageURL|AltText|ImageRole|DisplayOrder|Active", "Optional normalized image rows. Use ProductImages for alternates, detail images, and lifestyle images."],
+  ["ImageRole", "Primary|Alternate|Detail|Lifestyle", "Primary is the first image shown. Additional active images appear as selectable thumbnails."],
   ["Sales Dashboard text", "Plain text; line breaks allowed", "CustomerProfile, SellingTips, ComparisonNotes, TalkingPoints, and CommonQuestions remain editable. Follow the Product Builder prompt for content length."],
   ["RecommendedProductIDs", "Blank", "Do not invent IDs. Manage normalized recommendations in Playbook Admin."],
   ["ProductVariants", "One row per size or length", "Only use after ProductID is known. ProductVariantID must be unique."],

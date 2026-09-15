@@ -387,12 +387,18 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
           ${renderSelectField("Gender", "Gender", draft.Gender, [["", "— Not set"], ["Unisex", "Unisex"], ["Men's", "Men's"], ["Women's", "Women's"], ["Youth", "Youth"]])}
           ${renderInputField("Season", "Season", draft.Season, "number")}
           ${renderInputField("Price", "MSRP", draft.MSRP, "number", { step: "0.01", min: "0" })}
-          ${renderInputField("Image URL", "ImageURL", draft.ImageURL, "url", { wide: true })}
           ${renderSelectField("Status", "Status", draft.Status, [["Needs Review", "Needs Review"], ["Published", "Published"], ["Archived", "Archived"]])}
         </div>
         <div class="editor-image-preview" data-image-preview>
           ${draft.ImageURL ? `<img src="${escapeHtml(draft.ImageURL)}" alt="${escapeHtml(`${brand} ${draft.Model}`)}">` : productPlaceholder(brand, draft.Model)}
         </div>
+      `)}
+
+      ${renderEditorSection("Images", "Primary and alternate product images for the employee app.", `
+        <div class="product-images-editor" data-images-editor>
+          ${renderImageRows(draft.Images)}
+        </div>
+        <button class="secondary-action" type="button" data-add-image>Add Image</button>
       `)}
 
       ${renderEditorSection("Performance", "Customer fit and on-snow performance ratings.", `
@@ -448,6 +454,7 @@ function createProductDraft(product) {
     Season: String(product.Season ?? ""),
     MSRP: String(product.MSRP ?? ""),
     ImageURL: String(product.ImageURL || product.HeroImage || product.ThumbnailImage || ""),
+    Images: normalizeImageDraft(product),
     Status: mapCmsStatus(product),
     AbilityLevel: String(ability ?? ""),
     Ability: String(product.Ability ?? ""),
@@ -496,7 +503,32 @@ function normalizeRecommendationDraft(recommendations = {}) {
 }
 
 function cloneProductDraft(draft) {
-  return { ...draft, Recommendations: normalizeRecommendationDraft(draft.Recommendations) };
+  return {
+    ...draft,
+    Images: normalizeImageDraft(draft),
+    Recommendations: normalizeRecommendationDraft(draft.Recommendations)
+  };
+}
+
+function normalizeImageDraft(product = {}) {
+  const images = Array.isArray(product.Images) ? product.Images : [];
+  const fallback = String(product.ImageURL || product.HeroImage || product.ThumbnailImage || "").trim();
+  const normalized = images.map((image, index) => ({
+    ProductImageID: String(image.ProductImageID || ""),
+    ImageURL: String(image.ImageURL || ""),
+    AltText: String(image.AltText || ""),
+    ImageRole: String(image.ImageRole || (index === 0 ? "Primary" : "Alternate")),
+  })).filter((image) => image.ImageURL);
+  if (!normalized.length && fallback) {
+    normalized.push({
+      ProductImageID: "",
+      ImageURL: fallback,
+      AltText: String(product.Model || ""),
+      ImageRole: "Primary",
+    });
+  }
+  if (normalized.length) normalized[0].ImageRole = "Primary";
+  return normalized;
 }
 
 function renderEditorSection(title, description, content) {
@@ -594,6 +626,30 @@ function renderRatingField(label, field, value) {
 
 function renderTextareaField(label, field, value) {
   return `<label class="form-field form-field--textarea ${isBlankField(value) ? "is-missing" : ""}">${renderFieldLabel(label, value)}<textarea rows="6" data-field="${field}">${escapeHtml(value)}</textarea></label>`;
+}
+
+function renderImageRows(images) {
+  const rows = images.length ? images : [{ ProductImageID: "", ImageURL: "", AltText: "", ImageRole: "Primary" }];
+  return rows.map((image, index) => `
+    <div class="product-image-row" data-image-index="${index}">
+      <span class="image-role-badge">${index === 0 ? "Primary" : escapeHtml(image.ImageRole || "Alternate")}</span>
+      <label class="form-field form-field--wide ${isBlankField(image.ImageURL) ? "is-missing" : ""}">
+        ${renderFieldLabel("Image URL", image.ImageURL)}
+        <input type="url" value="${escapeHtml(image.ImageURL)}" data-image-field="ImageURL" data-image-index="${index}">
+      </label>
+      <label class="form-field">
+        <span>Alt Text</span>
+        <input type="text" value="${escapeHtml(image.AltText)}" data-image-field="AltText" data-image-index="${index}">
+      </label>
+      <label class="form-field">
+        <span>Role</span>
+        <select data-image-field="ImageRole" data-image-index="${index}" ${index === 0 ? "disabled" : ""}>
+          ${["Primary", "Alternate", "Detail", "Lifestyle"].map((role) => `<option value="${role}" ${role === (index === 0 ? "Primary" : image.ImageRole) ? "selected" : ""}>${role}</option>`).join("")}
+        </select>
+      </label>
+      <button class="icon-action" type="button" data-remove-image="${index}" ${index === 0 && rows.length === 1 ? "disabled" : ""} aria-label="Remove image">×</button>
+    </div>
+  `).join("");
 }
 
 function renderRecommendationGroup(productType, draft) {
@@ -721,6 +777,8 @@ function bindProductEditor(product, sportSlug, typeSlug) {
     });
   });
 
+  bindImageEditor(sportSlug, typeSlug, product.ProductID);
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!editorState.dirty) return;
@@ -767,9 +825,71 @@ function bindProductEditor(product, sportSlug, typeSlug) {
 
 function updateDraftField(field, value) {
   editorState.draft[field] = value;
-  if (String(value) === String(editorState.original[field])) editorState.touched.delete(field);
+  if (valuesEqual(value, editorState.original[field])) editorState.touched.delete(field);
   else editorState.touched.add(field);
   editorState.dirty = editorState.touched.size > 0;
+}
+
+function valuesEqual(a, b) {
+  if (Array.isArray(a) || Array.isArray(b) || (a && typeof a === "object") || (b && typeof b === "object")) {
+    return JSON.stringify(a) === JSON.stringify(b);
+  }
+  return String(a) === String(b);
+}
+
+function bindImageEditor(sportSlug, typeSlug, productId) {
+  const editor = main.querySelector("[data-images-editor]");
+  const addButton = main.querySelector("[data-add-image]");
+  if (!editor) return;
+
+  editor.querySelectorAll("[data-image-field]").forEach((control) => {
+    const handler = () => {
+      const index = Number(control.dataset.imageIndex);
+      const field = control.dataset.imageField;
+      if (!editorState.draft.Images[index]) return;
+      editorState.draft.Images[index][field] = control.value;
+      syncImageDraft();
+    };
+    control.addEventListener("input", handler);
+    control.addEventListener("change", handler);
+  });
+
+  editor.querySelectorAll("[data-remove-image]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.removeImage);
+      editorState.draft.Images.splice(index, 1);
+      if (!editorState.draft.Images.length) {
+        editorState.draft.Images.push({ ProductImageID: "", ImageURL: "", AltText: "", ImageRole: "Primary" });
+      }
+      syncImageDraft();
+      rerenderImageEditor(sportSlug, typeSlug, productId);
+    });
+  });
+
+  if (addButton) {
+    addButton.addEventListener("click", () => {
+      editorState.draft.Images.push({ ProductImageID: "", ImageURL: "", AltText: "", ImageRole: "Alternate" });
+      syncImageDraft();
+      rerenderImageEditor(sportSlug, typeSlug, productId);
+    });
+  }
+}
+
+function syncImageDraft() {
+  if (editorState.draft.Images.length) editorState.draft.Images[0].ImageRole = "Primary";
+  editorState.draft.ImageURL = editorState.draft.Images[0]?.ImageURL || "";
+  updateImagePreview(editorState.draft.ImageURL);
+  updateDraftField("Images", editorState.draft.Images);
+  const feedback = main.querySelector("[data-save-feedback]");
+  if (feedback) feedback.hidden = true;
+  updateEditorDirtyUi();
+}
+
+function rerenderImageEditor(sportSlug, typeSlug, productId) {
+  const editor = main.querySelector("[data-images-editor]");
+  if (!editor) return;
+  editor.innerHTML = renderImageRows(editorState.draft.Images);
+  bindImageEditor(sportSlug, typeSlug, productId);
 }
 
 function updateEditorDirtyUi() {
@@ -834,6 +954,7 @@ function renderImportPreview() {
       <div><strong>${summary.newProducts || 0}</strong><span>New Products</span></div>
       <div><strong>${summary.existingProducts || 0}</strong><span>Existing Products</span></div>
       <div><strong>${summary.variants || 0}</strong><span>Product Variants</span></div>
+      <div><strong>${summary.images || 0}</strong><span>Product Images</span></div>
       <div class="${warnings.length ? "has-warnings" : ""}"><strong>${warnings.length}</strong><span>Review Warnings</span></div>
       <div class="${errors.length ? "has-errors" : ""}"><strong>${errors.length}</strong><span>Errors</span></div>
     </div>
@@ -841,7 +962,7 @@ function renderImportPreview() {
     ${updates.length ? `<div class="import-list"><h3>Products that will be updated</h3>${updates.map((item) => `<div><code>${escapeHtml(item.ProductID)}</code><span>${escapeHtml(`${item.Brand} ${item.Model}`)}</span></div>`).join("")}</div>` : ""}
     ${errors.length ? `<div class="import-errors"><h3>Items to fix</h3>${errors.map((error) => `<div><strong>${error.row ? `Row ${error.row}` : "Workbook"} · ${escapeHtml(error.field)}</strong><span>${escapeHtml(error.message)}</span></div>`).join("")}</div>` : ""}
     ${warnings.length ? `<div class="import-warnings"><h3>Items to complete during review</h3>${warnings.map((warning) => `<div><strong>${warning.row ? `Row ${warning.row}` : "Workbook"} · ${escapeHtml(warning.field)}</strong><span>${escapeHtml(warning.message)}</span></div>`).join("")}</div>` : ""}
-    <button class="save-button import-confirm" type="button" data-import-confirm ${preview.valid ? "" : "disabled"}>Import ${Number(summary.newProducts || 0) + Number(summary.existingProducts || 0)} Products${Number(summary.variants || 0) ? ` + ${Number(summary.variants)} Variants` : ""}</button>
+    <button class="save-button import-confirm" type="button" data-import-confirm ${preview.valid ? "" : "disabled"}>Import ${Number(summary.newProducts || 0) + Number(summary.existingProducts || 0)} Products${Number(summary.variants || 0) ? ` + ${Number(summary.variants)} Variants` : ""}${Number(summary.images || 0) ? ` + ${Number(summary.images)} Images` : ""}</button>
   </div>`;
 }
 
@@ -876,11 +997,16 @@ async function readImportWorkbook(file) {
   workbook.SheetNames.forEach((name) => {
     const rows = window.XLSX.utils.sheet_to_json(workbook.Sheets[name], { header: 1, defval: "", raw: true });
     const isVariantSheet = name === "ProductVariants";
+    const isImageSheet = name === "ProductImages";
     const headerIndex = rows.findIndex((row) => {
       const headings = row.map((value) => String(value || "").trim());
       if (isVariantSheet) {
         return headings.includes("ProductVariantID") &&
           headings.includes("ProductID") && headings.includes("VariantValue");
+      }
+      if (isImageSheet) {
+        return headings.includes("ProductImageID") &&
+          headings.includes("ProductID") && headings.includes("ImageURL");
       }
       return headings.includes("Model") &&
         (headings.includes("ProductID") || headings.includes("BrandID")) &&
@@ -897,7 +1023,7 @@ async function readImportWorkbook(file) {
       return item;
     }).filter((item) => Object.entries(item).some(([key, value]) => key !== "__PlaybookSourceRow" && value !== ""));
   });
-  return { schemaVersion: "2.1", fileName: file.name, worksheets };
+  return { schemaVersion: "2.2", fileName: file.name, worksheets };
 }
 
 async function commitValidatedImport() {
@@ -908,7 +1034,7 @@ async function commitValidatedImport() {
     const authToken = getAdminAuthToken();
     if (!authToken) throw new ProductWriteError("Sign in with Google before importing.", "UNAUTHORIZED");
     const result = await commitImportPackage(importState.importPackage, importState.preview.packageFingerprint, { authToken });
-    setImportFeedback(`${result.imported.newProducts} new and ${result.imported.updatedProducts} existing products imported successfully${result.imported.variants ? `, with ${result.imported.variants} product variants` : ""}. New products are waiting for review.`, "success");
+    setImportFeedback(`${result.imported.newProducts} new and ${result.imported.updatedProducts} existing products imported successfully${result.imported.variants ? `, with ${result.imported.variants} product variants` : ""}${result.imported.images ? ` and ${result.imported.images} product images` : ""}. New products are waiting for review.`, "success");
     importState = { importPackage: null, preview: null, fileName: "" };
     appData = await loadAdminCatalog(authToken);
     button.remove();
@@ -969,7 +1095,8 @@ function getBrandName(product) {
 }
 
 function getProductImage(product) {
-  return String(product.ThumbnailImage || product.HeroImage || product.ImageURL || "").trim();
+  const firstImage = Array.isArray(product.Images) ? product.Images.find((image) => image?.ImageURL) : null;
+  return String(firstImage?.ImageURL || product.ThumbnailImage || product.HeroImage || product.ImageURL || "").trim();
 }
 
 function getStatus(product) {

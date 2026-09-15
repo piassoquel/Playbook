@@ -439,6 +439,43 @@
   object-position: center;
 }
 
+.product-gallery {
+  display: grid;
+  width: 100%;
+  gap: .85rem;
+}
+
+.product-gallery__thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .55rem;
+}
+
+.product-gallery__thumb {
+  display: grid;
+  width: 4.25rem;
+  height: 4.25rem;
+  padding: .25rem;
+  place-items: center;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: .65rem;
+  cursor: pointer;
+}
+
+.product-gallery__thumb.is-active {
+  border-color: rgba(255,106,0,.86);
+  box-shadow: 0 0 0 2px rgba(255,106,0,.20);
+}
+
+.product-gallery__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .suggested-product-card__placeholder {
   color: #b96cff;
   font-size: .64rem;

@@ -1,7 +1,7 @@
-# Winter Sports CMS v2.1
+# Winter Sports CMS v2.2
 
 This upgrade extends the existing header-driven Playbook CMS. It does not
-replace the current Products, SnowsportsAttributes, recommendation, or Admin
+replace the current Products, SnowsportsAttributes, recommendation, image, or Admin
 write architecture.
 
 ## Canonical fields
@@ -21,7 +21,7 @@ Category-specific fields stored in `SnowsportsAttributes`:
 - Ski bindings: `DINRange`, `BrakeWidth`
 
 After migration, `Products` remains the source of truth for shared identity,
-publishing, pricing, and media fields. `SnowsportsAttributes` is the source of
+publishing, pricing, and the backward-compatible primary `ImageURL`. `SnowsportsAttributes` is the source of
 truth for the category-specific fields above. Legacy copies of snow fields in
 `Products` are retained temporarily for backward compatibility and should not
 be edited directly.
@@ -38,6 +38,16 @@ variant. Its columns are `ProductVariantID`, `ProductID`, `VariantType`,
 The API exposes active variants as `product.Variants`. Import packages may
 include a `ProductVariants` worksheet; each ProductID must already exist or be
 included explicitly in the same package.
+
+## Product images
+
+Multiple product images are normalized in `ProductImages` with one row per
+image. Its columns are `ProductImageID`, `ProductID`, `ImageURL`, `AltText`,
+`ImageRole`, `DisplayOrder`, `Active`, and `LastUpdated`.
+
+`Products.ImageURL` remains the primary image for backward compatibility. The
+API exposes active normalized rows as `product.Images`; the first active image
+is treated as primary in the employee app and Admin preview.
 
 ## Deployment
 
