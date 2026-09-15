@@ -253,6 +253,12 @@ function resolveProductSpecs(product) {
     addSpec(specs, "Response", product.Response);
     addSpec(specs, "DIN Range", product.DINRange);
     addSpec(specs, "Brake Width", formatMillimeters(product.BrakeWidth));
+    const brakeVariants = getVariantValues(product, "Brake Width")
+      .map(formatMillimeters)
+      .filter(Boolean);
+    if (brakeVariants.length) {
+      addSpec(specs, "Available Brake Widths", brakeVariants.join(" / "));
+    }
   }
 
   return specs;
@@ -268,6 +274,15 @@ function getProfileValue(product) {
 
 function getFlexValue(product) {
   return product.Flex || product.BootFlex || product.BootFlexIndex || product.BindingFlex || "";
+}
+
+function getVariantValues(product, type) {
+  const variants = Array.isArray(product.Variants) ? product.Variants : [];
+  const target = normalize(type);
+  return [...new Set(variants
+    .filter((variant) => normalize(variant.VariantType || "Size") === target)
+    .map((variant) => String(variant.VariantValue || variant.Value || "").trim())
+    .filter(Boolean))];
 }
 
 function shouldShowTerrainPerformance(product) {

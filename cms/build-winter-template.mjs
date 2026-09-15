@@ -138,7 +138,7 @@ const dictionaryRows = [
   ["ImageRole", "Primary|Alternate|Detail|Lifestyle", "Primary is the first image shown. Additional active images appear as selectable thumbnails."],
   ["Sales Dashboard text", "Plain text; line breaks allowed", "CustomerProfile, SellingTips, ComparisonNotes, TalkingPoints, and CommonQuestions remain editable. Follow the Product Builder prompt for content length."],
   ["RecommendedProductIDs", "Blank", "Do not invent IDs. Manage normalized recommendations in Playbook Admin."],
-  ["ProductVariants", "One row per size or length", "Only use after ProductID is known. ProductVariantID must be unique."],
+  ["ProductVariants", "One row per size, length, or brake width", "Only use after ProductID is known. ProductVariantID must be unique. For ski bindings, use VariantType Brake Width and numeric VariantValue such as 95."],
 ];
 dictionary.getRange(`A4:C${dictionaryRows.length + 3}`).values = dictionaryRows;
 dictionary.getRange("A1:C1").format = { fill: "#E8F0FE", font: { bold: true, color: "#17324D", size: 12 }, wrapText: true };

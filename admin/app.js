@@ -356,7 +356,6 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
   const draft = editorState.draft;
   const brand = getBrandName({ BrandID: draft.BrandID });
   const neighbors = getProductNeighbors(sportSlug, typeSlug, product.ProductID);
-  const variants = getAvailableVariants(product);
 
   main.innerHTML = `
     ${renderBreadcrumbs([["Products", "#/products"], [sport.name, `#/products/${sportSlug}`], [typeName, `#/products/${sportSlug}/${typeSlug}`], [draft.Model || "Product Editor"]])}
@@ -414,7 +413,10 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
           <div data-shape-or-width-field>${renderShapeOrWidthField(draft)}</div>
           ${renderCategoryAttributes(draft)}
         </div>
-        ${variants.length ? renderVariants(variants) : `<div class="editor-empty-inline"><strong>Variants / sizes</strong><span>Not currently exposed by the CMS API.</span></div>`}
+        <div class="product-variants-editor" data-variants-editor>
+          ${renderVariantRows(draft.Variants, draft)}
+        </div>
+        <button class="secondary-action" type="button" data-add-variant>Add Variant</button>
       `)}
 
       ${renderEditorSection("Sales Dashboard", "Editable customer-facing guidance for the employee experience.", `
@@ -455,6 +457,7 @@ function createProductDraft(product) {
     MSRP: String(product.MSRP ?? ""),
     ImageURL: String(product.ImageURL || product.HeroImage || product.ThumbnailImage || ""),
     Images: normalizeImageDraft(product),
+    Variants: normalizeVariantDraft(product),
     Status: mapCmsStatus(product),
     AbilityLevel: String(ability ?? ""),
     Ability: String(product.Ability ?? ""),
@@ -506,6 +509,7 @@ function cloneProductDraft(draft) {
   return {
     ...draft,
     Images: normalizeImageDraft(draft),
+    Variants: normalizeVariantDraft(draft),
     Recommendations: normalizeRecommendationDraft(draft.Recommendations)
   };
 }
@@ -529,6 +533,15 @@ function normalizeImageDraft(product = {}) {
   }
   if (normalized.length) normalized[0].ImageRole = "Primary";
   return normalized;
+}
+
+function normalizeVariantDraft(product = {}) {
+  const variants = Array.isArray(product.Variants) ? product.Variants : [];
+  return variants.map((variant) => ({
+    ProductVariantID: String(variant.ProductVariantID || ""),
+    VariantType: String(variant.VariantType || "Size"),
+    VariantValue: String(variant.VariantValue || variant.Value || ""),
+  })).filter((variant) => variant.VariantValue);
 }
 
 function renderEditorSection(title, description, content) {
@@ -652,6 +665,24 @@ function renderImageRows(images) {
   `).join("");
 }
 
+function renderVariantRows(variants, draft) {
+  const defaultType = normalize(draft.CategoryID) === "SKIBIND" ? "Brake Width" : "Size";
+  const rows = variants.length ? variants : [{ ProductVariantID: "", VariantType: defaultType, VariantValue: "" }];
+  return rows.map((variant, index) => `
+    <div class="product-variant-row" data-variant-index="${index}">
+      <label class="form-field">
+        <span>Variant Type</span>
+        <input type="text" value="${escapeHtml(variant.VariantType || defaultType)}" data-variant-field="VariantType" data-variant-index="${index}">
+      </label>
+      <label class="form-field form-field--wide ${isBlankField(variant.VariantValue) ? "is-missing" : ""}">
+        ${renderFieldLabel("Variant Value", variant.VariantValue)}
+        <input type="text" value="${escapeHtml(variant.VariantValue)}" data-variant-field="VariantValue" data-variant-index="${index}" placeholder="${escapeHtml(defaultType === "Brake Width" ? "95" : "156")}">
+      </label>
+      <button class="icon-action" type="button" data-remove-variant="${index}" ${index === 0 && rows.length === 1 ? "disabled" : ""} aria-label="Remove variant">×</button>
+    </div>
+  `).join("");
+}
+
 function renderRecommendationGroup(productType, draft) {
   const candidates = (appData?.recommendationCandidates?.[productType] || [])
     .filter((product) => normalize(product.SportID) === normalize(draft.SportID));
@@ -664,20 +695,6 @@ function renderRecommendationGroup(productType, draft) {
     const value = draft.Recommendations?.[productType]?.[tier] || "";
     return `<label class="recommendation-slot"><span>${tier}</span><select data-recommendation-type="${productType}" data-recommendation-tier="${tier}"><option value="">No recommendation</option>${options.map(([id, label]) => `<option value="${escapeHtml(id)}" ${id === value ? "selected" : ""}>${escapeHtml(label)}</option>`).join("")}</select></label>`;
   }).join("")}</div></div>`;
-}
-
-function renderVariants(variants) {
-  return `<div class="editor-variants"><strong>Available variants / sizes</strong><div>${variants.map((variant) => `<span>${escapeHtml(variant)}</span>`).join("")}</div></div>`;
-}
-
-function getAvailableVariants(product) {
-  const value = firstValue(product.Variants, product.Sizes, product.AvailableSizes, product.Lengths);
-  if (!value) return [];
-  if (Array.isArray(value)) return value.map((variant) => {
-    if (variant && typeof variant === "object") return String(variant.VariantValue || variant.Value || "");
-    return String(variant);
-  }).filter(Boolean);
-  return String(value).split(/[|,]/).map((item) => item.trim()).filter(Boolean);
 }
 
 function getBrandOptions() {
@@ -778,6 +795,7 @@ function bindProductEditor(product, sportSlug, typeSlug) {
   });
 
   bindImageEditor(sportSlug, typeSlug, product.ProductID);
+  bindVariantEditor(sportSlug, typeSlug, product.ProductID);
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -890,6 +908,66 @@ function rerenderImageEditor(sportSlug, typeSlug, productId) {
   if (!editor) return;
   editor.innerHTML = renderImageRows(editorState.draft.Images);
   bindImageEditor(sportSlug, typeSlug, productId);
+}
+
+function bindVariantEditor(sportSlug, typeSlug, productId) {
+  const editor = main.querySelector("[data-variants-editor]");
+  const addButton = main.querySelector("[data-add-variant]");
+  if (!editor) return;
+
+  editor.querySelectorAll("[data-variant-field]").forEach((control) => {
+    const handler = () => {
+      const index = Number(control.dataset.variantIndex);
+      const field = control.dataset.variantField;
+      if (!editorState.draft.Variants[index]) return;
+      editorState.draft.Variants[index][field] = control.value;
+      syncVariantDraft();
+    };
+    control.addEventListener("input", handler);
+    control.addEventListener("change", handler);
+  });
+
+  editor.querySelectorAll("[data-remove-variant]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.removeVariant);
+      editorState.draft.Variants.splice(index, 1);
+      if (!editorState.draft.Variants.length) {
+        editorState.draft.Variants.push(createEmptyVariant(editorState.draft));
+      }
+      syncVariantDraft();
+      rerenderVariantEditor(sportSlug, typeSlug, productId);
+    });
+  });
+
+  if (addButton) {
+    addButton.addEventListener("click", () => {
+      editorState.draft.Variants.push(createEmptyVariant(editorState.draft));
+      syncVariantDraft();
+      rerenderVariantEditor(sportSlug, typeSlug, productId);
+    });
+  }
+}
+
+function createEmptyVariant(draft) {
+  return {
+    ProductVariantID: "",
+    VariantType: normalize(draft.CategoryID) === "SKIBIND" ? "Brake Width" : "Size",
+    VariantValue: "",
+  };
+}
+
+function syncVariantDraft() {
+  updateDraftField("Variants", editorState.draft.Variants);
+  const feedback = main.querySelector("[data-save-feedback]");
+  if (feedback) feedback.hidden = true;
+  updateEditorDirtyUi();
+}
+
+function rerenderVariantEditor(sportSlug, typeSlug, productId) {
+  const editor = main.querySelector("[data-variants-editor]");
+  if (!editor) return;
+  editor.innerHTML = renderVariantRows(editorState.draft.Variants, editorState.draft);
+  bindVariantEditor(sportSlug, typeSlug, productId);
 }
 
 function updateEditorDirtyUi() {
