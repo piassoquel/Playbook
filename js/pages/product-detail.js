@@ -356,13 +356,16 @@ function createSuggestedProducts(suggestedProducts, brands) {
       </div>
 
       <div class="suggested-products-grid">
-        ${suggestedProducts.map((suggested) => {
+        ${suggestedProducts.map((recommendation) => {
+          const suggested = recommendation.product || recommendation;
           const brand = getBrandById(brands, suggested.BrandID);
           const categoryLabel =
             suggested.CategoryName ||
             suggested.Category ||
             suggested.CategoryID ||
             "";
+          const tierLabel = recommendation.tier || "";
+          const typeLabel = recommendation.type || categoryLabel;
 
           return `
             <a
@@ -382,12 +385,12 @@ function createSuggestedProducts(suggestedProducts, brands) {
               </div>
 
               <div class="suggested-product-card__body">
-                <p>${escapeHtml(brand?.Name || suggested.BrandID || "")}</p>
+                <p>${escapeHtml([tierLabel, typeLabel].filter(Boolean).join(" "))}</p>
                 <h3>${escapeHtml(suggested.Model || "")}</h3>
 
                 ${
-                  categoryLabel
-                    ? `<span>${escapeHtml(categoryLabel)}</span>`
+                  brand?.Name || suggested.BrandID
+                    ? `<span>${escapeHtml(brand?.Name || suggested.BrandID || "")}</span>`
                     : ""
                 }
               </div>
@@ -437,11 +440,16 @@ function suggestionIcon() {
 }
 
 function getSuggestedProducts(product, products) {
+  const tiered = getTieredSuggestedProducts(product, products);
+
+  if (tiered.length) {
+    return tiered;
+  }
+
   const rawIds =
     product.RecommendedProductIDs ||
     product.RelatedProductIDs ||
     "";
-
   const ids = parseRelatedProductIds(rawIds);
   const seen = new Set();
 
@@ -459,7 +467,49 @@ function getSuggestedProducts(product, products) {
       seen.add(itemId);
       return true;
     })
-    .slice(0, 3);
+    .slice(0, 2)
+    .map((item) => ({
+      type: recommendationTypeFromProduct(item),
+      tier: "Suggested",
+      product: item
+    }));
+}
+
+function getTieredSuggestedProducts(product, products) {
+  const groups = product.ResolvedRecommendations || product.Recommendations;
+  if (!groups || typeof groups !== "object") return [];
+
+  return ["Binding", "Boot"]
+    .map((type) => {
+      const group = groups[type];
+      if (!group || typeof group !== "object") return null;
+
+      for (const tier of ["Recommended", "Upgrade", "Budget"]) {
+        const value = group[tier];
+        const suggested = resolveRecommendationProduct(value, products);
+        if (suggested) return { type, tier, product: suggested };
+      }
+
+      return null;
+    })
+    .filter(Boolean);
+}
+
+function resolveRecommendationProduct(value, products) {
+  if (!value) return null;
+
+  if (typeof value === "object") {
+    return value;
+  }
+
+  return getProductById(products, value);
+}
+
+function recommendationTypeFromProduct(product) {
+  const category = String(product.CategoryID || product.CategoryName || product.Category || "").toLowerCase();
+  if (category.includes("bind")) return "Binding";
+  if (category.includes("boot")) return "Boot";
+  return "Product";
 }
 
 function parseContentItems(content) {
