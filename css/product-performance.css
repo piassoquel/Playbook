@@ -243,6 +243,33 @@
   color: #8ba0b5;
 }
 
+.secondary-spec--brake-width small {
+  display: grid;
+  gap: .45rem;
+  margin-top: .15rem;
+}
+
+.secondary-spec--brake-width small span {
+  color: #8ba0b5;
+  font-size: .64rem;
+  font-weight: 850;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.secondary-spec--brake-width small strong {
+  display: inline-flex;
+  width: fit-content;
+  margin-right: .35rem;
+  margin-bottom: .35rem;
+  padding: .28rem .5rem;
+  color: #eaf6ff;
+  background: rgba(99,201,255,.10);
+  border: 1px solid rgba(99,201,255,.24);
+  border-radius: 999px;
+  font-size: .82rem;
+}
+
 .width-scale {
   margin: .55rem 0 .3rem;
 }
