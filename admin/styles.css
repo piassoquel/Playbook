@@ -509,7 +509,7 @@ a:focus-visible {
 .import-dropzone span, .import-file, .import-note { color: var(--text-muted); font-size: .75rem; }
 .import-dropzone input { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
 .import-file { margin: .65rem 0 1rem; text-align: center; }
-.import-summary { display: grid; grid-template-columns: repeat(4, 1fr); margin: 1rem 0; gap: .75rem; }
+.import-summary { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 1rem 0; gap: .75rem; }
 .import-summary > div { padding: 1rem; border-radius: .6rem; background: #f8fafc; text-align: center; }
 .import-summary strong, .import-summary span { display: block; }
 .import-summary strong { font-size: 1.5rem; }
