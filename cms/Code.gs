@@ -1,5 +1,5 @@
 /**
- * Playbook CMS API v2.1.0 — Winter Sports attributes
+ * Playbook CMS API v2.1.1 — Admin review queue and recommendations
  *
  * Backward-compatible with CMS v1.0 and v1.1.
  * Product payload and batch imports are header-driven, so the added
@@ -229,7 +229,14 @@ function buildAdminCatalog_() {
     Boolean(spreadsheet.getSheetByName(PLAYBOOK.SHEETS.PRODUCT_RECOMMENDATIONS))
   );
   attachVariants_(products, variantRows);
-  return { ...payload, products, adminCatalog: true };
+  return {
+    ...payload,
+    products,
+    recommendationCandidates: buildRecommendationCandidates_(
+      products, payload.categories, brandRows
+    ),
+    adminCatalog: true
+  };
 }
 
 function attachVariants_(products, rows) {
@@ -379,7 +386,7 @@ function buildRecommendationCandidates_(products, categories, brands) {
   const result = { Binding: [], Boot: [] };
   ADMIN_WRITE.RECOMMENDATION_TYPES.forEach((type) => {
     result[type] = products
-      .filter((product) => isPublishedProduct_(product) &&
+      .filter((product) => isRecommendationCandidate_(product) &&
         matchesRecommendationType_(product, type, categoryRefs, sportRefs))
       .map((product) => recommendationProduct_(product, brandNames))
       .sort((a, b) => String(a.Brand || "").localeCompare(String(b.Brand || "")) ||
@@ -1556,7 +1563,7 @@ const ADMIN_WRITE = {
     SnowboardProfile: ["Camber", "Rocker", "Flat", "CamRock", "Hybrid Camber", "Hybrid Rocker"],
     SkiProfile: ["Camber", "Tip Rocker", "Tip/Tail Rocker", "Full Rocker", "Hybrid"],
     SnowboardWidth: ["Regular", "Wide", "Volume Shifted"],
-    ClosureSystem: ["Traditional", "Single BOA", "Dual BOA", "Triple BOA", "Speed Lace", "Hybrid"],
+    ClosureSystem: ["Traditional", "Traditional Buckles", "Single BOA", "Dual BOA", "Triple BOA", "BOA + Buckles", "Speed Lace", "Hybrid"],
     EntryStyle: ["Traditional", "Step On", "Hands Free"],
     Response: ["Playful", "Balanced", "Precise"]
   },
@@ -1991,11 +1998,15 @@ function validateRecommendationPayload_(value, sourceProductId, refs) {
       if (!target) {
         throw apiError_(`Unknown recommendation ProductID: ${targetId}`, "VALIDATION_ERROR");
       }
-      if (!isPublishedProduct_(target)) {
-        throw apiError_(`Recommendation target ${targetId} is not published and active.`, "VALIDATION_ERROR");
+      if (!isRecommendationCandidate_(target)) {
+        throw apiError_(`Recommendation target ${targetId} is archived.`, "VALIDATION_ERROR");
       }
       if (!matchesRecommendationType_(target, type, refs.categories, refs.sports)) {
-        throw apiError_(`${targetId} is not an eligible snowboarding ${type.toLowerCase()}.`, "VALIDATION_ERROR");
+        throw apiError_(`${targetId} is not an eligible ${type.toLowerCase()}.`, "VALIDATION_ERROR");
+      }
+      const source = refs.products[normalizeId_(sourceProductId)];
+      if (source && normalizeId_(source.SportID) !== normalizeId_(target.SportID)) {
+        throw apiError_(`${targetId} must belong to the same sport as ${sourceProductId}.`, "VALIDATION_ERROR");
       }
       normalized[type][tier] = targetId;
     });
@@ -2007,10 +2018,11 @@ function isPublishedProduct_(product) {
   return isTrue_(product.Active) && statusFromRow_(product) === "Published";
 }
 
+function isRecommendationCandidate_(product) {
+  return statusFromRow_(product) !== "Archived";
+}
+
 function matchesRecommendationType_(product, type, categories, sports) {
-  const sport = sports.byId[normalizeId_(product.SportID)];
-  const sportText = normalizeId_(`${product.SportID} ${(sport && sport.row.Name) || ""}`);
-  if (!sportText.includes("SNB") && !sportText.includes("SNOWBOARD")) return false;
   const category = categories.byId[normalizeId_(product.CategoryID)];
   const categoryText = normalizeId_(`${product.CategoryID} ${(category && category.row.Name) || ""}`);
   return type === "Binding" ? categoryText.includes("BIND") : categoryText.includes("BOOT");

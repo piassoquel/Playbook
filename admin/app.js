@@ -195,13 +195,63 @@ function renderDashboard() {
     Published: countByStatus(products, "published") || "—",
     Archived: countByStatus(products, "archived") || "—",
   };
-  const cards = statCards.map(([label, icon]) => `
-    <article class="stat-card">
+  const cards = statCards.map(([label, icon]) => {
+    const tag = label === "Needs Review" ? "a" : "article";
+    const link = label === "Needs Review" ? ' href="#/products/review" aria-label="View all products needing review"' : "";
+    return `
+    <${tag} class="stat-card ${label === "Needs Review" ? "stat-card--link" : ""}"${link}>
       <div class="stat-card__header"><p class="stat-card__label">${label}</p><span class="stat-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24">${icons[icon]}</svg></span></div>
       <p class="stat-card__value">${values[label]}</p>
-      <p class="stat-card__note">${appData ? "Live catalog" : "Data will appear here"}</p>
-    </article>`).join("");
+      <p class="stat-card__note">${label === "Needs Review" && appData ? "View review queue →" : (appData ? "Live catalog" : "Data will appear here")}</p>
+    </${tag}>`;
+  }).join("");
   main.innerHTML = `${renderHeading("Dashboard", "A quick view of your Playbook catalog.")}<section class="stat-grid" aria-label="Catalog summary">${cards}</section>`;
+}
+
+function renderNeedsReviewList() {
+  if (!renderDataBoundary()) return;
+  const products = (appData.products || [])
+    .filter((product) => {
+      const status = normalize(getStatus(product));
+      return status.includes("REVIEW") || status === "DRAFT";
+    })
+    .sort((a, b) => getBrandName(a).localeCompare(getBrandName(b)) || String(a.Model || "").localeCompare(String(b.Model || "")));
+  main.innerHTML = `
+    ${renderBreadcrumbs([["Dashboard", "#/dashboard"], ["Needs Review"]])}
+    <div class="list-heading">
+      ${renderHeading("Needs Review", "Review imported and incomplete products across every winter-sports category.", "Review Queue")}
+      <label class="search-field"><span class="search-field__icon" aria-hidden="true"><svg viewBox="0 0 24 24">${icons.search}</svg></span><span class="sr-only">Search review queue</span><input type="search" placeholder="Search by brand, model, sport, or category" autocomplete="off" data-review-search></label>
+    </div>
+    <div class="result-summary" aria-live="polite" data-result-summary></div>
+    <section class="product-list" aria-label="Products needing review" data-product-list></section>`;
+  const input = main.querySelector("[data-review-search]");
+  const updateList = () => {
+    const query = normalize(input.value);
+    const filtered = products.filter((product) => normalize([
+      getBrandName(product), product.Model, product.SportID, product.CategoryID, product.Season
+    ].join(" ")).includes(query));
+    const list = main.querySelector("[data-product-list]");
+    main.querySelector("[data-result-summary]").textContent = `${filtered.length} ${filtered.length === 1 ? "product" : "products"} needing review`;
+    if (!filtered.length) {
+      list.innerHTML = `<div class="catalog-empty"><span class="empty-state__icon" aria-hidden="true">✓</span><h3>${products.length ? "No matching products" : "Review queue is clear"}</h3><p>${products.length ? "Try a different search." : "There are no products waiting for review."}</p></div>`;
+      return;
+    }
+    list.innerHTML = filtered.map((product) => {
+      const location = getProductLocation(product);
+      return createProductRow(product, location.sportSlug, location.typeSlug);
+    }).join("");
+    bindImageFallbacks();
+  };
+  input.addEventListener("input", updateList);
+  updateList();
+}
+
+function getProductLocation(product) {
+  const sportEntry = Object.entries(productTaxonomy).find(([, sport]) => sport.cmsSportIds.includes(normalize(product.SportID)));
+  const sportSlug = sportEntry?.[0] || (normalize(product.SportID) === "SKI" ? "skiing" : "snowboarding");
+  const sport = sportEntry?.[1] || productTaxonomy[sportSlug];
+  const typeEntry = Object.entries(sport.types).find(([, [, ids]]) => ids.includes(normalize(product.CategoryID)));
+  return { sportSlug, typeSlug: typeEntry?.[0] || Object.keys(sport.types)[0] };
 }
 
 function renderProductsHome() {
@@ -376,7 +426,7 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
           ${renderRecommendationGroup("Binding", draft)}
           ${renderRecommendationGroup("Boot", draft)}
         </div>
-        <p class="recommendation-note">Only active, published snowboarding bindings and boots are available.</p>
+        <p class="recommendation-note">Published and Needs Review products from the same sport are available. Archived products are excluded.</p>
       `)}
     </form>`;
 
@@ -547,7 +597,8 @@ function renderTextareaField(label, field, value) {
 }
 
 function renderRecommendationGroup(productType, draft) {
-  const candidates = appData?.recommendationCandidates?.[productType] || [];
+  const candidates = (appData?.recommendationCandidates?.[productType] || [])
+    .filter((product) => normalize(product.SportID) === normalize(draft.SportID));
   const options = candidates.map((product) => {
     const brand = String(product.Brand || getBrandName(product));
     const label = `${brand} ${product.Model || product.ProductID}${product.Season ? ` (${product.Season})` : ""}`;
@@ -987,6 +1038,7 @@ function renderRoute() {
   updateNavigation(root);
   if (root === "dashboard" && parts.length === 1) renderDashboard();
   else if (root === "products" && parts.length === 1) renderProductsHome();
+  else if (root === "products" && parts[1] === "review" && parts.length === 2) renderNeedsReviewList();
   else if (root === "products" && parts.length === 2) renderProductTypes(parts[1]);
   else if (root === "products" && parts.length === 3) renderProductList(parts[1], parts[2]);
   else if (root === "products" && parts[3] === "product" && parts.length === 5) renderProductDetail(parts[1], parts[2], parts[4]);
