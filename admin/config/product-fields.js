@@ -11,7 +11,7 @@ export const WINTER_SPORTS_DEFAULTS = {
   SnowboardProfile: ["Camber", "Rocker", "Flat", "CamRock", "Hybrid Camber", "Hybrid Rocker"],
   SkiProfile: ["Camber", "Tip Rocker", "Tip/Tail Rocker", "Full Rocker", "Hybrid"],
   SnowboardWidth: ["Regular", "Wide", "Volume Shifted"],
-  ClosureSystem: ["Traditional", "Single BOA", "Dual BOA", "Triple BOA", "Speed Lace", "Hybrid"],
+  ClosureSystem: ["Traditional", "Traditional Buckles", "Single BOA", "Dual BOA", "Triple BOA", "BOA + Buckles", "Speed Lace", "Hybrid"],
   EntryStyle: ["Traditional", "Step On", "Hands Free"],
   Response: ["Playful", "Balanced", "Precise"],
 };
