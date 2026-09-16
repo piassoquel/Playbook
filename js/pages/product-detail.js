@@ -187,6 +187,12 @@ function createImagePlaceholder(product, brandName) {
 
 function createBadges(product) {
   const badges = getProductBadges(product);
+  if (hasWideSnowboardVariant(product)) {
+    badges.push({
+      label: "Wide Sizes Available",
+      className: "product-badge--wide"
+    });
+  }
 
   if (!badges.length) return "";
 
@@ -628,6 +634,29 @@ function recommendationTypeFromProduct(product) {
   if (category.includes("bind")) return "Binding";
   if (category.includes("boot")) return "Boot";
   return "Product";
+}
+
+function hasWideSnowboardVariant(product) {
+  const sportId = String(product.SportID || "").trim().toUpperCase();
+  const categoryId = String(product.CategoryID || "").trim().toUpperCase();
+  if (sportId !== "SNB" || !categoryId.includes("BOARD")) return false;
+
+  return getVariantValues(product, "Size")
+    .concat(getVariantValues(product, "Length"))
+    .some((value) => /\d\s*w$/i.test(value) || /\bwide\b/i.test(value));
+}
+
+function getVariantValues(product, type) {
+  const variants = Array.isArray(product.Variants) ? product.Variants : [];
+  const target = normalize(type);
+  return [...new Set(variants
+    .filter((variant) => normalize(variant.VariantType || "Size") === target)
+    .map((variant) => String(variant.VariantValue || variant.Value || "").trim())
+    .filter(Boolean))];
+}
+
+function normalize(value) {
+  return String(value || "").trim().toUpperCase();
 }
 
 function parseContentItems(content) {
