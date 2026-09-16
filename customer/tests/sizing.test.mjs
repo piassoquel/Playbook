@@ -22,3 +22,14 @@ test('general guide is labeled and separate from model charts',()=>{
   assert.equal(result.kind,'general');
   assert.deepEqual(result.best,['156']);
 });
+test('boot size 11 selects wide variants automatically',()=>{
+  const board={sizes:['156','156W','159W'],sizeGuide:null,gender:"Men's"};
+  assert.deepEqual(evaluateSizing(board,{weight:175,bootSize:9,bootSystem:'men'}).best,['156','156W','159W']);
+  assert.deepEqual(evaluateSizing(board,{weight:175,bootSize:11,bootSystem:'men'}).best,['156W','159W']);
+});
+test('minimum-only charts also need a general length match',()=>{
+  const board={sizes:['147','152','159W'],sizeGuide:{kind:'model',source:'https://example.com',sizes:{'147':{weightMin:100},'152':{weightMin:110},'159W':{weightMin:120}}},gender:"Men's"};
+  const result=evaluateSizing(board,{weight:175,bootSize:9,bootSystem:'men'});
+  assert.equal(result.minimumOnly,true);
+  assert.deepEqual(result.best,['159W']);
+});

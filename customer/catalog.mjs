@@ -47,7 +47,9 @@ export function rankBoards(boards, answers) {
     let score = 0;
     const reasons = [];
     const sizing = evaluateSizing(board, answers);
-    const eligible = !answers.ability || board.ability.includes(answers.ability);
+    const eligible = (!answers.ability || board.ability.includes(answers.ability)) &&
+      (!answers.gender || board.gender === answers.gender || (board.gender === 'Unisex' && answers.gender !== 'Youth')) &&
+      (!answers.weight || sizing.best.length > 0);
     if (answers.ability && board.ability.includes(answers.ability)) {
       score += 4; reasons.push(`Listed for ${answers.ability.toLowerCase()} riders`);
     }
@@ -58,14 +60,12 @@ export function rankBoards(boards, answers) {
     if (answers.feel && flexFeel(board.flex) === answers.feel) {
       score += 2; reasons.push(`${board.flex} flex matches your preferred feel`);
     }
-    if (answers.wide && board.sizes.some(isWideSize)) {
-      score += 1; reasons.push('Wide size listed among available variants');
-    }
     if (sizing.best.length) {
-      if (!sizing.minimumOnly) {
-        score += sizing.kind === 'model' ? 3 : 1;
-        reasons.push(sizing.kind === 'model' ? `Listed ${sizing.best.join(', ')} size${sizing.best.length===1?'':'s'} within the maker’s guidance` : `Listed ${sizing.best.join(', ')} size${sizing.best.length===1?'':'s'} near the general guide`);
-      }
+      score += sizing.kind === 'model' && !sizing.minimumOnly ? 3 : 1;
+      const label=sizing.minimumOnly ? 'maker minimum and general length guide' : sizing.kind === 'model' ? 'maker’s guidance' : 'general length guide';
+      reasons.push(`Listed ${sizing.best.join(', ')} size${sizing.best.length===1?'':'s'} fit the ${label}`);
+      if (Number(answers.bootSize)>=11 && sizing.best.some(isWideSize)) reasons.push('Wide size selected for your boot size');
+      else if (sizing.best.every(isWideSize)) reasons.push('Wide size is the weight match');
     }
     return { board, score, reasons, eligible, sizing };
   }).sort((a,b) => b.score-a.score || a.board.brand.localeCompare(b.board.brand) || a.board.model.localeCompare(b.board.model));

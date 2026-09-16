@@ -41,12 +41,24 @@ export function evaluateSizing(board,answers={}){
       const widthMin=!systemMatches&&spec.waistCm?minWaist(boot,system):null;
       if(bootFits&&(!widthMin||spec.waistCm>=widthMin))best.push(size);
     }
-    return {kind:'model',best,possible,source:chart.source,minimumOnly,bootChecked:Boolean(chart.bootSystem&&chart.bootSystem===system&&system!=='kids')};
+    // A minimum weight alone cannot choose a length. Intersect it with the
+    // published general weight-to-length guide and keep the broader label.
+    const lengthFits=minimumOnly ? generalSizes(board,weight) : null;
+    const candidates=minimumOnly ? best.filter(size=>lengthFits.includes(size)) : best;
+    return {kind:'model',best:preferWide(candidates,boot),possible,source:chart.source,minimumOnly,bootChecked:Boolean(chart.bootSystem&&chart.bootSystem===system&&system!=='kids')};
   }
-  const rows=(board.sizes.some(s=>Number.parseInt(s,10)<130)?youth:adult).filter(([lo,hi])=>weight>=lo&&weight<=hi);
-  if(!rows.length)return {kind:'general',best:[],possible:[],source:GENERAL_SOURCE};
+  const best=preferWide(generalSizes(board,weight),boot);
+  return {kind:'general',best,possible:best,source:GENERAL_SOURCE,bootChecked:false};
+}
+function generalSizes(board,weight){
+  const rows=(board.gender==='Youth'?youth:adult).filter(([lo,hi])=>weight>=lo&&weight<=hi);
+  if(!rows.length)return [];
   rows.sort((a,b)=>Math.abs((a[0]+a[1])/2-weight)-Math.abs((b[0]+b[1])/2-weight));
   const [,,min,max]=rows[0];
-  const best=board.sizes.filter(s=>{const length=Number.parseInt(s,10);return length>=min&&length<=max;});
-  return {kind:'general',best,possible:best,source:GENERAL_SOURCE,bootChecked:false};
+  return board.sizes.filter(s=>{const length=Number.parseInt(s,10);return length>=min&&length<=max;});
+}
+function preferWide(sizes,boot){
+  if(boot<11)return sizes;
+  const wide=sizes.filter(s=>/\d\s*w$/i.test(s)||/\bwide\b/i.test(s));
+  return wide.length?wide:[];
 }

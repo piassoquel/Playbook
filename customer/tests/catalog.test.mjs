@@ -16,13 +16,14 @@ test('projection excludes review rows, internal fields, and unpublished recommen
   assert.equal(boards[0].recommendations.boot.recommended,undefined);
   assert.deepEqual(boards[0].sizes,['158W']);
 });
-test('matching uses catalog attributes and wide variants',()=>{
+test('matching uses catalog attributes and filters by category',()=>{
   const boards=projectCatalog(source);
-  const match=rankBoards(boards,{ability:'Intermediate',terrain:'Park',feel:'playful',wide:true})[0];
+  const match=rankBoards(boards,{ability:'Intermediate',terrain:'Park',feel:'playful'})[0];
   assert.equal(match.eligible,true);
-  assert.equal(match.reasons.length,4);
+  assert.equal(match.reasons.length,3);
   assert.equal(isWideSize(boards[0].sizes[0]),true);
   assert.equal(rankBoards(boards,{ability:'Beginner',terrain:'Park'})[0].eligible,false);
+  assert.equal(rankBoards([{...boards[0],gender:"Women's"}],{gender:"Men's"})[0].eligible,false);
 });
 test('Step On binding is withheld from a conventional boot pairing',()=>{
   const altered=structuredClone(source);
