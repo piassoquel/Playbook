@@ -30,6 +30,9 @@ export function projectCatalog(source) {
           rec[type.toLowerCase()][tier.toLowerCase()] = {
             id: clean(target.ProductID), brand: clean(brands.get(target.BrandID) || target.BrandID),
             model: clean(target.Model), image: webUrl(target.ImageURL), price: Number(target.MSRP) || null,
+            stepOn: type === 'Binding'
+              ? clean(target.EntryStyle).toLowerCase() === 'step on'
+              : /\bstep on\b/i.test(clean(target.Model)),
           };
         }
       }
@@ -61,4 +64,12 @@ export function rankBoards(boards, answers) {
 }
 export const terrainLabels = { Groomers:'Groomers', AllMountain:'All mountain', Powder:'Powder', Trees:'Trees', Park:'Park' };
 export const isWideSize = value => /\d\s*w$/i.test(value) || /\bwide\b/i.test(value);
+export function recommendedSetup(board) {
+  const binding = board.recommendations?.binding?.recommended;
+  const boot = board.recommendations?.boot?.recommended;
+  if (binding && boot && Boolean(binding.stepOn) !== Boolean(boot.stepOn)) {
+    return { binding: null, boot: null, needsReview: true };
+  }
+  return { binding: binding || null, boot: boot || null, needsReview: false };
+}
 function flexFeel(value) { const s=clean(value).toLowerCase(); return s.startsWith('soft') ? 'playful' : s.includes('stiff') ? 'supportive' : s === 'medium' ? 'balanced' : ''; }

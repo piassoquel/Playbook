@@ -49,21 +49,24 @@
             "brand": "Union",
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0002",
             "brand": "Jones",
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
-            "price": 300
+            "price": 300,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0006",
             "brand": "Union",
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
-            "price": 180
+            "price": 180,
+            "stepOn": false
           }
         },
         "boot": {
@@ -72,21 +75,24 @@
             "brand": "K2",
             "model": "Contour",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_contour_nantucket-breeze_KB261673_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0020",
             "brand": "Ride",
             "model": "Hera",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_hera_white_RD261906_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0019",
             "brand": "Ride",
             "model": "Sage",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 289.95
+            "price": 289.95,
+            "stepOn": false
           }
         }
       }
@@ -140,21 +146,24 @@
             "brand": "Jones",
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
-            "price": 370
+            "price": 370,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0010",
             "brand": "Union",
             "model": "Atlas Step On",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
-            "price": 430
+            "price": 430,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0005",
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           }
         },
         "boot": {
@@ -163,21 +172,24 @@
             "brand": "K2",
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0012",
             "brand": "K2",
             "model": "Theory",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 429.95
+            "price": 429.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0018",
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           }
         }
       }
@@ -229,21 +241,24 @@
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0001",
             "brand": "Jones",
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
-            "price": 370
+            "price": 370,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0007",
             "brand": "Union",
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           }
         },
         "boot": {
@@ -252,21 +267,24 @@
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0011",
             "brand": "K2",
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0022",
             "brand": "Salomon",
             "model": "Faction Boa",
             "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
-            "price": 279.95
+            "price": 279.95,
+            "stepOn": false
           }
         }
       }
@@ -319,21 +337,24 @@
             "brand": "Jones",
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
-            "price": 370
+            "price": 370,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0003",
             "brand": "Nitro",
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
-            "price": 330
+            "price": 330,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0005",
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           }
         },
         "boot": {
@@ -342,21 +363,24 @@
             "brand": "Ride",
             "model": "Lasso",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0015",
             "brand": "Nitro",
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
-            "price": 389.99
+            "price": 389.99,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0018",
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           }
         }
       }
@@ -408,7 +432,8 @@
             "brand": "Union",
             "model": "Cadet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_CADET_BLACK_1024x.jpg?v=1785333250",
-            "price": 150
+            "price": 150,
+            "stepOn": false
           }
         },
         "boot": {
@@ -417,7 +442,8 @@
             "brand": "Ride",
             "model": "Norris",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2526_norris_black_R2303026_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 149.95
+            "price": 149.95,
+            "stepOn": false
           }
         }
       }
@@ -469,7 +495,8 @@
             "brand": "Ride",
             "model": "Norris",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2526_norris_black_R2303026_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 149.95
+            "price": 149.95,
+            "stepOn": false
           }
         }
       }
@@ -521,21 +548,24 @@
             "brand": "Jones",
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
-            "price": 300
+            "price": 300,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0010",
             "brand": "Union",
             "model": "Atlas Step On",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
-            "price": 430
+            "price": 430,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0008",
             "brand": "Union",
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           }
         },
         "boot": {
@@ -544,21 +574,24 @@
             "brand": "Ride",
             "model": "Hera",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_hera_white_RD261906_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0015",
             "brand": "Nitro",
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
-            "price": 389.99
+            "price": 389.99,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0019",
             "brand": "Ride",
             "model": "Sage",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 289.95
+            "price": 289.95,
+            "stepOn": false
           }
         }
       }
@@ -611,21 +644,24 @@
             "brand": "Jones",
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
-            "price": 370
+            "price": 370,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0003",
             "brand": "Nitro",
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
-            "price": 330
+            "price": 330,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0005",
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           }
         },
         "boot": {
@@ -634,21 +670,24 @@
             "brand": "Ride",
             "model": "Lasso",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0015",
             "brand": "Nitro",
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
-            "price": 389.99
+            "price": 389.99,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0018",
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           }
         }
       }
@@ -702,21 +741,24 @@
             "brand": "Jones",
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
-            "price": 370
+            "price": 370,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0003",
             "brand": "Nitro",
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
-            "price": 330
+            "price": 330,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0005",
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           }
         },
         "boot": {
@@ -725,21 +767,24 @@
             "brand": "K2",
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0015",
             "brand": "Nitro",
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
-            "price": 389.99
+            "price": 389.99,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0018",
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           }
         }
       }
@@ -792,21 +837,24 @@
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0010",
             "brand": "Union",
             "model": "Atlas Step On",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
-            "price": 430
+            "price": 430,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0007",
             "brand": "Union",
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           }
         },
         "boot": {
@@ -815,21 +863,24 @@
             "brand": "K2",
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0015",
             "brand": "Nitro",
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
-            "price": 389.99
+            "price": 389.99,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0018",
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           }
         }
       }
@@ -883,21 +934,24 @@
             "brand": "Jones",
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
-            "price": 300
+            "price": 300,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0003",
             "brand": "Nitro",
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
-            "price": 330
+            "price": 330,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0008",
             "brand": "Union",
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           }
         },
         "boot": {
@@ -906,21 +960,24 @@
             "brand": "K2",
             "model": "Haven",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_haven_rose_KB261675_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 279.95
+            "price": 279.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0015",
             "brand": "Nitro",
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
-            "price": 389.99
+            "price": 389.99,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0019",
             "brand": "Ride",
             "model": "Sage",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 289.95
+            "price": 289.95,
+            "stepOn": false
           }
         }
       }
@@ -968,21 +1025,24 @@
             "brand": "Union",
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0001",
             "brand": "Jones",
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
-            "price": 370
+            "price": 370,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0006",
             "brand": "Union",
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
-            "price": 180
+            "price": 180,
+            "stepOn": false
           }
         },
         "boot": {
@@ -991,21 +1051,24 @@
             "brand": "Salomon",
             "model": "Faction Boa",
             "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
-            "price": 279.95
+            "price": 279.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0011",
             "brand": "K2",
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0016",
             "brand": "Nitro",
             "model": "Sentinel TLS",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
-            "price": 259.99
+            "price": 259.99,
+            "stepOn": false
           }
         }
       }
@@ -1055,21 +1118,24 @@
             "brand": "Union",
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0005",
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0006",
             "brand": "Union",
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
-            "price": 180
+            "price": 180,
+            "stepOn": false
           }
         },
         "boot": {
@@ -1078,21 +1144,24 @@
             "brand": "Salomon",
             "model": "Faction Boa",
             "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
-            "price": 279.95
+            "price": 279.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0018",
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0016",
             "brand": "Nitro",
             "model": "Sentinel TLS",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
-            "price": 259.99
+            "price": 259.99,
+            "stepOn": false
           }
         }
       }
@@ -1141,21 +1210,24 @@
             "brand": "Union",
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0002",
             "brand": "Jones",
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
-            "price": 300
+            "price": 300,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0006",
             "brand": "Union",
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
-            "price": 180
+            "price": 180,
+            "stepOn": false
           }
         },
         "boot": {
@@ -1164,21 +1236,24 @@
             "brand": "Ride",
             "model": "Sage",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 289.95
+            "price": 289.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0013",
             "brand": "K2",
             "model": "Contour",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_contour_nantucket-breeze_KB261673_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0023",
             "brand": "Salomon",
             "model": "Pearl Boa",
             "image": "https://cdn.dam.salomon.com/18d05f7c-7f2f-4ecc-86c0-b36001091640/L49276500/PNG-2000px-max-72dpi.png?width=1200&fit=cover&optimize=medium&bg-color=f5f5f5&format=pjpg&auto=avif&canvas=116p%2C144p",
-            "price": 279.95
+            "price": 279.95,
+            "stepOn": false
           }
         }
       }
@@ -1226,21 +1301,24 @@
             "brand": "Jones",
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
-            "price": 370
+            "price": 370,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0010",
             "brand": "Union",
             "model": "Atlas Step On",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
-            "price": 430
+            "price": 430,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0005",
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           }
         },
         "boot": {
@@ -1249,21 +1327,24 @@
             "brand": "K2",
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0012",
             "brand": "K2",
             "model": "Theory",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 429.95
+            "price": 429.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0018",
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           }
         }
       }
@@ -1311,14 +1392,16 @@
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0001",
             "brand": "Jones",
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
-            "price": 370
+            "price": 370,
+            "stepOn": false
           }
         },
         "boot": {
@@ -1327,14 +1410,16 @@
             "brand": "K2",
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0012",
             "brand": "K2",
             "model": "Theory",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 429.95
+            "price": 429.95,
+            "stepOn": false
           }
         }
       }
@@ -1384,21 +1469,24 @@
             "brand": "Jones",
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
-            "price": 370
+            "price": 370,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0004",
             "brand": "Salomon",
             "model": "SuperMatic",
             "image": "https://cdn.dam.salomon.com/b2bff1f7-a0fe-4304-9464-b2f3013e8798/L47940100/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
-            "price": 480
+            "price": 480,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0005",
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           }
         },
         "boot": {
@@ -1407,21 +1495,24 @@
             "brand": "Ride",
             "model": "Lasso",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0012",
             "brand": "K2",
             "model": "Theory",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 429.95
+            "price": 429.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0018",
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           }
         }
       }
@@ -1470,21 +1561,24 @@
             "brand": "Jones",
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
-            "price": 370
+            "price": 370,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0003",
             "brand": "Nitro",
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
-            "price": 330
+            "price": 330,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0005",
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           }
         },
         "boot": {
@@ -1493,21 +1587,24 @@
             "brand": "K2",
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0015",
             "brand": "Nitro",
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
-            "price": 389.99
+            "price": 389.99,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0018",
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           }
         }
       }
@@ -1555,21 +1652,24 @@
             "brand": "Union",
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0002",
             "brand": "Jones",
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
-            "price": 300
+            "price": 300,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0006",
             "brand": "Union",
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
-            "price": 180
+            "price": 180,
+            "stepOn": false
           }
         },
         "boot": {
@@ -1578,21 +1678,24 @@
             "brand": "K2",
             "model": "Haven",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_haven_rose_KB261675_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 279.95
+            "price": 279.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0019",
             "brand": "Ride",
             "model": "Sage",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 289.95
+            "price": 289.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0023",
             "brand": "Salomon",
             "model": "Pearl Boa",
             "image": "https://cdn.dam.salomon.com/18d05f7c-7f2f-4ecc-86c0-b36001091640/L49276500/PNG-2000px-max-72dpi.png?width=1200&fit=cover&optimize=medium&bg-color=f5f5f5&format=pjpg&auto=avif&canvas=116p%2C144p",
-            "price": 279.95
+            "price": 279.95,
+            "stepOn": false
           }
         }
       }
@@ -1642,21 +1745,24 @@
             "brand": "Union",
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0005",
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0006",
             "brand": "Union",
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
-            "price": 180
+            "price": 180,
+            "stepOn": false
           }
         },
         "boot": {
@@ -1665,21 +1771,24 @@
             "brand": "Salomon",
             "model": "Faction Boa",
             "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
-            "price": 279.95
+            "price": 279.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0018",
             "brand": "Ride",
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 349.95
+            "price": 349.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0016",
             "brand": "Nitro",
             "model": "Sentinel TLS",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
-            "price": 259.99
+            "price": 259.99,
+            "stepOn": false
           }
         }
       }
@@ -1729,21 +1838,24 @@
             "brand": "Union",
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0005",
             "brand": "Union",
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
-            "price": 250
+            "price": 250,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0006",
             "brand": "Union",
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
-            "price": 180
+            "price": 180,
+            "stepOn": false
           }
         },
         "boot": {
@@ -1752,21 +1864,24 @@
             "brand": "Salomon",
             "model": "Faction Boa",
             "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
-            "price": 279.95
+            "price": 279.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0017",
             "brand": "Ride",
             "model": "Lasso",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "budget": {
             "id": "SNB0016",
             "brand": "Nitro",
             "model": "Sentinel TLS",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
-            "price": 259.99
+            "price": 259.99,
+            "stepOn": false
           }
         }
       }
@@ -1816,21 +1931,24 @@
             "brand": "Jones",
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
-            "price": 300
+            "price": 300,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0003",
             "brand": "Nitro",
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
-            "price": 330
+            "price": 330,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0008",
             "brand": "Union",
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
-            "price": 200
+            "price": 200,
+            "stepOn": false
           }
         },
         "boot": {
@@ -1839,21 +1957,24 @@
             "brand": "K2",
             "model": "Contour",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_contour_nantucket-breeze_KB261673_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 379.95
+            "price": 379.95,
+            "stepOn": false
           },
           "upgrade": {
             "id": "SNB0015",
             "brand": "Nitro",
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
-            "price": 389.99
+            "price": 389.99,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0014",
             "brand": "K2",
             "model": "Haven",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_haven_rose_KB261675_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 279.95
+            "price": 279.95,
+            "stepOn": false
           }
         }
       }
