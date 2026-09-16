@@ -13,6 +13,14 @@ export function getProductBadges(product) {
     badges.push({ label: "Featured", className: "product-badge--featured" });
   }
 
+  const sport = String(product.SportID || "").trim().toUpperCase();
+  const category = String(product.CategoryID || "").trim().toUpperCase();
+  const isBoardOrSki = (sport === "SNB" && ["SNBBOARD", "BOARDS"].includes(category)) ||
+    (sport === "SKI" && category === "SKIS");
+  if (isBoardOrSki && isTrue(product.DemoAvailable)) {
+    badges.push({ label: "Demo Available", className: "product-badge--demo" });
+  }
+
   return badges;
 }
 
