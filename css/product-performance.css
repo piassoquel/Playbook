@@ -436,3 +436,148 @@
 .secondary-spec--profile > strong {
   justify-self: center;
 }
+
+.secondary-spec--interactive {
+  width: 100%;
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
+.secondary-spec--interactive:hover,
+.secondary-spec--interactive:focus-visible {
+  border-color: rgba(99, 201, 255, .34);
+  box-shadow: 0 0 0 1px rgba(99, 201, 255, .14), 0 18px 34px rgba(0, 0, 0, .18);
+}
+
+.secondary-spec--interactive:focus-visible {
+  outline: 2px solid rgba(99, 201, 255, .75);
+  outline-offset: 3px;
+}
+
+.education-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: max(1rem, env(safe-area-inset-top)) 1rem max(1rem, env(safe-area-inset-bottom));
+}
+
+.education-dialog__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 7, 13, .78);
+  backdrop-filter: blur(14px);
+}
+
+.education-dialog__panel {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: min(56rem, 100%);
+  max-height: min(44rem, 88vh);
+  overflow: auto;
+  gap: 1.1rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background:
+    linear-gradient(145deg, rgba(99, 201, 255, .08), rgba(255, 255, 255, .025)),
+    #0b121a;
+  border: 1px solid rgba(99, 201, 255, .24);
+  border-radius: 1.3rem;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, .55);
+}
+
+.education-dialog__close {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  z-index: 2;
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.education-dialog__media {
+  display: grid;
+  min-height: 12rem;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(99, 201, 255, .18) 0%,
+      rgba(99, 201, 255, .08) 38%,
+      rgba(99, 201, 255, 0) 74%
+    );
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 1rem;
+}
+
+.education-dialog__media img {
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 0 .8rem rgba(99, 201, 255, .18));
+}
+
+.education-dialog__media--shape img {
+  width: auto;
+  max-width: none;
+  height: clamp(10rem, 24vw, 18rem);
+  transform: rotate(90deg);
+}
+
+.education-dialog__media--profile img {
+  width: min(100%, 32rem);
+  height: auto;
+  mix-blend-mode: screen;
+  opacity: .95;
+  filter: contrast(1.08) brightness(1.08) drop-shadow(0 0 .8rem rgba(99, 201, 255, .18));
+}
+
+.education-dialog__body {
+  display: grid;
+  gap: .75rem;
+}
+
+.education-dialog__body h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(1.75rem, 5vw, 3rem);
+  letter-spacing: -.045em;
+  line-height: 1;
+}
+
+.education-dialog__body p {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.education-dialog__body ul {
+  margin: .1rem 0 0;
+  padding-left: 1.15rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.education-dialog__body li + li {
+  margin-top: .45rem;
+}
+
+@media (min-width: 48rem) {
+  .education-dialog__panel {
+    grid-template-columns: minmax(17rem, .95fr) minmax(0, 1.05fr);
+    align-items: center;
+  }
+}
