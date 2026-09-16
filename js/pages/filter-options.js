@@ -106,6 +106,12 @@ function getFilterConfig(filterType) {
       heading: "Choose an ability level",
       description: "See products that match the customer's experience level."
     },
+    gender: {
+      fieldName: "Gender",
+      title: "Shop by Gender",
+      heading: "Choose a gender category",
+      description: "Browse products by the customer category they are built around."
+    },
     terrain: {
       fieldName: "Terrain",
       title: "Shop by Terrain",

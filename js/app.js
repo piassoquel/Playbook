@@ -159,7 +159,7 @@ function renderRoute() {
       }
 
       if (
-        (parts[4] === "ability" || parts[4] === "terrain") &&
+        (parts[4] === "ability" || parts[4] === "terrain" || parts[4] === "gender") &&
         parts.length === 5
       ) {
         renderFilterOptionsPage(
@@ -219,7 +219,7 @@ function renderRoute() {
       }
 
       if (
-        (parts[4] === "ability" || parts[4] === "terrain") &&
+        (parts[4] === "ability" || parts[4] === "terrain" || parts[4] === "gender") &&
         parts.length === 6
       ) {
         renderProductListPage(
