@@ -383,6 +383,41 @@
   stroke-linejoin: round;
 }
 
+.suggested-products-tier-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin: -.25rem 0 .85rem;
+}
+
+.suggested-products-tier {
+  min-height: 2rem;
+  padding: 0 .75rem;
+  color: #d6c8ff;
+  background: rgba(164, 77, 255, .08);
+  border: 1px solid rgba(185, 108, 255, .24);
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .065em;
+  text-transform: uppercase;
+}
+
+.suggested-products-tier:hover,
+.suggested-products-tier:focus-visible,
+.suggested-products-tier.is-active {
+  color: #ffffff;
+  background: rgba(164, 77, 255, .22);
+  border-color: rgba(185, 108, 255, .62);
+}
+
+.suggested-products-tier:focus-visible {
+  outline: 2px solid rgba(185, 108, 255, .75);
+  outline-offset: 2px;
+}
+
 .suggested-products-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
