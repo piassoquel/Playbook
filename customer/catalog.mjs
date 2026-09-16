@@ -1,3 +1,4 @@
+import { evaluateSizing } from './sizing.mjs';
 const clean = value => String(value ?? '').trim();
 const webUrl = value => /^https:\/\/[^\s]+$/i.test(clean(value)) ? clean(value) : '';
 const published = p => p && p.Active === true && p.Status === 'Published';
@@ -9,7 +10,7 @@ export function projectCatalog(source) {
   const byId = new Map(allowed.map(p => [p.ProductID, p]));
   const boards = allowed.filter(p => p.SportID === 'SNB' && p.CategoryID === 'SNBBOARD');
   const product = p => ({
-    id: clean(p.ProductID), sport: 'snowboard', category: clean(p.CategoryID),
+    id: clean(p.ProductID), sport: 'snowboard', category: clean(p.CategoryID), season: Number(p.Season) || null,
     brand: clean(brands.get(p.BrandID) || p.BrandID), model: clean(p.Model),
     gender: clean(p.Gender), description: clean(p.Description), price: Number(p.MSRP) || null,
     ability: clean(p.Ability).split('|').map(clean).filter(Boolean),
@@ -45,6 +46,7 @@ export function rankBoards(boards, answers) {
   return boards.map(board => {
     let score = 0;
     const reasons = [];
+    const sizing = evaluateSizing(board, answers);
     const eligible = !answers.ability || board.ability.includes(answers.ability);
     if (answers.ability && board.ability.includes(answers.ability)) {
       score += 4; reasons.push(`Listed for ${answers.ability.toLowerCase()} riders`);
@@ -59,7 +61,13 @@ export function rankBoards(boards, answers) {
     if (answers.wide && board.sizes.some(isWideSize)) {
       score += 1; reasons.push('Wide size listed among available variants');
     }
-    return { board, score, reasons, eligible };
+    if (sizing.best.length) {
+      if (!sizing.minimumOnly) {
+        score += sizing.kind === 'model' ? 3 : 1;
+        reasons.push(sizing.kind === 'model' ? `Listed ${sizing.best.join(', ')} size${sizing.best.length===1?'':'s'} within the maker’s guidance` : `Listed ${sizing.best.join(', ')} size${sizing.best.length===1?'':'s'} near the general guide`);
+      }
+    }
+    return { board, score, reasons, eligible, sizing };
   }).sort((a,b) => b.score-a.score || a.board.brand.localeCompare(b.board.brand) || a.board.model.localeCompare(b.board.model));
 }
 export const terrainLabels = { Groomers:'Groomers', AllMountain:'All mountain', Powder:'Powder', Trees:'Trees', Park:'Park' };
