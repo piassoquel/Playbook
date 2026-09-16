@@ -222,9 +222,13 @@ function getSnowboardShapeIconPath(value) {
     truetwin: "TrueTwin.jpg"
   };
 
-  return iconMap[shape]
-    ? `assets/Icons/SnowboardShape/${iconMap[shape]}`
-    : "";
+  if (!iconMap[shape]) return "";
+
+  const appPath = typeof window === "undefined"
+    ? "./"
+    : window.location.pathname.replace(/(?:index\.html)?$/, "");
+
+  return `${appPath}assets/Icons/SnowboardShape/${iconMap[shape]}`;
 }
 
 function createGenericCharacteristic(value, label = "Product Characteristic", icon = characteristicIcon()) {
