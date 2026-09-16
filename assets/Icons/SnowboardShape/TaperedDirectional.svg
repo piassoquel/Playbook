@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 600" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="200" height="600" fill="#0b111a"/>
+
+  <!-- Snowboard Body (Tapered Wide Nose to Narrow Tail) -->
+  <path d="M 100,12 
+           C 155,12 172,35 168,100 
+           C 160,200 156,290 158,380 
+           C 160,480 148,565 100,565 
+           C 52,565 40,480 42,380 
+           C 44,290 40,200 32,100 
+           C 28,35 45,12 100,12 Z" 
+        fill="#121a24" stroke="#88b4d8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Top Binding Inserts (5x2) -->
+  <g fill="none" stroke="#88b4d8" stroke-width="1.5">
+    <circle cx="86" cy="185" r="3"/><circle cx="86" cy="200" r="3"/><circle cx="86" cy="215" r="3"/><circle cx="86" cy="230" r="3"/><circle cx="86" cy="245" r="3"/>
+    <circle cx="106" cy="185" r="3"/><circle cx="106" cy="200" r="3"/><circle cx="106" cy="215" r="3"/><circle cx="106" cy="230" r="3"/><circle cx="106" cy="245" r="3"/>
+  </g>
+
+  <!-- Bottom Binding Inserts (5x2) -->
+  <g fill="none" stroke="#88b4d8" stroke-width="1.5">
+    <circle cx="86" cy="370" r="3"/><circle cx="86" cy="385" r="3"/><circle cx="86" cy="400" r="3"/><circle cx="86" cy="415" r="3"/><circle cx="86" cy="430" r="3"/>
+    <circle cx="106" cy="370" r="3"/><circle cx="106" cy="385" r="3"/><circle cx="106" cy="400" r="3"/><circle cx="106" cy="415" r="3"/><circle cx="106" cy="430" r="3"/>
+  </g>
+
+  <!-- Side Arrow Left (Pointing Left/Outward) -->
+  <polygon points="25,295 13,300 25,305" fill="#38587a"/>
+
+  <!-- Side Arrow Right (Pointing Right/Outward) -->
+  <polygon points="175,295 187,300 175,305" fill="#38587a"/>
+
+  <!-- Bottom Arrow Tail (Pointing Down) -->
+  <polygon points="95,575 100,587 105,575" fill="#38587a"/>
+</svg>

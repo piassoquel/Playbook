@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="blueArrowGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="200" height="600" fill="#0b111a"/>
+
+  <!-- Nose Reference Box Lines -->
+  <path d="M 16,20 L 184,20 L 165,110 M 16,20 L 35,110" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.6"/>
+  <circle cx="16" cy="20" r="3" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+  <circle cx="184" cy="20" r="3" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+
+  <!-- Snowboard Body -->
+  <path d="M 100,20 
+           C 155,20 170,50 165,110 
+           C 158,200 156,290 160,370 
+           C 165,470 155,560 100,560 
+           C 45,560 35,470 40,370 
+           C 44,290 42,200 35,110 
+           C 30,50 45,20 100,20 Z" 
+        fill="#121a24" stroke="#88b4d8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Directional Blue Arrow at Top -->
+  <path d="M 100,70 L 100,115 M 100,70 L 85,95 M 100,70 L 115,95" fill="none" stroke="url(#blueArrowGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Top Binding Inserts (5x2) -->
+  <g fill="none" stroke="#88b4d8" stroke-width="1.5">
+    <circle cx="86" cy="185" r="3"/><circle cx="86" cy="200" r="3"/><circle cx="86" cy="215" r="3"/><circle cx="86" cy="230" r="3"/><circle cx="86" cy="245" r="3"/>
+    <circle cx="106" cy="185" r="3"/><circle cx="106" cy="200" r="3"/><circle cx="106" cy="215" r="3"/><circle cx="106" cy="230" r="3"/><circle cx="106" cy="245" r="3"/>
+  </g>
+
+  <!-- Bottom Binding Inserts (5x2) -->
+  <g fill="none" stroke="#88b4d8" stroke-width="1.5">
+    <circle cx="86" cy="365" r="3"/><circle cx="86" cy="380" r="3"/><circle cx="86" cy="395" r="3"/><circle cx="86" cy="410" r="3"/><circle cx="86" cy="425" r="3"/>
+    <circle cx="106" cy="365" r="3"/><circle cx="106" cy="380" r="3"/><circle cx="106" cy="395" r="3"/><circle cx="106" cy="410" r="3"/><circle cx="106" cy="425" r="3"/>
+  </g>
+
+  <!-- Offset Indicator Bracket on Right -->
+  <path d="M 125,355 L 163,355 L 163,420 L 125,420" fill="none" stroke="#88b4d8" stroke-width="1.2"/>
+</svg>
