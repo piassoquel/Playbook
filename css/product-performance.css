@@ -356,22 +356,31 @@
 }
 
 .secondary-spec--shape {
-  grid-template-rows: auto minmax(7.75rem, 1fr) auto;
+  grid-template-rows: auto minmax(8.5rem, 1fr) auto;
+  text-align: center;
 }
 
 .shape-visual {
   display: grid;
-  min-height: 7.75rem;
+  min-height: 8.5rem;
+  overflow: hidden;
   place-items: center;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(99, 201, 255, .2) 0%,
+      rgba(99, 201, 255, .1) 36%,
+      rgba(99, 201, 255, 0) 72%
+    );
 }
 
 .shape-visual img {
   display: block;
   width: auto;
-  max-width: 100%;
-  height: clamp(7rem, 13vw, 10.5rem);
-  max-height: 100%;
+  max-width: none;
+  height: clamp(13rem, 29vw, 20rem);
   object-fit: contain;
+  transform: rotate(90deg);
   filter: drop-shadow(0 0 .65rem rgba(99, 201, 255, .18));
 }
 
@@ -386,3 +395,7 @@
 }
 .secondary-spec--shape > strong,
 .secondary-spec--characteristic > strong { line-height:1.25; }
+
+.secondary-spec--shape > strong {
+  justify-self: center;
+}

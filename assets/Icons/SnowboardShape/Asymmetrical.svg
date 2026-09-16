@@ -4,10 +4,6 @@
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#88b4d8"/>
     </marker>
   </defs>
-  
-  <!-- Background -->
-  <rect width="200" height="600" fill="#0b111a"/>
-
   <!-- Snowboard Body -->
   <path d="M 125,32 
            C 165,32 175,70 162,180 

@@ -5,10 +5,6 @@
       <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.9"/>
     </linearGradient>
   </defs>
-
-  <!-- Background -->
-  <rect width="200" height="600" fill="#0b111a"/>
-
   <!-- Nose Reference Box Lines -->
   <path d="M 16,20 L 184,20 L 165,110 M 16,20 L 35,110" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.6"/>
   <circle cx="16" cy="20" r="3" fill="none" stroke="#a855f7" stroke-width="1.2"/>
