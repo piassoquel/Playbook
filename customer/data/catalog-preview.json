@@ -1,0 +1,1862 @@
+{
+  "generatedAt": "2026-09-16T22:59:52.888Z",
+  "boards": [
+    {
+      "id": "SNB0027",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Capita",
+      "model": "Birds of a Feather",
+      "gender": "Women's",
+      "description": "Women's true-twin resort board with hybrid camber, lively pop and balanced all-mountain freestyle performance.",
+      "price": 599.95,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 5
+      },
+      "shape": "True Twin",
+      "profile": "Hybrid Camber",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "138",
+        "142",
+        "146"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/RST04-BOAF-TOP.png?v=1776884603",
+          "alt": "Birds of a Feather"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/RST04-BOAF-BASE.png?v=1776884570",
+          "alt": "BirdsBottom1"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/RST04-BOAF-TOP.png?v=1776884603",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0008",
+            "brand": "Union",
+            "model": "Juliet",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
+            "price": 200
+          },
+          "upgrade": {
+            "id": "SNB0002",
+            "brand": "Jones",
+            "model": "Nebula",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
+            "price": 300
+          },
+          "budget": {
+            "id": "SNB0006",
+            "brand": "Union",
+            "model": "Flite Pro",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
+            "price": 180
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0013",
+            "brand": "K2",
+            "model": "Contour",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_contour_nantucket-breeze_KB261673_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0020",
+            "brand": "Ride",
+            "model": "Hera",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_hera_white_RD261906_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "budget": {
+            "id": "SNB0019",
+            "brand": "Ride",
+            "model": "Sage",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 289.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0026",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Capita",
+      "model": "D.O.A.",
+      "gender": "Men's",
+      "description": "Versatile true-twin resort board with hybrid camber, lightweight pop and predictable turn initiation.",
+      "price": 599.95,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 5
+      },
+      "shape": "True Twin",
+      "profile": "Hybrid Camber",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "152",
+        "156",
+        "158",
+        "162W"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/RST03-D.O.A.-TOP.png?v=1776884618",
+          "alt": "D.O.A."
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/RST03-D.O.A.-BASE.png?v=1776884607",
+          "alt": "DOABottom1"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/RST03-D.O.A.-TOP.png?v=1776884618",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0001",
+            "brand": "Jones",
+            "model": "Mercury FASE",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
+            "price": 370
+          },
+          "upgrade": {
+            "id": "SNB0010",
+            "brand": "Union",
+            "model": "Atlas Step On",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
+            "price": 430
+          },
+          "budget": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0011",
+            "brand": "K2",
+            "model": "Maysis",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0012",
+            "brand": "K2",
+            "model": "Theory",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 429.95
+          },
+          "budget": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0025",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Capita",
+      "model": "Indoor Survival",
+      "gender": "Men's",
+      "description": "True-twin park and resort board with traditional camber, responsive construction and enhanced edge hold.",
+      "price": 629.95,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 4,
+        "Powder": 2,
+        "Trees": 3,
+        "Park": 5
+      },
+      "shape": "True Twin",
+      "profile": "Camber",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "154",
+        "158"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/FST01-INDOOR-SURVIVAL-TOP.png?v=1776884610",
+          "alt": "Indoor Survival"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/FST01-INDOOR-SURVIVAL-BASE.png?v=1776884587",
+          "alt": "IndoorBottom1"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/FST01-INDOOR-SURVIVAL-TOP.png?v=1776884610",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          },
+          "upgrade": {
+            "id": "SNB0001",
+            "brand": "Jones",
+            "model": "Mercury FASE",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
+            "price": 370
+          },
+          "budget": {
+            "id": "SNB0007",
+            "brand": "Union",
+            "model": "STR",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
+            "price": 200
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          },
+          "upgrade": {
+            "id": "SNB0011",
+            "brand": "K2",
+            "model": "Maysis",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "budget": {
+            "id": "SNB0022",
+            "brand": "Salomon",
+            "model": "Faction Boa",
+            "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+            "price": 279.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0028",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Capita",
+      "model": "Mercury",
+      "gender": "Men's",
+      "description": "Directional all-mountain and freeride board with hybrid camber, powerful response and strong soft-snow float.",
+      "price": 699.95,
+      "ability": [
+        "Advanced",
+        "Expert"
+      ],
+      "abilityLevel": 5,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 4,
+        "Park": 4
+      },
+      "shape": "Directional",
+      "profile": "Hybrid Camber",
+      "flex": "Medium-Stiff",
+      "width": "Regular",
+      "sizes": [
+        "155",
+        "159",
+        "162W"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/FRD05-MERCURY-TOP.png?v=1776884538",
+          "alt": "Mercury"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/FRD05-MERCURY-BASE.png?v=1776884537",
+          "alt": "MercuryBottom"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/FRD05-MERCURY-TOP.png?v=1776884538",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0001",
+            "brand": "Jones",
+            "model": "Mercury FASE",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
+            "price": 370
+          },
+          "upgrade": {
+            "id": "SNB0003",
+            "brand": "Nitro",
+            "model": "Step On",
+            "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
+            "price": 330
+          },
+          "budget": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0017",
+            "brand": "Ride",
+            "model": "Lasso",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0015",
+            "brand": "Nitro",
+            "model": "Sentinel Step On Boa",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
+            "price": 389.99
+          },
+          "budget": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0024",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Capita",
+      "model": "Micro Mini",
+      "gender": "Youth",
+      "description": "Youth true-twin learning board with a catch-free reverse-camber profile and lightweight, durable construction.",
+      "price": 249.95,
+      "ability": [
+        "Beginner"
+      ],
+      "abilityLevel": 1,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 3,
+        "Powder": 2,
+        "Trees": 2,
+        "Park": 4
+      },
+      "shape": "True Twin",
+      "profile": "Rocker",
+      "flex": "Soft-Medium",
+      "width": "Regular",
+      "sizes": [
+        "80",
+        "90",
+        "100"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/YTH05-MICRO-MINI-TOP.png?v=1776884612",
+          "alt": "Micro Mini"
+        },
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/YTH05-MICRO-MINI-BASE.png?v=1776884576",
+          "alt": "MicroMiniBottom"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0231/7366/0752/files/YTH05-MICRO-MINI-TOP.png?v=1776884612",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0009",
+            "brand": "Union",
+            "model": "Cadet",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_CADET_BLACK_1024x.jpg?v=1785333250",
+            "price": 150
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0021",
+            "brand": "Ride",
+            "model": "Norris",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2526_norris_black_R2303026_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 149.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0040",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Gnu",
+      "model": "Recess Package",
+      "gender": "Youth",
+      "description": "Youth true-twin snowboard and binding package with flat-to-early-rise contour for learning across the resort.",
+      "price": 349.99,
+      "ability": [
+        "Beginner"
+      ],
+      "abilityLevel": 1,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 4,
+        "Powder": 2,
+        "Trees": 2,
+        "Park": 4
+      },
+      "shape": "True Twin",
+      "profile": "Flat",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "80",
+        "90",
+        "100",
+        "110",
+        "120",
+        "125"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-GNU-Snowboards-Recess-Snowboard-Package-Black-Base_03126fc1-1935-4a61-94bd-d2a85f931f3c.jpg?v=1783642551&width=1680",
+          "alt": "Recess Package"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-GNU-Snowboards-Recess-Snowboard-Package-Black-Base_03126fc1-1935-4a61-94bd-d2a85f931f3c.jpg?v=1783642551&width=1680",
+      "recommendations": {
+        "binding": {},
+        "boot": {
+          "recommended": {
+            "id": "SNB0021",
+            "brand": "Ride",
+            "model": "Norris",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2526_norris_black_R2303026_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 149.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0033",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Jones",
+      "model": "Dream Weaver 2.0",
+      "gender": "Women's",
+      "description": "Playful women's directional freeride board with Freeride CamRock for resort versatility and excellent powder float.",
+      "price": 549.95,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 5,
+        "Park": 2
+      },
+      "shape": "Directional",
+      "profile": "CamRock",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "139",
+        "145",
+        "148"
+      ],
+      "images": [
+        {
+          "url": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNW.DRC-gallery-4.webp?v=1782443896",
+          "alt": "Dream Weaver 2.0"
+        },
+        {
+          "url": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNW.DRC-gallery-1.webp?v=1782443912",
+          "alt": "DreamWeaver2"
+        }
+      ],
+      "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNW.DRC-gallery-4.webp?v=1782443896",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0002",
+            "brand": "Jones",
+            "model": "Nebula",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
+            "price": 300
+          },
+          "upgrade": {
+            "id": "SNB0010",
+            "brand": "Union",
+            "model": "Atlas Step On",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
+            "price": 430
+          },
+          "budget": {
+            "id": "SNB0008",
+            "brand": "Union",
+            "model": "Juliet",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
+            "price": 200
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0020",
+            "brand": "Ride",
+            "model": "Hera",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_hera_white_RD261906_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0015",
+            "brand": "Nitro",
+            "model": "Sentinel Step On Boa",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
+            "price": 389.99
+          },
+          "budget": {
+            "id": "SNB0019",
+            "brand": "Ride",
+            "model": "Sage",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 289.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0029",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Jones",
+      "model": "Frontier 2.0",
+      "gender": "Men's",
+      "description": "Playful directional freeride board with Freeride CamRock for intuitive resort performance and strong powder float.",
+      "price": 549.95,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 5,
+        "Park": 3
+      },
+      "shape": "Directional",
+      "profile": "CamRock",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "153",
+        "156",
+        "158W",
+        "161W"
+      ],
+      "images": [
+        {
+          "url": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNM.FRT-gallery-4.webp?v=1782443696&width=1946",
+          "alt": "Frontier 2.0"
+        },
+        {
+          "url": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNM.FRT-gallery-1.webp?v=1782443696&width=1946",
+          "alt": "Frontier2"
+        }
+      ],
+      "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNM.FRT-gallery-4.webp?v=1782443696&width=1946",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0001",
+            "brand": "Jones",
+            "model": "Mercury FASE",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
+            "price": 370
+          },
+          "upgrade": {
+            "id": "SNB0003",
+            "brand": "Nitro",
+            "model": "Step On",
+            "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
+            "price": 330
+          },
+          "budget": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0017",
+            "brand": "Ride",
+            "model": "Lasso",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0015",
+            "brand": "Nitro",
+            "model": "Sentinel Step On Boa",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
+            "price": 389.99
+          },
+          "budget": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0030",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Jones",
+      "model": "Mountain Twin",
+      "gender": "Men's",
+      "description": "Directional-twin all-mountain board with medium flex and CamRock for carving, freestyle and soft-snow versatility.",
+      "price": 599.95,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 4,
+        "Trees": 4,
+        "Park": 5
+      },
+      "shape": "Directional Twin",
+      "profile": "CamRock",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "154",
+        "157",
+        "159W",
+        "162W"
+      ],
+      "images": [
+        {
+          "url": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNM.MTN-gallery-4_vpkrl6.webp?v=1782443887&width=1946",
+          "alt": "Mountain Twin"
+        },
+        {
+          "url": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNM.MTN-gallery-1_cdsmc7.webp?v=1782443870&width=1946",
+          "alt": "MtTwin2"
+        }
+      ],
+      "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNM.MTN-gallery-4_vpkrl6.webp?v=1782443887&width=1946",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0001",
+            "brand": "Jones",
+            "model": "Mercury FASE",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
+            "price": 370
+          },
+          "upgrade": {
+            "id": "SNB0003",
+            "brand": "Nitro",
+            "model": "Step On",
+            "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
+            "price": 330
+          },
+          "budget": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0011",
+            "brand": "K2",
+            "model": "Maysis",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0015",
+            "brand": "Nitro",
+            "model": "Sentinel Step On Boa",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
+            "price": 389.99
+          },
+          "budget": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0031",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Jones",
+      "model": "Tweaker 2.0",
+      "gender": "Men's",
+      "description": "Playful true-twin freestyle board with mellow full camber for pop, precise edge control and resort versatility.",
+      "price": 549.95,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 4,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 5
+      },
+      "shape": "True Twin",
+      "profile": "Camber",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "154",
+        "156",
+        "160W"
+      ],
+      "images": [
+        {
+          "url": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNM.TTR-gallery-4.webp?v=1782443920&width=1946",
+          "alt": "Tweaker 2.0"
+        },
+        {
+          "url": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNM.TTR-gallery-1.webp?v=1782443904&width=1946",
+          "alt": "Tweaker2.02"
+        }
+      ],
+      "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNM.TTR-gallery-4.webp?v=1782443920&width=1946",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          },
+          "upgrade": {
+            "id": "SNB0010",
+            "brand": "Union",
+            "model": "Atlas Step On",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
+            "price": 430
+          },
+          "budget": {
+            "id": "SNB0007",
+            "brand": "Union",
+            "model": "STR",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
+            "price": 200
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0011",
+            "brand": "K2",
+            "model": "Maysis",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0015",
+            "brand": "Nitro",
+            "model": "Sentinel Step On Boa",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
+            "price": 389.99
+          },
+          "budget": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0032",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Jones",
+      "model": "Twin Sister",
+      "gender": "Women's",
+      "description": "Women's directional-twin all-mountain board with medium flex and CamRock for carving, freestyle and soft snow.",
+      "price": 599.95,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 4,
+        "Trees": 4,
+        "Park": 4
+      },
+      "shape": "Directional Twin",
+      "profile": "CamRock",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "140",
+        "143",
+        "146",
+        "149"
+      ],
+      "images": [
+        {
+          "url": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNW.TWS-gallery-4_hch7ut.webp?v=1782443862&width=1946",
+          "alt": "Twin Sister"
+        },
+        {
+          "url": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNW.TWS-gallery-1.webp?v=1773324878&width=1946",
+          "alt": "TwinSis2"
+        }
+      ],
+      "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.SNW.TWS-gallery-4_hch7ut.webp?v=1782443862&width=1946",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0002",
+            "brand": "Jones",
+            "model": "Nebula",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
+            "price": 300
+          },
+          "upgrade": {
+            "id": "SNB0003",
+            "brand": "Nitro",
+            "model": "Step On",
+            "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
+            "price": 330
+          },
+          "budget": {
+            "id": "SNB0008",
+            "brand": "Union",
+            "model": "Juliet",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
+            "price": 200
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0014",
+            "brand": "K2",
+            "model": "Haven",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_haven_rose_KB261675_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 279.95
+          },
+          "upgrade": {
+            "id": "SNB0015",
+            "brand": "Nitro",
+            "model": "Sentinel Step On Boa",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
+            "price": 389.99
+          },
+          "budget": {
+            "id": "SNB0019",
+            "brand": "Ride",
+            "model": "Sage",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 289.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0034",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Lib Tech",
+      "model": "Cold Brew",
+      "gender": "Men's",
+      "description": "Versatile directional freeride board with C2 rocker-camber contour, a floaty nose and Magne-Traction edges.",
+      "price": 549.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 4,
+        "Park": 3
+      },
+      "shape": "Directional",
+      "profile": "Hybrid Rocker",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "157",
+        "159",
+        "163W"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-Cold-Brew-Snowboard.jpg?v=1783458925&width=1440",
+          "alt": "Cold Brew"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-Cold-Brew-Snowboard.jpg?v=1783458925&width=1440",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0007",
+            "brand": "Union",
+            "model": "STR",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
+            "price": 200
+          },
+          "upgrade": {
+            "id": "SNB0001",
+            "brand": "Jones",
+            "model": "Mercury FASE",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
+            "price": 370
+          },
+          "budget": {
+            "id": "SNB0006",
+            "brand": "Union",
+            "model": "Flite Pro",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
+            "price": 180
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0022",
+            "brand": "Salomon",
+            "model": "Faction Boa",
+            "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+            "price": 279.95
+          },
+          "upgrade": {
+            "id": "SNB0011",
+            "brand": "K2",
+            "model": "Maysis",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "budget": {
+            "id": "SNB0016",
+            "brand": "Nitro",
+            "model": "Sentinel TLS",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
+            "price": 259.99
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0035",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Lib Tech",
+      "model": "DPR",
+      "gender": "Men's",
+      "description": "Directional-twin resort freestyle board with a forgiving early-rise nose and poppy mild-camber tail.",
+      "price": 499.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 4
+      },
+      "shape": "Directional Twin",
+      "profile": "Hybrid Camber",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "135",
+        "140",
+        "147",
+        "152",
+        "159W"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-DPR-Snowboard.jpg?v=1783458925&width=1440",
+          "alt": "DPR"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-DPR-Snowboard.jpg?v=1783458925&width=1440",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0007",
+            "brand": "Union",
+            "model": "STR",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
+            "price": 200
+          },
+          "upgrade": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          },
+          "budget": {
+            "id": "SNB0006",
+            "brand": "Union",
+            "model": "Flite Pro",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
+            "price": 180
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0022",
+            "brand": "Salomon",
+            "model": "Faction Boa",
+            "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+            "price": 279.95
+          },
+          "upgrade": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          },
+          "budget": {
+            "id": "SNB0016",
+            "brand": "Nitro",
+            "model": "Sentinel TLS",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
+            "price": 259.99
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0036",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Lib Tech",
+      "model": "Glider",
+      "gender": "Women's",
+      "description": "Playful women's twin with Original Banana rocker-camber contour and Magne-Traction edge grip.",
+      "price": 479.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 3,
+        "Park": 4
+      },
+      "shape": "Twin",
+      "profile": "Hybrid Rocker",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "139",
+        "143",
+        "147"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-Glider-Snowboards.jpg?v=1783458925&width=1440",
+          "alt": "Glider"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-Glider-Snowboards.jpg?v=1783458925&width=1440",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0008",
+            "brand": "Union",
+            "model": "Juliet",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
+            "price": 200
+          },
+          "upgrade": {
+            "id": "SNB0002",
+            "brand": "Jones",
+            "model": "Nebula",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
+            "price": 300
+          },
+          "budget": {
+            "id": "SNB0006",
+            "brand": "Union",
+            "model": "Flite Pro",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
+            "price": 180
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0019",
+            "brand": "Ride",
+            "model": "Sage",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 289.95
+          },
+          "upgrade": {
+            "id": "SNB0013",
+            "brand": "K2",
+            "model": "Contour",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_contour_nantucket-breeze_KB261673_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "budget": {
+            "id": "SNB0023",
+            "brand": "Salomon",
+            "model": "Pearl Boa",
+            "image": "https://cdn.dam.salomon.com/18d05f7c-7f2f-4ecc-86c0-b36001091640/L49276500/PNG-2000px-max-72dpi.png?width=1200&fit=cover&optimize=medium&bg-color=f5f5f5&format=pjpg&auto=avif&canvas=116p%2C144p",
+            "price": 279.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0037",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Lib Tech",
+      "model": "Orca 2",
+      "gender": "Unisex",
+      "description": "Volume-shifted directional T.Rice Orca II with a long floating nose, short powerful tail and C2x contour.",
+      "price": 749.99,
+      "ability": [
+        "Advanced",
+        "Expert"
+      ],
+      "abilityLevel": 5,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 5,
+        "Park": 2
+      },
+      "shape": "Directional",
+      "profile": "Hybrid Rocker",
+      "flex": "Medium-Stiff",
+      "width": "Volume Shifted",
+      "sizes": [
+        "153",
+        "156"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-Travis-Rice-Orca-2-Snowboard.jpg?v=1783458925&width=1440",
+          "alt": "Orca 2"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-Travis-Rice-Orca-2-Snowboard.jpg?v=1783458925&width=1440",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0001",
+            "brand": "Jones",
+            "model": "Mercury FASE",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
+            "price": 370
+          },
+          "upgrade": {
+            "id": "SNB0010",
+            "brand": "Union",
+            "model": "Atlas Step On",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
+            "price": 430
+          },
+          "budget": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0011",
+            "brand": "K2",
+            "model": "Maysis",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0012",
+            "brand": "K2",
+            "model": "Theory",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 429.95
+          },
+          "budget": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0038",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Lib Tech",
+      "model": "Skunk Ape",
+      "gender": "Men's",
+      "description": "Wide directional-twin all-mountain board built for larger riders, with C2x contour and Magne-Traction.",
+      "price": 699.99,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 4,
+        "Trees": 4,
+        "Park": 4
+      },
+      "shape": "Directional Twin",
+      "profile": "Hybrid Rocker",
+      "flex": "Medium-Stiff",
+      "width": "Wide",
+      "sizes": [
+        "165W",
+        "169W"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-Skunk-Ape-Snowboard.jpg?v=1783458925&width=1440",
+          "alt": "Skunk Ape"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-Skunk-Ape-Snowboard.jpg?v=1783458925&width=1440",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          },
+          "upgrade": {
+            "id": "SNB0001",
+            "brand": "Jones",
+            "model": "Mercury FASE",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
+            "price": 370
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0011",
+            "brand": "K2",
+            "model": "Maysis",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0012",
+            "brand": "K2",
+            "model": "Theory",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 429.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0039",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Lib Tech",
+      "model": "T Rice Pro",
+      "gender": "Men's",
+      "description": "Travis Rice's high-performance freestyle and all-mountain twin with C2 contour and lightweight HP construction.",
+      "price": 699.99,
+      "ability": [
+        "Advanced",
+        "Expert"
+      ],
+      "abilityLevel": 5,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 4,
+        "Trees": 4,
+        "Park": 5
+      },
+      "shape": "Twin",
+      "profile": "Hybrid Rocker",
+      "flex": "Medium-Stiff",
+      "width": "Regular",
+      "sizes": [
+        "155",
+        "157",
+        "159",
+        "161W"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-Travis-Rice-Pro-Snowboard.jpg?v=1783458926&width=1440",
+          "alt": "T Rice Pro"
+        }
+      ],
+      "image": "https://cdn.shopify.com/s/files/1/0860/1563/9745/files/2026-2027-Lib-Tech-Snowboards-Travis-Rice-Pro-Snowboard.jpg?v=1783458926&width=1440",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0001",
+            "brand": "Jones",
+            "model": "Mercury FASE",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
+            "price": 370
+          },
+          "upgrade": {
+            "id": "SNB0004",
+            "brand": "Salomon",
+            "model": "SuperMatic",
+            "image": "https://cdn.dam.salomon.com/b2bff1f7-a0fe-4304-9464-b2f3013e8798/L47940100/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+            "price": 480
+          },
+          "budget": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0017",
+            "brand": "Ride",
+            "model": "Lasso",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0012",
+            "brand": "K2",
+            "model": "Theory",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 429.95
+          },
+          "budget": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0042",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Nitro",
+      "model": "Alternator F/X",
+      "gender": "Men's",
+      "description": "Powerful directional all-mountain freestyle board with full camber, a mid-wide platform and carbon-reinforced pop.",
+      "price": 599.99,
+      "ability": [
+        "Advanced",
+        "Expert"
+      ],
+      "abilityLevel": 5,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 4,
+        "Park": 3
+      },
+      "shape": "Directional",
+      "profile": "Camber",
+      "flex": "Stiff",
+      "width": "Regular",
+      "sizes": [
+        "154",
+        "157",
+        "160"
+      ],
+      "images": [
+        {
+          "url": "https://www.nitrosnowboards.com/cdn/shop/files/11SB11013-101-142_Alternator-FX_Product-1.jpg?v=1779091947&width=1000",
+          "alt": "Alternator F/X"
+        }
+      ],
+      "image": "https://www.nitrosnowboards.com/cdn/shop/files/11SB11013-101-142_Alternator-FX_Product-1.jpg?v=1779091947&width=1000",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0001",
+            "brand": "Jones",
+            "model": "Mercury FASE",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
+            "price": 370
+          },
+          "upgrade": {
+            "id": "SNB0003",
+            "brand": "Nitro",
+            "model": "Step On",
+            "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
+            "price": 330
+          },
+          "budget": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0011",
+            "brand": "K2",
+            "model": "Maysis",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0015",
+            "brand": "Nitro",
+            "model": "Sentinel Step On Boa",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
+            "price": 389.99
+          },
+          "budget": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0043",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Nitro",
+      "model": "Lectra Abstract",
+      "gender": "Women's",
+      "description": "Forgiving women's directional-twin all-mountain board with Cam-Out Camber for comfortable progression.",
+      "price": 379.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 3,
+        "Park": 3
+      },
+      "shape": "Directional Twin",
+      "profile": "Hybrid Camber",
+      "flex": "Soft-Medium",
+      "width": "Regular",
+      "sizes": [
+        "138",
+        "146"
+      ],
+      "images": [
+        {
+          "url": "https://www.nitrosnowboards.com/cdn/shop/files/833241-001_Lectra-Abstract_138_Product-1.jpg?v=1755928914&width=1000",
+          "alt": "Lectra Abstract"
+        }
+      ],
+      "image": "https://www.nitrosnowboards.com/cdn/shop/files/833241-001_Lectra-Abstract_138_Product-1.jpg?v=1755928914&width=1000",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0008",
+            "brand": "Union",
+            "model": "Juliet",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
+            "price": 200
+          },
+          "upgrade": {
+            "id": "SNB0002",
+            "brand": "Jones",
+            "model": "Nebula",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
+            "price": 300
+          },
+          "budget": {
+            "id": "SNB0006",
+            "brand": "Union",
+            "model": "Flite Pro",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
+            "price": 180
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0014",
+            "brand": "K2",
+            "model": "Haven",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_haven_rose_KB261675_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 279.95
+          },
+          "upgrade": {
+            "id": "SNB0019",
+            "brand": "Ride",
+            "model": "Sage",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 289.95
+          },
+          "budget": {
+            "id": "SNB0023",
+            "brand": "Salomon",
+            "model": "Pearl Boa",
+            "image": "https://cdn.dam.salomon.com/18d05f7c-7f2f-4ecc-86c0-b36001091640/L49276500/PNG-2000px-max-72dpi.png?width=1200&fit=cover&optimize=medium&bg-color=f5f5f5&format=pjpg&auto=avif&canvas=116p%2C144p",
+            "price": 279.95
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0041",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Nitro",
+      "model": "Team",
+      "gender": "Men's",
+      "description": "Versatile directional-twin all-mountain board with traditional camber, a lively flex and a smooth sidecut.",
+      "price": 599.99,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 4,
+        "Trees": 4,
+        "Park": 4
+      },
+      "shape": "Directional Twin",
+      "profile": "Camber",
+      "flex": "Medium-Stiff",
+      "width": "Regular",
+      "sizes": [
+        "155",
+        "159",
+        "159W",
+        "162W"
+      ],
+      "images": [
+        {
+          "url": "https://www.nitrosnowboards.com/cdn/shop/files/11SB11016-101-152_Team_Product-1.jpg?v=1779091953&width=800",
+          "alt": "Team"
+        }
+      ],
+      "image": "https://www.nitrosnowboards.com/cdn/shop/files/11SB11016-101-152_Team_Product-1.jpg?v=1779091953&width=800",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0007",
+            "brand": "Union",
+            "model": "STR",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
+            "price": 200
+          },
+          "upgrade": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          },
+          "budget": {
+            "id": "SNB0006",
+            "brand": "Union",
+            "model": "Flite Pro",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
+            "price": 180
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0022",
+            "brand": "Salomon",
+            "model": "Faction Boa",
+            "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+            "price": 279.95
+          },
+          "upgrade": {
+            "id": "SNB0018",
+            "brand": "Ride",
+            "model": "Octave",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 349.95
+          },
+          "budget": {
+            "id": "SNB0016",
+            "brand": "Nitro",
+            "model": "Sentinel TLS",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
+            "price": 259.99
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0045",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Salomon",
+      "model": "Pulse",
+      "gender": "Men's",
+      "description": "Soft-flex men's directional-twin board with Flat Out Camber and Bite Free edges for easy progression.",
+      "price": 399.95,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 4,
+        "Powder": 3,
+        "Trees": 3,
+        "Park": 4
+      },
+      "shape": "Directional Twin",
+      "profile": "Hybrid Camber",
+      "flex": "Soft",
+      "width": "Regular",
+      "sizes": [
+        "142",
+        "149",
+        "156",
+        "162W"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.dam.salomon.com/d31a10d0-a688-4757-b7fe-b3b801009807/L49292900/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+          "alt": "Pulse"
+        }
+      ],
+      "image": "https://cdn.dam.salomon.com/d31a10d0-a688-4757-b7fe-b3b801009807/L49292900/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0007",
+            "brand": "Union",
+            "model": "STR",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
+            "price": 200
+          },
+          "upgrade": {
+            "id": "SNB0005",
+            "brand": "Union",
+            "model": "Force Classic",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
+            "price": 250
+          },
+          "budget": {
+            "id": "SNB0006",
+            "brand": "Union",
+            "model": "Flite Pro",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
+            "price": 180
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0022",
+            "brand": "Salomon",
+            "model": "Faction Boa",
+            "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+            "price": 279.95
+          },
+          "upgrade": {
+            "id": "SNB0017",
+            "brand": "Ride",
+            "model": "Lasso",
+            "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "budget": {
+            "id": "SNB0016",
+            "brand": "Nitro",
+            "model": "Sentinel TLS",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
+            "price": 259.99
+          }
+        }
+      }
+    },
+    {
+      "id": "SNB0044",
+      "sport": "snowboard",
+      "category": "SNBBOARD",
+      "brand": "Salomon",
+      "model": "Wonder",
+      "gender": "Women's",
+      "description": "Women's directional-twin all-mountain board with Rock Out Camber, medium flex and vibration-damping construction.",
+      "price": 479.95,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 5,
+        "Powder": 4,
+        "Trees": 4,
+        "Park": 4
+      },
+      "shape": "Directional Twin",
+      "profile": "Hybrid Camber",
+      "flex": "Medium",
+      "width": "Regular",
+      "sizes": [
+        "140",
+        "144",
+        "148",
+        "152"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.dam.salomon.com/54be7c2f-ae47-41eb-beeb-b3b8010097fb/L49292800/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+          "alt": "Wonder"
+        }
+      ],
+      "image": "https://cdn.dam.salomon.com/54be7c2f-ae47-41eb-beeb-b3b8010097fb/L49292800/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SNB0002",
+            "brand": "Jones",
+            "model": "Nebula",
+            "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
+            "price": 300
+          },
+          "upgrade": {
+            "id": "SNB0003",
+            "brand": "Nitro",
+            "model": "Step On",
+            "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
+            "price": 330
+          },
+          "budget": {
+            "id": "SNB0008",
+            "brand": "Union",
+            "model": "Juliet",
+            "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
+            "price": 200
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SNB0013",
+            "brand": "K2",
+            "model": "Contour",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_contour_nantucket-breeze_KB261673_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 379.95
+          },
+          "upgrade": {
+            "id": "SNB0015",
+            "brand": "Nitro",
+            "model": "Sentinel Step On Boa",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
+            "price": 389.99
+          },
+          "budget": {
+            "id": "SNB0014",
+            "brand": "K2",
+            "model": "Haven",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_haven_rose_KB261675_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 279.95
+          }
+        }
+      }
+    }
+  ]
+}
