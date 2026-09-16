@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 600" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="200" height="600" fill="#0b111a"/>
+
+  <!-- Pink Symmetry Grid Lines -->
+  <g stroke="#a855f7" stroke-width="0.8" opacity="0.6" fill="none">
+    <!-- Vertical Center Line -->
+    <line x1="100" y1="10" x2="100" y2="590"/>
+    <circle cx="100" cy="18" r="3" stroke-width="1.2"/>
+    <circle cx="100" cy="582" r="3" stroke-width="1.2"/>
+
+    <!-- Horizontal Center Line & End Points -->
+    <line x1="12" y1="300" x2="188" y2="300"/>
+    <circle cx="12" cy="300" r="3" stroke-width="1.2"/>
+    <circle cx="188" cy="300" r="3" stroke-width="1.2"/>
+
+    <!-- Top Box -->
+    <path d="M 18,18 L 182,18 L 165,200 L 35,200 Z"/>
+    <circle cx="18" cy="18" r="3" stroke-width="1.2"/>
+    <circle cx="182" cy="18" r="3" stroke-width="1.2"/>
+    <circle cx="35" cy="200" r="3" stroke-width="1.2"/>
+    <circle cx="165" cy="200" r="3" stroke-width="1.2"/>
+
+    <!-- Upper Middle Guide Line -->
+    <line x1="25" y1="200" x2="175" y2="200"/>
+
+    <!-- Bottom Box -->
+    <path d="M 35,400 L 165,400 L 182,582 L 18,582 Z"/>
+    <circle cx="35" cy="400" r="3" stroke-width="1.2"/>
+    <circle cx="165" cy="400" r="3" stroke-width="1.2"/>
+    <circle cx="18" cy="582" r="3" stroke-width="1.2"/>
+    <circle cx="182" cy="582" r="3" stroke-width="1.2"/>
+
+    <!-- Lower Middle Guide Line -->
+    <line x1="25" y1="400" x2="175" y2="400"/>
+  </g>
+
+  <!-- Snowboard Body (Symmetrical Twin Shape) -->
+  <path d="M 100,18 
+           C 152,18 165,50 160,120 
+           C 155,200 155,280 155,300 
+           C 155,320 155,400 160,480 
+           C 165,550 152,582 100,582 
+           C 48,582 35,550 40,480 
+           C 45,400 45,320 45,300 
+           C 45,280 45,200 40,120 
+           C 35,50 48,18 100,18 Z" 
+        fill="#121a24" stroke="#88b4d8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Top Binding Inserts (5x2) -->
+  <g fill="none" stroke="#88b4d8" stroke-width="1.5">
+    <circle cx="86" cy="175" r="3"/><circle cx="86" cy="190" r="3"/><circle cx="86" cy="205" r="3"/><circle cx="86" cy="220" r="3"/><circle cx="86" cy="235" r="3"/>
+    <circle cx="106" cy="175" r="3"/><circle cx="106" cy="190" r="3"/><circle cx="106" cy="205" r="3"/><circle cx="106" cy="220" r="3"/><circle cx="106" cy="235" r="3"/>
+  </g>
+
+  <!-- Bottom Binding Inserts (5x2) -->
+  <g fill="none" stroke="#88b4d8" stroke-width="1.5">
+    <circle cx="86" cy="365" r="3"/><circle cx="86" cy="380" r="3"/><circle cx="86" cy="395" r="3"/><circle cx="86" cy="410" r="3"/><circle cx="86" cy="425" r="3"/>
+    <circle cx="106" cy="365" r="3"/><circle cx="106" cy="380" r="3"/><circle cx="106" cy="395" r="3"/><circle cx="106" cy="410" r="3"/><circle cx="106" cy="425" r="3"/>
+  </g>
+</svg>

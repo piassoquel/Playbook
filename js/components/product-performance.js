@@ -215,11 +215,11 @@ function getSnowboardShapeIconPath(value) {
     .replace(/[^a-z0-9]+/g, "");
 
   const iconMap = {
-    asymmetrical: "Asymmetrical.jpg",
-    directional: "Directional.jpg",
-    directionaltwin: "DirectionalTwin.jpg",
-    tapereddirectional: "TaperedDirectional.jpg",
-    truetwin: "TrueTwin.jpg"
+    asymmetrical: "Asymmetrical.svg",
+    directional: "Directional.svg",
+    directionaltwin: "DirectionalTwin.svg",
+    tapereddirectional: "TaperedDirectional.svg",
+    truetwin: "TrueTwin.svg"
   };
 
   if (!iconMap[shape]) return "";
