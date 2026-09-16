@@ -119,6 +119,7 @@ export function renderProductDetailPage(
   }
 
   bindPerformanceEducation(container);
+  bindRecommendationTiers(container);
 
   container.querySelectorAll("[data-product-thumbnail]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -379,10 +380,16 @@ function createSuggestedProducts(suggestedProducts, brands) {
     return "";
   }
 
+  const tiers = getAvailableRecommendationTiers(suggestedProducts);
+  const activeTier = tiers.includes("Recommended") ? "Recommended" : tiers[0];
+  const activeCount = countSuggestedProductsForTier(suggestedProducts, activeTier);
+
   return `
     <section
-      class="suggested-products-section suggested-products-section--count-${suggestedProducts.length}"
+      class="suggested-products-section suggested-products-section--count-${activeCount}"
       aria-label="Suggested products"
+      data-suggested-products-section
+      data-active-tier="${escapeHtml(activeTier)}"
     >
       <div class="suggested-products-section__heading">
         <div class="suggested-products-section__heading-icon" aria-hidden="true">
@@ -394,6 +401,25 @@ function createSuggestedProducts(suggestedProducts, brands) {
           <h2>Suggested Products</h2>
         </div>
       </div>
+
+      ${
+        tiers.length > 1
+          ? `
+            <div class="suggested-products-tier-controls" aria-label="Recommendation type">
+              ${tiers.map((tier) => `
+                <button
+                  class="suggested-products-tier ${tier === activeTier ? "is-active" : ""}"
+                  type="button"
+                  data-recommendation-tier-filter="${escapeHtml(tier)}"
+                  aria-pressed="${tier === activeTier}"
+                >
+                  ${escapeHtml(tier)}
+                </button>
+              `).join("")}
+            </div>
+          `
+          : ""
+      }
 
       <div class="suggested-products-grid">
         ${suggestedProducts.map((recommendation) => {
@@ -411,6 +437,9 @@ function createSuggestedProducts(suggestedProducts, brands) {
             <a
               class="suggested-product-card"
               href="#/product/${encodeURIComponent(String(suggested.ProductID).toLowerCase())}"
+              data-recommendation-card
+              data-recommendation-tier="${escapeHtml(tierLabel)}"
+              ${tierLabel !== activeTier ? "hidden" : ""}
               aria-label="Open ${escapeHtml(
                 [brand?.Name || suggested.BrandID, suggested.Model]
                   .filter(Boolean)
@@ -442,6 +471,40 @@ function createSuggestedProducts(suggestedProducts, brands) {
       </div>
     </section>
   `;
+}
+
+function bindRecommendationTiers(container) {
+  container.querySelectorAll("[data-suggested-products-section]").forEach((section) => {
+    const buttons = [...section.querySelectorAll("[data-recommendation-tier-filter]")];
+    const cards = [...section.querySelectorAll("[data-recommendation-card]")];
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const tier = button.dataset.recommendationTierFilter || "";
+        let visibleCount = 0;
+
+        buttons.forEach((item) => {
+          const isActive = item === button;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-pressed", String(isActive));
+        });
+
+        cards.forEach((card) => {
+          const isVisible = (card.dataset.recommendationTier || "") === tier;
+          card.hidden = !isVisible;
+          if (isVisible) visibleCount += 1;
+        });
+
+        section.dataset.activeTier = tier;
+        section.classList.remove(
+          "suggested-products-section--count-1",
+          "suggested-products-section--count-2",
+          "suggested-products-section--count-3"
+        );
+        section.classList.add(`suggested-products-section--count-${Math.max(1, visibleCount)}`);
+      });
+    });
+  });
 }
 
 function createSuggestedImage(product, brandName) {
@@ -521,20 +584,33 @@ function getTieredSuggestedProducts(product, products) {
   const groups = product.ResolvedRecommendations || product.Recommendations;
   if (!groups || typeof groups !== "object") return [];
 
-  return ["Binding", "Boot"]
-    .map((type) => {
+  return ["Recommended", "Upgrade", "Budget"]
+    .flatMap((tier) => ["Binding", "Boot"].map((type) => {
       const group = groups[type];
       if (!group || typeof group !== "object") return null;
 
-      for (const tier of ["Recommended", "Upgrade", "Budget"]) {
-        const value = group[tier];
-        const suggested = resolveRecommendationProduct(value, products);
-        if (suggested) return { type, tier, product: suggested };
-      }
-
-      return null;
-    })
+      const value = group[tier];
+      const suggested = resolveRecommendationProduct(value, products);
+      return suggested ? { type, tier, product: suggested } : null;
+    }))
     .filter(Boolean);
+}
+
+function getAvailableRecommendationTiers(suggestedProducts) {
+  const order = ["Recommended", "Upgrade", "Budget", "Suggested"];
+  const available = new Set(
+    suggestedProducts
+      .map((recommendation) => recommendation.tier || "Suggested")
+      .filter(Boolean)
+  );
+  return order.filter((tier) => available.has(tier));
+}
+
+function countSuggestedProductsForTier(suggestedProducts, tier) {
+  return Math.max(
+    1,
+    suggestedProducts.filter((recommendation) => (recommendation.tier || "Suggested") === tier).length
+  );
 }
 
 function resolveRecommendationProduct(value, products) {

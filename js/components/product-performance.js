@@ -279,6 +279,7 @@ function createProductCharacteristic(product, value) {
 
 function createSpecCard(spec) {
   if (spec.kind === "brakeWidth") return createBrakeWidthCharacteristic(spec);
+  if (spec.kind === "wideSizes") return createWideSizesCharacteristic();
   if (spec.kind === "width") return createWidthCharacteristic(spec.value);
   if (spec.kind === "shape") return createShapeCharacteristic(spec.value);
   if (spec.kind === "profile") return createProfileCharacteristic(spec.value, spec.sportId);
@@ -511,6 +512,17 @@ function createBrakeWidthCharacteristic(spec) {
     </div>`;
 }
 
+function createWideSizesCharacteristic() {
+  return `
+    <div class="secondary-spec secondary-spec--characteristic secondary-spec--wide-sizes">
+      <div class="secondary-spec__heading">
+        ${rulerIcon()}
+        <span>Sizing</span>
+      </div>
+      <strong>Wide Sizes Available</strong>
+    </div>`;
+}
+
 function getShapeOrWidthValue(product) {
   if (product.ShapeOrWidth !== "" && product.ShapeOrWidth !== null && product.ShapeOrWidth !== undefined) {
     return product.ShapeOrWidth;
@@ -540,6 +552,10 @@ function resolveProductSpecs(product) {
 
   if (hasValue(flex)) {
     specs.push({ kind: "flex", label: "Flex", value: flex });
+  }
+
+  if (sportId === "SNB" && categoryId.includes("BOARD") && hasWideSnowboardVariant(product)) {
+    specs.push({ kind: "wideSizes", label: "Sizing", value: "Wide Sizes Available" });
   }
 
   if (categoryId.includes("BOOT")) {
@@ -584,6 +600,13 @@ function getVariantValues(product, type) {
     .filter((variant) => normalize(variant.VariantType || "Size") === target)
     .map((variant) => String(variant.VariantValue || variant.Value || "").trim())
     .filter(Boolean))];
+}
+
+function hasWideSnowboardVariant(product) {
+  return [
+    ...getVariantValues(product, "Size"),
+    ...getVariantValues(product, "Length")
+  ].some((value) => /\d\s*w$/i.test(value) || /\bwide\b/i.test(value));
 }
 
 function shouldShowTerrainPerformance(product) {
