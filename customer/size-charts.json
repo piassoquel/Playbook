@@ -26,7 +26,8 @@
         "bootMax": 9.0,
         "waistCm": 23.5
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0026": {
     "kind": "model",
@@ -55,7 +56,8 @@
         "bootMax": 10.0,
         "waistCm": 25.4
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0025": {
     "kind": "model",
@@ -77,7 +79,8 @@
         "bootMax": 10.0,
         "waistCm": 26.0
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0028": {
     "kind": "model",
@@ -106,7 +109,8 @@
         "bootMax": null,
         "waistCm": 26.7
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0024": {
     "kind": "model",
@@ -135,7 +139,8 @@
         "bootMax": 12.0,
         "waistCm": 19.3
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0040": {
     "kind": "model",
@@ -173,7 +178,8 @@
         "weightMax": null,
         "waistCm": 22.7
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0033": {
     "kind": "model",
@@ -199,7 +205,8 @@
         "bootMin": 6.0,
         "bootMax": 8.0
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0029": {
     "kind": "model",
@@ -231,7 +238,8 @@
         "bootMin": 11.0,
         "bootMax": 11.0
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0030": {
     "kind": "model",
@@ -263,7 +271,8 @@
         "bootMin": 11.0,
         "bootMax": 11.0
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0031": {
     "kind": "model",
@@ -289,7 +298,8 @@
         "bootMin": 11.0,
         "bootMax": 11.0
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0032": {
     "kind": "model",
@@ -321,7 +331,8 @@
         "bootMin": 8.0,
         "bootMax": 9.5
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0034": {
     "kind": "model",
@@ -344,7 +355,8 @@
         "weightMax": null,
         "waistCm": 26.8
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0035": {
     "kind": "model",
@@ -367,7 +379,8 @@
         "weightMax": null,
         "waistCm": 26.5
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0036": {
     "kind": "model",
@@ -390,7 +403,8 @@
         "weightMax": null,
         "waistCm": 24.5
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0037": {
     "kind": "model",
@@ -408,7 +422,8 @@
         "weightMax": null,
         "waistCm": 26.7
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0038": {
     "kind": "model",
@@ -426,7 +441,8 @@
         "weightMax": null,
         "waistCm": 26.8
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0039": {
     "kind": "model",
@@ -454,7 +470,8 @@
         "weightMax": null,
         "waistCm": 26.5
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0042": {
     "kind": "model",
@@ -477,7 +494,8 @@
         "weightMax": 185.0,
         "waistCm": 25.6
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   },
   "SNB0041": {
     "kind": "model",
@@ -505,6 +523,7 @@
         "weightMax": null,
         "waistCm": 27.0
       }
-    }
+    },
+    "checkedAt": "2026-09-16"
   }
 }
