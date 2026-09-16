@@ -154,7 +154,7 @@ function createSpecCard(spec) {
   if (spec.kind === "brakeWidth") return createBrakeWidthCharacteristic(spec);
   if (spec.kind === "width") return createWidthCharacteristic(spec.value);
   if (spec.kind === "shape") return createShapeCharacteristic(spec.value);
-  if (spec.kind === "profile") return createGenericCharacteristic(spec.value, "Profile", profileIcon());
+  if (spec.kind === "profile") return createProfileCharacteristic(spec.value, spec.sportId);
   if (spec.kind === "flex") return createGenericCharacteristic(spec.value, "Flex", flexIcon());
   return createGenericCharacteristic(spec.value, spec.label);
 }
@@ -224,11 +224,55 @@ function getSnowboardShapeIconPath(value) {
 
   if (!iconMap[shape]) return "";
 
-  const appPath = typeof window === "undefined"
+  return `${getAppPath()}assets/Icons/SnowboardShape/${iconMap[shape]}`;
+}
+
+function createProfileCharacteristic(value, sportId) {
+  const imagePath = normalize(sportId) === "SNB"
+    ? getSnowboardProfileImagePath(value)
+    : "";
+
+  if (!imagePath) {
+    return createGenericCharacteristic(value, "Profile", profileIcon());
+  }
+
+  return `
+    <div class="secondary-spec secondary-spec--profile">
+      <div class="secondary-spec__heading">
+        ${profileIcon()}
+        <span>Profile</span>
+      </div>
+      <div class="profile-visual" aria-hidden="true">
+        <img src="${escapeHtml(imagePath)}" alt="" loading="lazy">
+      </div>
+      <strong>${escapeHtml(String(value || ""))}</strong>
+    </div>`;
+}
+
+function getSnowboardProfileImagePath(value) {
+  const profile = String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+
+  const imageMap = {
+    camber: "Camber.jpg",
+    rocker: "Rocker.jpg",
+    flat: "Flat.jpg",
+    camrock: "CamRock.jpg",
+    hybridcamber: "HybridCamber.jpg",
+    hybridrocker: "HybridRocker.jpg"
+  };
+
+  return imageMap[profile]
+    ? `${getAppPath()}assets/Icons/SnowboardProfile/${imageMap[profile]}`
+    : "";
+}
+
+function getAppPath() {
+  return typeof window === "undefined"
     ? "./"
     : window.location.pathname.replace(/(?:index\.html)?$/, "");
-
-  return `${appPath}assets/Icons/SnowboardShape/${iconMap[shape]}`;
 }
 
 function createGenericCharacteristic(value, label = "Product Characteristic", icon = characteristicIcon()) {
@@ -284,7 +328,7 @@ function resolveProductSpecs(product) {
   }
 
   if (hasValue(profile)) {
-    specs.push({ kind: "profile", label: "Profile", value: profile });
+    specs.push({ kind: "profile", label: "Profile", value: profile, sportId });
   }
 
   if (hasValue(flex)) {

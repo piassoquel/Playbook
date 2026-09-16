@@ -349,6 +349,7 @@
 
 /* ShapeOrWidth compatibility */
 .secondary-spec--shape,
+.secondary-spec--profile,
 .secondary-spec--characteristic {
   display: grid;
   align-content: center;
@@ -398,5 +399,40 @@
 .secondary-spec--characteristic > strong { line-height:1.25; }
 
 .secondary-spec--shape > strong {
+  justify-self: center;
+}
+
+.secondary-spec--profile {
+  grid-template-rows: auto minmax(5.75rem, 1fr) auto;
+  align-content: center;
+  text-align: center;
+}
+
+.profile-visual {
+  display: grid;
+  min-height: 5.75rem;
+  overflow: hidden;
+  place-items: center;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(99, 201, 255, .16) 0%,
+      rgba(99, 201, 255, .07) 42%,
+      rgba(99, 201, 255, 0) 78%
+    );
+  border-radius: .75rem;
+}
+
+.profile-visual img {
+  display: block;
+  width: min(100%, 16rem);
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  opacity: .92;
+  filter: contrast(1.08) brightness(1.08) drop-shadow(0 0 .55rem rgba(99, 201, 255, .18));
+}
+
+.secondary-spec--profile > strong {
   justify-self: center;
 }
