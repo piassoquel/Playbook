@@ -191,15 +191,40 @@ function createWidthCharacteristic(value) {
 }
 
 function createShapeCharacteristic(value) {
+  const iconPath = getSnowboardShapeIconPath(value);
+
   return `
     <div class="secondary-spec secondary-spec--shape">
       <div class="secondary-spec__heading">
         ${shapeIcon()}
         <span>Shape</span>
       </div>
-      <div class="shape-visual" aria-hidden="true"><span></span></div>
+      <div class="shape-visual" aria-hidden="true">
+        ${iconPath
+          ? `<img src="${escapeHtml(iconPath)}" alt="" loading="lazy">`
+          : "<span></span>"}
+      </div>
       <strong>${escapeHtml(String(value || ""))}</strong>
     </div>`;
+}
+
+function getSnowboardShapeIconPath(value) {
+  const shape = String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+
+  const iconMap = {
+    asymmetrical: "Asymmetrical.jpg",
+    directional: "Directional.jpg",
+    directionaltwin: "DirectionalTwin.jpg",
+    tapereddirectional: "TaperedDirectional.jpg",
+    truetwin: "TrueTwin.jpg"
+  };
+
+  return iconMap[shape]
+    ? `assets/Icons/SnowboardShape/${iconMap[shape]}`
+    : "";
 }
 
 function createGenericCharacteristic(value, label = "Product Characteristic", icon = characteristicIcon()) {
