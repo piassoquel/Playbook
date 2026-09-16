@@ -13,6 +13,7 @@ import {
   parseRelatedProductIds
 } from "../components/product-detail-layout.js";
 import {
+  bindPerformanceEducation,
   createPerformancePanel,
   createSecondarySpecs
 } from "../components/product-performance.js";
@@ -116,6 +117,8 @@ export function renderProductDetailPage(
       media.innerHTML = createImagePlaceholder(product, brandName);
     }, { once: true });
   }
+
+  bindPerformanceEducation(container);
 
   container.querySelectorAll("[data-product-thumbnail]").forEach((button) => {
     button.addEventListener("click", () => {

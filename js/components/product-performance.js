@@ -14,6 +14,120 @@ const TERRAIN_DEFINITIONS = [
   { key: "TerrainPark", label: "Park", icon: "park" }
 ];
 
+const SHAPE_EDUCATION = {
+  twin: {
+    title: "Twin",
+    summary: "A balanced shape that feels similar riding forward or switch.",
+    benefits: [
+      "Easy to recommend for park, jumps, side hits, and riders who value freestyle versatility.",
+      "Helps customers who want a playful, centered feel instead of directional float or carving power.",
+      "Usually best when the rider spends meaningful time riding switch."
+    ]
+  },
+  truetwin: {
+    title: "True Twin",
+    summary: "A fully symmetrical twin shape with matching nose and tail dimensions.",
+    benefits: [
+      "Most natural choice for riders who want the same feel regular or switch.",
+      "Strong fit for park laps, jumps, rails, and freestyle-focused all-mountain riding.",
+      "Less specialized for deep powder than directional or tapered shapes."
+    ]
+  },
+  directionaltwin: {
+    title: "Directional Twin",
+    summary: "A twin-inspired outline with subtle directional advantages.",
+    benefits: [
+      "A good middle ground for riders who want freestyle comfort with better all-mountain confidence.",
+      "Often feels more stable at speed than a true twin while still being switch-friendly.",
+      "Easy recommendation for customers who ride groomers and natural features but still want playfulness."
+    ]
+  },
+  directional: {
+    title: "Directional",
+    summary: "A shape designed to perform best with one end leading.",
+    benefits: [
+      "Supports stronger carving, stability, and confidence in mixed resort conditions.",
+      "Usually gives better drive through turns than a twin shape.",
+      "Best for customers who mostly ride forward and do not prioritize switch riding."
+    ]
+  },
+  tapereddirectional: {
+    title: "Tapered Directional",
+    summary: "A directional shape with a wider nose and narrower tail.",
+    benefits: [
+      "Helps the nose float and the tail sink in softer snow.",
+      "Great talking point for powder, trees, surfy turns, and directional freeride boards.",
+      "Usually not the first choice for customers who want symmetrical park performance."
+    ]
+  },
+  asymmetrical: {
+    title: "Asymmetrical",
+    summary: "A shape tuned differently from toe edge to heel edge.",
+    benefits: [
+      "Designed to make heel-side turns feel more balanced and easier to control.",
+      "Useful for riders who want a board that feels intuitive edge-to-edge.",
+      "A strong education point when explaining why the board may look unusual but ride naturally."
+    ]
+  }
+};
+
+const PROFILE_EDUCATION = {
+  camber: {
+    title: "Camber",
+    summary: "Traditional arch underfoot that stores energy and grips strongly.",
+    benefits: [
+      "Best talking points are edge hold, pop, stability, and powerful carving.",
+      "Great for confident riders who like response and precision.",
+      "Can feel less forgiving for newer riders compared with rocker or hybrid profiles."
+    ]
+  },
+  rocker: {
+    title: "Rocker",
+    summary: "Upturned profile that makes the board easier to pivot and float.",
+    benefits: [
+      "Helps with easier turn initiation and a more forgiving feel.",
+      "Useful for powder float and relaxed riding styles.",
+      "May feel less locked-in at speed than camber-heavy profiles."
+    ]
+  },
+  flat: {
+    title: "Flat",
+    summary: "A stable, neutral profile that sits between camber and rocker.",
+    benefits: [
+      "Good balance of stability, predictability, and forgiveness.",
+      "Often easy for employees to position as a dependable all-around option.",
+      "Less energetic than camber, but typically more planted than full rocker."
+    ]
+  },
+  camrock: {
+    title: "CamRock",
+    summary: "Camber between the feet with rocker toward the tip and tail.",
+    benefits: [
+      "Combines grip and pop underfoot with easier turn entry and improved float.",
+      "Strong all-mountain story for riders who want performance without a punishing feel.",
+      "A helpful bridge between traditional camber and more forgiving rocker profiles."
+    ]
+  },
+  hybridcamber: {
+    title: "Hybrid Camber",
+    summary: "Camber-focused profile with added shaping for forgiveness or float.",
+    benefits: [
+      "Keeps much of the edge hold and energy customers expect from camber.",
+      "Often more approachable than full traditional camber.",
+      "Good fit for riders who want responsive all-mountain performance."
+    ]
+  },
+  hybridrocker: {
+    title: "Hybrid Rocker",
+    summary: "Rocker-focused profile with added camber or stable zones.",
+    benefits: [
+      "Prioritizes forgiveness, float, and easy turn initiation.",
+      "Added camber zones can improve grip and stability compared with full rocker.",
+      "Good for riders who want a mellow feel without giving up all support."
+    ]
+  }
+};
+
 export function createPerformancePanel(product) {
   const abilityLevel = resolveAbilityLevel(product);
   const terrainRatings = shouldShowTerrainPerformance(product)
@@ -58,6 +172,19 @@ export function createPerformancePanel(product) {
 
 export function createSecondarySpecs() {
   return "";
+}
+
+export function bindPerformanceEducation(container) {
+  container.querySelectorAll("[data-education-card]").forEach((card) => {
+    card.addEventListener("click", () => {
+      openEducationDialog({
+        kind: card.dataset.educationKind || "",
+        value: card.dataset.educationValue || "",
+        title: card.dataset.educationTitle || "",
+        image: card.dataset.educationImage || ""
+      });
+    });
+  });
 }
 
 function createAbilityGauge(product, level) {
@@ -192,9 +319,19 @@ function createWidthCharacteristic(value) {
 
 function createShapeCharacteristic(value) {
   const iconPath = getSnowboardShapeIconPath(value);
+  const education = getEducationContent("shape", value);
 
   return `
-    <div class="secondary-spec secondary-spec--shape">
+    <button
+      class="secondary-spec secondary-spec--shape secondary-spec--interactive"
+      type="button"
+      data-education-card
+      data-education-kind="shape"
+      data-education-value="${escapeHtml(String(value || ""))}"
+      data-education-title="${escapeHtml(education?.title || String(value || ""))}"
+      data-education-image="${escapeHtml(iconPath)}"
+      aria-label="Learn about ${escapeHtml(String(value || ""))} snowboard shape"
+    >
       <div class="secondary-spec__heading">
         ${shapeIcon()}
         <span>Shape</span>
@@ -205,7 +342,7 @@ function createShapeCharacteristic(value) {
           : "<span></span>"}
       </div>
       <strong>${escapeHtml(String(value || ""))}</strong>
-    </div>`;
+    </button>`;
 }
 
 function getSnowboardShapeIconPath(value) {
@@ -236,8 +373,19 @@ function createProfileCharacteristic(value, sportId) {
     return createGenericCharacteristic(value, "Profile", profileIcon());
   }
 
+  const education = getEducationContent("profile", value);
+
   return `
-    <div class="secondary-spec secondary-spec--profile">
+    <button
+      class="secondary-spec secondary-spec--profile secondary-spec--interactive"
+      type="button"
+      data-education-card
+      data-education-kind="profile"
+      data-education-value="${escapeHtml(String(value || ""))}"
+      data-education-title="${escapeHtml(education?.title || String(value || ""))}"
+      data-education-image="${escapeHtml(imagePath)}"
+      aria-label="Learn about ${escapeHtml(String(value || ""))} snowboard profile"
+    >
       <div class="secondary-spec__heading">
         ${profileIcon()}
         <span>Profile</span>
@@ -246,7 +394,7 @@ function createProfileCharacteristic(value, sportId) {
         <img src="${escapeHtml(imagePath)}" alt="" loading="lazy">
       </div>
       <strong>${escapeHtml(String(value || ""))}</strong>
-    </div>`;
+    </button>`;
 }
 
 function getSnowboardProfileImagePath(value) {
@@ -273,6 +421,65 @@ function getAppPath() {
   return typeof window === "undefined"
     ? "./"
     : window.location.pathname.replace(/(?:index\.html)?$/, "");
+}
+
+function getEducationContent(kind, value) {
+  const key = normalizeEducationKey(value);
+  if (kind === "shape") return SHAPE_EDUCATION[key];
+  if (kind === "profile") return PROFILE_EDUCATION[key];
+  return null;
+}
+
+function normalizeEducationKey(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+function openEducationDialog({ kind, value, title, image }) {
+  const content = getEducationContent(kind, value);
+  if (!content) return;
+
+  const dialog = document.createElement("div");
+  dialog.className = "education-dialog";
+  dialog.setAttribute("role", "dialog");
+  dialog.setAttribute("aria-modal", "true");
+  dialog.setAttribute("aria-label", `${content.title} details`);
+
+  dialog.innerHTML = `
+    <div class="education-dialog__scrim" data-education-close></div>
+    <div class="education-dialog__panel">
+      <button class="education-dialog__close" type="button" data-education-close aria-label="Close details">×</button>
+      <div class="education-dialog__media education-dialog__media--${escapeHtml(kind)}">
+        ${image ? `<img src="${escapeHtml(image)}" alt="" loading="lazy">` : ""}
+      </div>
+      <div class="education-dialog__body">
+        <p class="eyebrow">${escapeHtml(kind === "shape" ? "Snowboard Shape" : "Snowboard Profile")}</p>
+        <h2>${escapeHtml(title || content.title)}</h2>
+        <p>${escapeHtml(content.summary)}</p>
+        <ul>
+          ${content.benefits.map((benefit) => `<li>${escapeHtml(benefit)}</li>`).join("")}
+        </ul>
+      </div>
+    </div>`;
+
+  const closeDialog = () => {
+    document.removeEventListener("keydown", handleKeydown);
+    dialog.remove();
+  };
+
+  const handleKeydown = (event) => {
+    if (event.key === "Escape") closeDialog();
+  };
+
+  dialog.querySelectorAll("[data-education-close]").forEach((button) => {
+    button.addEventListener("click", closeDialog);
+  });
+
+  document.addEventListener("keydown", handleKeydown);
+  document.body.append(dialog);
+  dialog.querySelector(".education-dialog__close")?.focus();
 }
 
 function createGenericCharacteristic(value, label = "Product Characteristic", icon = characteristicIcon()) {
