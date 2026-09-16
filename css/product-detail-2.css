@@ -34,6 +34,7 @@
 .product-badge--favorite { color:#ffdcae; background:rgba(255,176,0,.12); border-color:rgba(255,176,0,.32); }
 .product-badge--featured { color:#d6c8ff; background:rgba(124,85,217,.14); border-color:rgba(124,85,217,.34); }
 .product-badge--wide { color:#bdf3ff; background:rgba(99,201,255,.12); border-color:rgba(99,201,255,.34); }
+.product-badge--demo { color:#c6f6cf; background:rgba(77,204,112,.13); border-color:rgba(77,204,112,.36); }
 .quick-specs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.65rem; margin-top:1.15rem; }
 .quick-spec { min-height:4.6rem; padding:.8rem; display:grid; align-content:center; gap:.2rem; background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.1); border-radius:.85rem; }
 .quick-spec span { color:var(--color-text-subtle); font-size:.68rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }

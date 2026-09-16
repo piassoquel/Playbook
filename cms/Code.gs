@@ -33,6 +33,7 @@ function onOpen() {
     .addItem("Archive Imported Batch Rows", "archiveImportedBatchRows")
     .addItem("Set Up Product Recommendations", "setupProductRecommendations")
     .addItem("Set Up Winter Sports v2.1", "setupWinterSportsV21")
+    .addItem("Set Up Demo Availability", "setupDemoAvailability")
     .addItem("Generate Missing Product IDs", "generateMissingProductIds")
     .addItem("Migrate Related Product Field", "migrateRelatedProductField")
     .addSeparator()
@@ -328,6 +329,7 @@ function normalizeProduct_(product) {
     StoreFavorite: isTrue_(product.StoreFavorite),
     NewThisSeason: isTrue_(product.NewThisSeason),
     Featured: isTrue_(product.Featured),
+    DemoAvailable: isTrue_(product.DemoAvailable),
     AbilityLevel: optionalNumber_(product.AbilityLevel !== undefined
       ? product.AbilityLevel
       : product["Ability Level"]),
@@ -990,6 +992,17 @@ function appendMissingHeaders_(sheet, required) {
   if (missing.length) sheet.getRange(1, lastColumn + 1, 1, missing.length).setValues([missing]);
 }
 
+function setupDemoAvailability() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const products = requireTable_(ss, PLAYBOOK.SHEETS.PRODUCTS, "ProductID");
+  appendMissingHeaders_(products.sheet, ["DemoAvailable"]);
+  const updated = tableFromSheet_(products.sheet, "ProductID");
+  const rowCount = Math.max(products.sheet.getMaxRows() - 1, 1);
+  products.sheet.getRange(2, updated.map.DemoAvailable + 1, rowCount, 1)
+    .setDataValidation(SpreadsheetApp.newDataValidation().requireCheckbox().build());
+  SpreadsheetApp.getUi().alert("DemoAvailable is ready on Products. Existing product values were preserved.");
+}
+
 function migrateExistingSnowAttributes_(ss, snowSheet) {
   const products = requireTable_(ss, PLAYBOOK.SHEETS.PRODUCTS, "ProductID");
   const snow = tableFromSheet_(snowSheet, "ProductID");
@@ -1115,6 +1128,7 @@ const IMPORT_FIELD_MAP = {
   Season: "Season", ProductDescription: "ProductDescription", Description: "ProductDescription",
   PrimaryImageURL: "ImageURL", ImageURL: "ImageURL", VideoURL: "VideoURL",
   NewThisSeason: "NewThisSeason", StoreFavorite: "StoreFavorite", Featured: "Featured",
+  DemoAvailable: "DemoAvailable",
   ShapeOrWidth: "ShapeOrWidth", Flex: "Flex",
   Profile: "Profile", CamberProfile: "Profile", RockerProfile: "Profile",
   SnowboardWidth: "SnowboardWidth", TurnRadius: "TurnRadius",
@@ -1392,7 +1406,7 @@ function validateImportRow_(canonical, existing, refs) {
     else if (field === "EntryStyle") result[field] = optionalEnumValue_(value, refs.entryStyles, field);
     else if (field === "Response") result[field] = optionalEnumValue_(value, refs.responses, field);
     else if (field === "DINRange") result[field] = dinRangeValue_(value);
-    else if (["NewThisSeason", "StoreFavorite", "Featured"].includes(field)) result[field] = isTrue_(value);
+    else if (["NewThisSeason", "StoreFavorite", "Featured", "DemoAvailable"].includes(field)) result[field] = isTrue_(value);
     else result[field] = textValue_(value, field, 5000);
   });
   synchronizeAbilityFields_(result);
@@ -1634,6 +1648,7 @@ const ADMIN_WRITE = {
     MSRP: { sheet: "products", column: "MSRP", type: "money" },
     ImageURL: { sheet: "products", column: "ImageURL", type: "url" },
     Gender: { sheet: "products", column: "Gender", type: "gender" },
+    DemoAvailable: { sheet: "products", column: "DemoAvailable", type: "boolean" },
     Ability: { sheet: "snow", column: "Ability", type: "ability" },
     Terrain: { sheet: "snow", column: "Terrain", type: "terrain" },
     Status: { sheet: "virtual", column: "Status", type: "status" },
@@ -1861,6 +1876,7 @@ function validateChanges_(changes, currentProduct, refs) {
       case "category": result[key] = referenceId_(raw, refs.categories, "category"); break;
       case "money": result[key] = numericValue_(raw, key, 0, 1000000); break;
       case "gender": result[key] = optionalEnumValue_(raw, refs.genders, key); break;
+      case "boolean": result[key] = booleanValue_(raw, key); break;
       case "ability": result[key] = abilityValue_(raw); break;
       case "terrain": result[key] = multiEnumValue_(raw, ADMIN_WRITE.TERRAIN_OPTIONS, key); break;
       case "rating": result[key] = numericValue_(raw, key, 1, 5); break;
@@ -2416,6 +2432,14 @@ function enumValue_(value, allowed, field) {
 function optionalEnumValue_(value, allowed, field) {
   if (value === "" || value === null) return "";
   return enumValue_(value, allowed, field);
+}
+
+function booleanValue_(value, field) {
+  if (value === true || value === false) return value;
+  const normalized = String(value).trim().toLowerCase();
+  if (normalized === "true") return true;
+  if (normalized === "false") return false;
+  throw apiError_(`${field} must be true or false.`, "VALIDATION_ERROR");
 }
 
 function synchronizeAbilityFields_(values) {

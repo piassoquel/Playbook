@@ -34,3 +34,9 @@ exist only so older workbooks can be migrated without breaking Admin.
 Product recommendations remain ProductID relationships in the normalized
 `ProductRecommendations` sheet. Product sizes and lengths use the normalized
 `ProductVariants` sheet and are returned as `product.Variants`.
+
+`DemoAvailable` is an optional Boolean column on `Products`. Run **Playbook CMS →
+Set Up Demo Availability** once after deploying the updated Apps Script. The
+setup appends the column without changing existing product rows. Admin sends
+`"DemoAvailable": true` or `false` only when the field is edited. The employee
+product page shows the badge for snowboards and skis when the value is true.

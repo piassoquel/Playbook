@@ -384,6 +384,7 @@ function renderProductDetail(sportSlug, typeSlug, productId) {
           ${renderSelectField("Sport", "SportID", draft.SportID, [["SNB", "Snowboarding"], ["SKI", "Skiing"]])}
           ${renderSelectField("Category", "CategoryID", draft.CategoryID, getCategoryOptions(draft.SportID))}
           ${renderSelectField("Gender", "Gender", draft.Gender, [["", "— Not set"], ["Unisex", "Unisex"], ["Men's", "Men's"], ["Women's", "Women's"], ["Youth", "Youth"]])}
+          ${isDemoEligible(draft) ? renderSelectField("Demo Available", "DemoAvailable", draft.DemoAvailable, [["false", "No"], ["true", "Yes"]]) : ""}
           ${renderInputField("Season", "Season", draft.Season, "number")}
           ${renderInputField("Price", "MSRP", draft.MSRP, "number", { step: "0.01", min: "0" })}
           ${renderSelectField("Status", "Status", draft.Status, [["Needs Review", "Needs Review"], ["Published", "Published"], ["Archived", "Archived"]])}
@@ -453,6 +454,7 @@ function createProductDraft(product) {
     SportID: String(product.SportID ?? ""),
     CategoryID: String(product.CategoryID ?? ""),
     Gender: String(product.Gender ?? ""),
+    DemoAvailable: String(product.DemoAvailable === true || String(product.DemoAvailable).toLowerCase() === "true"),
     Season: String(product.Season ?? ""),
     MSRP: String(product.MSRP ?? ""),
     ImageURL: String(product.ImageURL || product.HeroImage || product.ThumbnailImage || ""),
@@ -994,10 +996,19 @@ function buildProductChanges(draft, touched) {
     const apiField = field;
     const value = draft[field];
     const isSkiWidth = field === "ShapeOrWidth" && normalize(draft.SportID) === "SKI";
-    changes[apiField] = (numericFields.has(field) || isSkiWidth) && value !== "" ? Number(value) : value;
+    changes[apiField] = field === "DemoAvailable"
+      ? value === "true"
+      : (numericFields.has(field) || isSkiWidth) && value !== "" ? Number(value) : value;
   });
 
   return changes;
+}
+
+function isDemoEligible(product) {
+  const sport = normalize(product.SportID);
+  const category = normalize(product.CategoryID);
+  return (sport === "SNB" && ["SNBBOARD", "BOARDS"].includes(category)) ||
+    (sport === "SKI" && category === "SKIS");
 }
 
 function showSaveFeedback(message, type) {
