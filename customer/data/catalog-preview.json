@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T22:59:52.888Z",
+  "generatedAt": "2026-09-17T21:13:58.377Z",
   "boards": [
     {
       "id": "SNB0027",
@@ -158,7 +158,7 @@
         "152",
         "156",
         "158",
-        "162W"
+        "161W"
       ],
       "images": [
         {
@@ -208,12 +208,12 @@
             "stepOn": false
           },
           "upgrade": {
-            "id": "SNB0012",
-            "brand": "K2",
-            "model": "Theory",
-            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 429.95,
-            "stepOn": false
+            "id": "SNB0015",
+            "brand": "Nitro",
+            "model": "Sentinel Step On Boa",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
+            "price": 389.99,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0018",
@@ -251,9 +251,16 @@
             "bootMin": 8,
             "bootMax": 10,
             "waistCm": 25.4
+          },
+          "161W": {
+            "weightMin": 160,
+            "weightMax": 220,
+            "bootMin": 10,
+            "bootMax": null,
+            "waistCm": 26.2
           }
         },
-        "checkedAt": "2026-09-16"
+        "checkedAt": "2026-09-17"
       }
     },
     {
@@ -1686,7 +1693,7 @@
       "season": 2027,
       "brand": "Lib Tech",
       "model": "Orca 2",
-      "gender": "Unisex",
+      "gender": "Men's",
       "description": "Volume-shifted directional T.Rice Orca II with a long floating nose, short powerful tail and C2x contour.",
       "price": 749.99,
       "ability": [
@@ -1753,12 +1760,12 @@
             "stepOn": false
           },
           "upgrade": {
-            "id": "SNB0012",
-            "brand": "K2",
-            "model": "Theory",
-            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 429.95,
-            "stepOn": false
+            "id": "SNB0015",
+            "brand": "Nitro",
+            "model": "Sentinel Step On Boa",
+            "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
+            "price": 389.99,
+            "stepOn": true
           },
           "budget": {
             "id": "SNB0018",
@@ -2236,7 +2243,7 @@
       "terrain": {
         "Groomers": 5,
         "AllMountain": 5,
-        "Powder": 4,
+        "Powder": 3,
         "Trees": 4,
         "Park": 4
       },

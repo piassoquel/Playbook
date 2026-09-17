@@ -9,7 +9,7 @@ test('catalog charts cover 19 matching models and never invent unlisted variants
   const boards=attachSizeCharts(source.boards,charts);
   assert.equal(boards.filter(b=>b.sizeGuide).length,19);
   for(const board of boards)for(const size of Object.keys(board.sizeGuide?.sizes||{}))assert.ok(board.sizes.includes(size));
-  assert.equal(boards.find(b=>b.id==='SNB0026').sizeGuide.sizes['162W'],undefined);
+  assert.deepEqual(boards.find(b=>b.id==='SNB0026').sizeGuide.sizes['161W'],{weightMin:160,weightMax:220,bootMin:10,bootMax:null,waistCm:26.2});
   assert.equal(boards.find(b=>b.id==='SNB0035').sizeGuide.sizes['135'],undefined);
 });
 test('model chart filters by rider weight and matching boot system',()=>{

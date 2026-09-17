@@ -55,9 +55,16 @@
         "bootMin": 8.0,
         "bootMax": 10.0,
         "waistCm": 25.4
+      },
+      "161W": {
+        "weightMin": 160.0,
+        "weightMax": 220.0,
+        "bootMin": 10.0,
+        "bootMax": null,
+        "waistCm": 26.2
       }
     },
-    "checkedAt": "2026-09-16"
+    "checkedAt": "2026-09-17"
   },
   "SNB0025": {
     "kind": "model",
