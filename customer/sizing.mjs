@@ -26,7 +26,8 @@ export function attachSizeCharts(boards,charts){
 }
 export function evaluateSizing(board,answers={}){
   const weight=Number(answers.weight);
-  const system=answers.gender ? (answers.gender==="Women's"?'women':answers.gender==='Youth'?'kids':'men') : (answers.bootSystem||'men');
+  const category=answers.gender==='All Boards'?board.gender:answers.gender;
+  const system=category ? (category==="Women's"?'women':category==='Youth'?'kids':'men') : (answers.bootSystem||'men');
   // Burton's published snowboard-boot conversion chart maps adult Mondo to
   // US men's +18 and US women's +17 for the sizes used here.
   const rawBoot=Number(answers.bootSize);

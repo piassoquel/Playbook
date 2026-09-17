@@ -48,7 +48,7 @@ export function rankBoards(boards, answers) {
     const reasons = [];
     const sizing = evaluateSizing(board, answers);
     const eligible = (!answers.ability || board.ability.includes(answers.ability)) &&
-      (!answers.gender || board.gender === answers.gender || (board.gender === 'Unisex' && answers.gender !== 'Youth')) &&
+      (!answers.gender || answers.gender === 'All Boards' || board.gender === answers.gender || (board.gender === 'Unisex' && answers.gender !== 'Youth')) &&
       (!answers.weight || sizing.best.length > 0);
     if (answers.ability && board.ability.includes(answers.ability)) {
       score += 4; reasons.push(`Great for ${answers.ability.toLowerCase()} riders`);

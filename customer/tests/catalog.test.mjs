@@ -24,6 +24,9 @@ test('matching uses catalog attributes and filters by category',()=>{
   assert.equal(isWideSize(boards[0].sizes[0]),true);
   assert.equal(rankBoards(boards,{ability:'Beginner',terrain:'Park'})[0].eligible,false);
   assert.equal(rankBoards([{...boards[0],gender:"Women's"}],{gender:"Men's"})[0].eligible,false);
+  assert.equal(rankBoards([{...boards[0],gender:"Women's"}],{gender:'All Boards'})[0].eligible,true);
+  assert.equal(rankBoards([{...boards[0],gender:'Youth'}],{gender:'All Boards'})[0].eligible,true);
+  assert.equal(rankBoards([{...boards[0],gender:'Unisex'}],{gender:'All Boards'})[0].eligible,true);
 });
 test('Step On binding is withheld from a conventional boot pairing',()=>{
   const altered=structuredClone(source);

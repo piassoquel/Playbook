@@ -23,6 +23,11 @@ test('Mondo selection uses the board category for US chart comparison',()=>{
   const mondo=evaluateSizing(board,{weight:175,bootSize:27,gender:"Men's",bootUnit:'mondo'}).best;
   assert.deepEqual(mondo,us);
 });
+test('All Boards checks boot sizes against each board category',()=>{
+  const board={gender:"Women's",sizes:['146'],sizeGuide:{kind:'model',bootSystem:'women',sizes:{'146':{weightMin:100,weightMax:180,bootMin:8,bootMax:9}}}};
+  assert.deepEqual(evaluateSizing(board,{gender:'All Boards',weight:140,bootSize:8.5,bootUnit:'us'}).best,['146']);
+  assert.deepEqual(evaluateSizing(board,{gender:'All Boards',weight:140,bootSize:10,bootUnit:'us'}).best,[]);
+});
 test('general guide is labeled and separate from model charts',()=>{
   const result=evaluateSizing({sizes:['142','149','156','162W'],sizeGuide:null},{weight:175,bootSize:9,bootSystem:'men'});
   assert.equal(result.kind,'general');

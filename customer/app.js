@@ -2,6 +2,7 @@ import { rankBoards, terrainLabels, isWideSize, recommendedSetup } from './catal
 const app=document.querySelector('#app');
 const state={boards:[], answers:JSON.parse(sessionStorage.getItem('finderAnswers')||'null')||{ability:'',terrain:'',feel:'',height:'',weight:'',bootSize:'',bootUnit:'us',gender:''},step:0,showAll:false};
 state.answers.bootUnit ||= 'us';
+if(state.answers.gender==='Unisex')state.answers.gender='All Boards';
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const money=v=>v?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v):'';
 const photo=(p,cls='')=>p.image?`<img class="${cls}" src="${escape(p.image)}" alt="${escape(p.brand+' '+p.model)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(document.createElement('span'))">`:`<div class="photo-fallback">PLAYBOOK<br><small>Image coming soon</small></div>`;
@@ -10,7 +11,7 @@ const steps=[
   {key:'terrain',title:'Where do you spend most days?',subtitle:'',choices:Object.entries(terrainLabels).map(([v,l])=>[v,l])},
   {key:'feel',title:'What kind of feel sounds right?',subtitle:'',choices:[['playful','Playful & forgiving'],['balanced','A bit of both'],['supportive','Supportive & precise']]},
   {key:'measurements',title:'Tell us about you.',subtitle:'',choices:[]},
-  {key:'gender',title:'Let’s Filter Your Boards',subtitle:'',choices:[["Men's",'Men’s'],["Women's",'Women’s'],['Youth','Youth'],['Unisex','Unisex']]},
+  {key:'gender',title:'Let’s Filter Your Boards',subtitle:'',choices:[["Men's",'Men’s'],["Women's",'Women’s'],['Youth','Youth'],['All Boards','All Boards']]},
 ];
 async function load(){try{let boards;try{const cfg=await import('./firebase-config.js');if(!cfg.firebaseConfig?.projectId)throw Error('No Firebase project');const [{initializeApp},{getFirestore,collection,getDocs}]=await Promise.all([import('https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js'),import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js')]);const db=getFirestore(initializeApp(cfg.firebaseConfig));boards=(await getDocs(collection(db,'customerBoards'))).docs.map(d=>d.data());}catch(e){if(location.hostname!=='localhost'&&location.hostname!=='127.0.0.1')throw e;const r=await fetch('./data/catalog-preview.json');if(!r.ok)throw Error('Preview catalog unavailable');boards=(await r.json()).boards;}state.boards=boards;route();}catch(e){app.innerHTML='<section class="empty"><h1>Catalog unavailable</h1><p>Please try again later.</p></section>';console.error(e)}}
 function route(){const path=decodeURIComponent(location.hash.slice(1));if(path.startsWith('/board/'))return detail(path.slice(7));if(path==='/results')return results();if(path==='/find'||path==='/snowboard')return question();if(path==='/ski')return skiHome();home()}
