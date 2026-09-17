@@ -23,8 +23,8 @@ const steps=[
 ];
 async function load(){try{let boards;try{const cfg=await import('./firebase-config.js');if(!cfg.firebaseConfig?.projectId)throw Error('No Firebase project');const [{initializeApp},{getFirestore,collection,getDocs}]=await Promise.all([import('https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js'),import('https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js')]);const db=getFirestore(initializeApp(cfg.firebaseConfig));boards=(await getDocs(collection(db,'customerBoards'))).docs.map(d=>d.data());}catch(e){if(location.hostname!=='localhost'&&location.hostname!=='127.0.0.1')throw e;const r=await fetch('./data/catalog-preview.json');if(!r.ok)throw Error('Preview catalog unavailable');boards=(await r.json()).boards;}state.boards=boards;route();}catch(e){app.innerHTML='<section class="empty"><h1>Catalog unavailable</h1><p>Please try again later.</p></section>';console.error(e)}}
 function route(){window.scrollTo(0,0);const path=decodeURIComponent(location.hash.slice(1));document.querySelector('#compare-bar')?.remove();updateSetupBadge();if(path.startsWith('/board/'))return detail(path.slice(7));if(path.startsWith('/compare/'))return compare(path.slice(9).split(','));if(path==='/results')return results();if(path==='/setup')return setup();if(path==='/find'||path==='/snowboard')return question();if(path==='/ski')return skiHome();home()}
-function home(){app.innerHTML=`<section class="sport-home"><p class="eyebrow">PROFIT</p><h1>Choose your<br><em>next ride.</em></h1><div class="sport-grid"><a class="sport-card snowboard" href="#/find"><img src="assets/snowboard-home.webp" alt="Snowboarder on snow"><span>SNOWBOARD</span><div><h2>Snowboard</h2><strong>Find my board</strong></div></a><a class="sport-card ski" href="#/ski"><img src="assets/ski-home.webp" alt="Skier on snow"><span>SKI / COMING NEXT</span><div><h2>Ski</h2><strong>Explore ski</strong></div></a></div></section>`}
-function skiHome(){app.innerHTML=`<section class="sport-pending"><p class="eyebrow">PROFIT / SKI</p><h1>Ski is<br><em>coming next.</em></h1><p>We’re building a ski journey around ski-specific catalog data and sizing. The snowboard finder is ready to explore now.</p><a class="button dark" href="#/snowboard">Explore snowboards</a><p><a href="#/">Choose a sport</a></p></section>`}
+function home(){app.innerHTML=`<section class="sport-home"><p class="eyebrow">Pro<span class="brand-fit">Fit</span></p><h1>Choose your<br><em>next ride.</em></h1><div class="sport-grid"><a class="sport-card snowboard" href="#/find"><img src="assets/snowboard-home.webp" alt="Snowboarder on snow"><span>SNOWBOARD</span><div><h2>Snowboard</h2><strong>Find my board</strong></div></a><a class="sport-card ski" href="#/ski"><img src="assets/ski-home.webp" alt="Skier on snow"><span>SKI / COMING NEXT</span><div><h2>Ski</h2><strong>Explore ski</strong></div></a></div></section>`}
+function skiHome(){app.innerHTML=`<section class="sport-pending"><p class="eyebrow">Pro<span class="brand-fit">Fit</span> / SKI</p><h1>Ski is<br><em>coming next.</em></h1><p>We’re building a ski journey around ski-specific catalog data and sizing. The snowboard finder is ready to explore now.</p><a class="button dark" href="#/snowboard">Explore snowboards</a><p><a href="#/">Choose a sport</a></p></section>`}
 function heightOptions(values,suffix,current){
   const hasValue=current!==''&&current!=null;
   return `<option value="" disabled ${!hasValue?'selected':''}>Select</option>${values.map(v=>`<option value="${v}" ${hasValue&&Number(current)===v?'selected':''}>${v} ${suffix}</option>`).join('')}`;
@@ -112,22 +112,53 @@ function detail(id){
     btn.classList.toggle('saved',isSaved);
     btn.textContent=isSaved?'Board added':'+ Add board to my setup';
   }
+  let panelTransitioning=false;
+  function swapSetupPanel(newTier,direction){
+    if(panelTransitioning)return;
+    const old=app.querySelector('#setup-panel');
+    if(!old)return;
+    panelTransitioning=true;
+    const offset=direction==='left'?-14:direction==='right'?14:0;
+    old.style.transition='opacity .14s ease, transform .14s ease';
+    old.style.opacity='0';
+    if(offset)old.style.transform=`translateX(${offset}px)`;
+    setTimeout(()=>{
+      old.outerHTML=setupPanel(board,newTier);
+      const fresh=app.querySelector('#setup-panel');
+      fresh.style.transition='none';
+      fresh.style.opacity='0';
+      if(offset)fresh.style.transform=`translateX(${-offset}px)`;
+      bindSetup();
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{
+        fresh.style.transition='opacity .18s ease, transform .18s ease';
+        fresh.style.opacity='1';
+        fresh.style.transform='translateX(0)';
+        setTimeout(()=>{
+          fresh.style.transition='';fresh.style.opacity='';fresh.style.transform='';
+          panelTransitioning=false;
+        },200);
+      }));
+    },140);
+  }
   function bindSetup(){
-    app.querySelectorAll('[role="tab"][data-tier]').forEach(button=>button.onclick=()=>{app.querySelector('#setup-panel').outerHTML=setupPanel(board,button.dataset.tier);bindSetup()});
+    const tabEls=[...app.querySelectorAll('[role="tab"][data-tier]')];
+    tabEls.forEach((button,index)=>button.onclick=()=>{
+      const currentIndex=tabEls.findIndex(b=>b.getAttribute('aria-selected')==='true');
+      const direction=index>currentIndex?'left':index<currentIndex?'right':null;
+      swapSetupPanel(button.dataset.tier,direction);
+    });
     app.querySelectorAll('[data-piece]').forEach(button=>button.onclick=()=>{
       const type=button.dataset.piece,tier=button.dataset.pieceTier;
       const item=recommendedSetup(board,tier)[type];
       if(!item)return;
       toggleSetupPiece(type,{...item,tier});
-      app.querySelector('#setup-panel').outerHTML=setupPanel(board,tier);
-      bindSetup();
+      swapSetupPanel(tier,null);
     });
     const fullBtn=app.querySelector('#setup-add-full');
     if(fullBtn)fullBtn.onclick=()=>{
       const tier=fullBtn.dataset.tier;
       saveFullSetup(board,tier,recommendedSetup(board,tier));
-      app.querySelector('#setup-panel').outerHTML=setupPanel(board,tier);
-      bindSetup();
+      swapSetupPanel(tier,null);
       refreshBoardAddButton();
     };
     app.querySelectorAll('[data-info-type]').forEach(button=>button.onclick=()=>{
@@ -154,8 +185,7 @@ function detail(id){
         const currentIndex=tabs.findIndex(tab=>tab.getAttribute('aria-selected')==='true');
         const nextIndex=dx<0?currentIndex+1:currentIndex-1;
         if(nextIndex<0||nextIndex>=tabs.length)return;
-        app.querySelector('#setup-panel').outerHTML=setupPanel(board,tabs[nextIndex].dataset.tier);
-        bindSetup();
+        swapSetupPanel(tabs[nextIndex].dataset.tier,dx<0?'left':'right');
       });
     }
   }
