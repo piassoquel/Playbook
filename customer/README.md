@@ -2,6 +2,8 @@
 
 This is a separate static customer app. It does not import the employee app, Admin, or CMS code. Hosting serves only this folder. The catalog is projected to a small, explicit customer schema before Firestore receives it.
 
+The local customer preview uses the Night Blue palette: deep navy surfaces, a restrained blue for active controls, pale blue product backgrounds, and warm orange accents. This is the selected visual direction for the next design pass.
+
 ## Journey and matching
 
 The entry page uses the existing Playbook sport photos and asks visitors to choose Snowboard or Ski. Snowboard opens question 1 directly; Ski currently opens a clearly labeled coming-soon page. A ski-specific journey and catalog projection are still needed before that path can recommend products.
