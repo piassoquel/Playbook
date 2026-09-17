@@ -997,10 +997,30 @@ function setupDemoAvailability() {
   const products = requireTable_(ss, PLAYBOOK.SHEETS.PRODUCTS, "ProductID");
   appendMissingHeaders_(products.sheet, ["DemoAvailable"]);
   const updated = tableFromSheet_(products.sheet, "ProductID");
-  const rowCount = Math.max(products.sheet.getMaxRows() - 1, 1);
-  products.sheet.getRange(2, updated.map.DemoAvailable + 1, rowCount, 1)
-    .setDataValidation(SpreadsheetApp.newDataValidation().requireCheckbox().build());
-  SpreadsheetApp.getUi().alert("DemoAvailable is ready on Products. Existing product values were preserved.");
+  const values = products.sheet.getDataRange().getValues();
+  let lastProductRow = 1;
+  values.slice(1).forEach((row, index) => {
+    if (normalizeId_(row[updated.map.ProductID])) lastProductRow = index + 2;
+  });
+  if (lastProductRow > 1) {
+    products.sheet.getRange(2, updated.map.DemoAvailable + 1, lastProductRow - 1, 1)
+      .setDataValidation(SpreadsheetApp.newDataValidation().requireCheckbox().build());
+  }
+
+  // The earlier setup applied checkboxes to every empty template row. Sheets
+  // materialized those as FALSE values, which the API then counted as products.
+  // Clear only such empty rows; never touch a row with a ProductID or other data.
+  const refreshed = products.sheet.getDataRange().getValues();
+  const emptyDemoCells = [];
+  refreshed.slice(1).forEach((row, index) => {
+    if (row[updated.map.DemoAvailable] !== false) return;
+    if (row.some((value, column) => column !== updated.map.DemoAvailable && value !== "")) return;
+    emptyDemoCells.push(products.sheet.getRange(index + 2, updated.map.DemoAvailable + 1).getA1Notation());
+  });
+  for (let index = 0; index < emptyDemoCells.length; index += 200) {
+    products.sheet.getRangeList(emptyDemoCells.slice(index, index + 200)).clearContent();
+  }
+  SpreadsheetApp.getUi().alert(`DemoAvailable is ready. ${emptyDemoCells.length} empty checkbox row(s) cleared; product data was preserved.`);
 }
 
 function migrateExistingSnowAttributes_(ss, snowSheet) {
@@ -2737,7 +2757,9 @@ function getRows_(spreadsheet, sheetName) {
 
   return values
     .slice(1)
-    .filter((row) => row.some((value) => value !== ""))
+    .filter((row) => sheetName === PLAYBOOK.SHEETS.PRODUCTS
+      ? Boolean(normalizeId_(row[headers.indexOf("ProductID")]))
+      : row.some((value) => value !== ""))
     .map((row) => {
       const item = {};
       headers.forEach((header, index) => {
