@@ -12,7 +12,7 @@ The current catalog has 22 published snowboards. We found 2027 manufacturer size
 
 Manufacturer charts disagree with three CMS variant rows: D.O.A. `162W`, and DPR `135` and `140` do not appear on the matching 2027 maker charts. These variants receive no maker-chart match and are hidden from the personalized “My Size” badges. The CMS rows should be verified before relying on them. All size results are starting points, not guarantees of fit or live inventory.
 
-The customer detail page shows the ProductID-based `Recommended` boot and binding tier when compatible. A Step On binding and conventional boot (or the reverse) are withheld together for review; FASE and other hands-free strap systems remain conventional. The Step On boot flag comes from its model name because the CMS has no normalized boot interface field. The projection excludes review-only products, internal selling content, Admin settings, and unrelated employee fields.
+The customer detail page puts the personalized size and setup above the longer explanation and specs. It offers ProductID-based `Recommended`, `Budget`, and `Upgrade` boot and binding tiers as a compact selector when each pair is available and compatible. A Step On binding and conventional boot (or the reverse) are withheld together; the upgrade pairings for D.O.A. and Orca 2 currently fail this check and do not appear as customer options. FASE and other hands-free strap systems remain conventional. The Step On boot flag comes from its model name because the CMS has no normalized boot interface field. The projection excludes review-only products, internal selling content, Admin settings, and unrelated employee fields.
 
 ## Local preview
 

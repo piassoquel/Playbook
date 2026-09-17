@@ -56,14 +56,30 @@ function results(){
   app.querySelector('#show-more')?.addEventListener('click',()=>{state.showAll=true;results()});
   const dialog=app.querySelector('#why-dialog');app.querySelector('#why-results').onclick=()=>dialog.showModal();app.querySelector('#close-why').onclick=()=>dialog.close();dialog.onclick=e=>{if(e.target===dialog)dialog.close()};
 }
+function setupPanel(board,tier){
+  const tiers=['recommended','budget','upgrade'].filter(candidate=>{
+    const pair=recommendedSetup(board,candidate);
+    return !pair.needsReview&&(pair.binding||pair.boot);
+  });
+  if(!tiers.length)return '<section class="setup setup-inline"><p class="eyebrow">COMPLETE THE RIDE</p><h2>Boots & bindings</h2><p>Ask us to help complete your setup.</p></section>';
+  const selected=tiers.includes(tier)?tier:tiers[0];
+  const pair=recommendedSetup(board,selected);
+  const products=['binding','boot'].map(type=>{
+    const item=pair[type];
+    return item?`<article class="setup-item">${photo(item)}<div><p class="eyebrow">${type==='binding'?'BINDING':'BOOT'}</p><h3>${escape(item.brand)} ${escape(item.model)}</h3><p>${money(item.price)}</p></div></article>`:'';
+  }).join('');
+  return `<section class="setup setup-inline" id="setup-panel"><div class="setup-heading"><div><p class="eyebrow">COMPLETE THE RIDE</p><h2>Boots & bindings</h2></div></div>${tiers.length>1?`<div class="setup-tabs" role="tablist" aria-label="Setup options">${tiers.map(candidate=>`<button type="button" role="tab" data-tier="${candidate}" aria-selected="${candidate===selected}">${candidate==='recommended'?'Our pick':candidate==='budget'?'Budget':'Upgrade'}</button>`).join('')}</div>`:''}<div class="setup-grid">${products}</div><p class="setup-note">Try the full setup together for the right fit.</p></section>`;
+}
 function detail(id){
-  const b=state.boards.find(x=>x.id===id);
-  if(!b){app.innerHTML='<section class="empty"><h1>Board unavailable</h1><a href="#/results">Back to results</a></section>';return}
-  const allImages=b.images?.length?b.images:[{url:b.image,alt:b.model}];
-  const rank=rankBoards([b],state.answers)[0],sizeMatch=rank.sizing,setup=recommendedSetup(b);
-  const recs=['binding','boot'].map(type=>{const r=setup[type];return r?`<article class="setup-item">${photo(r)}<div><p class="eyebrow">RECOMMENDED ${type.toUpperCase()}</p><h3>${escape(r.brand)} ${escape(r.model)}</h3><p>${money(r.price)}</p></div></article>`:''}).join('');
-  const badges=sizeMatch.best.map(s=>`<span class="size-match">${escape(s)}${isWideSize(s)?' · wide':''}</span>`).join('');
-  app.innerHTML=`<div class="detail-back"><a href="#/results">← Back to results</a></div><article class="detail"><div class="detail-media">${photo({brand:b.brand,model:b.model,image:allImages[0]?.url})}${allImages.length>1?`<div class="thumbs">${allImages.map((im,i)=>`<button data-img="${escape(im.url)}" aria-label="Show image ${i+1}"><img src="${escape(im.url)}" alt=""></button>`).join('')}</div>`:''}</div><div class="detail-info"><p class="eyebrow">${escape(b.brand)} / SNOWBOARD</p><h1>${escape(b.model)}</h1><div class="price">${money(b.price)}</div><p class="description">${escape(b.description||'More details coming soon.')}</p>${rank.reasons.length?`<div class="why"><h2>Why it fits your ride</h2>${rank.reasons.map(r=>`<p>✓ ${escape(r)}</p>`).join('')}</div>`:''}<dl class="specs">${[['Shape',b.shape],['Profile',b.profile],['Flex',b.flex],['Board width',b.width]].filter(([,v])=>v).map(([k,v])=>`<div><dt>${k}</dt><dd>${escape(v)}</dd></div>`).join('')}</dl><section class="sizes"><h2>My Size</h2>${badges?`<div class="size-list">${badges}</div><p class="fine">${sizeMatch.best.length>1?'More than one listed size may work for you. ':''}Try your preferred size with your boots and bindings for the final fit.</p>`:'<p>We can help you check the best size in store.</p>'}</section></div></article><section class="setup"><p class="eyebrow">COMPLETE THE RIDE</p><h2>Suggested setup</h2><p>These boots and bindings are paired with this board. Check the fit before you ride.</p><div class="setup-grid">${setup.needsReview?'<p>The listed boot and binding need a compatibility check. Ask us to help complete your setup.</p>':recs||'<p>No setup recommendations listed yet.</p>'}</div></section>`;
-  app.querySelectorAll('[data-img]').forEach(btn=>btn.onclick=()=>{app.querySelector('.detail-media > img').src=btn.dataset.img});
+  const board=state.boards.find(item=>item.id===id);
+  if(!board){app.innerHTML='<section class="empty"><h1>Board unavailable</h1><a href="#/results">Back to results</a></section>';return}
+  const images=board.images?.length?board.images:[{url:board.image,alt:board.model}];
+  const rank=rankBoards([board],state.answers)[0];
+  const sizes=rank.sizing.best.map(size=>`<span class="size-match">${escape(size)}${isWideSize(size)?' · wide':''}</span>`).join('');
+  app.innerHTML=`<div class="detail-back"><a href="#/results">← Back to results</a></div><article class="detail"><header class="detail-heading"><div><p class="eyebrow">${escape(board.brand)}</p><h1>${escape(board.model)}</h1></div><div class="detail-actions"><strong class="detail-price">${money(board.price)}</strong><button type="button" class="setup-jump" id="setup-jump">See setup ↓</button></div></header><div class="detail-media">${photo({brand:board.brand,model:board.model,image:images[0]?.url})}${images.length>1?`<div class="thumbs">${images.map((image,index)=>`<button data-img="${escape(image.url)}" aria-label="Show image ${index+1}"><img src="${escape(image.url)}" alt=""></button>`).join('')}</div>`:''}</div><div class="detail-info"><p class="description">${escape(board.description||'More details coming soon.')}</p><section class="sizes"><h2>My Size</h2>${sizes?`<div class="size-list">${sizes}</div><p class="fine">${rank.sizing.best.length>1?'More than one size may work for you. ':''}Try your size with boots and bindings for the final fit.</p>`:'<p>We can help you check the best size in store.</p>'}</section>${setupPanel(board,'recommended')}${rank.reasons.length?`<div class="why"><h2>Why it fits your ride</h2>${rank.reasons.map(reason=>`<p>✓ ${escape(reason)}</p>`).join('')}</div>`:''}<dl class="specs">${[['Shape',board.shape],['Profile',board.profile],['Flex',board.flex]].filter(([,value])=>value).map(([label,value])=>`<div><dt>${label}</dt><dd>${escape(value)}</dd></div>`).join('')}</dl></div></article>`;
+  app.querySelectorAll('[data-img]').forEach(button=>button.onclick=()=>{app.querySelector('.detail-media > img').src=button.dataset.img});
+  app.querySelector('#setup-jump').onclick=()=>app.querySelector('.setup-inline').scrollIntoView({behavior:'smooth',block:'start'});
+  function bindSetup(){app.querySelectorAll('[data-tier]').forEach(button=>button.onclick=()=>{app.querySelector('#setup-panel').outerHTML=setupPanel(board,button.dataset.tier);bindSetup()})}
+  bindSetup();
 }
 window.addEventListener('hashchange',route);load();

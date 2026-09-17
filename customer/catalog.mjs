@@ -68,9 +68,9 @@ export function rankBoards(boards, answers) {
 }
 export const terrainLabels = { Groomers:'Resort', AllMountain:'All mountain', Powder:'Powder', Trees:'Trees', Park:'Park' };
 export const isWideSize = value => /\d\s*w$/i.test(value) || /\bwide\b/i.test(value);
-export function recommendedSetup(board) {
-  const binding = board.recommendations?.binding?.recommended;
-  const boot = board.recommendations?.boot?.recommended;
+export function recommendedSetup(board, tier='recommended') {
+  const binding = board.recommendations?.binding?.[tier];
+  const boot = board.recommendations?.boot?.[tier];
   if (binding && boot && Boolean(binding.stepOn) !== Boolean(boot.stepOn)) {
     return { binding: null, boot: null, needsReview: true };
   }

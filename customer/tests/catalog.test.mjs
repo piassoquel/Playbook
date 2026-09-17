@@ -37,3 +37,9 @@ test('Step On binding is withheld from a conventional boot pairing',()=>{
   altered.products[3].Model='Step On Boot';
   assert.equal(recommendedSetup(projectCatalog(altered)[0]).needsReview,false);
 });
+test('setup tiers keep a Step On mismatch out of alternate choices',()=>{
+  const board={recommendations:{binding:{recommended:{id:'B1',stepOn:false},upgrade:{id:'B2',stepOn:true}},boot:{recommended:{id:'S1',stepOn:false},upgrade:{id:'S2',stepOn:false}}}};
+  assert.equal(recommendedSetup(board).needsReview,false);
+  assert.equal(recommendedSetup(board,'upgrade').needsReview,true);
+  assert.equal(recommendedSetup(board,'budget').binding,null);
+});
