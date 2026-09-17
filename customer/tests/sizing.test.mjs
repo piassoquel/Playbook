@@ -17,6 +17,12 @@ test('model chart filters by rider weight and matching boot system',()=>{
   assert.deepEqual(evaluateSizing(board,{weight:175,bootSize:9,bootSystem:'men'}).best,['156','158']);
   assert.deepEqual(evaluateSizing(board,{weight:175,bootSize:11,bootSystem:'men'}).best,[]);
 });
+test('Mondo selection uses the board category for US chart comparison',()=>{
+  const board={sizes:['152','156','158','162W'],sizeGuide:charts.SNB0026,gender:"Men's"};
+  const us=evaluateSizing(board,{weight:175,bootSize:9,gender:"Men's",bootUnit:'us'}).best;
+  const mondo=evaluateSizing(board,{weight:175,bootSize:27,gender:"Men's",bootUnit:'mondo'}).best;
+  assert.deepEqual(mondo,us);
+});
 test('general guide is labeled and separate from model charts',()=>{
   const result=evaluateSizing({sizes:['142','149','156','162W'],sizeGuide:null},{weight:175,bootSize:9,bootSystem:'men'});
   assert.equal(result.kind,'general');

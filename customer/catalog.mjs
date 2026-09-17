@@ -51,26 +51,22 @@ export function rankBoards(boards, answers) {
       (!answers.gender || board.gender === answers.gender || (board.gender === 'Unisex' && answers.gender !== 'Youth')) &&
       (!answers.weight || sizing.best.length > 0);
     if (answers.ability && board.ability.includes(answers.ability)) {
-      score += 4; reasons.push(`Listed for ${answers.ability.toLowerCase()} riders`);
+      score += 4; reasons.push(`Great for ${answers.ability.toLowerCase()} riders`);
     }
     if (answers.terrain && board.terrain[answers.terrain] >= 4) {
       score += board.terrain[answers.terrain] === 5 ? 4 : 3;
-      reasons.push(`Strong ${terrainLabels[answers.terrain].toLowerCase()} rating in the catalog`);
+      reasons.push(`Strong ${terrainLabels[answers.terrain].toLowerCase()} board`);
     }
     if (answers.feel && flexFeel(board.flex) === answers.feel) {
-      score += 2; reasons.push(`${board.flex} flex matches your preferred feel`);
+      score += 2; reasons.push(`${board.flex} flex`);
     }
     if (sizing.best.length) {
       score += sizing.kind === 'model' && !sizing.minimumOnly ? 3 : 1;
-      const label=sizing.minimumOnly ? 'maker minimum and general length guide' : sizing.kind === 'model' ? 'maker’s guidance' : 'general length guide';
-      reasons.push(`Listed ${sizing.best.join(', ')} size${sizing.best.length===1?'':'s'} fit the ${label}`);
-      if (Number(answers.bootSize)>=11 && sizing.best.some(isWideSize)) reasons.push('Wide size selected for your boot size');
-      else if (sizing.best.every(isWideSize)) reasons.push('Wide size is the weight match');
     }
     return { board, score, reasons, eligible, sizing };
   }).sort((a,b) => b.score-a.score || a.board.brand.localeCompare(b.board.brand) || a.board.model.localeCompare(b.board.model));
 }
-export const terrainLabels = { Groomers:'Groomers', AllMountain:'All mountain', Powder:'Powder', Trees:'Trees', Park:'Park' };
+export const terrainLabels = { Groomers:'Resort', AllMountain:'All mountain', Powder:'Powder', Trees:'Trees', Park:'Park' };
 export const isWideSize = value => /\d\s*w$/i.test(value) || /\bwide\b/i.test(value);
 export function recommendedSetup(board) {
   const binding = board.recommendations?.binding?.recommended;

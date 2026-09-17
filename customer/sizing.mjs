@@ -25,7 +25,12 @@ export function attachSizeCharts(boards,charts){
   });
 }
 export function evaluateSizing(board,answers={}){
-  const weight=Number(answers.weight),boot=Number(answers.bootSize),system=answers.bootSystem||'';
+  const weight=Number(answers.weight);
+  const system=answers.gender ? (answers.gender==="Women's"?'women':answers.gender==='Youth'?'kids':'men') : (answers.bootSystem||'men');
+  // Burton's published snowboard-boot conversion chart maps adult Mondo to
+  // US men's +18 and US women's +17 for the sizes used here.
+  const rawBoot=Number(answers.bootSize);
+  const boot=answers.bootUnit==='mondo' && system!=='kids' ? rawBoot-(system==='women'?17:18) : rawBoot;
   if(!weight||!board?.sizes?.length)return {kind:'none',best:[],possible:[],source:null};
   const chart=board.sizeGuide;
   if(chart?.kind==='model'){
@@ -45,9 +50,9 @@ export function evaluateSizing(board,answers={}){
     // published general weight-to-length guide and keep the broader label.
     const lengthFits=minimumOnly ? generalSizes(board,weight) : null;
     const candidates=minimumOnly ? best.filter(size=>lengthFits.includes(size)) : best;
-    return {kind:'model',best:preferWide(candidates,boot),possible,source:chart.source,minimumOnly,bootChecked:Boolean(chart.bootSystem&&chart.bootSystem===system&&system!=='kids')};
+    return {kind:'model',best:preferWide(candidates,system==='kids'?0:boot),possible,source:chart.source,minimumOnly,bootChecked:Boolean(chart.bootSystem&&chart.bootSystem===system&&system!=='kids')};
   }
-  const best=preferWide(generalSizes(board,weight),boot);
+  const best=preferWide(generalSizes(board,weight),system==='kids'?0:boot);
   return {kind:'general',best,possible:best,source:GENERAL_SOURCE,bootChecked:false};
 }
 function generalSizes(board,weight){
