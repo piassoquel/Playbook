@@ -1,0 +1,536 @@
+{
+  "SNB0027": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "women",
+    "source": "https://capitasnowboarding.com/products/capita-birds-of-a-feather-womens-snowboard-2027",
+    "sizes": {
+      "138": {
+        "weightMin": 80.0,
+        "weightMax": 130.0,
+        "bootMin": 4.0,
+        "bootMax": 8.0,
+        "waistCm": 22.3
+      },
+      "142": {
+        "weightMin": 90.0,
+        "weightMax": 140.0,
+        "bootMin": 5.0,
+        "bootMax": 9.0,
+        "waistCm": 22.9
+      },
+      "146": {
+        "weightMin": 100.0,
+        "weightMax": 150.0,
+        "bootMin": 5.0,
+        "bootMax": 9.0,
+        "waistCm": 23.5
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0026": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "men",
+    "source": "https://capitasnowboarding.com/products/capita-d-o-a-mens-snowboard-2027",
+    "sizes": {
+      "152": {
+        "weightMin": 110.0,
+        "weightMax": 150.0,
+        "bootMin": 6.0,
+        "bootMax": 9.5,
+        "waistCm": 24.8
+      },
+      "156": {
+        "weightMin": 130.0,
+        "weightMax": 190.0,
+        "bootMin": 8.0,
+        "bootMax": 10.0,
+        "waistCm": 25.2
+      },
+      "158": {
+        "weightMin": 140.0,
+        "weightMax": 200.0,
+        "bootMin": 8.0,
+        "bootMax": 10.0,
+        "waistCm": 25.4
+      },
+      "161W": {
+        "weightMin": 160.0,
+        "weightMax": 220.0,
+        "bootMin": 10.0,
+        "bootMax": null,
+        "waistCm": 26.2
+      }
+    },
+    "checkedAt": "2026-09-17"
+  },
+  "SNB0025": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "men",
+    "source": "https://capitasnowboarding.com/products/capita-indoor-survival-mens-snowboard-2027",
+    "sizes": {
+      "154": {
+        "weightMin": 120.0,
+        "weightMax": 180.0,
+        "bootMin": 6.0,
+        "bootMax": 9.5,
+        "waistCm": 25.5
+      },
+      "158": {
+        "weightMin": 140.0,
+        "weightMax": 200.0,
+        "bootMin": 8.0,
+        "bootMax": 10.0,
+        "waistCm": 26.0
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0028": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "men",
+    "source": "https://capitasnowboarding.com/products/capita-mercury-mens-snowboard-2027",
+    "sizes": {
+      "155": {
+        "weightMin": 120.0,
+        "weightMax": 180.0,
+        "bootMin": 8.0,
+        "bootMax": 10.0,
+        "waistCm": 25.5
+      },
+      "159": {
+        "weightMin": 140.0,
+        "weightMax": 200.0,
+        "bootMin": 8.0,
+        "bootMax": 10.0,
+        "waistCm": 25.9
+      },
+      "162W": {
+        "weightMin": 150.0,
+        "weightMax": 210.0,
+        "bootMin": 10.0,
+        "bootMax": null,
+        "waistCm": 26.7
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0024": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "kids",
+    "source": "https://capitasnowboarding.com/products/capita-micro-mini-kids-snowboard-2027",
+    "sizes": {
+      "80": {
+        "weightMin": 35.0,
+        "weightMax": 50.0,
+        "bootMin": 10.0,
+        "bootMax": 13.5,
+        "waistCm": 17.9
+      },
+      "90": {
+        "weightMin": 40.0,
+        "weightMax": 55.0,
+        "bootMin": 9.0,
+        "bootMax": 12.0,
+        "waistCm": 18.6
+      },
+      "100": {
+        "weightMin": 45.0,
+        "weightMax": 60.0,
+        "bootMin": 9.0,
+        "bootMax": 12.0,
+        "waistCm": 19.3
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0040": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "kids",
+    "source": "https://www.gnu.com/recess-package",
+    "sizes": {
+      "80": {
+        "weightMin": 35.0,
+        "weightMax": null,
+        "waistCm": 20.0
+      },
+      "90": {
+        "weightMin": 40.0,
+        "weightMax": null,
+        "waistCm": 21.0
+      },
+      "100": {
+        "weightMin": 40.0,
+        "weightMax": null,
+        "waistCm": 21.0
+      },
+      "110": {
+        "weightMin": 45.0,
+        "weightMax": null,
+        "waistCm": 22.0
+      },
+      "120": {
+        "weightMin": 50.0,
+        "weightMax": null,
+        "waistCm": 22.5
+      },
+      "125": {
+        "weightMin": 55.0,
+        "weightMax": null,
+        "waistCm": 22.7
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0033": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "women",
+    "source": "https://www.jonessnowboards.com/products/womens-dream-weaver-20-snowboard",
+    "sizes": {
+      "139": {
+        "weightMin": 90.0,
+        "weightMax": 140.0,
+        "bootMin": 5.0,
+        "bootMax": 7.0
+      },
+      "145": {
+        "weightMin": 100.0,
+        "weightMax": 150.0,
+        "bootMin": 6.0,
+        "bootMax": 8.0
+      },
+      "148": {
+        "weightMin": 100.0,
+        "weightMax": 150.0,
+        "bootMin": 6.0,
+        "bootMax": 8.0
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0029": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "men",
+    "source": "https://www.jonessnowboards.com/products/mens-frontier-20-snowboard",
+    "sizes": {
+      "153": {
+        "weightMin": 110.0,
+        "weightMax": 160.0,
+        "bootMin": 7.0,
+        "bootMax": 9.0
+      },
+      "156": {
+        "weightMin": 120.0,
+        "weightMax": 170.0,
+        "bootMin": 8.0,
+        "bootMax": 10.0
+      },
+      "158W": {
+        "weightMin": 140.0,
+        "weightMax": 190.0,
+        "bootMin": 10.0,
+        "bootMax": 10.0
+      },
+      "161W": {
+        "weightMin": 150.0,
+        "weightMax": 200.0,
+        "bootMin": 11.0,
+        "bootMax": 11.0
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0030": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "men",
+    "source": "https://www.jonessnowboards.com/products/mens-mountain-twin-snowboard",
+    "sizes": {
+      "154": {
+        "weightMin": 120.0,
+        "weightMax": 170.0,
+        "bootMin": 7.0,
+        "bootMax": 9.0
+      },
+      "157": {
+        "weightMin": 130.0,
+        "weightMax": 180.0,
+        "bootMin": 9.0,
+        "bootMax": 11.0
+      },
+      "159W": {
+        "weightMin": 140.0,
+        "weightMax": 190.0,
+        "bootMin": 10.0,
+        "bootMax": 12.0
+      },
+      "162W": {
+        "weightMin": 150.0,
+        "weightMax": 200.0,
+        "bootMin": 11.0,
+        "bootMax": 11.0
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0031": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "men",
+    "source": "https://www.jonessnowboards.com/products/mens-tweaker-20-snowboard",
+    "sizes": {
+      "154": {
+        "weightMin": 120.0,
+        "weightMax": 170.0,
+        "bootMin": 7.0,
+        "bootMax": 9.0
+      },
+      "156": {
+        "weightMin": 130.0,
+        "weightMax": 180.0,
+        "bootMin": 9.0,
+        "bootMax": 11.0
+      },
+      "160W": {
+        "weightMin": 150.0,
+        "weightMax": 200.0,
+        "bootMin": 11.0,
+        "bootMax": 11.0
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0032": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "women",
+    "source": "https://www.jonessnowboards.com/products/womens-twin-sister-snowboard",
+    "sizes": {
+      "140": {
+        "weightMin": 90.0,
+        "weightMax": 140.0,
+        "bootMin": 5.0,
+        "bootMax": 7.0
+      },
+      "143": {
+        "weightMin": 100.0,
+        "weightMax": 150.0,
+        "bootMin": 6.0,
+        "bootMax": 8.0
+      },
+      "146": {
+        "weightMin": 100.0,
+        "weightMax": 150.0,
+        "bootMin": 7.0,
+        "bootMax": 9.0
+      },
+      "149": {
+        "weightMin": 110.0,
+        "weightMax": 160.0,
+        "bootMin": 8.0,
+        "bootMax": 9.5
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0034": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "",
+    "source": "https://www.lib-tech.com/cold-brew",
+    "sizes": {
+      "157": {
+        "weightMin": 100.0,
+        "weightMax": null,
+        "waistCm": 26.2
+      },
+      "159": {
+        "weightMin": 110.0,
+        "weightMax": null,
+        "waistCm": 26.3
+      },
+      "163W": {
+        "weightMin": 120.0,
+        "weightMax": null,
+        "waistCm": 26.8
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0035": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "",
+    "source": "https://www.lib-tech.com/dpr",
+    "sizes": {
+      "147": {
+        "weightMin": 50.0,
+        "weightMax": null,
+        "waistCm": 24.8
+      },
+      "152": {
+        "weightMin": 80.0,
+        "weightMax": null,
+        "waistCm": 25.1
+      },
+      "159W": {
+        "weightMin": 110.0,
+        "weightMax": null,
+        "waistCm": 26.5
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0036": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "",
+    "source": "https://www.lib-tech.com/glider",
+    "sizes": {
+      "139": {
+        "weightMin": 65.0,
+        "weightMax": null,
+        "waistCm": 23.8
+      },
+      "143": {
+        "weightMin": 75.0,
+        "weightMax": null,
+        "waistCm": 24.3
+      },
+      "147": {
+        "weightMin": 80.0,
+        "weightMax": null,
+        "waistCm": 24.5
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0037": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "",
+    "source": "https://www.lib-tech.com/orca",
+    "sizes": {
+      "153": {
+        "weightMin": 130.0,
+        "weightMax": null,
+        "waistCm": 26.7
+      },
+      "156": {
+        "weightMin": 140.0,
+        "weightMax": null,
+        "waistCm": 26.7
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0038": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "",
+    "source": "https://www.lib-tech.com/skunk-ape",
+    "sizes": {
+      "165W": {
+        "weightMin": 145.0,
+        "weightMax": null,
+        "waistCm": 26.8
+      },
+      "169W": {
+        "weightMin": 150.0,
+        "weightMax": null,
+        "waistCm": 26.8
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0039": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "",
+    "source": "https://www.lib-tech.com/t-rice-pro",
+    "sizes": {
+      "155": {
+        "weightMin": 110.0,
+        "weightMax": null,
+        "waistCm": 25.5
+      },
+      "157": {
+        "weightMin": 120.0,
+        "weightMax": null,
+        "waistCm": 25.8
+      },
+      "159": {
+        "weightMin": 125.0,
+        "weightMax": null,
+        "waistCm": 25.9
+      },
+      "161W": {
+        "weightMin": 135.0,
+        "weightMax": null,
+        "waistCm": 26.5
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0042": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "",
+    "source": "https://www.nitrosnowboards.com/products/alternator-fx-snowboard",
+    "sizes": {
+      "154": {
+        "weightMin": 120.0,
+        "weightMax": 165.0,
+        "waistCm": 25.2
+      },
+      "157": {
+        "weightMin": 130.0,
+        "weightMax": 175.0,
+        "waistCm": 25.4
+      },
+      "160": {
+        "weightMin": 145.0,
+        "weightMax": 185.0,
+        "waistCm": 25.6
+      }
+    },
+    "checkedAt": "2026-09-16"
+  },
+  "SNB0041": {
+    "kind": "model",
+    "season": 2027,
+    "bootSystem": "",
+    "source": "https://www.nitrosnowboards.com/products/team-snowboard-1",
+    "sizes": {
+      "155": {
+        "weightMin": 120.0,
+        "weightMax": 165.0,
+        "waistCm": 25.0
+      },
+      "159": {
+        "weightMin": 145.0,
+        "weightMax": 185.0,
+        "waistCm": 25.4
+      },
+      "159W": {
+        "weightMin": 145.0,
+        "weightMax": 185.0,
+        "waistCm": 26.6
+      },
+      "162W": {
+        "weightMin": 155.0,
+        "weightMax": null,
+        "waistCm": 27.0
+      }
+    },
+    "checkedAt": "2026-09-16"
+  }
+}
