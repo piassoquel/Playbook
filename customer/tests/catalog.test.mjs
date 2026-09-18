@@ -46,3 +46,38 @@ test('setup tiers keep a Step On mismatch out of alternate choices',()=>{
   assert.equal(recommendedSetup(board,'upgrade').needsReview,true);
   assert.equal(recommendedSetup(board,'budget').binding,null);
 });
+const skiSource={success:true,brands:[{BrandID:'BR',Name:'Brand'}],products:[
+  {ProductID:'K1',SportID:'SKI',CategoryID:'SKIS',BrandID:'BR',Model:'Ski',Active:true,Status:'Published',Gender:'Unisex',Ability:'Intermediate',ShapeOrWidth:88,Profile:'Rocker',Flex:'Medium',Variants:[{VariantType:'length',VariantValue:'169'},{VariantType:'length',VariantValue:'175'}],Recommendations:{Binding:{Recommended:'KD'},Boot:{Recommended:'KB'}}},
+  {ProductID:'KD',SportID:'SKI',CategoryID:'SKIBIND',BrandID:'BR',Model:'Ski Binding',Active:true,Status:'Published',DINRange:'2026-04-13'},
+  {ProductID:'KB',SportID:'SKI',CategoryID:'SKIBOOT',BrandID:'BR',Model:'Ski Boot',Active:true,Status:'Published'},
+  {ProductID:'SB',SportID:'SNB',CategoryID:'SNBBOOT',BrandID:'BR',Model:'Snowboard Boot',Active:true,Status:'Published'},
+]};
+test('ski products project alongside snowboards with ski-only pairings and no DIN',()=>{
+  const [ski]=projectCatalog(skiSource);
+  assert.equal(ski.sport,'ski');
+  assert.equal(ski.waist,88);
+  assert.equal(ski.shape,'');
+  assert.deepEqual(ski.sizes,['169','175']);
+  assert.equal(ski.recommendations.binding.recommended.id,'KD');
+  assert.equal(ski.recommendations.boot.recommended.id,'KB');
+  assert.ok(!JSON.stringify(ski).includes('2026-04-13'));
+  const crossed=structuredClone(skiSource);
+  crossed.products[0].Recommendations.Boot.Recommended='SB';
+  assert.equal(projectCatalog(crossed)[0].recommendations.boot.recommended,undefined);
+});
+test('ski shortlist filters by ability and length from height',()=>{
+  const [ski]=projectCatalog(skiSource);
+  const fit=rankBoards([ski],{ability:'Intermediate',height:70,weight:180,gender:'All Boards'})[0];
+  assert.equal(fit.eligible,true);
+  assert.deepEqual(fit.sizing.best,['169','175']);
+  assert.equal(rankBoards([ski],{ability:'Intermediate',height:58,weight:80,gender:'All Boards'})[0].eligible,false);
+  assert.equal(rankBoards([ski],{ability:'Beginner',height:70,weight:180})[0].eligible,false);
+});
+test('an expert skier matches Advanced skis, but snowboard matching stays exact',()=>{
+  const ski={sport:'ski',ability:['Advanced'],terrain:{},flex:'',gender:'Unisex',sizes:['180']};
+  const expert=rankBoards([ski],{ability:'Expert',height:74,weight:200,gender:'All Boards'})[0];
+  assert.equal(expert.eligible,true);
+  assert.deepEqual(expert.reasons,['Great for advanced riders']);
+  assert.equal(rankBoards([{...ski,sport:'snowboard'}],{ability:'Expert'})[0].eligible,false);
+  assert.equal(rankBoards([{...ski,ability:['Intermediate']}],{ability:'Expert'})[0].eligible,false);
+});

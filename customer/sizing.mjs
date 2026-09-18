@@ -25,6 +25,7 @@ export function attachSizeCharts(boards,charts){
   });
 }
 export function evaluateSizing(board,answers={}){
+  if(board?.sport==='ski')return evaluateSkiSizing(board,answers);
   const weight=Number(answers.weight);
   const category=answers.gender==='All Boards'?board.gender:answers.gender;
   const system=category ? (category==="Women's"?'women':category==='Youth'?'kids':'men') : (answers.bootSystem||'men');
@@ -101,4 +102,38 @@ function preferWide(sizes,boot){
   if(boot<11.5)return sizes;
   const wide=sizes.filter(s=>/\d\s*w$/i.test(s)||/\bwide\b/i.test(s));
   return wide.length?wide:[];
+}
+// The catalog has no manufacturer length charts for skis, so length comes from
+// the common retail rule of thumb: chin-to-nose for beginners up to head height
+// or a little above for experts, longer for powder, shorter for park, and a
+// small nudge for riders heavy or light for their height. Tune numbers here.
+const SKI_ABILITY_CM={Beginner:-12,Intermediate:-5,Advanced:0,Expert:5};
+const SKI_TERRAIN_CM={Park:-5,Powder:7};
+const SKI_MAX_OVER_HEIGHT_CM=5;
+const SKI_WINDOW_CM=6;
+const SKI_FALLBACK_SHORT_CM=15;
+const SKI_FALLBACK_LONG_CM=10;
+const SKI_ALT_CM=11;
+export function evaluateSkiSizing(board,answers={}){
+  const height=Number(answers.height);
+  const lengths=(board?.sizes||[]).map(size=>({size,cm:Number.parseInt(size,10)})).filter(l=>l.cm>0).sort((a,b)=>a.cm-b.cm);
+  if(!height||!lengths.length)return {kind:'none',best:[],possible:[],source:null,alternatives:[]};
+  const weight=Number(answers.weight);
+  let target=height*2.54+(SKI_ABILITY_CM[answers.ability]??SKI_ABILITY_CM.Intermediate)+(SKI_TERRAIN_CM[answers.terrain]??0);
+  if(weight&&height>=60){const bmi=703*weight/(height*height);if(bmi>=27)target+=3;else if(bmi<19)target-=3}
+  target=Math.min(target,height*2.54+SKI_MAX_OVER_HEIGHT_CM);
+  const away=l=>Math.abs(l.cm-target);
+  let best=lengths.filter(l=>away(l)<=SKI_WINDOW_CM);
+  if(!best.length){
+    // No length in the window: a slightly short ski beats an empty result for tall riders, an overlong one does not.
+    const nearest=lengths.reduce((a,b)=>away(b)<away(a)?b:a);
+    if(away(nearest)<=(nearest.cm<target?SKI_FALLBACK_SHORT_CM:SKI_FALLBACK_LONG_CM))best=[nearest];
+  }
+  const alternatives=[];
+  if(best.length){
+    const shorter=lengths[lengths.indexOf(best[0])-1],longer=lengths[lengths.indexOf(best[best.length-1])+1];
+    if(shorter&&away(shorter)<=SKI_ALT_CM)alternatives.push({size:shorter.size,direction:'down'});
+    if(longer&&away(longer)<=SKI_ALT_CM)alternatives.push({size:longer.size,direction:'up'});
+  }
+  return {kind:'ski',best:best.map(l=>l.size),possible:best.map(l=>l.size),source:null,alternatives};
 }
