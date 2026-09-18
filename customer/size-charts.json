@@ -349,7 +349,7 @@
     "sizes": {
       "157": {
         "weightMin": 100.0,
-        "weightMax": null,
+        "weightMax": 205.0,
         "waistCm": 26.2
       },
       "159": {
@@ -359,11 +359,11 @@
       },
       "163W": {
         "weightMin": 120.0,
-        "weightMax": null,
+        "weightMax": 265.0,
         "waistCm": 26.8
       }
     },
-    "checkedAt": "2026-09-16"
+    "checkedAt": "2026-09-18"
   },
   "SNB0035": {
     "kind": "model",
@@ -373,7 +373,7 @@
     "sizes": {
       "147": {
         "weightMin": 50.0,
-        "weightMax": null,
+        "weightMax": 115.0,
         "waistCm": 24.8
       },
       "152": {
@@ -387,7 +387,7 @@
         "waistCm": 26.5
       }
     },
-    "checkedAt": "2026-09-16"
+    "checkedAt": "2026-09-18"
   },
   "SNB0036": {
     "kind": "model",
@@ -397,21 +397,21 @@
     "sizes": {
       "139": {
         "weightMin": 65.0,
-        "weightMax": null,
+        "weightMax": 120.0,
         "waistCm": 23.8
       },
       "143": {
         "weightMin": 75.0,
-        "weightMax": null,
+        "weightMax": 140.0,
         "waistCm": 24.3
       },
       "147": {
         "weightMin": 80.0,
-        "weightMax": null,
+        "weightMax": 160.0,
         "waistCm": 24.5
       }
     },
-    "checkedAt": "2026-09-16"
+    "checkedAt": "2026-09-18"
   },
   "SNB0037": {
     "kind": "model",
@@ -421,16 +421,16 @@
     "sizes": {
       "153": {
         "weightMin": 130.0,
-        "weightMax": null,
+        "weightMax": 225.0,
         "waistCm": 26.7
       },
       "156": {
         "weightMin": 140.0,
-        "weightMax": null,
+        "weightMax": 245.0,
         "waistCm": 26.7
       }
     },
-    "checkedAt": "2026-09-16"
+    "checkedAt": "2026-09-18"
   },
   "SNB0038": {
     "kind": "model",
@@ -440,16 +440,16 @@
     "sizes": {
       "165W": {
         "weightMin": 145.0,
-        "weightMax": null,
+        "weightMax": 275.0,
         "waistCm": 26.8
       },
       "169W": {
         "weightMin": 150.0,
-        "weightMax": null,
+        "weightMax": 295.0,
         "waistCm": 26.8
       }
     },
-    "checkedAt": "2026-09-16"
+    "checkedAt": "2026-09-18"
   },
   "SNB0039": {
     "kind": "model",
@@ -459,26 +459,26 @@
     "sizes": {
       "155": {
         "weightMin": 110.0,
-        "weightMax": null,
+        "weightMax": 200.0,
         "waistCm": 25.5
       },
       "157": {
         "weightMin": 120.0,
-        "weightMax": null,
+        "weightMax": 215.0,
         "waistCm": 25.8
       },
       "159": {
         "weightMin": 125.0,
-        "weightMax": null,
+        "weightMax": 230.0,
         "waistCm": 25.9
       },
       "161W": {
         "weightMin": 135.0,
-        "weightMax": null,
+        "weightMax": 255.0,
         "waistCm": 26.5
       }
     },
-    "checkedAt": "2026-09-16"
+    "checkedAt": "2026-09-18"
   },
   "SNB0042": {
     "kind": "model",
@@ -532,5 +532,71 @@
       }
     },
     "checkedAt": "2026-09-16"
+  },
+  "SNB0043": {
+    "kind": "model",
+    "season": 2027,
+    "source": "https://www.nitrosnowboards.com/collections/all-womens-snowboards-26-27/products/lectra-abstract-womens-snowboard",
+    "sizes": {
+      "138": {
+        "weightMin": null,
+        "weightMax": 99.0,
+        "waistCm": 22.7
+      },
+      "146": {
+        "weightMin": 100.0,
+        "weightMax": 145.0,
+        "waistCm": 23.4
+      }
+    },
+    "checkedAt": "2026-09-18"
+  },
+  "SNB0044": {
+    "kind": "model",
+    "season": 2027,
+    "source": "https://www.salomon.com/en-us/product/wonder-li1324",
+    "sizes": {
+      "140": {
+        "weightMin": 77.0,
+        "weightMax": 132.0
+      },
+      "144": {
+        "weightMin": 88.0,
+        "weightMax": 132.0
+      },
+      "148": {
+        "weightMin": 99.0,
+        "weightMax": 143.0
+      },
+      "152": {
+        "weightMin": 110.0,
+        "weightMax": 154.0
+      }
+    },
+    "checkedAt": "2026-09-18"
+  },
+  "SNB0045": {
+    "kind": "model",
+    "season": 2027,
+    "source": "https://www.salomon.com/en-us/product/pulse-li1326",
+    "sizes": {
+      "142": {
+        "weightMin": 88.0,
+        "weightMax": 132.0
+      },
+      "149": {
+        "weightMin": 110.0,
+        "weightMax": 154.0
+      },
+      "156": {
+        "weightMin": 121.0,
+        "weightMax": 187.0
+      },
+      "162W": {
+        "weightMin": 154.0,
+        "weightMax": 231.0
+      }
+    },
+    "checkedAt": "2026-09-18"
   }
 }
