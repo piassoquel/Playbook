@@ -6,7 +6,7 @@ The local customer preview uses the Night Blue palette: deep navy surfaces, a re
 
 ## Journey and matching
 
-The entry page uses the existing Playbook sport photos and asks visitors to choose Snowboard or Ski. Snowboard opens question 1 directly; Ski currently opens a clearly labeled coming-soon page. A ski-specific journey and catalog projection are still needed before that path can recommend products.
+The entry page uses the existing Playbook sport photos and asks visitors to choose Snowboard or Ski. Snowboard opens question 1 directly, and Ski opens its own journey (see “Ski” below). Choosing a different sport resets the saved answers, and the saved setup holds one sport at a time.
 
 The five steps ask ability, preferred terrain, preferred flex feel, height in feet and inches/weight/boot size, and preferred board category (men’s, women’s, youth, or all boards). Boot size is selected with touch-sized US or Mondo buttons. Adult Mondo values are converted to US using the published [Burton men's](https://www.burton.com/en-us/products/mens-burton-swath-boa-snowboard-boots-2031816-o) and [women's](https://www.burton.com/en-us/products/womens-burton-waverange-step-on-snowboard-boots-302981) snowboard boot charts; conversions and final boot fit should be confirmed in store. Ability is an exact eligibility match against `Ability`; terrain scores a board when its CMS rating is 4 or 5; flex feel maps the listed labels. The customer-facing “Resort” choice maps to the existing `TerrainGroomers` CMS field. Men’s and women’s choices also include the unisex board. All Boards considers every published board category; sizing uses each board’s category to interpret US boot size. The shortlist includes only boards with a listed size that passes the available size guidance, shows three matches initially, and can expand. Sizing reasons appear only on product pages. US boot size 11 or above selects wide variants automatically; a smaller boot can still receive a wide variant when only that variant fits the rider’s weight. This is a width suggestion, not a final fit guarantee.
 
@@ -16,9 +16,17 @@ Manufacturer charts disagree with three CMS variant rows: D.O.A. `162W`, and DPR
 
 The customer detail page puts the personalized size and setup above the longer explanation and specs. It offers ProductID-based `Recommended`, `Budget`, and `Upgrade` boot and binding tiers as a compact selector when each pair is available and compatible. A Step On binding and conventional boot (or the reverse) are withheld together; the upgrade pairings for D.O.A. and Orca 2 currently fail this check and do not appear as customer options. FASE and other hands-free strap systems remain conventional. The Step On boot flag comes from its model name because the CMS has no normalized boot interface field. The projection excludes review-only products, internal selling content, Admin settings, and unrelated employee fields.
 
+## Ski
+
+Skis use the same CMS schema and Firestore collection (`customerBoards`, tagged `sport: "ski"`), projected from `SKIS`, `SKIBIND`, and `SKIBOOT` products with the same Recommended/Upgrade/Budget pairings. The ski journey asks ability, terrain, flex feel, height and weight (no boot size, because ski length does not depend on it), and Men's/Women's/Youth/All Skis. Ski waist width is projected from `ShapeOrWidth`. `DINRange` is not projected: Sheets has converted several ranges to dates (for example `2026-04-13` for `4-13`).
+
+Ski length has no manufacturer chart in the CMS, so `evaluateSkiSizing` in `sizing.mjs` uses the common retail rule of thumb, not a maker guarantee: height plus an ability offset (beginner −12 cm, intermediate −5, advanced 0, expert +5), plus a terrain offset (park −5, powder +7), plus ±3 cm for a rider heavy or light for their height. The target never exceeds height +5 cm, and a length within ±6 cm qualifies. If none does, the nearest length up to 15 cm short (or 10 cm long) is used so tall riders are not left empty-handed. Adjacent lengths within 11 cm of the target appear as dashed alternatives, like snowboard sizes. All of these numbers are constants at the top of that block and should be reviewed by a ski fitter.
+
+No ski is tagged `Expert` yet, so an expert skier matches `Advanced` skis and the reason chip says “advanced”.
+
 ## Local preview
 
-From this directory, run `npm test` and `npm run preview`, then open `http://localhost:4173`. Localhost reads `data/catalog-preview.json`, a customer-safe snapshot generated from the current public CMS on 2026-09-16. It is preview data only. Firestore is the intended catalog for the hosted app.
+From this directory, run `npm test` and `npm run preview`, then open `http://localhost:4173`. Localhost reads `data/catalog-preview.json`, a customer-safe snapshot generated from the current public CMS on 2026-09-16. It is preview data only. Firestore is the intended catalog for the hosted app. Note that localhost tries Firestore first and only uses the preview file if that fails, so to test unpublished data locally, serve a copy with an empty `firebase-config.js`. Deploy hosting before publishing ski products to Firestore: the previous app version does not filter by sport and would list skis as snowboards.
 
 ## Publish from CMS to Firestore
 

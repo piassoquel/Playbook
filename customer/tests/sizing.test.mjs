@@ -85,3 +85,30 @@ test('an alternative must still satisfy the boot fit constraint',()=>{
   assert.deepEqual(result.best,['155']);
   assert.deepEqual(result.alternatives,[]);
 });
+test('ski length follows height and ability, with terrain and weight nudges',()=>{
+  const ski={sport:'ski',sizes:['164','170','176','182','188']};
+  const at=(a)=>evaluateSizing(ski,{height:70,weight:175,...a}).best;
+  assert.deepEqual(at({ability:'Intermediate',terrain:'AllMountain'}),['170','176']);
+  assert.deepEqual(at({ability:'Beginner'}),['164','170']);
+  assert.deepEqual(at({ability:'Expert',terrain:'Powder'}),['182','188']);
+  assert.deepEqual(evaluateSizing(ski,{height:70,weight:175,ability:'Intermediate',terrain:'Park'}).best,['164','170']);
+  // a rider light for their height (BMI < 19) skis 3cm shorter
+  assert.deepEqual(evaluateSizing(ski,{height:70,weight:120,ability:'Intermediate'}).best,['164','170']);
+});
+test('ski length offers adjacent lengths as alternatives and excludes far-off skis',()=>{
+  const ski={sport:'ski',sizes:['164','170','176','182','188']};
+  const result=evaluateSizing(ski,{height:70,weight:175,ability:'Intermediate'});
+  assert.deepEqual(result.alternatives,[{size:'164',direction:'down'},{size:'182',direction:'up'}]);
+  assert.deepEqual(evaluateSizing({sport:'ski',sizes:['110','120']},{height:70,weight:175,ability:'Advanced'}).best,[]);
+  assert.equal(evaluateSizing(ski,{weight:175}).kind,'none');
+  // with no length in the window, one up to 15cm short (or 10cm long) of the target still qualifies
+  const pick=(sizes,a)=>evaluateSizing({sport:'ski',sizes},{height:70,weight:175,...a}).best;
+  assert.deepEqual(pick(['172'],{ability:'Expert',terrain:'Powder'}),['172']);
+  assert.deepEqual(pick(['165'],{ability:'Expert',terrain:'Powder'}),[]);
+  assert.deepEqual(pick(['174'],{ability:'Beginner'}),['174']);
+  assert.deepEqual(pick(['178'],{ability:'Beginner'}),[]);
+});
+test('ski target never runs more than 5cm past height, so tall riders still get the longest skis',()=>{
+  const ski={sport:'ski',sizes:['174','182']};
+  assert.deepEqual(evaluateSizing(ski,{height:74,weight:210,ability:'Expert',terrain:'Powder'}).best,['182']);
+});

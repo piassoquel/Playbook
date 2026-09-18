@@ -1,6 +1,1522 @@
 {
-  "generatedAt": "2026-09-18T04:23:39.022Z",
+  "generatedAt": "2026-09-18T23:16:15.570Z",
   "boards": [
+    {
+      "id": "SKI0033",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2026,
+      "brand": "Black Crows",
+      "model": "Atris",
+      "gender": "Unisex",
+      "description": "Freeride ski for soft and variable mountain snow.",
+      "price": 699.99,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 3,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Stiff",
+      "width": "",
+      "waist": 105,
+      "sizes": [
+        "172"
+      ],
+      "images": [
+        {
+          "url": "https://www.rei.com/media/8b1d4657-1991-4a56-bc88-b36be0389e83?size=2000",
+          "alt": "Atris"
+        },
+        {
+          "url": "https://www.rei.com/media/6be907c8-c628-402b-8495-df87a1c5656f?size=2000",
+          "alt": "Atris2"
+        },
+        {
+          "url": "https://www.rei.com/product/254803/black-crows-atris-skis-mens-20252026?sku=2548030004&store=&CAWELAID=120217890020451024&CAGPSPN=pla&CAAGID=110123350940&CATCI=pla-2207065952590&cm_mmc=PLA_Google%7C21700000001700551_2548030004%7C2207065952590%7Cbrand_flag%7C10020758119&gclsrc=aw.ds&gad_source=1&gad_campaignid=10020758119&gbraid=0AAAAAD_DTlzsltd7F1Gmywa94D8lkdpVd&gclid=CjwKCAjwwrPVBhA1EiwAv_YO-dGiCTvOOoLetqQUAQ-NfWs_jfcltWduA6_5lMgdMEMsGJf8poB6kRoC15YQAvD_BwE",
+          "alt": "Atris3"
+        }
+      ],
+      "image": "https://www.rei.com/media/8b1d4657-1991-4a56-bc88-b36be0389e83?size=2000",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0003",
+            "brand": "Look",
+            "model": "Pivot 2.0 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0011",
+            "brand": "K2",
+            "model": "Mindbender 110 Boa",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2526_mindbender-110-boa_KS251178_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 749.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0010",
+            "brand": "K2",
+            "model": "Recon Zonal Boa 120",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_recon-120-zonal-boa_KS261921_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 799.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0007",
+            "brand": "K2",
+            "model": "BFC 90",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0034",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2026,
+      "brand": "Black Crows",
+      "model": "Atris Birdie",
+      "gender": "Women's",
+      "description": "Freeride ski for soft and variable mountain snow.",
+      "price": 699.99,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 3,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Stiff",
+      "width": "",
+      "waist": 105,
+      "sizes": [
+        "160",
+        "166"
+      ],
+      "images": [
+        {
+          "url": "https://content.backcountry.com/images/items/1200/BKC/BKCB08E/TUR.jpg",
+          "alt": "Atris Birdie"
+        },
+        {
+          "url": "https://content.backcountry.com/images/items/1200/BKC/BKCB08E/TUR_D1.jpg",
+          "alt": "AtrisBirdie2"
+        },
+        {
+          "url": "https://content.backcountry.com/images/items/1200/BKC/BKCB08E/TUR_D2.jpg",
+          "alt": "AtrisBirdie3"
+        }
+      ],
+      "image": "https://content.backcountry.com/images/items/1200/BKC/BKCB08E/TUR.jpg",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0003",
+            "brand": "Look",
+            "model": "Pivot 2.0 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0002",
+            "brand": "Look",
+            "model": "NX 11",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 199.95,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0009",
+            "brand": "K2",
+            "model": "Anthem X Boa 95",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_anthem-x-95-boa_KS261934_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 599.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0024",
+            "brand": "Technica",
+            "model": "Machboa W 85 MV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__201G56G1-200_Mach_BOA_MV_85_W_01.webp",
+            "price": 599.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0008",
+            "brand": "K2",
+            "model": "BFC 85 W",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0035",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2026,
+      "brand": "Black Crows",
+      "model": "Camox",
+      "gender": "Unisex",
+      "description": "All-mountain ski for mixed resort conditions.",
+      "price": 639.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium",
+      "width": "",
+      "waist": 97,
+      "sizes": [
+        "169",
+        "175",
+        "182"
+      ],
+      "images": [
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102365-022-F_3dcf528c-e054-4925-a833-cda02c4b0fa7_1000x1250_crop_center.jpg?v=1756110940",
+          "alt": "Camox"
+        },
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102365-022-B_d9563fb4-5bb1-44f2-8a4b-0521eb318b31_1000x1250_crop_center.jpg?v=1756110940",
+          "alt": "Camox2"
+        },
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102365-022-S_0d4331cd-52a5-4d69-af3d-eabbfd259abb_1000x1250_crop_center.jpg?v=1756110927",
+          "alt": "Camox3"
+        }
+      ],
+      "image": "https://www.black-crows.com/cdn/shop/files/102365-022-F_3dcf528c-e054-4925-a833-cda02c4b0fa7_1000x1250_crop_center.jpg?v=1756110940",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0007",
+            "brand": "K2",
+            "model": "BFC 90",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0022",
+            "brand": "Technica",
+            "model": "Machboa 110 HV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101869G2-741_Mach_BOA_HV_110_01.webp",
+            "price": 699.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0007",
+            "brand": "K2",
+            "model": "BFC 90",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0036",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2026,
+      "brand": "Black Crows",
+      "model": "Camox Birdie",
+      "gender": "Women's",
+      "description": "All-mountain ski for mixed resort conditions.",
+      "price": 639.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium",
+      "width": "",
+      "waist": 97,
+      "sizes": [
+        "156",
+        "162"
+      ],
+      "images": [
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102366-117-F_1000x1250_crop_center.jpg?v=1756110994",
+          "alt": "Camox Birdie"
+        },
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102366-117-B_1000x1250_crop_center.jpg?v=1756110994",
+          "alt": "CamoxBirdie2"
+        },
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102366-117-S_1000x1250_crop_center.jpg?v=1756110994",
+          "alt": "CamoxBirdie3"
+        }
+      ],
+      "image": "https://www.black-crows.com/cdn/shop/files/102366-117-F_1000x1250_crop_center.jpg?v=1756110994",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0002",
+            "brand": "Look",
+            "model": "NX 11",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 199.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0002",
+            "brand": "Look",
+            "model": "NX 11",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 199.95,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0014",
+            "brand": "Rossignol",
+            "model": "VIZION 4B 80 W",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw1d512710/images/large/RBN7270000_72DPI_01_v00.jpg?sw=1200&sh=1200",
+            "price": 599.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0024",
+            "brand": "Technica",
+            "model": "Machboa W 85 MV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__201G56G1-200_Mach_BOA_MV_85_W_01.webp",
+            "price": 599.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0008",
+            "brand": "K2",
+            "model": "BFC 85 W",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0030",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Black Crows",
+      "model": "Captis",
+      "gender": "Unisex",
+      "description": "All-mountain ski for mixed resort conditions.",
+      "price": 669.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Soft-Medium",
+      "width": "",
+      "waist": 90,
+      "sizes": [
+        "172",
+        "178",
+        "184"
+      ],
+      "images": [
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102368-011-F_1000x1250_crop_center.jpg?v=1755874431",
+          "alt": "Captis"
+        },
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102368-011-B_1000x1250_crop_center.jpg?v=1755874431",
+          "alt": "Captis2"
+        },
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102368-011-S_1000x1250_crop_center.jpg?v=1755848002",
+          "alt": "Captis3"
+        }
+      ],
+      "image": "https://www.black-crows.com/cdn/shop/files/102368-011-F_1000x1250_crop_center.jpg?v=1755874431",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0005",
+            "brand": "Marker",
+            "model": "Griffon X 13",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 299.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0002",
+            "brand": "Look",
+            "model": "NX 11",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 199.95,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0007",
+            "brand": "K2",
+            "model": "BFC 90",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0011",
+            "brand": "K2",
+            "model": "Mindbender 110 Boa",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2526_mindbender-110-boa_KS251178_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 749.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0012",
+            "brand": "Rossignol",
+            "model": "Speed 80 HV+",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw5a1b7adf/images/large/RBO8050000_72DPI_01_v00.jpg?sw=1200&sh=1200",
+            "price": 399.95,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0032",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Black Crows",
+      "model": "Captis Birdie",
+      "gender": "Women's",
+      "description": "All-mountain ski for mixed resort conditions.",
+      "price": 669.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Soft-Medium",
+      "width": "",
+      "waist": 90,
+      "sizes": [
+        "154",
+        "160",
+        "166"
+      ],
+      "images": [
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102369-119-F_1000x1250_crop_center.jpg?v=1755872902",
+          "alt": "Captis Birdie"
+        },
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102369-119-B_1000x1250_crop_center.jpg?v=1755872902",
+          "alt": "CaptisBirdie2"
+        },
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102369-119-S_1000x1250_crop_center.jpg?v=1755848019",
+          "alt": "CaptisBirdie3"
+        }
+      ],
+      "image": "https://www.black-crows.com/cdn/shop/files/102369-119-F_1000x1250_crop_center.jpg?v=1755872902",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0002",
+            "brand": "Look",
+            "model": "NX 11",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 199.95,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0008",
+            "brand": "K2",
+            "model": "BFC 85 W",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0009",
+            "brand": "K2",
+            "model": "Anthem X Boa 95",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_anthem-x-95-boa_KS261934_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 599.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0015",
+            "brand": "Rossignol",
+            "model": "Track 70 W",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw19c39969/images/large/RBM4250000_72DPI_01_v00.jpg?sw=1200&sh=1200",
+            "price": 349.99,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0031",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Black Crows",
+      "model": "Mirus Cor",
+      "gender": "Unisex",
+      "description": "Playful all-terrain ski for short turns and side hits.",
+      "price": 999.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 4
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium",
+      "width": "",
+      "waist": 87,
+      "sizes": [
+        "173",
+        "178"
+      ],
+      "images": [
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102138-018-F_ec74f406-5c53-47f5-9d8b-675a8ddc5ee4_1000x1250_crop_center.jpg?v=1756824627",
+          "alt": "Mirus Cor"
+        },
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102138-018-B_1000x1250_crop_center.jpg?v=1756824627",
+          "alt": "MirusCor2"
+        },
+        {
+          "url": "https://www.black-crows.com/cdn/shop/files/102138-018-S_1000x1250_crop_center.jpg?v=1756824627",
+          "alt": "MirusCor3"
+        }
+      ],
+      "image": "https://www.black-crows.com/cdn/shop/files/102138-018-F_ec74f406-5c53-47f5-9d8b-675a8ddc5ee4_1000x1250_crop_center.jpg?v=1756824627",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0006",
+            "brand": "Salomon",
+            "model": "Strive 14 GripWalk",
+            "image": "https://cdn.dam.salomon.com/af431905-2f54-4b54-bc3d-b2f4015322d8/L41775000%2B/PNG-2000px-max-72dpi.png?width=1920&fit=cover&optimize=medium&bg-color=f5f5f5&format=pjpg&auto=avif&canvas=116p%2C144p",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0022",
+            "brand": "Technica",
+            "model": "Machboa 110 HV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101869G2-741_Mach_BOA_HV_110_01.webp",
+            "price": 699.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0020",
+            "brand": "Salomon",
+            "model": "Shift Supra Boa 100",
+            "image": "https://cdn.dam.salomon.com/827ffa15-dcdb-489a-9efd-b31b00be0a9b/L47934200/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+            "price": 749.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0012",
+            "brand": "Rossignol",
+            "model": "Speed 80 HV+",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw5a1b7adf/images/large/RBO8050000_72DPI_01_v00.jpg?sw=1200&sh=1200",
+            "price": 399.95,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0041",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Blizzard",
+      "model": "Anomaly 84",
+      "gender": "Unisex",
+      "description": "All-mountain ski for mixed resort conditions.",
+      "price": 699.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium-Stiff",
+      "width": "",
+      "waist": 84,
+      "sizes": [
+        "164",
+        "170",
+        "176",
+        "182"
+      ],
+      "images": [
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/Product/8A637600-001_Anomaly_84_01.png",
+          "alt": "Anomaly 84"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/Product/Gallery/8A637600-001_Anomaly_84_02.png",
+          "alt": "Anomaly842"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/Product/Gallery/8A637600-001_Anomaly_84_03.png",
+          "alt": "Anomaly843"
+        }
+      ],
+      "image": "https://www.blizzard-tecnica.com/storage/Product/8A637600-001_Anomaly_84_01.png",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0005",
+            "brand": "Marker",
+            "model": "Griffon X 13",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 299.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0003",
+            "brand": "Look",
+            "model": "Pivot 2.0 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0007",
+            "brand": "K2",
+            "model": "BFC 90",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0011",
+            "brand": "K2",
+            "model": "Mindbender 110 Boa",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2526_mindbender-110-boa_KS251178_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 749.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0023",
+            "brand": "Technica",
+            "model": "Machsport 80 HV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101872G2-268_MACH_SPORT_HV_80_GW_01.webp",
+            "price": 349.99,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0040",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Blizzard",
+      "model": "Anomaly 94",
+      "gender": "Unisex",
+      "description": "All-mountain ski for mixed resort conditions.",
+      "price": 799.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium-Stiff",
+      "width": "",
+      "waist": 94,
+      "sizes": [
+        "170",
+        "176",
+        "182"
+      ],
+      "images": [
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/Product/8A637200-001_Anomaly_94_01.png",
+          "alt": "Anomaly 94"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A637200-001_Anomaly_94_02.webp",
+          "alt": "Anomaly942"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A637200-001_Anomaly_94_03.webp",
+          "alt": "Anomaly943"
+        }
+      ],
+      "image": "https://www.blizzard-tecnica.com/storage/Product/8A637200-001_Anomaly_94_01.png",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0005",
+            "brand": "Marker",
+            "model": "Griffon X 13",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 299.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0007",
+            "brand": "K2",
+            "model": "BFC 90",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0011",
+            "brand": "K2",
+            "model": "Mindbender 110 Boa",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2526_mindbender-110-boa_KS251178_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 749.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0023",
+            "brand": "Technica",
+            "model": "Machsport 80 HV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101872G2-268_MACH_SPORT_HV_80_GW_01.webp",
+            "price": 349.99,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0039",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Blizzard",
+      "model": "Anomaly Jr",
+      "gender": "Youth",
+      "description": "Junior ski for progressing resort skiers.",
+      "price": 329.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 2,
+        "Trees": 2,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip Rocker",
+      "flex": "Soft",
+      "width": "",
+      "waist": 67,
+      "sizes": [
+        "110",
+        "120",
+        "130",
+        "140",
+        "150"
+      ],
+      "images": [
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A6414ME-001_Anomaly_JR__110-150__01.webp",
+          "alt": "Anomaly Jr"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A6414ME-001_Anomaly_JR__110-150__02.webp",
+          "alt": "AnomalyJR2"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A6414ME-001_Anomaly_JR__110-150__03.webp",
+          "alt": "AnomalyJR3"
+        }
+      ],
+      "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A6414ME-001_Anomaly_JR__110-150__01.webp",
+      "recommendations": {
+        "binding": {},
+        "boot": {
+          "recommended": {
+            "id": "SKI0027",
+            "brand": "Technica",
+            "model": "JT 2 Storm",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__30134102-B79_JT_2_01.webp",
+            "price": 169.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0026",
+            "brand": "Technica",
+            "model": "JT 3 Storm",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__30133802-B79_JT_3_01.webp",
+            "price": 209.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0018",
+            "brand": "Roxa",
+            "model": "Sonic 2 RTL",
+            "image": "https://res.cloudinary.com/great-lakes-outpost/image/upload/t_product_zoom/c_limit,w_500/f_auto/q_auto/v1/ROXA620521195-Junior_SONIC-2-ALP",
+            "price": 129.99,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0038",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Blizzard",
+      "model": "Black Pearl 84",
+      "gender": "Women's",
+      "description": "Frontside ski built around groomed-snow turns.",
+      "price": 699.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 3,
+        "Powder": 1,
+        "Trees": 1,
+        "Park": 1
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Soft-Medium",
+      "width": "",
+      "waist": 84,
+      "sizes": [
+        "146",
+        "152",
+        "158"
+      ],
+      "images": [
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A638200-001_Black_Pearl_84_01.webp",
+          "alt": "Black Pearl 84"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A638200-001_Black_Pearl_84_02.webp",
+          "alt": "BP84Bottom"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A638200-001_Black_Pearl_84_03.webp",
+          "alt": "BP84Profile"
+        }
+      ],
+      "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A638200-001_Black_Pearl_84_01.webp",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0002",
+            "brand": "Look",
+            "model": "NX 11",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 199.95,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0008",
+            "brand": "K2",
+            "model": "BFC 85 W",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0009",
+            "brand": "K2",
+            "model": "Anthem X Boa 95",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_anthem-x-95-boa_KS261934_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 599.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0015",
+            "brand": "Rossignol",
+            "model": "Track 70 W",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw19c39969/images/large/RBM4250000_72DPI_01_v00.jpg?sw=1200&sh=1200",
+            "price": 349.99,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0037",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Blizzard",
+      "model": "Black Pearl 88",
+      "gender": "Women's",
+      "description": "All-mountain ski for mixed resort conditions.",
+      "price": 749.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium",
+      "width": "",
+      "waist": 88,
+      "sizes": [
+        "146",
+        "152",
+        "158",
+        "164"
+      ],
+      "images": [
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A638000-001_Black_Pearl_88_01.webp",
+          "alt": "Black Pearl 88"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A638000-001_Black_Pearl_88_02.webp",
+          "alt": "BP88Bottom"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A638000-001_Black_Pearl_88_03.webp",
+          "alt": "BP88Profile"
+        }
+      ],
+      "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A638000-001_Black_Pearl_88_01.webp",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0005",
+            "brand": "Marker",
+            "model": "Griffon X 13",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 299.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0003",
+            "brand": "Look",
+            "model": "Pivot 2.0 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0008",
+            "brand": "K2",
+            "model": "BFC 85 W",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0009",
+            "brand": "K2",
+            "model": "Anthem X Boa 95",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_anthem-x-95-boa_KS261934_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 599.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0015",
+            "brand": "Rossignol",
+            "model": "Track 70 W",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw19c39969/images/large/RBM4250000_72DPI_01_v00.jpg?sw=1200&sh=1200",
+            "price": 349.99,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0042",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Blizzard",
+      "model": "Pearl Jr",
+      "gender": "Youth",
+      "description": "Junior ski for progressing resort skiers.",
+      "price": 359.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 2,
+        "Trees": 2,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip Rocker",
+      "flex": "Soft",
+      "width": "",
+      "waist": 67,
+      "sizes": [
+        "110",
+        "120",
+        "130",
+        "140",
+        "150"
+      ],
+      "images": [
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A6450ME-001_PEARL_JR__110-150__01.webp",
+          "alt": "Pearl Jr"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A6450ME-001_PEARL_JR__110-150__02.webp",
+          "alt": "BPJRBottom"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A6450ME-001_PEARL_JR__110-150__03.webp",
+          "alt": "BPJRProfile"
+        }
+      ],
+      "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A6450ME-001_PEARL_JR__110-150__01.webp",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0043",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Blizzard",
+      "model": "Phoenix 7.7",
+      "gender": "Women's",
+      "description": "Frontside ski built around groomed-snow turns.",
+      "price": 599.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 3,
+        "Powder": 1,
+        "Trees": 1,
+        "Park": 1
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Soft-Medium",
+      "width": "",
+      "waist": 77,
+      "sizes": [
+        "139",
+        "146",
+        "153"
+      ],
+      "images": [
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A6440BL-001_Phoenix_7_7_01.webp",
+          "alt": "Phoenix 7.7"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A6440BL-001_Phoenix_7_7_02.webp",
+          "alt": "Phoenix77Bottom"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A6440BL-001_Phoenix_7_7_03.webp",
+          "alt": "Phoenix77Profile"
+        }
+      ],
+      "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A6440BL-001_Phoenix_7_7_01.webp",
+      "recommendations": {
+        "binding": {},
+        "boot": {
+          "recommended": {
+            "id": "SKI0008",
+            "brand": "K2",
+            "model": "BFC 85 W",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0014",
+            "brand": "Rossignol",
+            "model": "VIZION 4B 80 W",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw1d512710/images/large/RBN7270000_72DPI_01_v00.jpg?sw=1200&sh=1200",
+            "price": 599.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0017",
+            "brand": "Roxa",
+            "model": "RFit HV 75 W",
+            "image": "https://www.roxa.com/wp-content/uploads/2025/06/RFIT-HV-75W.webp",
+            "price": 299.99,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0045",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Blizzard",
+      "model": "Rustler 9",
+      "gender": "Unisex",
+      "description": "Freeride ski for soft and variable mountain snow.",
+      "price": 799,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 3,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium-Stiff",
+      "width": "",
+      "waist": 96,
+      "sizes": [
+        "168",
+        "174",
+        "180"
+      ],
+      "images": [
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A536200-001_RUSTLER_9_flat_01.webp",
+          "alt": "Rustler 9"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A536200-001_RUSTLER_9_flat_02.webp",
+          "alt": "Rustler9Bottom"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A536200-001_RUSTLER_9_flat_03.webp",
+          "alt": "Rustler9Profile"
+        }
+      ],
+      "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A536200-001_RUSTLER_9_flat_01.webp",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0005",
+            "brand": "Marker",
+            "model": "Griffon X 13",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 299.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0003",
+            "brand": "Look",
+            "model": "Pivot 2.0 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0022",
+            "brand": "Technica",
+            "model": "Machboa 110 HV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101869G2-741_Mach_BOA_HV_110_01.webp",
+            "price": 699.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0010",
+            "brand": "K2",
+            "model": "Recon Zonal Boa 120",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_recon-120-zonal-boa_KS261921_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 799.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0007",
+            "brand": "K2",
+            "model": "BFC 90",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0044",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Blizzard",
+      "model": "Stormbird 7.7",
+      "gender": "Men's",
+      "description": "Frontside ski built around groomed-snow turns.",
+      "price": 599.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 3,
+        "Powder": 1,
+        "Trees": 1,
+        "Park": 1
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Soft-Medium",
+      "width": "",
+      "waist": 77,
+      "sizes": [
+        "153",
+        "160",
+        "167"
+      ],
+      "images": [
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A5347BF-001_STORMBIRD_77_01.webp",
+          "alt": "Stormbird 7.7"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A5347BF-001_STORMBIRD_77_02.webp",
+          "alt": "Stormbird77Bottom"
+        },
+        {
+          "url": "https://www.blizzard-tecnica.com/storage/thumbs/Product/Gallery/1650__resize__8A5347BF-001_STORMBIRD_77_03.webp",
+          "alt": "Stormbird77Profile"
+        }
+      ],
+      "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/1650__resize__8A5347BF-001_STORMBIRD_77_01.webp",
+      "recommendations": {
+        "binding": {},
+        "boot": {
+          "recommended": {
+            "id": "SKI0007",
+            "brand": "K2",
+            "model": "BFC 90",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0022",
+            "brand": "Technica",
+            "model": "Machboa 110 HV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101869G2-741_Mach_BOA_HV_110_01.webp",
+            "price": 699.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0023",
+            "brand": "Technica",
+            "model": "Machsport 80 HV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101872G2-268_MACH_SPORT_HV_80_GW_01.webp",
+            "price": 349.99,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
     {
       "id": "SNB0027",
       "sport": "snowboard",
@@ -602,6 +2118,352 @@
         },
         "checkedAt": "2026-09-16"
       }
+    },
+    {
+      "id": "SKI0048",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Elan",
+      "model": "Ace SC2 S",
+      "gender": "Unisex",
+      "description": "Frontside ski built around groomed-snow turns.",
+      "price": 399.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 3,
+        "Powder": 1,
+        "Trees": 1,
+        "Park": 1
+      },
+      "shape": "",
+      "profile": "Tip Rocker",
+      "flex": "Soft",
+      "width": "",
+      "waist": 74,
+      "sizes": [
+        "140",
+        "146",
+        "152",
+        "160",
+        "168",
+        "176"
+      ],
+      "images": [
+        {
+          "url": "https://ski-depot.com/cdn/shop/files/AceSC2SBlackShiftEL10GWShiftX_ABJMYX26_2000x.png?v=1778792104",
+          "alt": "Ace SC2 S"
+        }
+      ],
+      "image": "https://ski-depot.com/cdn/shop/files/AceSC2SBlackShiftEL10GWShiftX_ABJMYX26_2000x.png?v=1778792104",
+      "recommendations": {
+        "binding": {},
+        "boot": {
+          "recommended": {
+            "id": "SKI0023",
+            "brand": "Technica",
+            "model": "Machsport 80 HV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101872G2-268_MACH_SPORT_HV_80_GW_01.webp",
+            "price": 349.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0007",
+            "brand": "K2",
+            "model": "BFC 90",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0016",
+            "brand": "Roxa",
+            "model": "RFit HV 80",
+            "image": "https://www.roxa.com/wp-content/uploads/2025/06/RFIT-HV-80.webp",
+            "price": 299.99,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0049",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Elan",
+      "model": "Ace SC2 S W",
+      "gender": "Women's",
+      "description": "Frontside ski built around groomed-snow turns.",
+      "price": 399.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 3,
+        "Powder": 1,
+        "Trees": 1,
+        "Park": 1
+      },
+      "shape": "",
+      "profile": "Tip Rocker",
+      "flex": "Soft",
+      "width": "",
+      "waist": 74,
+      "sizes": [
+        "140",
+        "146",
+        "152",
+        "160"
+      ],
+      "images": [
+        {
+          "url": "https://ski-depot.com/cdn/shop/files/AceSC2SWBlueEL9GWShiftX_ACKMVU26_470bda01-8945-4f55-837e-fa15523a44c2_2000x.png?v=1778785584",
+          "alt": "Ace SC2 S W"
+        }
+      ],
+      "image": "https://ski-depot.com/cdn/shop/files/AceSC2SWBlueEL9GWShiftX_ACKMVU26_470bda01-8945-4f55-837e-fa15523a44c2_2000x.png?v=1778785584",
+      "recommendations": {
+        "binding": {},
+        "boot": {
+          "recommended": {
+            "id": "SKI0025",
+            "brand": "Technica",
+            "model": "Machsport W 65 HV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__201613G2-070_MACH_SPORT_HV_65_W_GW_01.webp",
+            "price": 349.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0008",
+            "brand": "K2",
+            "model": "BFC 85 W",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0017",
+            "brand": "Roxa",
+            "model": "RFit HV 75 W",
+            "image": "https://www.roxa.com/wp-content/uploads/2025/06/RFIT-HV-75W.webp",
+            "price": 299.99,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0047",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Elan",
+      "model": "Ripstick 88W",
+      "gender": "Women's",
+      "description": "All-mountain ski for mixed resort conditions.",
+      "price": 699,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Hybrid",
+      "flex": "Medium",
+      "width": "",
+      "waist": 88,
+      "sizes": [
+        "154",
+        "161"
+      ],
+      "images": [
+        {
+          "url": "https://elansports.com/cdn/shop/files/Ripstick88W_ADFMNG26_PNGWEB.png?v=1787144064&width=1200",
+          "alt": "Ripstick 88W"
+        },
+        {
+          "url": "https://elansports.com/cdn/shop/files/Ripstick_88_W_ADFMNG26_Running_Base_PNG_WEB.png?v=1788332634&width=1200",
+          "alt": "Ripstick88WBottom"
+        },
+        {
+          "url": "https://elansports.com/cdn/shop/files/Ripstick_88_W_ADFMNG26_Side_PNG_WEB.png?v=1788332633&width=1200",
+          "alt": "Ripstick88WProfile"
+        }
+      ],
+      "image": "https://elansports.com/cdn/shop/files/Ripstick88W_ADFMNG26_PNGWEB.png?v=1787144064&width=1200",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0002",
+            "brand": "Look",
+            "model": "NX 11",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 199.95,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0014",
+            "brand": "Rossignol",
+            "model": "VIZION 4B 80 W",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw1d512710/images/large/RBN7270000_72DPI_01_v00.jpg?sw=1200&sh=1200",
+            "price": 599.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0024",
+            "brand": "Technica",
+            "model": "Machboa W 85 MV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__201G56G1-200_Mach_BOA_MV_85_W_01.webp",
+            "price": 599.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0008",
+            "brand": "K2",
+            "model": "BFC 85 W",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0046",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Elan",
+      "model": "Ripstick 96",
+      "gender": "Unisex",
+      "description": "All-mountain ski for mixed resort conditions.",
+      "price": 799.99,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Hybrid",
+      "flex": "Medium",
+      "width": "",
+      "waist": 96,
+      "sizes": [
+        "168",
+        "175"
+      ],
+      "images": [
+        {
+          "url": "https://elansports.com/cdn/shop/files/Ripstick96_ADCMNB26_PNGWEB.png?v=1787143726&width=1200",
+          "alt": "Ripstick 96"
+        },
+        {
+          "url": "https://elansports.com/cdn/shop/files/Ripstick_96_ADCMNB26_Running_Base_PNG_WEB.png?v=1788332071&width=1200",
+          "alt": "Ripstick96Bottom"
+        },
+        {
+          "url": "https://elansports.com/cdn/shop/files/Ripstick_96_ADCMNB26_Side_PNG_WEB.png?v=1788332070&width=1200",
+          "alt": "Ripstick96Profile"
+        }
+      ],
+      "image": "https://elansports.com/cdn/shop/files/Ripstick96_ADCMNB26_PNGWEB.png?v=1787143726&width=1200",
+      "recommendations": {
+        "binding": {
+          "recommended": {
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0003",
+            "brand": "Look",
+            "model": "Pivot 2.0 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 399.95,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0004",
+            "brand": "Marker",
+            "model": "Squire 11",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 249.99,
+            "stepOn": false
+          }
+        },
+        "boot": {
+          "recommended": {
+            "id": "SKI0022",
+            "brand": "Technica",
+            "model": "Machboa 110 HV",
+            "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101869G2-741_Mach_BOA_HV_110_01.webp",
+            "price": 699.99,
+            "stepOn": false
+          },
+          "upgrade": {
+            "id": "SKI0020",
+            "brand": "Salomon",
+            "model": "Shift Supra Boa 100",
+            "image": "https://cdn.dam.salomon.com/827ffa15-dcdb-489a-9efd-b31b00be0a9b/L47934200/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+            "price": 749.99,
+            "stepOn": false
+          },
+          "budget": {
+            "id": "SKI0007",
+            "brand": "K2",
+            "model": "BFC 90",
+            "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 399.95,
+            "stepOn": false
+          }
+        }
+      },
+      "sizeGuide": null
     },
     {
       "id": "SNB0040",
