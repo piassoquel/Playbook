@@ -4,13 +4,17 @@ import { readFile } from 'node:fs/promises';
 import { attachSizeCharts, evaluateSizing } from '../sizing.mjs';
 
 const charts=JSON.parse(await readFile(new URL('../size-charts.json',import.meta.url),'utf8'));
-test('catalog charts cover 19 matching models and never invent unlisted variants',async()=>{
+test('catalog charts cover 22 matching models and never invent unlisted variants',async()=>{
   const source=JSON.parse(await readFile(new URL('../data/catalog-preview.json',import.meta.url),'utf8'));
   const boards=attachSizeCharts(source.boards,charts);
-  assert.equal(boards.filter(b=>b.sizeGuide).length,19);
+  assert.equal(boards.filter(b=>b.sizeGuide).length,22);
   for(const board of boards)for(const size of Object.keys(board.sizeGuide?.sizes||{}))assert.ok(board.sizes.includes(size));
   assert.deepEqual(boards.find(b=>b.id==='SNB0026').sizeGuide.sizes['161W'],{weightMin:160,weightMax:220,bootMin:10,bootMax:null,waistCm:26.2});
   assert.equal(boards.find(b=>b.id==='SNB0035').sizeGuide.sizes['135'],undefined);
+  // DPR 147's published minimum (50) is 30lbs below the shop's reference chart minimum (80),
+  // so its top end is the reference chart's top end shifted by that same offset, not used as-is.
+  assert.deepEqual(boards.find(b=>b.id==='SNB0035').sizeGuide.sizes['147'],{weightMin:50,weightMax:115,waistCm:24.8});
+  assert.deepEqual(boards.find(b=>b.id==='SNB0045').sizeGuide.sizes['162W'],{weightMin:154,weightMax:231});
 });
 test('model chart filters by rider weight and matching boot system',()=>{
   const board={sizes:['152','156','158','162W'],sizeGuide:charts.SNB0026};
