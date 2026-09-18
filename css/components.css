@@ -564,6 +564,39 @@
   text-transform: uppercase;
 }
 
+.product-card__headline {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .75rem;
+  min-width: 0;
+}
+
+.product-card__price {
+  flex: none;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.product-card__last {
+  display: inline-block;
+  margin-top: .4rem;
+  padding: .18rem .55rem;
+  color: #bdf3ff;
+  background: rgba(99, 201, 255, .12);
+  border: 1px solid rgba(99, 201, 255, .34);
+  border-radius: 999px;
+  font-size: .73rem;
+  font-weight: 800;
+}
+
+.product-card--ski-boot .product-card__body {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
 .product-card__facts {
   font-size: 0.9rem;
   font-weight: 700;
