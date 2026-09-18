@@ -37,10 +37,17 @@ test('general guide is labeled and separate from model charts',()=>{
   assert.equal(result.kind,'general');
   assert.deepEqual(result.best,['156']);
 });
-test('boot size 11 selects wide variants automatically',()=>{
+test('boot size 11.5 selects wide variants automatically when there is no per-size boot data',()=>{
   const board={sizes:['156','156W','159W'],sizeGuide:null,gender:"Men's"};
   assert.deepEqual(evaluateSizing(board,{weight:175,bootSize:9,bootSystem:'men'}).best,['156','156W','159W']);
-  assert.deepEqual(evaluateSizing(board,{weight:175,bootSize:11,bootSystem:'men'}).best,['156W','159W']);
+  assert.deepEqual(evaluateSizing(board,{weight:175,bootSize:11,bootSystem:'men'}).best,['156','156W','159W']);
+  assert.deepEqual(evaluateSizing(board,{weight:175,bootSize:11.5,bootSystem:'men'}).best,['156W','159W']);
+});
+test('published per-size boot data overrides the generic wide-boot preference',()=>{
+  const board={sizes:['154','157','159W','162W'],sizeGuide:charts.SNB0030,gender:"Men's"};
+  // Mountain Twin's own chart says a boot-11 rider still fits the regular
+  // 157 (bootMax 11), so it should not be dropped just for lacking a "W".
+  assert.deepEqual(evaluateSizing(board,{weight:175,bootSize:11,bootSystem:'men'}).best,['157','159W','162W']);
 });
 test('minimum-only charts also need a general length match',()=>{
   const board={sizes:['147','152','159W'],sizeGuide:{kind:'model',source:'https://example.com',sizes:{'147':{weightMin:100},'152':{weightMin:110},'159W':{weightMin:120}}},gender:"Men's"};
