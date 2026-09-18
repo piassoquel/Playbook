@@ -14,10 +14,10 @@ const source = input ? JSON.parse(await readFile(input, 'utf8')) : await (async 
 })();
 const chartData=JSON.parse(await readFile(new URL('../size-charts.json',import.meta.url),'utf8'));
 const boards = attachSizeCharts(projectCatalog(source),chartData);
-if (!boards.length) throw new Error('No published snowboards; refusing to publish');
+if (!boards.length) throw new Error('No published boards or skis; refusing to publish');
 const output = option('--output') || 'customer/data/catalog-preview.json';
 await writeFile(output, JSON.stringify({ generatedAt: source.generatedAt, boards }, null, 2) + '\n');
-console.log(`${boards.length} customer-safe boards projected to ${output}`);
+console.log(`${boards.length} customer-safe products projected to ${output} (${boards.filter(b => b.sport === 'ski').length} ski)`);
 if (apply) {
   const { getFirestore } = await import('firebase-admin/firestore');
   const { initializeApp, applicationDefault } = await import('firebase-admin/app');
