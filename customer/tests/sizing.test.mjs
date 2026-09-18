@@ -48,3 +48,33 @@ test('minimum-only charts also need a general length match',()=>{
   assert.equal(result.minimumOnly,true);
   assert.deepEqual(result.best,['159W']);
 });
+test('a weight within 15lbs of a neighboring size offers it as an alternative',()=>{
+  const board={sizes:['152','156','158','161W'],sizeGuide:charts.SNB0026,gender:"Men's"};
+  const near=evaluateSizing(board,{weight:185,bootSize:10.5,bootSystem:'men'});
+  assert.deepEqual(near.best,['161W']);
+  assert.deepEqual(near.alternatives,[]);
+  const board2={sizes:['154','157','159W','162W'],sizeGuide:charts.SNB0030,gender:"Men's"};
+  const result=evaluateSizing(board2,{weight:185,bootSize:10.5,bootSystem:'men'});
+  assert.deepEqual(result.best,['159W']);
+  assert.deepEqual(result.alternatives,[{size:'157',direction:'down'}]);
+});
+test('a weight more than 15lbs outside a neighboring size is not offered',()=>{
+  const board={sizes:['150','155','165'],gender:"Men's",sizeGuide:{kind:'model',bootSystem:'men',source:'https://example.com',sizes:{
+    '150':{weightMin:100,weightMax:140,bootMin:6,bootMax:9},
+    '155':{weightMin:130,weightMax:170,bootMin:8,bootMax:10},
+    '165':{weightMin:200,weightMax:240,bootMin:9,bootMax:12}
+  }}};
+  const result=evaluateSizing(board,{weight:160,bootSize:9,bootSystem:'men'});
+  assert.deepEqual(result.best,['155']);
+  assert.deepEqual(result.alternatives,[]);
+});
+test('an alternative must still satisfy the boot fit constraint',()=>{
+  const board={sizes:['150','155','160'],gender:"Men's",sizeGuide:{kind:'model',bootSystem:'men',source:'https://example.com',sizes:{
+    '150':{weightMin:100,weightMax:140,bootMin:6,bootMax:9},
+    '155':{weightMin:130,weightMax:170,bootMin:8,bootMax:10},
+    '160':{weightMin:160,weightMax:200,bootMin:9,bootMax:12}
+  }}};
+  const result=evaluateSizing(board,{weight:158,bootSize:8,bootSystem:'men'});
+  assert.deepEqual(result.best,['155']);
+  assert.deepEqual(result.alternatives,[]);
+});
