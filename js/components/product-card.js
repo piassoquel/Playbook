@@ -18,6 +18,11 @@ export function createProductCard(product, brand, href, options = {}) {
     product.Terrain,
     formatWidth(product.Width)
   ].filter(Boolean);
+  const price = formatPrice(product.MSRP);
+  const isSkiBoot = String(product.SportID || "").toUpperCase() === "SKI" &&
+    ["SKIBOOT", "SKIBOOTS"].includes(String(product.CategoryID || "").toUpperCase());
+  const lastWidth = isSkiBoot ? formatWidth(product.LastWidth) : "";
+  if (lastWidth) link.classList.add("product-card--ski-boot");
 
   link.innerHTML = `
     <div class="product-card__visual">
@@ -40,7 +45,12 @@ export function createProductCard(product, brand, href, options = {}) {
           : ""
       }
 
-      <h2 class="product-card__title">${escapeHtml(product.Model || "Unnamed product")}</h2>
+      <div class="product-card__headline">
+        <h2 class="product-card__title">${escapeHtml(product.Model || "Unnamed product")}</h2>
+        ${price ? `<strong class="product-card__price">${escapeHtml(price)}</strong>` : ""}
+      </div>
+
+      ${lastWidth ? `<span class="product-card__last">Last ${escapeHtml(lastWidth)}</span>` : ""}
 
       ${
         facts.length
@@ -66,9 +76,20 @@ export function createProductCard(product, brand, href, options = {}) {
 }
 
 function formatWidth(value) {
-  const width = String(value || "").trim();
+  const width = String(value ?? "").trim();
   if (!width) return "";
   return width.toLowerCase().includes("mm") ? width : `${width} mm`;
+}
+
+function formatPrice(value) {
+  if (value === "" || value === null || value === undefined) return "";
+  const amount = Number(value);
+  if (!Number.isFinite(amount)) return String(value);
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0
+  }).format(amount);
 }
 
 function escapeHtml(value = "") {

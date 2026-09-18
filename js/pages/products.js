@@ -91,6 +91,10 @@ export function renderProductListPage(
   }
 
   const baseProducts = [...filteredProducts];
+  const isSkiBootList = String(sport.sourceId || sport.id).toUpperCase() === "SKI" &&
+    ["SKIBOOT", "SKIBOOTS"].includes(String(category.sourceId || category.id).toUpperCase());
+  const listStateKey = `playbook-product-list:${window.location.hash}`;
+  const savedState = readListState(listStateKey);
 
   container.innerHTML = `
     <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -131,6 +135,7 @@ export function renderProductListPage(
           <option value="brand">Brand A-Z</option>
           <option value="price-low">Price Low-High</option>
           <option value="price-high">Price High-Low</option>
+          ${isSkiBootList ? '<option value="last-narrow">Last Narrow-Wide</option><option value="last-wide">Last Wide-Narrow</option>' : ""}
         </select>
       </label>
     </section>
@@ -143,6 +148,22 @@ export function renderProductListPage(
   const sortSelect = container.querySelector("[data-product-list-sort]");
   const count = container.querySelector("[data-product-count]");
   const countLabel = container.querySelector("[data-product-count-label]");
+
+  searchInput.value = savedState.search;
+  if ([...sortSelect.options].some((option) => option.value === savedState.sort)) {
+    sortSelect.value = savedState.sort;
+  }
+
+  const saveListState = () => {
+    try {
+      window.sessionStorage.setItem(listStateKey, JSON.stringify({
+        search: searchInput.value,
+        sort: sortSelect.value
+      }));
+    } catch (error) {
+      // List controls still work when browser storage is unavailable.
+    }
+  };
 
   const renderProducts = () => {
     const query = normalizeSearch(searchInput?.value || "");
@@ -218,13 +239,27 @@ export function renderProductListPage(
     return;
   }
 
-  searchInput?.addEventListener("input", renderProducts);
-  sortSelect?.addEventListener("change", renderProducts);
+  searchInput.addEventListener("input", () => {
+    saveListState();
+    renderProducts();
+  });
+  sortSelect.addEventListener("change", () => {
+    saveListState();
+    renderProducts();
+  });
   renderProducts();
 }
 
 function sortProducts(products, sortValue, brands) {
   return [...products].sort((a, b) => {
+    if (sortValue === "last-narrow" || sortValue === "last-wide") {
+      const direction = sortValue === "last-narrow" ? 1 : -1;
+      const aLast = parseWidth(a.LastWidth);
+      const bLast = parseWidth(b.LastWidth);
+      if (aLast !== null && bLast !== null && aLast !== bLast) return (aLast - bLast) * direction;
+      if ((aLast !== null) !== (bLast !== null)) return aLast !== null ? -1 : 1;
+      return getProductName(a).localeCompare(getProductName(b));
+    }
     if (sortValue === "brand") {
       return getBrandLabel(a, brands).localeCompare(getBrandLabel(b, brands)) ||
         getProductName(a).localeCompare(getProductName(b));
@@ -233,14 +268,32 @@ function sortProducts(products, sortValue, brands) {
       const direction = sortValue === "price-low" ? 1 : -1;
       const aPrice = Number(a.MSRP);
       const bPrice = Number(b.MSRP);
-      const aValid = Number.isFinite(aPrice);
-      const bValid = Number.isFinite(bPrice);
+      const aValid = a.MSRP !== "" && a.MSRP !== null && a.MSRP !== undefined && Number.isFinite(aPrice);
+      const bValid = b.MSRP !== "" && b.MSRP !== null && b.MSRP !== undefined && Number.isFinite(bPrice);
       if (aValid && bValid && aPrice !== bPrice) return (aPrice - bPrice) * direction;
       if (aValid !== bValid) return aValid ? -1 : 1;
       return getProductName(a).localeCompare(getProductName(b));
     }
     return getProductName(a).localeCompare(getProductName(b));
   });
+}
+
+function parseWidth(value) {
+  if (value === "" || value === null || value === undefined) return null;
+  const width = Number(String(value).trim().replace(/\s*mm\s*$/i, ""));
+  return Number.isFinite(width) ? width : null;
+}
+
+function readListState(key) {
+  try {
+    const state = JSON.parse(window.sessionStorage.getItem(key) || "null");
+    return {
+      search: typeof state?.search === "string" ? state.search : "",
+      sort: typeof state?.sort === "string" ? state.sort : "name"
+    };
+  } catch (error) {
+    return { search: "", sort: "name" };
+  }
 }
 
 function getProductName(product) {
