@@ -74,25 +74,35 @@ function results(){
   app.querySelectorAll('[data-compare]').forEach(btn=>btn.onclick=()=>{const id=btn.dataset.compare;const idx=state.compare.indexOf(id);if(idx>-1){state.compare.splice(idx,1)}else{if(state.compare.length>=2)state.compare.shift();state.compare.push(id)}app.querySelectorAll('[data-compare]').forEach(b=>{const on=state.compare.includes(b.dataset.compare);b.setAttribute('aria-pressed',String(on));b.textContent=on?'Comparing':'+ Compare'});updateCompareBar()});
   updateCompareBar();
 }
-function setupPanel(board,tier){
-  const tiers=['recommended','upgrade','budget'].filter(candidate=>{
+function setupTiers(board){
+  return ['recommended','upgrade','budget'].filter(candidate=>{
     const pair=recommendedSetup(board,candidate);
     return !pair.needsReview&&(pair.binding||pair.boot);
   });
-  if(!tiers.length)return `<section class="setup setup-inline" id="setup-panel"><p class="eyebrow">COMPLETE THE RIDE</p><h2>Boots & bindings</h2><p>Ask us to help complete your setup.</p></section>`;
+}
+function setupCardsHTML(board,tier){
   const saved=getMySetup();
-  const selected=tiers.includes(tier)?tier:tiers[0];
-  const pair=recommendedSetup(board,selected);
-  const products=['binding','boot'].map(type=>{
+  const pair=recommendedSetup(board,tier);
+  return ['binding','boot'].map(type=>{
     const item=pair[type];
     if(!item)return '';
     const isPieceSaved=saved?.[type]?.id===item.id;
-    return `<article class="setup-item">${photo(item)}<div><p class="eyebrow">${type==='binding'?'BINDING':'BOOT'}</p><h3>${escape(item.brand)} ${escape(item.model)}</h3><p class="setup-item-price">${money(item.price)}</p><div class="setup-item-actions"><button type="button" class="setup-item-add ${isPieceSaved?'saved':''}" data-piece="${type}" data-piece-tier="${selected}">${isPieceSaved?'Added':'+ Add '+type}</button><button type="button" class="setup-item-info" data-info-type="${type}" data-info-tier="${selected}">Why this pick?</button></div></div></article>`;
+    return `<article class="setup-item">${photo(item)}<div><p class="eyebrow">${type==='binding'?'BINDING':'BOOT'}</p><h3>${escape(item.brand)} ${escape(item.model)}</h3><p class="setup-item-price">${money(item.price)}</p><div class="setup-item-actions"><button type="button" class="setup-item-add ${isPieceSaved?'saved':''}" data-piece="${type}" data-piece-tier="${tier}">${isPieceSaved?'Added':'+ Add '+type}</button><button type="button" class="setup-item-info" data-info-type="${type}" data-info-tier="${tier}">Why this pick?</button></div></div></article>`;
   }).join('');
+}
+function fullSetupButtonHTML(board,tier){
+  const pair=recommendedSetup(board,tier);
+  if(!pair.boot&&!pair.binding)return '';
+  const saved=getMySetup();
   const isBoardSaved=saved?.board?.boardId===board.id;
   const isFullSaved=isBoardSaved&&(!pair.boot||saved?.boot?.id===pair.boot.id)&&(!pair.binding||saved?.binding?.id===pair.binding.id);
-  const fullBtn=(pair.boot||pair.binding)?`<button type="button" class="setup-add ${isFullSaved?'saved':''}" id="setup-add-full" data-tier="${selected}">${isFullSaved?'Full setup added':'Add board + this setup'}</button>`:'';
-  return `<section class="setup setup-inline" id="setup-panel"><div class="setup-heading"><div><p class="eyebrow">COMPLETE THE RIDE</p><h2>Boots & bindings</h2></div></div>${tiers.length>1?`<div class="setup-tabs" role="tablist" aria-label="Setup options">${tiers.map(candidate=>`<button type="button" role="tab" data-tier="${candidate}" aria-selected="${candidate===selected}">${candidate==='recommended'?'Our pick':candidate==='budget'?'Budget':'Upgrade'}</button>`).join('')}</div>`:''}<div class="setup-grid">${products}</div><p class="setup-note">Add a piece on its own, or the whole setup at once.</p>${fullBtn}</section>`;
+  return `<button type="button" class="setup-add ${isFullSaved?'saved':''}" id="setup-add-full" data-tier="${tier}">${isFullSaved?'Full setup added':'Add board + this setup'}</button>`;
+}
+function setupPanel(board,tier){
+  const tiers=setupTiers(board);
+  if(!tiers.length)return `<section class="setup setup-inline" id="setup-panel"><p class="eyebrow">COMPLETE THE RIDE</p><h2>Boots & bindings</h2><p>Ask us to help complete your setup.</p></section>`;
+  const selected=tiers.includes(tier)?tier:tiers[0];
+  return `<section class="setup setup-inline" id="setup-panel"><div class="setup-heading"><div><p class="eyebrow">COMPLETE THE RIDE</p><h2>Boots & bindings</h2></div></div>${tiers.length>1?`<div class="setup-tabs" role="tablist" aria-label="Setup options">${tiers.map(candidate=>`<button type="button" role="tab" data-tier="${candidate}" aria-selected="${candidate===selected}">${candidate==='recommended'?'Our pick':candidate==='budget'?'Budget':'Upgrade'}</button>`).join('')}</div>`:''}<div class="setup-grid-wrap"><div class="setup-grid" id="setup-grid">${setupCardsHTML(board,selected)}</div></div><p class="setup-note">Add a piece on its own, or the whole setup at once.</p><span id="setup-add-full-wrap"></span></section>`;
 }
 function detail(id){
   const board=state.boards.find(item=>item.id===id);
@@ -113,83 +123,175 @@ function detail(id){
     btn.textContent=isSaved?'Board added':'+ Add board to my setup';
   }
   let panelTransitioning=false;
-  function swapSetupPanel(newTier,direction){
-    if(panelTransitioning)return;
-    const old=app.querySelector('#setup-panel');
-    if(!old)return;
-    panelTransitioning=true;
-    const offset=direction==='left'?-14:direction==='right'?14:0;
-    old.style.transition='opacity .14s ease, transform .14s ease';
-    old.style.opacity='0';
-    if(offset)old.style.transform=`translateX(${offset}px)`;
-    setTimeout(()=>{
-      old.outerHTML=setupPanel(board,newTier);
-      const fresh=app.querySelector('#setup-panel');
-      fresh.style.transition='none';
-      fresh.style.opacity='0';
-      if(offset)fresh.style.transform=`translateX(${-offset}px)`;
-      bindSetup();
-      requestAnimationFrame(()=>requestAnimationFrame(()=>{
-        fresh.style.transition='opacity .18s ease, transform .18s ease';
-        fresh.style.opacity='1';
-        fresh.style.transform='translateX(0)';
-        setTimeout(()=>{
-          fresh.style.transition='';fresh.style.opacity='';fresh.style.transform='';
-          panelTransitioning=false;
-        },200);
-      }));
-    },140);
+  let currentSetupTier=setupTiers(board)[0];
+  function refreshFullSetupButton(tier){
+    const wrap=app.querySelector('#setup-add-full-wrap');
+    if(!wrap)return;
+    wrap.innerHTML=fullSetupButtonHTML(board,tier);
+    const btn=wrap.querySelector('#setup-add-full');
+    if(btn)btn.onclick=()=>{
+      saveFullSetup(board,tier,recommendedSetup(board,tier));
+      refreshFullSetupButton(tier);
+      refreshCurrentCards(tier);
+      refreshBoardAddButton();
+    };
   }
-  function bindSetup(){
-    const tabEls=[...app.querySelectorAll('[role="tab"][data-tier]')];
-    tabEls.forEach((button,index)=>button.onclick=()=>{
-      const currentIndex=tabEls.findIndex(b=>b.getAttribute('aria-selected')==='true');
-      const direction=index>currentIndex?'left':index<currentIndex?'right':null;
-      swapSetupPanel(button.dataset.tier,direction);
-    });
+  function refreshCurrentCards(tier){
+    const grid=app.querySelector('#setup-grid');
+    if(!grid)return;
+    grid.innerHTML=setupCardsHTML(board,tier);
+    bindCardButtons(tier);
+  }
+  function bindCardButtons(tier){
     app.querySelectorAll('[data-piece]').forEach(button=>button.onclick=()=>{
-      const type=button.dataset.piece,tier=button.dataset.pieceTier;
+      const type=button.dataset.piece;
       const item=recommendedSetup(board,tier)[type];
       if(!item)return;
       toggleSetupPiece(type,{...item,tier});
-      swapSetupPanel(tier,null);
+      refreshCurrentCards(tier);
     });
-    const fullBtn=app.querySelector('#setup-add-full');
-    if(fullBtn)fullBtn.onclick=()=>{
-      const tier=fullBtn.dataset.tier;
-      saveFullSetup(board,tier,recommendedSetup(board,tier));
-      swapSetupPanel(tier,null);
-      refreshBoardAddButton();
-    };
     app.querySelectorAll('[data-info-type]').forEach(button=>button.onclick=()=>{
-      const type=button.dataset.infoType,tier=button.dataset.infoTier;
+      const type=button.dataset.infoType;
       const item=recommendedSetup(board,tier)[type];
       if(!item)return;
       const companion=recommendedSetup(board,tier)[type==='boot'?'binding':'boot'];
       openSetupSheet(type==='boot'?'BOOT':'BINDING',`${item.brand} ${item.model}`,setupItemBlurb(type,tier,item,Boolean(companion)));
     });
-    const grid=app.querySelector('.setup-grid');
-    const tabs=[...app.querySelectorAll('[role="tab"][data-tier]')];
-    if(grid&&tabs.length>1){
-      let sx=0,sy=0,axis=null;
-      grid.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;axis=null},{passive:true});
-      grid.addEventListener('touchmove',e=>{
-        const t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;
-        if(axis===null&&(Math.abs(dx)>10||Math.abs(dy)>10))axis=Math.abs(dx)>Math.abs(dy)?'x':'y';
-        if(axis==='x')e.preventDefault();
-      },{passive:false});
-      grid.addEventListener('touchend',e=>{
-        if(axis!=='x')return;
-        const dx=e.changedTouches[0].clientX-sx;
-        if(Math.abs(dx)<40)return;
+  }
+  const slideEasing='transform .22s cubic-bezier(.22,.68,.31,1)';
+  function finishSlide(wrap,outEl,inEl,newTier){
+    outEl.remove();
+    inEl.id='setup-grid';
+    inEl.style.position='';inEl.style.top='';inEl.style.left='';inEl.style.width='';
+    inEl.style.transition='';inEl.style.transform='';
+    wrap.style.height='';
+    currentSetupTier=newTier;
+    app.querySelectorAll('[role="tab"][data-tier]').forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.tier===newTier)));
+    refreshFullSetupButton(newTier);
+    bindCardButtons(newTier);
+    panelTransitioning=false;
+  }
+  function cancelSlide(wrap,outEl,inEl){
+    if(inEl)inEl.remove();
+    outEl.style.position='';outEl.style.top='';outEl.style.left='';outEl.style.width='';
+    outEl.style.transition='';outEl.style.transform='';
+    wrap.style.height='';
+    panelTransitioning=false;
+  }
+  function slideToTierByTap(newTier,direction){
+    if(panelTransitioning||newTier===currentSetupTier)return;
+    const wrap=app.querySelector('.setup-grid-wrap');
+    const outEl=app.querySelector('#setup-grid');
+    if(!wrap||!outEl)return;
+    panelTransitioning=true;
+    const width=wrap.clientWidth;
+    const sign=direction==='left'?1:-1;
+    wrap.style.height=wrap.offsetHeight+'px';
+    outEl.style.position='absolute';outEl.style.top='0';outEl.style.left='0';outEl.style.width='100%';
+    const inEl=document.createElement('div');
+    inEl.className='setup-grid';
+    inEl.innerHTML=setupCardsHTML(board,newTier);
+    inEl.style.position='absolute';inEl.style.top='0';inEl.style.left='0';inEl.style.width='100%';
+    inEl.style.transform=`translateX(${sign*width}px)`;
+    wrap.appendChild(inEl);
+    void inEl.offsetWidth;
+    outEl.style.transition=inEl.style.transition=slideEasing;
+    requestAnimationFrame(()=>{
+      outEl.style.transform=`translateX(${-sign*width}px)`;
+      inEl.style.transform='translateX(0px)';
+    });
+    setTimeout(()=>finishSlide(wrap,outEl,inEl,newTier),230);
+  }
+  function bindCardDrag(wrap){
+    let sx=0,sy=0,axis=null,width=0,outEl=null,inEl=null,dir=null;
+    wrap.addEventListener('touchstart',e=>{
+      if(panelTransitioning)return;
+      const t=e.touches[0];sx=t.clientX;sy=t.clientY;
+      axis=null;inEl=null;dir=null;
+      width=wrap.clientWidth;
+      outEl=app.querySelector('#setup-grid');
+    },{passive:true});
+    wrap.addEventListener('touchmove',e=>{
+      if(panelTransitioning||!outEl)return;
+      const t=e.touches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+      if(axis===null&&(Math.abs(dx)>10||Math.abs(dy)>10))axis=Math.abs(dx)>Math.abs(dy)?'x':'y';
+      if(axis!=='x')return;
+      e.preventDefault();
+      const wantDir=dx<0?'left':'right';
+      if(dir!==wantDir){
+        if(inEl)inEl.remove();
+        const tabs=[...app.querySelectorAll('[role="tab"][data-tier]')];
         const currentIndex=tabs.findIndex(tab=>tab.getAttribute('aria-selected')==='true');
-        const nextIndex=dx<0?currentIndex+1:currentIndex-1;
-        if(nextIndex<0||nextIndex>=tabs.length)return;
-        swapSetupPanel(tabs[nextIndex].dataset.tier,dx<0?'left':'right');
-      });
+        const nextIndex=wantDir==='left'?currentIndex+1:currentIndex-1;
+        dir=wantDir;
+        if(nextIndex<0||nextIndex>=tabs.length){
+          inEl=null;
+        }else{
+          const sign=dir==='left'?1:-1;
+          wrap.style.height=wrap.offsetHeight+'px';
+          outEl.style.position='absolute';outEl.style.top='0';outEl.style.left='0';outEl.style.width='100%';
+          inEl=document.createElement('div');
+          inEl.className='setup-grid';
+          inEl.dataset.tier=tabs[nextIndex].dataset.tier;
+          inEl.innerHTML=setupCardsHTML(board,tabs[nextIndex].dataset.tier);
+          inEl.style.position='absolute';inEl.style.top='0';inEl.style.left='0';inEl.style.width='100%';
+          inEl.style.transform=`translateX(${sign*width}px)`;
+          wrap.appendChild(inEl);
+        }
+      }
+      if(!inEl){
+        outEl.style.transform=`translateX(${dx*0.2}px)`;
+        return;
+      }
+      const clamped=Math.max(-width,Math.min(width,dx));
+      const sign=dir==='left'?1:-1;
+      outEl.style.transform=`translateX(${clamped}px)`;
+      inEl.style.transform=`translateX(${sign*width+clamped}px)`;
+    },{passive:false});
+    wrap.addEventListener('touchend',e=>{
+      if(axis!=='x'||!outEl)return;
+      const dx=e.changedTouches[0].clientX-sx;
+      if(!inEl){
+        outEl.style.transition=slideEasing;
+        requestAnimationFrame(()=>{outEl.style.transform='translateX(0px)'});
+        setTimeout(()=>{outEl.style.transition='';outEl.style.transform=''},230);
+        return;
+      }
+      const commit=Math.abs(dx)>width*0.3;
+      panelTransitioning=true;
+      const sign=dir==='left'?1:-1;
+      outEl.style.transition=inEl.style.transition=slideEasing;
+      if(commit){
+        const newTier=inEl.dataset.tier;
+        requestAnimationFrame(()=>{
+          outEl.style.transform=`translateX(${-sign*width}px)`;
+          inEl.style.transform='translateX(0px)';
+        });
+        setTimeout(()=>finishSlide(wrap,outEl,inEl,newTier),230);
+      }else{
+        requestAnimationFrame(()=>{
+          outEl.style.transform='translateX(0px)';
+          inEl.style.transform=`translateX(${sign*width}px)`;
+        });
+        setTimeout(()=>cancelSlide(wrap,outEl,inEl),230);
+      }
+    });
+  }
+  function bindSetupShell(){
+    const tabEls=[...app.querySelectorAll('[role="tab"][data-tier]')];
+    tabEls.forEach((button,index)=>button.onclick=()=>{
+      const currentIndex=tabEls.findIndex(b=>b.getAttribute('aria-selected')==='true');
+      if(index===currentIndex)return;
+      slideToTierByTap(button.dataset.tier,index>currentIndex?'left':'right');
+    });
+    const wrap=app.querySelector('.setup-grid-wrap');
+    if(wrap&&tabEls.length>1)bindCardDrag(wrap);
+    if(currentSetupTier){
+      bindCardButtons(currentSetupTier);
+      refreshFullSetupButton(currentSetupTier);
     }
   }
-  bindSetup();
+  bindSetupShell();
   app.querySelector('#board-add').onclick=()=>{toggleSetupPiece('board',{boardId:board.id});refreshBoardAddButton()};
 }
 function compare(ids){
