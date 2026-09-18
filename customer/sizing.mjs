@@ -32,7 +32,7 @@ export function evaluateSizing(board,answers={}){
   // US men's +18 and US women's +17 for the sizes used here.
   const rawBoot=Number(answers.bootSize);
   const boot=answers.bootUnit==='mondo' && system!=='kids' ? rawBoot-(system==='women'?17:18) : rawBoot;
-  if(!weight||!board?.sizes?.length)return {kind:'none',best:[],possible:[],source:null};
+  if(!weight||!board?.sizes?.length)return {kind:'none',best:[],possible:[],source:null,alternatives:[]};
   const chart=board.sizeGuide;
   if(chart?.kind==='model'){
     const possible=[],best=[];
@@ -51,10 +51,42 @@ export function evaluateSizing(board,answers={}){
     // published general weight-to-length guide and keep the broader label.
     const lengthFits=minimumOnly ? generalSizes(board,weight) : null;
     const candidates=minimumOnly ? best.filter(size=>lengthFits.includes(size)) : best;
-    return {kind:'model',best:preferWide(candidates,system==='kids'?0:boot),possible,source:chart.source,minimumOnly,bootChecked:Boolean(chart.bootSystem&&chart.bootSystem===system&&system!=='kids')};
+    const bestSizes=preferWide(candidates,system==='kids'?0:boot);
+    const alternatives=bestSizes.length?findAlternatives(board,chart,bestSizes,weight,boot,system):[];
+    return {kind:'model',best:bestSizes,possible,source:chart.source,minimumOnly,bootChecked:Boolean(chart.bootSystem&&chart.bootSystem===system&&system!=='kids'),alternatives};
   }
   const best=preferWide(generalSizes(board,weight),system==='kids'?0:boot);
-  return {kind:'general',best,possible:best,source:GENERAL_SOURCE,bootChecked:false};
+  return {kind:'general',best,possible:best,source:GENERAL_SOURCE,bootChecked:false,alternatives:[]};
+}
+// A rider within this many pounds of a neighboring size's published range may
+// reasonably choose it for a different ride feel, not just their exact match.
+const ALT_TOLERANCE_LBS=15;
+function findAlternatives(board,chart,bestSizes,weight,boot,system){
+  const sortedCatalog=[...board.sizes].sort((a,b)=>parseFloat(a)-parseFloat(b));
+  const sortedBest=[...bestSizes].sort((a,b)=>parseFloat(a)-parseFloat(b));
+  const smallestIdx=sortedCatalog.indexOf(sortedBest[0]);
+  const largestIdx=sortedCatalog.indexOf(sortedBest[sortedBest.length-1]);
+  const boundBoot=system==='kids'?0:boot;
+  const alternatives=[];
+  const checkCandidate=(size,direction)=>{
+    if(size==null||bestSizes.includes(size))return;
+    const spec=chart.sizes[size];
+    if(!spec)return;
+    if(preferWide([size],boundBoot).length===0)return;
+    const systemMatches=chart.bootSystem&&chart.bootSystem===system&&system!=='kids';
+    const bootFits=!systemMatches||!boot||((spec.bootMin==null||boot>=spec.bootMin)&&(spec.bootMax==null||boot<=spec.bootMax));
+    const widthMin=!systemMatches&&spec.waistCm?minWaist(boot,system):null;
+    if(!bootFits||(widthMin&&spec.waistCm<widthMin))return;
+    if(direction==='down'){
+      if(spec.weightMax==null||weight<=spec.weightMax||weight>spec.weightMax+ALT_TOLERANCE_LBS)return;
+    }else{
+      if(spec.weightMin==null||weight>=spec.weightMin||weight<spec.weightMin-ALT_TOLERANCE_LBS)return;
+    }
+    alternatives.push({size,direction});
+  };
+  checkCandidate(sortedCatalog[smallestIdx-1],'down');
+  checkCandidate(sortedCatalog[largestIdx+1],'up');
+  return alternatives;
 }
 function generalSizes(board,weight){
   const rows=(board.gender==='Youth'?youth:adult).filter(([lo,hi])=>weight>=lo&&weight<=hi);
