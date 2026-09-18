@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T21:13:58.377Z",
+  "generatedAt": "2026-09-18T04:23:39.022Z",
   "boards": [
     {
       "id": "SNB0027",
@@ -1434,7 +1434,7 @@
         "sizes": {
           "157": {
             "weightMin": 100,
-            "weightMax": null,
+            "weightMax": 205,
             "waistCm": 26.2
           },
           "159": {
@@ -1444,11 +1444,11 @@
           },
           "163W": {
             "weightMin": 120,
-            "weightMax": null,
+            "weightMax": 265,
             "waistCm": 26.8
           }
         },
-        "checkedAt": "2026-09-16"
+        "checkedAt": "2026-09-18"
       }
     },
     {
@@ -1462,9 +1462,10 @@
       "description": "Directional-twin resort freestyle board with a forgiving early-rise nose and poppy mild-camber tail.",
       "price": 499.99,
       "ability": [
+        "Beginner",
         "Intermediate"
       ],
-      "abilityLevel": 3,
+      "abilityLevel": 2,
       "terrain": {
         "Groomers": 5,
         "AllMountain": 5,
@@ -1552,7 +1553,7 @@
         "sizes": {
           "147": {
             "weightMin": 50,
-            "weightMax": null,
+            "weightMax": 115,
             "waistCm": 24.8
           },
           "152": {
@@ -1566,7 +1567,7 @@
             "waistCm": 26.5
           }
         },
-        "checkedAt": "2026-09-16"
+        "checkedAt": "2026-09-18"
       }
     },
     {
@@ -1669,21 +1670,21 @@
         "sizes": {
           "139": {
             "weightMin": 65,
-            "weightMax": null,
+            "weightMax": 120,
             "waistCm": 23.8
           },
           "143": {
             "weightMin": 75,
-            "weightMax": null,
+            "weightMax": 140,
             "waistCm": 24.3
           },
           "147": {
             "weightMin": 80,
-            "weightMax": null,
+            "weightMax": 160,
             "waistCm": 24.5
           }
         },
-        "checkedAt": "2026-09-16"
+        "checkedAt": "2026-09-18"
       }
     },
     {
@@ -1785,16 +1786,16 @@
         "sizes": {
           "153": {
             "weightMin": 130,
-            "weightMax": null,
+            "weightMax": 225,
             "waistCm": 26.7
           },
           "156": {
             "weightMin": 140,
-            "weightMax": null,
+            "weightMax": 245,
             "waistCm": 26.7
           }
         },
-        "checkedAt": "2026-09-16"
+        "checkedAt": "2026-09-18"
       }
     },
     {
@@ -1880,16 +1881,16 @@
         "sizes": {
           "165W": {
             "weightMin": 145,
-            "weightMax": null,
+            "weightMax": 275,
             "waistCm": 26.8
           },
           "169W": {
             "weightMin": 150,
-            "weightMax": null,
+            "weightMax": 295,
             "waistCm": 26.8
           }
         },
-        "checkedAt": "2026-09-16"
+        "checkedAt": "2026-09-18"
       }
     },
     {
@@ -1993,26 +1994,26 @@
         "sizes": {
           "155": {
             "weightMin": 110,
-            "weightMax": null,
+            "weightMax": 200,
             "waistCm": 25.5
           },
           "157": {
             "weightMin": 120,
-            "weightMax": null,
+            "weightMax": 215,
             "waistCm": 25.8
           },
           "159": {
             "weightMin": 125,
-            "weightMax": null,
+            "weightMax": 230,
             "waistCm": 25.9
           },
           "161W": {
             "weightMin": 135,
-            "weightMax": null,
+            "weightMax": 255,
             "waistCm": 26.5
           }
         },
-        "checkedAt": "2026-09-16"
+        "checkedAt": "2026-09-18"
       }
     },
     {
@@ -2223,7 +2224,24 @@
           }
         }
       },
-      "sizeGuide": null
+      "sizeGuide": {
+        "kind": "model",
+        "season": 2027,
+        "source": "https://www.nitrosnowboards.com/collections/all-womens-snowboards-26-27/products/lectra-abstract-womens-snowboard",
+        "sizes": {
+          "138": {
+            "weightMin": null,
+            "weightMax": 99,
+            "waistCm": 22.7
+          },
+          "146": {
+            "weightMin": 100,
+            "weightMax": 145,
+            "waistCm": 23.4
+          }
+        },
+        "checkedAt": "2026-09-18"
+      }
     },
     {
       "id": "SNB0041",
@@ -2441,7 +2459,30 @@
           }
         }
       },
-      "sizeGuide": null
+      "sizeGuide": {
+        "kind": "model",
+        "season": 2027,
+        "source": "https://www.salomon.com/en-us/product/pulse-li1326",
+        "sizes": {
+          "142": {
+            "weightMin": 88,
+            "weightMax": 132
+          },
+          "149": {
+            "weightMin": 110,
+            "weightMax": 154
+          },
+          "156": {
+            "weightMin": 121,
+            "weightMax": 187
+          },
+          "162W": {
+            "weightMin": 154,
+            "weightMax": 231
+          }
+        },
+        "checkedAt": "2026-09-18"
+      }
     },
     {
       "id": "SNB0044",
@@ -2536,7 +2577,30 @@
           }
         }
       },
-      "sizeGuide": null
+      "sizeGuide": {
+        "kind": "model",
+        "season": 2027,
+        "source": "https://www.salomon.com/en-us/product/wonder-li1324",
+        "sizes": {
+          "140": {
+            "weightMin": 77,
+            "weightMax": 132
+          },
+          "144": {
+            "weightMin": 88,
+            "weightMax": 132
+          },
+          "148": {
+            "weightMin": 99,
+            "weightMax": 143
+          },
+          "152": {
+            "weightMin": 110,
+            "weightMax": 154
+          }
+        },
+        "checkedAt": "2026-09-18"
+      }
     }
   ]
 }
