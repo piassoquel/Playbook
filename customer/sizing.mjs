@@ -37,12 +37,12 @@ export function evaluateSizing(board,answers={}){
   if(chart?.kind==='model'){
     const possible=[],best=[];
     const minimumOnly=Object.values(chart.sizes).every(spec=>spec.weightMax==null);
+    const systemMatches=Boolean(chart.bootSystem&&chart.bootSystem===system&&system!=='kids');
     for(const size of board.sizes){
       const spec=chart.sizes[size];if(!spec)continue;
       const weightFits=(spec.weightMin==null||weight>=spec.weightMin)&&(spec.weightMax==null||weight<=spec.weightMax);
       if(!weightFits)continue;
       possible.push(size);
-      const systemMatches=chart.bootSystem&&chart.bootSystem===system&&system!=='kids';
       const bootFits=!systemMatches||!boot||((spec.bootMin==null||boot>=spec.bootMin)&&(spec.bootMax==null||boot<=spec.bootMax));
       const widthMin=!systemMatches&&spec.waistCm?minWaist(boot,system):null;
       if(bootFits&&(!widthMin||spec.waistCm>=widthMin))best.push(size);
@@ -51,9 +51,12 @@ export function evaluateSizing(board,answers={}){
     // published general weight-to-length guide and keep the broader label.
     const lengthFits=minimumOnly ? generalSizes(board,weight) : null;
     const candidates=minimumOnly ? best.filter(size=>lengthFits.includes(size)) : best;
-    const bestSizes=preferWide(candidates,system==='kids'?0:boot);
-    const alternatives=bestSizes.length?findAlternatives(board,chart,bestSizes,weight,boot,system):[];
-    return {kind:'model',best:bestSizes,possible,source:chart.source,minimumOnly,bootChecked:Boolean(chart.bootSystem&&chart.bootSystem===system&&system!=='kids'),alternatives};
+    // Real per-size manufacturer boot data (systemMatches) already decided
+    // fit above; only fall back to the generic wide-boot preference when
+    // there's no such data to trust.
+    const bestSizes=systemMatches?candidates:preferWide(candidates,system==='kids'?0:boot);
+    const alternatives=bestSizes.length?findAlternatives(board,chart,bestSizes,weight,boot,system,systemMatches):[];
+    return {kind:'model',best:bestSizes,possible,source:chart.source,minimumOnly,bootChecked:systemMatches,alternatives};
   }
   const best=preferWide(generalSizes(board,weight),system==='kids'?0:boot);
   return {kind:'general',best,possible:best,source:GENERAL_SOURCE,bootChecked:false,alternatives:[]};
@@ -61,7 +64,7 @@ export function evaluateSizing(board,answers={}){
 // A rider within this many pounds of a neighboring size's published range may
 // reasonably choose it for a different ride feel, not just their exact match.
 const ALT_TOLERANCE_LBS=15;
-function findAlternatives(board,chart,bestSizes,weight,boot,system){
+function findAlternatives(board,chart,bestSizes,weight,boot,system,systemMatches){
   const sortedCatalog=[...board.sizes].sort((a,b)=>parseFloat(a)-parseFloat(b));
   const sortedBest=[...bestSizes].sort((a,b)=>parseFloat(a)-parseFloat(b));
   const smallestIdx=sortedCatalog.indexOf(sortedBest[0]);
@@ -72,8 +75,7 @@ function findAlternatives(board,chart,bestSizes,weight,boot,system){
     if(size==null||bestSizes.includes(size))return;
     const spec=chart.sizes[size];
     if(!spec)return;
-    if(preferWide([size],boundBoot).length===0)return;
-    const systemMatches=chart.bootSystem&&chart.bootSystem===system&&system!=='kids';
+    if(!systemMatches&&preferWide([size],boundBoot).length===0)return;
     const bootFits=!systemMatches||!boot||((spec.bootMin==null||boot>=spec.bootMin)&&(spec.bootMax==null||boot<=spec.bootMax));
     const widthMin=!systemMatches&&spec.waistCm?minWaist(boot,system):null;
     if(!bootFits||(widthMin&&spec.waistCm<widthMin))return;
@@ -96,7 +98,7 @@ function generalSizes(board,weight){
   return board.sizes.filter(s=>{const length=Number.parseInt(s,10);return length>=min&&length<=max;});
 }
 function preferWide(sizes,boot){
-  if(boot<11)return sizes;
+  if(boot<11.5)return sizes;
   const wide=sizes.filter(s=>/\d\s*w$/i.test(s)||/\bwide\b/i.test(s));
   return wide.length?wide:[];
 }
