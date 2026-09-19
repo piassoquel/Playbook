@@ -383,5 +383,5 @@ function openZoom(src){
   addEventListener('keydown',onKey);addEventListener('hashchange',finish);addEventListener('resize',onResize);
   closeBtn.focus({preventScroll:true});
 }
-app.addEventListener('click',e=>{const img=e.target.closest?.('.card-image img, .detail-media > img, .compare-head img');if(!img)return;e.preventDefault();openZoom(img)});
+app.addEventListener('click',e=>{const img=e.target.closest?.('.detail-media > img');if(!img)return;e.preventDefault();openZoom(img)});
 window.addEventListener('hashchange',route);load();

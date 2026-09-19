@@ -96,7 +96,7 @@
 .sheet .eyebrow{margin:0}
 .sheet-close{position:absolute;right:16px;top:14px;border:0;background:none;font-size:26px;color:#0a1f2f;padding:4px}
 
-.card-image img,.detail-media>img,.compare-head img{cursor:zoom-in}
+.detail-media>img{cursor:zoom-in}
 body.zoom-lock{overflow:hidden}
 .zoom-overlay{position:fixed;inset:0;z-index:200;background:rgba(7,26,42,0);transition:background .25s ease;cursor:zoom-out;touch-action:none}
 .zoom-overlay.open{background:rgba(7,26,42,.92)}
