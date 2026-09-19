@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T23:16:15.570Z",
+  "generatedAt": "2026-09-19T00:51:39.299Z",
   "boards": [
     {
       "id": "SKI0033",
@@ -3198,6 +3198,164 @@
       }
     },
     {
+      "id": "SKI0050",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "K2",
+      "model": "Mindbender 90",
+      "gender": "Men's",
+      "description": "Lightweight all-mountain ski with a 90 mm waist and gradual tip rocker.",
+      "price": 599.95,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip Rocker",
+      "flex": "Soft-Medium",
+      "width": "",
+      "waist": 90,
+      "sizes": [
+        "166",
+        "172",
+        "178"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.media.amplience.net/i/k2/k2_2627_mindbender-90_KS261793_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+          "alt": "Mindbender 90"
+        },
+        {
+          "url": "https://cdn.media.amplience.net/i/k2/k2_2627_mindbender-90_KS261793_2?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+          "alt": "Mindbender90Bottom"
+        },
+        {
+          "url": "https://cdn.media.amplience.net/i/k2/k2_2627_mindbender-90_KS261793_3?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+          "alt": "Mindbencher90Profile"
+        }
+      ],
+      "image": "https://cdn.media.amplience.net/i/k2/k2_2627_mindbender-90_KS261793_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0051",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "K2",
+      "model": "Mindbender 96",
+      "gender": "Men's",
+      "description": "Metal-reinforced all-mountain ski with a 96 mm waist and tip rocker.",
+      "price": 849.95,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 4,
+        "Trees": 5,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip Rocker",
+      "flex": "Medium-Stiff",
+      "width": "",
+      "waist": 96,
+      "sizes": [
+        "173",
+        "178",
+        "183"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.media.amplience.net/i/k2/k2_2627_mindbender-96_KS261791_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+          "alt": "Mindbender 96"
+        },
+        {
+          "url": "https://cdn.media.amplience.net/i/k2/k2_2627_mindbender-96_KS261791_2?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+          "alt": "Mindbender96Bottom"
+        },
+        {
+          "url": "https://cdn.media.amplience.net/i/k2/k2_2627_mindbender-96_KS261791_3?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+          "alt": "Mindbender96Profile"
+        }
+      ],
+      "image": "https://cdn.media.amplience.net/i/k2/k2_2627_mindbender-96_KS261791_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0052",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "K2",
+      "model": "Reckoner 92W",
+      "gender": "Women's",
+      "description": "Women’s twin-tip all-mountain ski with a 92 mm waist and tip-and-tail rocker.",
+      "price": 499.95,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 3,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 5
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Soft-Medium",
+      "width": "",
+      "waist": 92,
+      "sizes": [
+        "149",
+        "159",
+        "169"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.media.amplience.net/i/k2/k2_2526_reckoner-92-w_KS25097300_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+          "alt": "Reckoner 92W"
+        },
+        {
+          "url": "https://cdn.media.amplience.net/i/k2/k2_2526_reckoner-92-w_KS25097300_2?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+          "alt": "Reckoner92WBottom"
+        },
+        {
+          "url": "https://cdn.media.amplience.net/i/k2/k2_2526_reckoner-92-w_KS25097300_3?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+          "alt": "Reckoner92Profile"
+        }
+      ],
+      "image": "https://cdn.media.amplience.net/i/k2/k2_2526_reckoner-92-w_KS25097300_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
       "id": "SNB0034",
       "sport": "snowboard",
       "category": "SNBBOARD",
@@ -4229,6 +4387,349 @@
       }
     },
     {
+      "id": "SKI0059",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Rossignol",
+      "model": "Experience Kid Kid 4",
+      "gender": "Youth",
+      "description": "Junior frontside ski package with an easy flex and Kid 4 binding.",
+      "price": 279.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 5,
+        "AllMountain": 3,
+        "Powder": 1,
+        "Trees": 2,
+        "Park": 1
+      },
+      "shape": "",
+      "profile": "Tip Rocker",
+      "flex": "Soft",
+      "width": "",
+      "waist": 60,
+      "sizes": [
+        "70",
+        "80",
+        "92"
+      ],
+      "images": [
+        {
+          "url": "https://www.wilderness.net.au/images/P/rossignol-jr-kid4.jpg",
+          "alt": "Experience Kid Kid 4"
+        }
+      ],
+      "image": "https://www.wilderness.net.au/images/P/rossignol-jr-kid4.jpg",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0057",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Rossignol",
+      "model": "Sender Jr Kid 4",
+      "gender": "Youth",
+      "description": "Junior freeride ski package with a progression-focused flex and Kid 4 binding.",
+      "price": 274.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 4,
+        "Powder": 2,
+        "Trees": 3,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip Rocker",
+      "flex": "Soft",
+      "width": "",
+      "waist": 74,
+      "sizes": [
+        "104",
+        "110",
+        "116",
+        "122",
+        "128",
+        "140"
+      ],
+      "images": [
+        {
+          "url": "https://d2j6dbq0eux0bg.cloudfront.net/images/94501553/products/847200972/5894771295.jpg",
+          "alt": "Sender Jr Kid 4"
+        }
+      ],
+      "image": "https://d2j6dbq0eux0bg.cloudfront.net/images/94501553/products/847200972/5894771295.jpg",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0053",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Rossignol",
+      "model": "Soul 102 Open",
+      "gender": "Men's",
+      "description": "Men’s freeride ski with a 102 mm waist and tip-and-tail rocker.",
+      "price": 799.99,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 3,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 5,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium",
+      "width": "",
+      "waist": 102,
+      "sizes": [
+        "172",
+        "180"
+      ],
+      "images": [
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dwffd9c233/images/large/RAPMR03000_72DPI_02_v01.jpg?sw=800",
+          "alt": "Soul 102 Open"
+        },
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dwfb1b60a8/images/large/RAPMR03000_72DPI_07_v01.jpg?sw=800",
+          "alt": "Soul102Bottom"
+        }
+      ],
+      "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dwffd9c233/images/large/RAPMR03000_72DPI_02_v01.jpg?sw=800",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0054",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Rossignol",
+      "model": "Soul 92 Open",
+      "gender": "Men's",
+      "description": "Men’s all-mountain freeride ski with a 92 mm waist and tip-and-tail rocker.",
+      "price": 699.95,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium",
+      "width": "",
+      "waist": 92,
+      "sizes": [
+        "166",
+        "172",
+        "182"
+      ],
+      "images": [
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw3b34ab6f/images/large/RAPMY01000_72DPI_02_v00.jpg?sw=800",
+          "alt": "Soul 92 Open"
+        },
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw9ef6cbe1/images/large/RAPMY01000_72DPI_07_v00.jpg?sw=800",
+          "alt": "Soul92Bottom"
+        },
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dwc2b77333/images/large/RAPMY01000_72DPI_06_v00.jpg?sw=800",
+          "alt": "Soul92Profile"
+        }
+      ],
+      "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw3b34ab6f/images/large/RAPMY01000_72DPI_02_v00.jpg?sw=800",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0058",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Rossignol",
+      "model": "Soul JR Kid 4",
+      "gender": "Youth",
+      "description": "Junior all-mountain ski package with an easy flex and Kid 4 binding.",
+      "price": 274.99,
+      "ability": [
+        "Beginner",
+        "Intermediate"
+      ],
+      "abilityLevel": 2,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 4,
+        "Powder": 3,
+        "Trees": 3,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip Rocker",
+      "flex": "Soft",
+      "width": "",
+      "waist": 60,
+      "sizes": [
+        "104",
+        "110",
+        "116",
+        "122",
+        "128",
+        "140"
+      ],
+      "images": [
+        {
+          "url": "https://park2peak.com/cdn/shop/files/rossisouljr5.jpg?v=1785170899",
+          "alt": "Soul JR Kid 4"
+        }
+      ],
+      "image": "https://park2peak.com/cdn/shop/files/rossisouljr5.jpg?v=1785170899",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0055",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Rossignol",
+      "model": "Soul W 102 Open",
+      "gender": "Women's",
+      "description": "Women’s freeride ski with a 102 mm waist and tip-and-tail rocker.",
+      "price": 799.99,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 3,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 5,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium",
+      "width": "",
+      "waist": 102,
+      "sizes": [
+        "164"
+      ],
+      "images": [
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw26ac68ce/images/large/RAPMR01000_72DPI_02_v01.jpg?sw=800",
+          "alt": "Soul W 102 Open"
+        },
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dwb507a129/images/large/RAPMR01000_72DPI_07_v01.jpg?sw=800",
+          "alt": "Soul102WBottom"
+        },
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw919f7790/images/large/RAPMR01000_72DPI_06_v01.jpg?sw=800",
+          "alt": "Soul102WProfile"
+        }
+      ],
+      "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw26ac68ce/images/large/RAPMR01000_72DPI_02_v01.jpg?sw=800",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0056",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Rossignol",
+      "model": "Soul W 92 Open",
+      "gender": "Women's",
+      "description": "Women’s all-mountain freeride ski with a 92 mm waist and tip-and-tail rocker.",
+      "price": 699.95,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium",
+      "width": "",
+      "waist": 92,
+      "sizes": [
+        "150",
+        "158"
+      ],
+      "images": [
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw30eceeeb/images/large/RAPMY03000_72DPI_02_v00.jpg?sw=800",
+          "alt": "Soul W 92 Open"
+        },
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw54e58b08/images/large/RAPMY03000_72DPI_07_v00.jpg?sw=800",
+          "alt": "Soul92WBottom"
+        },
+        {
+          "url": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw81273fe4/images/large/RAPMY03000_72DPI_06_v00.jpg?sw=800",
+          "alt": "Soul92WProfile"
+        }
+      ],
+      "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw30eceeeb/images/large/RAPMY03000_72DPI_02_v00.jpg?sw=800",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
       "id": "SNB0045",
       "sport": "snowboard",
       "category": "SNBBOARD",
@@ -4345,6 +4846,107 @@
         },
         "checkedAt": "2026-09-18"
       }
+    },
+    {
+      "id": "SKI0060",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Salomon",
+      "model": "QST 106",
+      "gender": "Unisex",
+      "description": "Unisex freeride ski with a 106 mm waist and rocker-camber-rocker profile.",
+      "price": 849.95,
+      "ability": [
+        "Intermediate",
+        "Advanced"
+      ],
+      "abilityLevel": 4,
+      "terrain": {
+        "Groomers": 3,
+        "AllMountain": 5,
+        "Powder": 5,
+        "Trees": 5,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium-Stiff",
+      "width": "",
+      "waist": 106,
+      "sizes": [
+        "173",
+        "181"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.dam.salomon.com/824afcb9-ad49-4cb0-bec5-b31b00bd63a5/L47774500%2B/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+          "alt": "QST 106"
+        },
+        {
+          "url": "https://cdn.dam.salomon.com/5bc993d4-a6db-4a63-86ae-b31b00bc42d6/L47774500%2B/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg",
+          "alt": "QST106Bottom"
+        }
+      ],
+      "image": "https://cdn.dam.salomon.com/824afcb9-ad49-4cb0-bec5-b31b00bd63a5/L47774500%2B/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
+    },
+    {
+      "id": "SKI0061",
+      "sport": "ski",
+      "category": "SKIS",
+      "season": 2027,
+      "brand": "Salomon",
+      "model": "QST 94",
+      "gender": "Unisex",
+      "description": "Unisex freeride ski with a 94 mm waist and lively tip-and-tail rocker.",
+      "price": 749.95,
+      "ability": [
+        "Intermediate"
+      ],
+      "abilityLevel": 3,
+      "terrain": {
+        "Groomers": 4,
+        "AllMountain": 5,
+        "Powder": 3,
+        "Trees": 4,
+        "Park": 2
+      },
+      "shape": "",
+      "profile": "Tip/Tail Rocker",
+      "flex": "Medium",
+      "width": "",
+      "waist": 94,
+      "sizes": [
+        "156",
+        "164",
+        "172",
+        "180"
+      ],
+      "images": [
+        {
+          "url": "https://cdn.dam.salomon.com/7e1cb968-a32b-4fe8-928d-b31b00bd8269/L47826100%2B/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+          "alt": "QST 94"
+        },
+        {
+          "url": "https://cdn.dam.salomon.com/6b88d749-1378-44bd-ab1d-b45100dea03c/L49189300%2B/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+          "alt": "QST94LilacTop"
+        },
+        {
+          "url": "https://cdn.dam.salomon.com/018ab185-b849-468b-94fa-b31b00bc6a83/L47826100%2B/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg",
+          "alt": "QST94Bottom"
+        }
+      ],
+      "image": "https://cdn.dam.salomon.com/7e1cb968-a32b-4fe8-928d-b31b00bd8269/L47826100%2B/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
+      "recommendations": {
+        "binding": {},
+        "boot": {}
+      },
+      "sizeGuide": null
     },
     {
       "id": "SNB0044",
