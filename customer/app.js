@@ -354,4 +354,34 @@ function setup(){
   app.querySelectorAll('[data-summary-info]').forEach(btn=>btn.onclick=()=>{const kind=btn.dataset.summaryInfo;const item=entry[kind];if(!item)return;const companion=entry[kind==='boot'?'binding':'boot'];openSetupSheet(kind==='boot'?'BOOT':'BINDING',`${item.brand} ${item.model}`,setupItemBlurb(kind,item.tier||'recommended',item,Boolean(companion),entry.sport))});
   app.querySelector('#clear-setup').onclick=()=>{clearMySetup();setup()};
 }
+function openZoom(src){
+  if(document.querySelector('.zoom-overlay'))return;
+  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const overlay=document.createElement('div');overlay.className='zoom-overlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-label','Enlarged product image. Tap to close.');
+  const big=document.createElement('img');big.className='zoom-img';big.src=src.currentSrc||src.src;big.alt=src.alt;big.referrerPolicy='no-referrer';
+  const closeBtn=document.createElement('button');closeBtn.type='button';closeBtn.className='zoom-close';closeBtn.setAttribute('aria-label','Close enlarged image');closeBtn.textContent='×';
+  const place=(r,pad)=>{Object.assign(big.style,{left:r.left+'px',top:r.top+'px',width:r.width+'px',height:r.height+'px',padding:pad})};
+  const fit=()=>{const w=Math.min(innerWidth-32,1100),h=innerHeight-32;return {left:(innerWidth-w)/2,top:(innerHeight-h)/2,width:w,height:h}};
+  const pad=getComputedStyle(src).padding;
+  place(src.getBoundingClientRect(),pad);
+  if(still)big.style.transition='none';
+  overlay.append(big,closeBtn);document.body.append(overlay);document.body.classList.add('zoom-lock');
+  src.style.visibility='hidden';
+  void big.offsetWidth;
+  overlay.classList.add('open');place(fit(),'0px');
+  let closing=false;
+  const finish=()=>{overlay.remove();document.body.classList.remove('zoom-lock');src.style.visibility='';removeEventListener('keydown',onKey);removeEventListener('hashchange',finish);removeEventListener('resize',onResize)};
+  const close=()=>{
+    if(closing)return;closing=true;
+    if(still||!src.isConnected){finish();return}
+    overlay.classList.remove('open');place(src.getBoundingClientRect(),pad);
+    setTimeout(finish,260);
+  };
+  const onKey=e=>{if(e.key==='Escape')close()};
+  const onResize=()=>{if(!closing)place(fit(),'0px')};
+  overlay.onclick=close;
+  addEventListener('keydown',onKey);addEventListener('hashchange',finish);addEventListener('resize',onResize);
+  closeBtn.focus({preventScroll:true});
+}
+app.addEventListener('click',e=>{const img=e.target.closest?.('.card-image img, .detail-media > img, .compare-head img');if(!img)return;e.preventDefault();openZoom(img)});
 window.addEventListener('hashchange',route);load();
