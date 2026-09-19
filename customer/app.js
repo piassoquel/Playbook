@@ -1,4 +1,5 @@
 import { rankBoards, terrainLabels, isWideSize, recommendedSetup } from './catalog.mjs';
+import { brakeWidthFor } from './sizing.mjs';
 const app=document.querySelector('#app');
 const state={boards:[], answers:JSON.parse(sessionStorage.getItem('finderAnswers')||'null')||{sport:'snowboard',ability:'',terrain:'',feel:'',height:'',weight:'',bootSize:'',bootUnit:'us',gender:''},step:0,showAll:false,compare:[]};
 state.answers.bootUnit ||= 'us';
@@ -23,6 +24,46 @@ function clearMySetup(){localStorage.removeItem('mySetup');updateSetupBadge()}
 function updateSetupBadge(){const badge=document.querySelector('#setup-badge');if(!badge)return;const entry=getMySetup();const count=entry?[entry.board,entry.boot,entry.binding].filter(Boolean).length:0;badge.hidden=!count;if(count)badge.querySelector('#setup-badge-count').textContent=count}
 function setupItemBlurb(type,tier,item,hasCompanion,sport){const these=vocab(sport).these;const tierText={recommended:`Our pick for ${these} — a solid balance of feel and value.`,upgrade:'A step up in performance for riders who want more from this setup.',budget:`A budget-friendly option that still pairs well with ${these}.`}[tier]||`Pairs well with ${these}.`;const matchText=hasCompanion?(type==='boot'?' Matched to the binding here to keep flex and response consistent.':' Matched to the boot here to keep flex and response consistent.'):'';const stepOnText=item.stepOn?' Step On compatible — clips in without straps for a faster entry.':'';return tierText+matchText+stepOnText}
 function openSetupSheet(title,name,text){let sheet=document.querySelector('#setup-sheet');if(!sheet){sheet=document.createElement('dialog');sheet.id='setup-sheet';sheet.className='sheet';document.body.appendChild(sheet)}sheet.innerHTML=`<button type="button" class="sheet-close" aria-label="Close">×</button><p class="eyebrow">${escape(title)}</p><h3>${escape(name)}</h3><p>${escape(text)}</p>`;const close=()=>{sheet.classList.remove('open');setTimeout(()=>sheet.close(),200)};sheet.querySelector('.sheet-close').onclick=close;sheet.onclick=e=>{if(e.target===sheet)close()};sheet.showModal();requestAnimationFrame(()=>sheet.classList.add('open'))}
+const TIER_LABEL={recommended:'OUR PICK',upgrade:'UPGRADE',budget:'BUDGET'};
+const flexMeter=n=>`<span class="flex-meter" aria-hidden="true">${[1,2,3,4,5].map(i=>`<b class="${i<=n?'on':''}"></b>`).join('')}</span>`;
+function gearRows(item,type,board){
+  const rows=[];
+  if(item.flexScale)rows.push(['Flex',`${flexMeter(item.flexScale)}${item.flexScale} of 5 (higher is stiffer)`]);
+  else if(item.flexIndex)rows.push(['Flex',`${item.flexIndex} (higher is stiffer)`]);
+  else if(type==='boot'&&item.gender==='Youth')rows.push(['Flex','Soft (junior boot)']);
+  if(item.lastWidth)rows.push(['Last width',`${item.lastWidth} mm`]);
+  if(item.closure)rows.push(['Closure',escape(item.closure)]);
+  if(item.entry)rows.push(['Entry',escape(item.entry)]);
+  if(item.response)rows.push(['Response',escape(item.response)]);
+  if(item.din)rows.push(['DIN range',escape(item.din.replace(/\s*-\s*/,' to '))]);
+  if(item.brakeWidths?.length){
+    const list=item.brakeWidths.map(w=>`${w} mm`).join(', ');
+    const waist=board?.sport==='ski'?board.waist:null;
+    if(!waist)rows.push(['Brake widths',list]);
+    else{
+      const fit=brakeWidthFor(waist,item.brakeWidths);
+      rows.push(['Brake width',fit?`${fit} mm for your ${escape(board.model)} (${waist} mm waist)`:`None fits the ${escape(board.model)} (${waist} mm waist). Ask us about options.`]);
+      if(!fit)rows.push(['Available',list]);
+    }
+  }
+  if(item.ability?.length)rows.push(['Good for',escape(item.ability.join(', '))]);
+  if(item.gender)rows.push(['For',escape(item.gender)]);
+  return rows;
+}
+function openGearSheet(type,item,{board,tier,sport,hasCompanion,onChange,canAdd}){
+  let sheet=document.querySelector('#setup-sheet');
+  if(!sheet){sheet=document.createElement('dialog');sheet.id='setup-sheet';sheet.className='sheet';document.body.appendChild(sheet)}
+  const rows=gearRows(item,type,board);
+  const hasBrake=rows.some(r=>r[0]==='Brake width');
+  const saved=()=>getMySetup()?.[type]?.id===item.id;
+  sheet.innerHTML=`<button type="button" class="sheet-close" aria-label="Close">×</button><p class="eyebrow">${type.toUpperCase()} · ${TIER_LABEL[tier]||'OUR PICK'}</p><div class="gear-hero">${photo(item)}<div><h3>${escape(item.brand)} ${escape(item.model)}</h3><p class="gear-price">${money(item.price)}</p></div></div>${item.description?`<p class="gear-desc">${escape(item.description)}</p>`:''}<div class="gear-rows">${rows.map(([label,value])=>`<div class="gear-row"><span>${label}</span><span>${value}</span></div>`).join('')}</div>${hasBrake?'<p class="gear-note">Brake arms should reach the edge of the ski without sticking out much past it. We confirm the width when we mount them.</p>':''}<p class="gear-why"><strong>Why this pick.</strong> ${escape(setupItemBlurb(type,tier,item,hasCompanion,sport))}</p><div class="gear-actions">${canAdd?`<button type="button" class="primary" id="gear-add">${saved()?'Added':'+ Add '+type}</button>`:''}<button type="button" id="gear-close">Close</button></div>`;
+  const close=()=>{sheet.classList.remove('open');setTimeout(()=>sheet.close(),200)};
+  sheet.querySelector('.sheet-close').onclick=close;sheet.querySelector('#gear-close').onclick=close;
+  sheet.onclick=e=>{if(e.target===sheet)close()};
+  const add=sheet.querySelector('#gear-add');
+  if(add)add.onclick=()=>{toggleSetupPiece(type,{...item,tier},sport);add.textContent=saved()?'Added':'+ Add '+type;onChange?.()};
+  sheet.showModal();requestAnimationFrame(()=>sheet.classList.add('open'));
+}
 const stepsFor=sport=>[
   {key:'ability',title:'What’s your ability level?',subtitle:'',choices:[['Beginner','Getting comfortable'],['Intermediate','Confident on most runs'],['Advanced','Pushing into harder terrain'],['Expert','At home on demanding lines']]},
   {key:'terrain',title:'Where do you spend most days?',subtitle:'',choices:Object.entries(terrainLabels).map(([v,l])=>[v,l])},
@@ -97,7 +138,7 @@ function setupCardsHTML(board,tier){
     const item=pair[type];
     if(!item)return '';
     const isPieceSaved=saved?.[type]?.id===item.id;
-    return `<article class="setup-item">${photo(item)}<div><p class="eyebrow">${type==='binding'?'BINDING':'BOOT'}</p><h3>${escape(item.brand)} ${escape(item.model)}</h3><p class="setup-item-price">${money(item.price)}</p><div class="setup-item-actions"><button type="button" class="setup-item-add ${isPieceSaved?'saved':''}" data-piece="${type}" data-piece-tier="${tier}">${isPieceSaved?'Added':'+ Add '+type}</button><button type="button" class="setup-item-info" data-info-type="${type}" data-info-tier="${tier}">Why this pick?</button></div></div></article>`;
+    return `<article class="setup-item" data-card-info="${type}">${photo(item)}<div><p class="eyebrow">${type==='binding'?'BINDING':'BOOT'}</p><h3>${escape(item.brand)} ${escape(item.model)}</h3><p class="setup-item-price">${money(item.price)}</p><div class="setup-item-actions"><button type="button" class="setup-item-add ${isPieceSaved?'saved':''}" data-piece="${type}" data-piece-tier="${tier}">${isPieceSaved?'Added':'+ Add '+type}</button><button type="button" class="setup-item-info" data-info-type="${type}" data-info-tier="${tier}">Details ›</button></div></div></article>`;
   }).join('');
 }
 function fullSetupButtonHTML(board,tier){
@@ -168,12 +209,13 @@ function detail(id){
       toggleSetupPiece(type,{...item,tier},sport);
       refreshCurrentCards(tier);
     });
-    app.querySelectorAll('[data-info-type]').forEach(button=>button.onclick=()=>{
-      const type=button.dataset.infoType;
-      const item=recommendedSetup(board,tier)[type];
+    app.querySelectorAll('[data-card-info]').forEach(card=>card.onclick=e=>{
+      if(e.target.closest('[data-piece]'))return;
+      const type=card.dataset.cardInfo;
+      const pair=recommendedSetup(board,tier);
+      const item=pair[type];
       if(!item)return;
-      const companion=recommendedSetup(board,tier)[type==='boot'?'binding':'boot'];
-      openSetupSheet(type==='boot'?'BOOT':'BINDING',`${item.brand} ${item.model}`,setupItemBlurb(type,tier,item,Boolean(companion),sportOf(board)));
+      openGearSheet(type,item,{board,tier,sport:sportOf(board),hasCompanion:Boolean(pair[type==='boot'?'binding':'boot']),canAdd:true,onChange:()=>{refreshCurrentCards(tier);refreshFullSetupButton(tier)}});
     });
   }
   const slideEasing='transform .22s cubic-bezier(.22,.68,.31,1)';
@@ -349,9 +391,9 @@ function setup(){
     return;
   }
   const total=pieces.reduce((sum,p)=>sum+(p.item.price||0),0);
-  app.innerHTML=`<section class="setup-summary"><p class="eyebrow">MY SETUP</p><h1>Show this to<br><em>an associate.</em></h1><p class="muted">This is the setup you've built. Bring your phone to the counter — we'll help you check the final fit.</p><div class="setup-summary-list">${pieces.map(p=>`<article class="setup-summary-item">${photo(p.item)}<div><p class="eyebrow">${p.label}</p><h3>${escape(p.item.brand)} ${escape(p.item.model)}</h3>${p.extra?`<p class="setup-summary-extra">${escape(p.extra)}</p>`:''}<p>${money(p.item.price)}</p>${p.tier?`<button type="button" class="setup-item-info" data-summary-info="${p.kind}">Why this pick?</button>`:''}</div><button type="button" class="setup-remove" data-remove-piece="${p.kind}" aria-label="Remove ${p.kind}">×</button></article>`).join('')}</div><div class="setup-summary-total"><span>Total</span><strong>${money(total)}</strong></div><div class="setup-summary-actions">${board?`<a class="button dark" href="#/board/${encodeURIComponent(board.id)}">Edit setup</a>`:`<a class="button dark" href="${vocab(entry?.sport).href}">${vocab(entry?.sport).find}</a>`}<button class="text-button" id="clear-setup" type="button">Remove everything</button></div></section>`;
+  app.innerHTML=`<section class="setup-summary"><p class="eyebrow">MY SETUP</p><h1>Show this to<br><em>an associate.</em></h1><p class="muted">This is the setup you've built. Bring your phone to the counter — we'll help you check the final fit.</p><div class="setup-summary-list">${pieces.map(p=>`<article class="setup-summary-item">${photo(p.item)}<div><p class="eyebrow">${p.label}</p><h3>${escape(p.item.brand)} ${escape(p.item.model)}</h3>${p.extra?`<p class="setup-summary-extra">${escape(p.extra)}</p>`:''}<p>${money(p.item.price)}</p>${p.tier?`<button type="button" class="setup-item-info" data-summary-info="${p.kind}">Details ›</button>`:''}</div><button type="button" class="setup-remove" data-remove-piece="${p.kind}" aria-label="Remove ${p.kind}">×</button></article>`).join('')}</div><div class="setup-summary-total"><span>Total</span><strong>${money(total)}</strong></div><div class="setup-summary-actions">${board?`<a class="button dark" href="#/board/${encodeURIComponent(board.id)}">Edit setup</a>`:`<a class="button dark" href="${vocab(entry?.sport).href}">${vocab(entry?.sport).find}</a>`}<button class="text-button" id="clear-setup" type="button">Remove everything</button></div></section>`;
   app.querySelectorAll('[data-remove-piece]').forEach(btn=>btn.onclick=()=>{const current=getMySetup()||{};writeMySetup({...current,[btn.dataset.removePiece]:null});setup()});
-  app.querySelectorAll('[data-summary-info]').forEach(btn=>btn.onclick=()=>{const kind=btn.dataset.summaryInfo;const item=entry[kind];if(!item)return;const companion=entry[kind==='boot'?'binding':'boot'];openSetupSheet(kind==='boot'?'BOOT':'BINDING',`${item.brand} ${item.model}`,setupItemBlurb(kind,item.tier||'recommended',item,Boolean(companion),entry.sport))});
+  app.querySelectorAll('[data-summary-info]').forEach(btn=>btn.onclick=()=>{const kind=btn.dataset.summaryInfo;const item=entry[kind];if(!item)return;const companion=entry[kind==='boot'?'binding':'boot'];openGearSheet(kind,item,{board,tier:item.tier||'recommended',sport:entry.sport,hasCompanion:Boolean(companion),canAdd:false})});
   app.querySelector('#clear-setup').onclick=()=>{clearMySetup();setup()};
 }
 function openZoom(src){

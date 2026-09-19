@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T00:51:39.299Z",
+  "generatedAt": "2026-09-19T03:29:07.703Z",
   "boards": [
     {
       "id": "SKI0033",
@@ -49,11 +49,23 @@
       "recommendations": {
         "binding": {
           "recommended": {
-            "id": "SKI0001",
-            "brand": "Look",
-            "model": "SPX 13",
-            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
-            "price": 279.95,
+            "id": "SKI0005",
+            "brand": "Marker",
+            "model": "Griffon X 13",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 299.99,
+            "description": "Low-profile X-series freeride and freestyle binding with a 4-13 DIN range and direct power transmission.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              105,
+              120
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -62,14 +74,37 @@
             "model": "Pivot 2.0 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 399.95,
+            "description": "Performance freeride binding with a turntable heel, compact mounting zone, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4.5-13",
+            "brakeWidths": [
+              95,
+              105
+            ],
             "stepOn": false
           },
           "budget": {
-            "id": "SKI0004",
-            "brand": "Marker",
-            "model": "Squire 11",
-            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
-            "price": 249.99,
+            "id": "SKI0001",
+            "brand": "Look",
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           }
         },
@@ -80,6 +115,15 @@
             "model": "Mindbender 110 Boa",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2526_mindbender-110-boa_KS251178_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 749.95,
+            "description": "Men's 110-flex freeride and touring boot with BOA lower-shell fit and tech fittings.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 110,
+            "closure": "BOA + Buckles",
+            "lastWidth": 99,
             "stepOn": false
           },
           "upgrade": {
@@ -88,6 +132,15 @@
             "model": "Recon Zonal Boa 120",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_recon-120-zonal-boa_KS261921_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 799.95,
+            "description": "Responsive men's all-mountain boot with a 120 flex and independent BOA cuff and shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 120,
+            "closure": "Dual BOA",
+            "lastWidth": 100,
             "stepOn": false
           },
           "budget": {
@@ -96,6 +149,15 @@
             "model": "BFC 90",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Comfort-focused men's high-volume ski boot with a forgiving 90 flex and easy entry.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 90,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           }
         }
@@ -151,11 +213,23 @@
       "recommendations": {
         "binding": {
           "recommended": {
-            "id": "SKI0001",
-            "brand": "Look",
-            "model": "SPX 13",
-            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
-            "price": 279.95,
+            "id": "SKI0005",
+            "brand": "Marker",
+            "model": "Griffon X 13",
+            "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
+            "price": 299.99,
+            "description": "Low-profile X-series freeride and freestyle binding with a 4-13 DIN range and direct power transmission.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              105,
+              120
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -164,14 +238,37 @@
             "model": "Pivot 2.0 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 399.95,
+            "description": "Performance freeride binding with a turntable heel, compact mounting zone, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4.5-13",
+            "brakeWidths": [
+              95,
+              105
+            ],
             "stepOn": false
           },
           "budget": {
-            "id": "SKI0002",
+            "id": "SKI0001",
             "brand": "Look",
-            "model": "NX 11",
-            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
-            "price": 199.95,
+            "model": "SPX 13",
+            "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
+            "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           }
         },
@@ -182,6 +279,15 @@
             "model": "Anthem X Boa 95",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_anthem-x-95-boa_KS261934_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 599.95,
+            "description": "Women's all-mountain boot with a 95 flex and BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Women's",
+            "flexIndex": 95,
+            "closure": "BOA + Buckles",
+            "lastWidth": 100,
             "stepOn": false
           },
           "upgrade": {
@@ -190,6 +296,14 @@
             "model": "Machboa W 85 MV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__201G56G1-200_Mach_BOA_MV_85_W_01.webp",
             "price": 599.99,
+            "description": "Women’s medium-volume 85-flex ski boot with BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "BOA + Buckles",
+            "lastWidth": 100,
             "stepOn": false
           },
           "budget": {
@@ -198,6 +312,15 @@
             "model": "BFC 85 W",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Women's high-volume comfort boot with an 85 flex, heat-moldable fit and traditional buckles.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           }
         }
@@ -258,6 +381,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -266,6 +400,18 @@
             "model": "SPX 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           },
           "budget": {
@@ -274,6 +420,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -284,6 +441,15 @@
             "model": "BFC 90",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Comfort-focused men's high-volume ski boot with a forgiving 90 flex and easy entry.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 90,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -292,6 +458,15 @@
             "model": "Machboa 110 HV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101869G2-741_Mach_BOA_HV_110_01.webp",
             "price": 699.99,
+            "description": "Men’s high-volume 110-flex boot with BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 110,
+            "closure": "BOA + Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "budget": {
@@ -300,6 +475,15 @@
             "model": "BFC 90",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Comfort-focused men's high-volume ski boot with a forgiving 90 flex and easy entry.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 90,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           }
         }
@@ -359,6 +543,16 @@
             "model": "NX 11",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 199.95,
+            "description": "Lightweight recreational all-mountain binding with a 3.5-11 DIN range, easy step-in heel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "din": "3.5-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -367,6 +561,18 @@
             "model": "SPX 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           },
           "budget": {
@@ -375,6 +581,16 @@
             "model": "NX 11",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 199.95,
+            "description": "Lightweight recreational all-mountain binding with a 3.5-11 DIN range, easy step-in heel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "din": "3.5-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -385,6 +601,15 @@
             "model": "VIZION 4B 80 W",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw1d512710/images/large/RBN7270000_72DPI_01_v00.jpg?sw=1200&sh=1200",
             "price": 599.99,
+            "description": "Women's 80-flex Vizion alpine boot with a 102 mm last and rear-opening easy-entry design.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 80,
+            "closure": "Traditional Buckles",
+            "lastWidth": 102,
             "stepOn": false
           },
           "upgrade": {
@@ -393,6 +618,14 @@
             "model": "Machboa W 85 MV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__201G56G1-200_Mach_BOA_MV_85_W_01.webp",
             "price": 599.99,
+            "description": "Women’s medium-volume 85-flex ski boot with BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "BOA + Buckles",
+            "lastWidth": 100,
             "stepOn": false
           },
           "budget": {
@@ -401,6 +634,15 @@
             "model": "BFC 85 W",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Women's high-volume comfort boot with an 85 flex, heat-moldable fit and traditional buckles.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           }
         }
@@ -461,6 +703,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -469,6 +722,18 @@
             "model": "Griffon X 13",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 299.99,
+            "description": "Low-profile X-series freeride and freestyle binding with a 4-13 DIN range and direct power transmission.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              105,
+              120
+            ],
             "stepOn": false
           },
           "budget": {
@@ -477,6 +742,16 @@
             "model": "NX 11",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 199.95,
+            "description": "Lightweight recreational all-mountain binding with a 3.5-11 DIN range, easy step-in heel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "din": "3.5-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -487,6 +762,15 @@
             "model": "BFC 90",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Comfort-focused men's high-volume ski boot with a forgiving 90 flex and easy entry.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 90,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -495,6 +779,15 @@
             "model": "Mindbender 110 Boa",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2526_mindbender-110-boa_KS251178_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 749.95,
+            "description": "Men's 110-flex freeride and touring boot with BOA lower-shell fit and tech fittings.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 110,
+            "closure": "BOA + Buckles",
+            "lastWidth": 99,
             "stepOn": false
           },
           "budget": {
@@ -503,6 +796,14 @@
             "model": "Speed 80 HV+",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw5a1b7adf/images/large/RBO8050000_72DPI_01_v00.jpg?sw=1200&sh=1200",
             "price": 399.95,
+            "description": "Men's 80-flex piste boot with a roomy 104 mm last and easy-entry shell.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Men's",
+            "flexIndex": 80,
+            "closure": "Traditional Buckles",
+            "lastWidth": 104,
             "stepOn": false
           }
         }
@@ -563,6 +864,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -571,6 +883,18 @@
             "model": "SPX 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           },
           "budget": {
@@ -579,6 +903,16 @@
             "model": "NX 11",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 199.95,
+            "description": "Lightweight recreational all-mountain binding with a 3.5-11 DIN range, easy step-in heel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "din": "3.5-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -589,6 +923,15 @@
             "model": "BFC 85 W",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Women's high-volume comfort boot with an 85 flex, heat-moldable fit and traditional buckles.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -597,6 +940,15 @@
             "model": "Anthem X Boa 95",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_anthem-x-95-boa_KS261934_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 599.95,
+            "description": "Women's all-mountain boot with a 95 flex and BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Women's",
+            "flexIndex": 95,
+            "closure": "BOA + Buckles",
+            "lastWidth": 100,
             "stepOn": false
           },
           "budget": {
@@ -605,6 +957,14 @@
             "model": "Track 70 W",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw19c39969/images/large/RBM4250000_72DPI_01_v00.jpg?sw=1200&sh=1200",
             "price": 349.99,
+            "description": "Women's comfort-oriented 70-flex boot with a roomy 104 mm fit and simple buckle closure.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Women's",
+            "flexIndex": 70,
+            "closure": "Traditional Buckles",
+            "lastWidth": 104,
             "stepOn": false
           }
         }
@@ -664,6 +1024,18 @@
             "model": "SPX 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -672,6 +1044,18 @@
             "model": "Strive 14 GripWalk",
             "image": "https://cdn.dam.salomon.com/af431905-2f54-4b54-bc3d-b2f4015322d8/L41775000%2B/PNG-2000px-max-72dpi.png?width=1920&fit=cover&optimize=medium&bg-color=f5f5f5&format=pjpg&auto=avif&canvas=116p%2C144p",
             "price": 279.95,
+            "description": "Low-profile all-mountain alpine binding with a 5-14 DIN range and GripWalk-compatible interface.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "5-14",
+            "brakeWidths": [
+              90,
+              100,
+              115
+            ],
             "stepOn": false
           },
           "budget": {
@@ -680,6 +1064,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -690,6 +1085,15 @@
             "model": "Machboa 110 HV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101869G2-741_Mach_BOA_HV_110_01.webp",
             "price": 699.99,
+            "description": "Men’s high-volume 110-flex boot with BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 110,
+            "closure": "BOA + Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -698,6 +1102,15 @@
             "model": "Shift Supra Boa 100",
             "image": "https://cdn.dam.salomon.com/827ffa15-dcdb-489a-9efd-b31b00be0a9b/L47934200/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
             "price": 749.99,
+            "description": "Men’s 100-flex freeride boot with BOA lower-shell adjustment and a walk mode.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 100,
+            "closure": "BOA + Buckles",
+            "lastWidth": 100,
             "stepOn": false
           },
           "budget": {
@@ -706,6 +1119,14 @@
             "model": "Speed 80 HV+",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw5a1b7adf/images/large/RBO8050000_72DPI_01_v00.jpg?sw=1200&sh=1200",
             "price": 399.95,
+            "description": "Men's 80-flex piste boot with a roomy 104 mm last and easy-entry shell.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Men's",
+            "flexIndex": 80,
+            "closure": "Traditional Buckles",
+            "lastWidth": 104,
             "stepOn": false
           }
         }
@@ -767,6 +1188,18 @@
             "model": "Griffon X 13",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 299.99,
+            "description": "Low-profile X-series freeride and freestyle binding with a 4-13 DIN range and direct power transmission.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              105,
+              120
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -775,6 +1208,17 @@
             "model": "Pivot 2.0 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 399.95,
+            "description": "Performance freeride binding with a turntable heel, compact mounting zone, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4.5-13",
+            "brakeWidths": [
+              95,
+              105
+            ],
             "stepOn": false
           },
           "budget": {
@@ -783,6 +1227,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -793,6 +1248,15 @@
             "model": "BFC 90",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Comfort-focused men's high-volume ski boot with a forgiving 90 flex and easy entry.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 90,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -801,6 +1265,15 @@
             "model": "Mindbender 110 Boa",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2526_mindbender-110-boa_KS251178_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 749.95,
+            "description": "Men's 110-flex freeride and touring boot with BOA lower-shell fit and tech fittings.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 110,
+            "closure": "BOA + Buckles",
+            "lastWidth": 99,
             "stepOn": false
           },
           "budget": {
@@ -809,6 +1282,15 @@
             "model": "Machsport 80 HV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101872G2-268_MACH_SPORT_HV_80_GW_01.webp",
             "price": 349.99,
+            "description": "Men’s high-volume 80-flex comfort ski boot.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 80,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           }
         }
@@ -869,6 +1351,18 @@
             "model": "SPX 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -877,6 +1371,18 @@
             "model": "Griffon X 13",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 299.99,
+            "description": "Low-profile X-series freeride and freestyle binding with a 4-13 DIN range and direct power transmission.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              105,
+              120
+            ],
             "stepOn": false
           },
           "budget": {
@@ -885,6 +1391,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -895,6 +1412,15 @@
             "model": "BFC 90",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Comfort-focused men's high-volume ski boot with a forgiving 90 flex and easy entry.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 90,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -903,6 +1429,15 @@
             "model": "Mindbender 110 Boa",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2526_mindbender-110-boa_KS251178_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 749.95,
+            "description": "Men's 110-flex freeride and touring boot with BOA lower-shell fit and tech fittings.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 110,
+            "closure": "BOA + Buckles",
+            "lastWidth": 99,
             "stepOn": false
           },
           "budget": {
@@ -911,6 +1446,15 @@
             "model": "Machsport 80 HV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101872G2-268_MACH_SPORT_HV_80_GW_01.webp",
             "price": 349.99,
+            "description": "Men’s high-volume 80-flex comfort ski boot.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 80,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           }
         }
@@ -975,6 +1519,13 @@
             "model": "JT 2 Storm",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__30134102-B79_JT_2_01.webp",
             "price": 169.99,
+            "description": "Two-buckle junior ski boot.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Youth",
+            "closure": "Traditional Buckles",
+            "lastWidth": 102,
             "stepOn": false
           },
           "upgrade": {
@@ -983,6 +1534,14 @@
             "model": "JT 3 Storm",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__30133802-B79_JT_3_01.webp",
             "price": 209.99,
+            "description": "Three-buckle junior ski boot.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Youth",
+            "closure": "Traditional Buckles",
+            "lastWidth": 102,
             "stepOn": false
           },
           "budget": {
@@ -991,6 +1550,13 @@
             "model": "Sonic 2 RTL",
             "image": "https://res.cloudinary.com/great-lakes-outpost/image/upload/t_product_zoom/c_limit,w_500/f_auto/q_auto/v1/ROXA620521195-Junior_SONIC-2-ALP",
             "price": 129.99,
+            "description": "Two-buckle junior ski boot.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Youth",
+            "closure": "Traditional Buckles",
+            "lastWidth": 102,
             "stepOn": false
           }
         }
@@ -1052,6 +1618,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -1060,6 +1637,18 @@
             "model": "SPX 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           },
           "budget": {
@@ -1068,6 +1657,16 @@
             "model": "NX 11",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 199.95,
+            "description": "Lightweight recreational all-mountain binding with a 3.5-11 DIN range, easy step-in heel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "din": "3.5-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -1078,6 +1677,15 @@
             "model": "BFC 85 W",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Women's high-volume comfort boot with an 85 flex, heat-moldable fit and traditional buckles.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -1086,6 +1694,15 @@
             "model": "Anthem X Boa 95",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_anthem-x-95-boa_KS261934_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 599.95,
+            "description": "Women's all-mountain boot with a 95 flex and BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Women's",
+            "flexIndex": 95,
+            "closure": "BOA + Buckles",
+            "lastWidth": 100,
             "stepOn": false
           },
           "budget": {
@@ -1094,6 +1711,14 @@
             "model": "Track 70 W",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw19c39969/images/large/RBM4250000_72DPI_01_v00.jpg?sw=1200&sh=1200",
             "price": 349.99,
+            "description": "Women's comfort-oriented 70-flex boot with a roomy 104 mm fit and simple buckle closure.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Women's",
+            "flexIndex": 70,
+            "closure": "Traditional Buckles",
+            "lastWidth": 104,
             "stepOn": false
           }
         }
@@ -1155,6 +1780,18 @@
             "model": "Griffon X 13",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 299.99,
+            "description": "Low-profile X-series freeride and freestyle binding with a 4-13 DIN range and direct power transmission.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              105,
+              120
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -1163,6 +1800,17 @@
             "model": "Pivot 2.0 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 399.95,
+            "description": "Performance freeride binding with a turntable heel, compact mounting zone, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4.5-13",
+            "brakeWidths": [
+              95,
+              105
+            ],
             "stepOn": false
           },
           "budget": {
@@ -1171,6 +1819,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -1181,6 +1840,15 @@
             "model": "BFC 85 W",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Women's high-volume comfort boot with an 85 flex, heat-moldable fit and traditional buckles.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -1189,6 +1857,15 @@
             "model": "Anthem X Boa 95",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_anthem-x-95-boa_KS261934_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 599.95,
+            "description": "Women's all-mountain boot with a 95 flex and BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Women's",
+            "flexIndex": 95,
+            "closure": "BOA + Buckles",
+            "lastWidth": 100,
             "stepOn": false
           },
           "budget": {
@@ -1197,6 +1874,14 @@
             "model": "Track 70 W",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw19c39969/images/large/RBM4250000_72DPI_01_v00.jpg?sw=1200&sh=1200",
             "price": 349.99,
+            "description": "Women's comfort-oriented 70-flex boot with a roomy 104 mm fit and simple buckle closure.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Women's",
+            "flexIndex": 70,
+            "closure": "Traditional Buckles",
+            "lastWidth": 104,
             "stepOn": false
           }
         }
@@ -1314,6 +1999,15 @@
             "model": "BFC 85 W",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Women's high-volume comfort boot with an 85 flex, heat-moldable fit and traditional buckles.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -1322,6 +2016,15 @@
             "model": "VIZION 4B 80 W",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw1d512710/images/large/RBN7270000_72DPI_01_v00.jpg?sw=1200&sh=1200",
             "price": 599.99,
+            "description": "Women's 80-flex Vizion alpine boot with a 102 mm last and rear-opening easy-entry design.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 80,
+            "closure": "Traditional Buckles",
+            "lastWidth": 102,
             "stepOn": false
           },
           "budget": {
@@ -1330,6 +2033,14 @@
             "model": "RFit HV 75 W",
             "image": "https://www.roxa.com/wp-content/uploads/2025/06/RFIT-HV-75W.webp",
             "price": 299.99,
+            "description": "Women’s high-volume adult boot with a 75 flex.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Women's",
+            "flexIndex": 75,
+            "closure": "Traditional Buckles",
+            "lastWidth": 104,
             "stepOn": false
           }
         }
@@ -1391,6 +2102,18 @@
             "model": "Griffon X 13",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_griffon-x-13_black_7525A1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 299.99,
+            "description": "Low-profile X-series freeride and freestyle binding with a 4-13 DIN range and direct power transmission.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              105,
+              120
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -1399,6 +2122,17 @@
             "model": "Pivot 2.0 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 399.95,
+            "description": "Performance freeride binding with a turntable heel, compact mounting zone, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4.5-13",
+            "brakeWidths": [
+              95,
+              105
+            ],
             "stepOn": false
           },
           "budget": {
@@ -1407,6 +2141,18 @@
             "model": "SPX 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           }
         },
@@ -1417,6 +2163,15 @@
             "model": "Machboa 110 HV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101869G2-741_Mach_BOA_HV_110_01.webp",
             "price": 699.99,
+            "description": "Men’s high-volume 110-flex boot with BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 110,
+            "closure": "BOA + Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -1425,6 +2180,15 @@
             "model": "Recon Zonal Boa 120",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_recon-120-zonal-boa_KS261921_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 799.95,
+            "description": "Responsive men's all-mountain boot with a 120 flex and independent BOA cuff and shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 120,
+            "closure": "Dual BOA",
+            "lastWidth": 100,
             "stepOn": false
           },
           "budget": {
@@ -1433,6 +2197,15 @@
             "model": "BFC 90",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Comfort-focused men's high-volume ski boot with a forgiving 90 flex and easy entry.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 90,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           }
         }
@@ -1495,6 +2268,15 @@
             "model": "BFC 90",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Comfort-focused men's high-volume ski boot with a forgiving 90 flex and easy entry.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 90,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -1503,6 +2285,15 @@
             "model": "Machboa 110 HV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101869G2-741_Mach_BOA_HV_110_01.webp",
             "price": 699.99,
+            "description": "Men’s high-volume 110-flex boot with BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 110,
+            "closure": "BOA + Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "budget": {
@@ -1511,6 +2302,15 @@
             "model": "Machsport 80 HV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101872G2-268_MACH_SPORT_HV_80_GW_01.webp",
             "price": 349.99,
+            "description": "Men’s high-volume 80-flex comfort ski boot.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 80,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           }
         }
@@ -1567,6 +2367,15 @@
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
             "price": 200,
+            "description": "Women’s medium-flex all-mountain strap binding for beginner to intermediate progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "upgrade": {
@@ -1575,6 +2384,14 @@
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
             "price": 300,
+            "description": "Nebula FASE is a medium-flex two-strap binding with assisted fast entry and plush cushioning.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "flexScale": 3,
+            "entry": "Hands Free",
+            "response": "Playful",
             "stepOn": false
           },
           "budget": {
@@ -1583,6 +2400,15 @@
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
             "price": 180,
+            "description": "Lightweight, soft-flexing strap binding with an S8 Duraflex baseplate and CP3 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "entry": "Traditional",
+            "response": "Playful",
             "stepOn": false
           }
         },
@@ -1593,6 +2419,14 @@
             "model": "Contour",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_contour_nantucket-breeze_KB261673_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive women's all-mountain snowboard boot with BOA shell closure and separate Conda liner-lacing adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Women's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -1601,6 +2435,14 @@
             "model": "Hera",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_hera_white_RD261906_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Medium-flex women's all-mountain boot with BOA shell adjustment and Tongue Tied heel retention.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "budget": {
@@ -1609,6 +2451,14 @@
             "model": "Sage",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 289.95,
+            "description": "Comfortable women's all-mountain snowboard boot with medium response and a simple single-dial BOA closure.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": false
           }
         }
@@ -1695,6 +2545,15 @@
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
             "price": 370,
+            "description": "Mid-stiff FASE fast-entry binding with a Fusion XR baseplate, cushioned Fusion Pad and AsymFlex highback.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           },
           "upgrade": {
@@ -1703,6 +2562,15 @@
             "model": "Atlas Step On",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
             "price": 430,
+            "description": "Medium-flex Step On binding with an adjustable gas pedal, forward lean and EVA cushioning.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Step On",
+            "response": "Balanced",
             "stepOn": true
           },
           "budget": {
@@ -1711,6 +2579,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -1721,6 +2598,14 @@
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive all-mountain snowboard boot with dual-dial BOA adjustment and an internal Conda heel-retention system.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -1729,6 +2614,13 @@
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
             "price": 389.99,
+            "description": "Medium-flex men's boot built for Burton Step On binding compatibility with a single-dial BOA closure.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": true
           },
           "budget": {
@@ -1737,6 +2629,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           }
         }
@@ -1828,6 +2727,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "upgrade": {
@@ -1836,6 +2744,15 @@
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
             "price": 370,
+            "description": "Mid-stiff FASE fast-entry binding with a Fusion XR baseplate, cushioned Fusion Pad and AsymFlex highback.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           },
           "budget": {
@@ -1844,6 +2761,15 @@
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
             "price": 200,
+            "description": "Medium-flex progression binding with an S5 Duraflex baseplate and S11 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -1854,6 +2780,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -1862,6 +2795,14 @@
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive all-mountain snowboard boot with dual-dial BOA adjustment and an internal Conda heel-retention system.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "budget": {
@@ -1870,6 +2811,14 @@
             "model": "Faction Boa",
             "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
             "price": 279.95,
+            "description": "Soft-flex men's snowboard boot with a single-dial BOA closure for comfort and easy progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           }
         }
@@ -1948,6 +2897,15 @@
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
             "price": 370,
+            "description": "Mid-stiff FASE fast-entry binding with a Fusion XR baseplate, cushioned Fusion Pad and AsymFlex highback.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           },
           "upgrade": {
@@ -1956,6 +2914,14 @@
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
             "price": 330,
+            "description": "Strapless Step On binding with three boot connection points and HYPER Foam damping.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "entry": "Step On",
+            "response": "Precise",
             "stepOn": true
           },
           "budget": {
@@ -1964,6 +2930,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -1974,6 +2949,14 @@
             "model": "Lasso",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Medium-flex men's all-mountain boot with BOA shell adjustment and Tongue Tied heel-retention control.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -1982,6 +2965,13 @@
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
             "price": 389.99,
+            "description": "Medium-flex men's boot built for Burton Step On binding compatibility with a single-dial BOA closure.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": true
           },
           "budget": {
@@ -1990,6 +2980,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           }
         }
@@ -2074,6 +3071,15 @@
             "model": "Cadet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_CADET_BLACK_1024x.jpg?v=1785333250",
             "price": 150,
+            "description": "Adjustable youth strap binding with a forgiving flex for resort progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Youth",
+            "flexScale": 2,
+            "entry": "Traditional",
+            "response": "Playful",
             "stepOn": false
           }
         },
@@ -2084,6 +3090,13 @@
             "model": "Norris",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2526_norris_black_R2303026_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 149.95,
+            "description": "Forgiving youth snowboard boot with a kid-friendly single-dial BOA closure for quick, secure adjustment.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Youth",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           }
         }
@@ -2170,6 +3183,15 @@
             "model": "Machsport 80 HV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101872G2-268_MACH_SPORT_HV_80_GW_01.webp",
             "price": 349.99,
+            "description": "Men’s high-volume 80-flex comfort ski boot.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 80,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -2178,6 +3200,15 @@
             "model": "BFC 90",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Comfort-focused men's high-volume ski boot with a forgiving 90 flex and easy entry.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 90,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "budget": {
@@ -2186,6 +3217,14 @@
             "model": "RFit HV 80",
             "image": "https://www.roxa.com/wp-content/uploads/2025/06/RFIT-HV-80.webp",
             "price": 299.99,
+            "description": "High-volume adult boot with an 80 flex.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Men's",
+            "flexIndex": 80,
+            "closure": "Traditional Buckles",
+            "lastWidth": 104,
             "stepOn": false
           }
         }
@@ -2241,6 +3280,14 @@
             "model": "Machsport W 65 HV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__201613G2-070_MACH_SPORT_HV_65_W_GW_01.webp",
             "price": 349.99,
+            "description": "Women’s high-volume 65-flex comfort ski boot.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Women's",
+            "flexIndex": 65,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -2249,6 +3296,15 @@
             "model": "BFC 85 W",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Women's high-volume comfort boot with an 85 flex, heat-moldable fit and traditional buckles.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "budget": {
@@ -2257,6 +3313,14 @@
             "model": "RFit HV 75 W",
             "image": "https://www.roxa.com/wp-content/uploads/2025/06/RFIT-HV-75W.webp",
             "price": 299.99,
+            "description": "Women’s high-volume adult boot with a 75 flex.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Women's",
+            "flexIndex": 75,
+            "closure": "Traditional Buckles",
+            "lastWidth": 104,
             "stepOn": false
           }
         }
@@ -2316,6 +3380,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -2324,6 +3399,18 @@
             "model": "SPX 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           },
           "budget": {
@@ -2332,6 +3419,16 @@
             "model": "NX 11",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw4dbaddf7/images/large/FCOAN09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 199.95,
+            "description": "Lightweight recreational all-mountain binding with a 3.5-11 DIN range, easy step-in heel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "din": "3.5-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -2342,6 +3439,15 @@
             "model": "VIZION 4B 80 W",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw1d512710/images/large/RBN7270000_72DPI_01_v00.jpg?sw=1200&sh=1200",
             "price": 599.99,
+            "description": "Women's 80-flex Vizion alpine boot with a 102 mm last and rear-opening easy-entry design.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 80,
+            "closure": "Traditional Buckles",
+            "lastWidth": 102,
             "stepOn": false
           },
           "upgrade": {
@@ -2350,6 +3456,14 @@
             "model": "Machboa W 85 MV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__201G56G1-200_Mach_BOA_MV_85_W_01.webp",
             "price": 599.99,
+            "description": "Women’s medium-volume 85-flex ski boot with BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "BOA + Buckles",
+            "lastWidth": 100,
             "stepOn": false
           },
           "budget": {
@@ -2358,6 +3472,15 @@
             "model": "BFC 85 W",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-85-w-boa_KS261941_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Women's high-volume comfort boot with an 85 flex, heat-moldable fit and traditional buckles.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexIndex": 85,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           }
         }
@@ -2417,6 +3540,18 @@
             "model": "SPX 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw928534b0/images/large/FCNAS04000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 279.95,
+            "description": "Performance all-mountain binding with a 4-13 DIN range, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4-13",
+            "brakeWidths": [
+              90,
+              100,
+              110
+            ],
             "stepOn": false
           },
           "upgrade": {
@@ -2425,6 +3560,17 @@
             "model": "Pivot 2.0 13",
             "image": "https://www.rossignol.com/dw/image/v2/BJJZ_PRD/on/demandware.static/-/Sites-rossignol-catalog/default/dw17a668e9/images/large/FCOPC09000_72DPI_01_v01.jpg?sw=1200&sh=1200",
             "price": 399.95,
+            "description": "Performance freeride binding with a turntable heel, compact mounting zone, long elastic travel and adult Alpine/GripWalk compatibility.",
+            "ability": [
+              "Advanced",
+              "Expert"
+            ],
+            "gender": "Unisex",
+            "din": "4.5-13",
+            "brakeWidths": [
+              95,
+              105
+            ],
             "stepOn": false
           },
           "budget": {
@@ -2433,6 +3579,17 @@
             "model": "Squire 11",
             "image": "https://cdn.media.amplience.net/i/marker/marker_2627_squire-11_black_7424V1_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 249.99,
+            "description": "Lightweight freeride and all-mountain binding with a 3-11 DIN range for intermediate and advanced skiers.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "din": "3-11",
+            "brakeWidths": [
+              90,
+              100
+            ],
             "stepOn": false
           }
         },
@@ -2443,6 +3600,15 @@
             "model": "Machboa 110 HV",
             "image": "https://www.blizzard-tecnica.com/storage/thumbs/Product/3300__resize__101869G2-741_Mach_BOA_HV_110_01.webp",
             "price": 699.99,
+            "description": "Men’s high-volume 110-flex boot with BOA lower-shell adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexIndex": 110,
+            "closure": "BOA + Buckles",
+            "lastWidth": 103,
             "stepOn": false
           },
           "upgrade": {
@@ -2451,6 +3617,15 @@
             "model": "Shift Supra Boa 100",
             "image": "https://cdn.dam.salomon.com/827ffa15-dcdb-489a-9efd-b31b00be0a9b/L47934200/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
             "price": 749.99,
+            "description": "Men’s 100-flex freeride boot with BOA lower-shell adjustment and a walk mode.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 100,
+            "closure": "BOA + Buckles",
+            "lastWidth": 100,
             "stepOn": false
           },
           "budget": {
@@ -2459,6 +3634,15 @@
             "model": "BFC 90",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_bfc-90_KS261938_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 399.95,
+            "description": "Comfort-focused men's high-volume ski boot with a forgiving 90 flex and easy entry.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexIndex": 90,
+            "closure": "Traditional Buckles",
+            "lastWidth": 103,
             "stepOn": false
           }
         }
@@ -2514,6 +3698,13 @@
             "model": "Norris",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2526_norris_black_R2303026_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 149.95,
+            "description": "Forgiving youth snowboard boot with a kid-friendly single-dial BOA closure for quick, secure adjustment.",
+            "ability": [
+              "Beginner"
+            ],
+            "gender": "Youth",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           }
         }
@@ -2607,6 +3798,14 @@
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
             "price": 300,
+            "description": "Nebula FASE is a medium-flex two-strap binding with assisted fast entry and plush cushioning.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "flexScale": 3,
+            "entry": "Hands Free",
+            "response": "Playful",
             "stepOn": false
           },
           "upgrade": {
@@ -2615,6 +3814,15 @@
             "model": "Atlas Step On",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
             "price": 430,
+            "description": "Medium-flex Step On binding with an adjustable gas pedal, forward lean and EVA cushioning.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Step On",
+            "response": "Balanced",
             "stepOn": true
           },
           "budget": {
@@ -2623,6 +3831,15 @@
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
             "price": 200,
+            "description": "Women’s medium-flex all-mountain strap binding for beginner to intermediate progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -2633,6 +3850,14 @@
             "model": "Hera",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_hera_white_RD261906_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Medium-flex women's all-mountain boot with BOA shell adjustment and Tongue Tied heel retention.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -2641,6 +3866,13 @@
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
             "price": 389.99,
+            "description": "Medium-flex men's boot built for Burton Step On binding compatibility with a single-dial BOA closure.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": true
           },
           "budget": {
@@ -2649,6 +3881,14 @@
             "model": "Sage",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 289.95,
+            "description": "Comfortable women's all-mountain snowboard boot with medium response and a simple single-dial BOA closure.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": false
           }
         }
@@ -2731,6 +3971,15 @@
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
             "price": 370,
+            "description": "Mid-stiff FASE fast-entry binding with a Fusion XR baseplate, cushioned Fusion Pad and AsymFlex highback.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           },
           "upgrade": {
@@ -2739,6 +3988,14 @@
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
             "price": 330,
+            "description": "Strapless Step On binding with three boot connection points and HYPER Foam damping.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "entry": "Step On",
+            "response": "Precise",
             "stepOn": true
           },
           "budget": {
@@ -2747,6 +4004,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -2757,6 +4023,14 @@
             "model": "Lasso",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Medium-flex men's all-mountain boot with BOA shell adjustment and Tongue Tied heel-retention control.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -2765,6 +4039,13 @@
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
             "price": 389.99,
+            "description": "Medium-flex men's boot built for Burton Step On binding compatibility with a single-dial BOA closure.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": true
           },
           "budget": {
@@ -2773,6 +4054,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           }
         }
@@ -2862,6 +4150,15 @@
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
             "price": 370,
+            "description": "Mid-stiff FASE fast-entry binding with a Fusion XR baseplate, cushioned Fusion Pad and AsymFlex highback.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           },
           "upgrade": {
@@ -2870,6 +4167,14 @@
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
             "price": 330,
+            "description": "Strapless Step On binding with three boot connection points and HYPER Foam damping.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "entry": "Step On",
+            "response": "Precise",
             "stepOn": true
           },
           "budget": {
@@ -2878,6 +4183,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -2888,6 +4202,14 @@
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive all-mountain snowboard boot with dual-dial BOA adjustment and an internal Conda heel-retention system.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -2896,6 +4218,13 @@
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
             "price": 389.99,
+            "description": "Medium-flex men's boot built for Burton Step On binding compatibility with a single-dial BOA closure.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": true
           },
           "budget": {
@@ -2904,6 +4233,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           }
         }
@@ -2992,6 +4328,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "upgrade": {
@@ -3000,6 +4345,15 @@
             "model": "Atlas Step On",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
             "price": 430,
+            "description": "Medium-flex Step On binding with an adjustable gas pedal, forward lean and EVA cushioning.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Step On",
+            "response": "Balanced",
             "stepOn": true
           },
           "budget": {
@@ -3008,6 +4362,15 @@
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
             "price": 200,
+            "description": "Medium-flex progression binding with an S5 Duraflex baseplate and S11 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -3018,6 +4381,14 @@
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive all-mountain snowboard boot with dual-dial BOA adjustment and an internal Conda heel-retention system.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -3026,6 +4397,13 @@
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
             "price": 389.99,
+            "description": "Medium-flex men's boot built for Burton Step On binding compatibility with a single-dial BOA closure.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": true
           },
           "budget": {
@@ -3034,6 +4412,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           }
         }
@@ -3117,6 +4502,14 @@
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
             "price": 300,
+            "description": "Nebula FASE is a medium-flex two-strap binding with assisted fast entry and plush cushioning.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "flexScale": 3,
+            "entry": "Hands Free",
+            "response": "Playful",
             "stepOn": false
           },
           "upgrade": {
@@ -3125,6 +4518,14 @@
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
             "price": 330,
+            "description": "Strapless Step On binding with three boot connection points and HYPER Foam damping.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "entry": "Step On",
+            "response": "Precise",
             "stepOn": true
           },
           "budget": {
@@ -3133,6 +4534,15 @@
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
             "price": 200,
+            "description": "Women’s medium-flex all-mountain strap binding for beginner to intermediate progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -3143,6 +4553,14 @@
             "model": "Haven",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_haven_rose_KB261675_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 279.95,
+            "description": "Comfort-focused women's snowboard boot with a forgiving flex and quick single-dial BOA closure.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -3151,6 +4569,13 @@
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
             "price": 389.99,
+            "description": "Medium-flex men's boot built for Burton Step On binding compatibility with a single-dial BOA closure.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": true
           },
           "budget": {
@@ -3159,6 +4584,14 @@
             "model": "Sage",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 289.95,
+            "description": "Comfortable women's all-mountain snowboard boot with medium response and a simple single-dial BOA closure.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": false
           }
         }
@@ -3400,6 +4833,15 @@
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
             "price": 200,
+            "description": "Medium-flex progression binding with an S5 Duraflex baseplate and S11 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "upgrade": {
@@ -3408,6 +4850,15 @@
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
             "price": 370,
+            "description": "Mid-stiff FASE fast-entry binding with a Fusion XR baseplate, cushioned Fusion Pad and AsymFlex highback.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           },
           "budget": {
@@ -3416,6 +4867,15 @@
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
             "price": 180,
+            "description": "Lightweight, soft-flexing strap binding with an S8 Duraflex baseplate and CP3 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "entry": "Traditional",
+            "response": "Playful",
             "stepOn": false
           }
         },
@@ -3426,6 +4886,14 @@
             "model": "Faction Boa",
             "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
             "price": 279.95,
+            "description": "Soft-flex men's snowboard boot with a single-dial BOA closure for comfort and easy progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -3434,6 +4902,14 @@
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive all-mountain snowboard boot with dual-dial BOA adjustment and an internal Conda heel-retention system.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "budget": {
@@ -3442,6 +4918,14 @@
             "model": "Sentinel TLS",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
             "price": 259.99,
+            "description": "Balanced men's all-mountain snowboard boot with Nitro's dual-zone TLS speed-lacing system.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Speed Lace",
             "stepOn": false
           }
         }
@@ -3519,6 +5003,15 @@
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
             "price": 200,
+            "description": "Medium-flex progression binding with an S5 Duraflex baseplate and S11 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "upgrade": {
@@ -3527,6 +5020,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "budget": {
@@ -3535,6 +5037,15 @@
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
             "price": 180,
+            "description": "Lightweight, soft-flexing strap binding with an S8 Duraflex baseplate and CP3 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "entry": "Traditional",
+            "response": "Playful",
             "stepOn": false
           }
         },
@@ -3545,6 +5056,14 @@
             "model": "Faction Boa",
             "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
             "price": 279.95,
+            "description": "Soft-flex men's snowboard boot with a single-dial BOA closure for comfort and easy progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -3553,6 +5072,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "budget": {
@@ -3561,6 +5087,14 @@
             "model": "Sentinel TLS",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
             "price": 259.99,
+            "description": "Balanced men's all-mountain snowboard boot with Nitro's dual-zone TLS speed-lacing system.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Speed Lace",
             "stepOn": false
           }
         }
@@ -3636,6 +5170,15 @@
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
             "price": 200,
+            "description": "Women’s medium-flex all-mountain strap binding for beginner to intermediate progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "upgrade": {
@@ -3644,6 +5187,14 @@
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
             "price": 300,
+            "description": "Nebula FASE is a medium-flex two-strap binding with assisted fast entry and plush cushioning.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "flexScale": 3,
+            "entry": "Hands Free",
+            "response": "Playful",
             "stepOn": false
           },
           "budget": {
@@ -3652,6 +5203,15 @@
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
             "price": 180,
+            "description": "Lightweight, soft-flexing strap binding with an S8 Duraflex baseplate and CP3 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "entry": "Traditional",
+            "response": "Playful",
             "stepOn": false
           }
         },
@@ -3662,6 +5222,14 @@
             "model": "Sage",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 289.95,
+            "description": "Comfortable women's all-mountain snowboard boot with medium response and a simple single-dial BOA closure.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -3670,6 +5238,14 @@
             "model": "Contour",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_contour_nantucket-breeze_KB261673_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive women's all-mountain snowboard boot with BOA shell closure and separate Conda liner-lacing adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Women's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "budget": {
@@ -3678,6 +5254,14 @@
             "model": "Pearl Boa",
             "image": "https://cdn.dam.salomon.com/18d05f7c-7f2f-4ecc-86c0-b36001091640/L49276500/PNG-2000px-max-72dpi.png?width=1200&fit=cover&optimize=medium&bg-color=f5f5f5&format=pjpg&auto=avif&canvas=116p%2C144p",
             "price": 279.95,
+            "description": "Soft-flex women's snowboard boot with a single-dial BOA closure for comfortable, easy all-mountain progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           }
         }
@@ -3752,6 +5336,15 @@
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
             "price": 370,
+            "description": "Mid-stiff FASE fast-entry binding with a Fusion XR baseplate, cushioned Fusion Pad and AsymFlex highback.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           },
           "upgrade": {
@@ -3760,6 +5353,15 @@
             "model": "Atlas Step On",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_ATLAS_StepOn_BLACK_1024x.jpg?v=1785333185",
             "price": 430,
+            "description": "Medium-flex Step On binding with an adjustable gas pedal, forward lean and EVA cushioning.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Step On",
+            "response": "Balanced",
             "stepOn": true
           },
           "budget": {
@@ -3768,6 +5370,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -3778,6 +5389,14 @@
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive all-mountain snowboard boot with dual-dial BOA adjustment and an internal Conda heel-retention system.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -3786,6 +5405,13 @@
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
             "price": 389.99,
+            "description": "Medium-flex men's boot built for Burton Step On binding compatibility with a single-dial BOA closure.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": true
           },
           "budget": {
@@ -3794,6 +5420,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           }
         }
@@ -3863,6 +5496,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "upgrade": {
@@ -3871,6 +5513,15 @@
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
             "price": 370,
+            "description": "Mid-stiff FASE fast-entry binding with a Fusion XR baseplate, cushioned Fusion Pad and AsymFlex highback.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           }
         },
@@ -3881,6 +5532,14 @@
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive all-mountain snowboard boot with dual-dial BOA adjustment and an internal Conda heel-retention system.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -3889,6 +5548,14 @@
             "model": "Theory",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 429.95,
+            "description": "Responsive men's snowboard boot with zonal dual BOA adjustment for precise all-mountain and freestyle riding.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           }
         }
@@ -3960,6 +5627,15 @@
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
             "price": 370,
+            "description": "Mid-stiff FASE fast-entry binding with a Fusion XR baseplate, cushioned Fusion Pad and AsymFlex highback.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           },
           "upgrade": {
@@ -3968,6 +5644,15 @@
             "model": "SuperMatic",
             "image": "https://cdn.dam.salomon.com/b2bff1f7-a0fe-4304-9464-b2f3013e8798/L47940100/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
             "price": 480,
+            "description": "Catalog SuperMatic corresponds to Salomon XA Supermatic, an automatic dual-entry binding.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           },
           "budget": {
@@ -3976,6 +5661,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -3986,6 +5680,14 @@
             "model": "Lasso",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Medium-flex men's all-mountain boot with BOA shell adjustment and Tongue Tied heel-retention control.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -3994,6 +5696,14 @@
             "model": "Theory",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_theory-mens_black_KB261663_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 429.95,
+            "description": "Responsive men's snowboard boot with zonal dual BOA adjustment for precise all-mountain and freestyle riding.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "budget": {
@@ -4002,6 +5712,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           }
         }
@@ -4082,6 +5799,15 @@
             "model": "Mercury FASE",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.MEF.BK-gallery-1_txlcim.webp?v=1776481535&width=1946",
             "price": 370,
+            "description": "Mid-stiff FASE fast-entry binding with a Fusion XR baseplate, cushioned Fusion Pad and AsymFlex highback.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Unisex",
+            "flexScale": 4,
+            "entry": "Hands Free",
+            "response": "Precise",
             "stepOn": false
           },
           "upgrade": {
@@ -4090,6 +5816,14 @@
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
             "price": 330,
+            "description": "Strapless Step On binding with three boot connection points and HYPER Foam damping.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "entry": "Step On",
+            "response": "Precise",
             "stepOn": true
           },
           "budget": {
@@ -4098,6 +5832,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -4108,6 +5851,14 @@
             "model": "Maysis",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_maysis_black_KB261665_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive all-mountain snowboard boot with dual-dial BOA adjustment and an internal Conda heel-retention system.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -4116,6 +5867,13 @@
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
             "price": 389.99,
+            "description": "Medium-flex men's boot built for Burton Step On binding compatibility with a single-dial BOA closure.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": true
           },
           "budget": {
@@ -4124,6 +5882,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           }
         }
@@ -4198,6 +5963,15 @@
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
             "price": 200,
+            "description": "Women’s medium-flex all-mountain strap binding for beginner to intermediate progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "upgrade": {
@@ -4206,6 +5980,14 @@
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
             "price": 300,
+            "description": "Nebula FASE is a medium-flex two-strap binding with assisted fast entry and plush cushioning.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "flexScale": 3,
+            "entry": "Hands Free",
+            "response": "Playful",
             "stepOn": false
           },
           "budget": {
@@ -4214,6 +5996,15 @@
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
             "price": 180,
+            "description": "Lightweight, soft-flexing strap binding with an S8 Duraflex baseplate and CP3 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "entry": "Traditional",
+            "response": "Playful",
             "stepOn": false
           }
         },
@@ -4224,6 +6015,14 @@
             "model": "Haven",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_haven_rose_KB261675_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 279.95,
+            "description": "Comfort-focused women's snowboard boot with a forgiving flex and quick single-dial BOA closure.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -4232,6 +6031,14 @@
             "model": "Sage",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_sage_black_RD261908_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 289.95,
+            "description": "Comfortable women's all-mountain snowboard boot with medium response and a simple single-dial BOA closure.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": false
           },
           "budget": {
@@ -4240,6 +6047,14 @@
             "model": "Pearl Boa",
             "image": "https://cdn.dam.salomon.com/18d05f7c-7f2f-4ecc-86c0-b36001091640/L49276500/PNG-2000px-max-72dpi.png?width=1200&fit=cover&optimize=medium&bg-color=f5f5f5&format=pjpg&auto=avif&canvas=116p%2C144p",
             "price": 279.95,
+            "description": "Soft-flex women's snowboard boot with a single-dial BOA closure for comfortable, easy all-mountain progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           }
         }
@@ -4310,6 +6125,15 @@
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
             "price": 200,
+            "description": "Medium-flex progression binding with an S5 Duraflex baseplate and S11 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "upgrade": {
@@ -4318,6 +6142,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "budget": {
@@ -4326,6 +6159,15 @@
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
             "price": 180,
+            "description": "Lightweight, soft-flexing strap binding with an S8 Duraflex baseplate and CP3 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "entry": "Traditional",
+            "response": "Playful",
             "stepOn": false
           }
         },
@@ -4336,6 +6178,14 @@
             "model": "Faction Boa",
             "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
             "price": 279.95,
+            "description": "Soft-flex men's snowboard boot with a single-dial BOA closure for comfort and easy progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -4344,6 +6194,13 @@
             "model": "Octave",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_octave_tan_RD261899_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 349.95,
+            "description": "Mellow medium-flex men's snowboard boot with zonal dual BOA adjustment for all-mountain and park riding.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "budget": {
@@ -4352,6 +6209,14 @@
             "model": "Sentinel TLS",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
             "price": 259.99,
+            "description": "Balanced men's all-mountain snowboard boot with Nitro's dual-zone TLS speed-lacing system.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Speed Lace",
             "stepOn": false
           }
         }
@@ -4776,6 +6641,15 @@
             "model": "STR",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_STR_BLACK_1024x.jpg?v=1785333220",
             "price": 200,
+            "description": "Medium-flex progression binding with an S5 Duraflex baseplate and S11 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "upgrade": {
@@ -4784,6 +6658,15 @@
             "model": "Force Classic",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FORCE_CLASSIC_BLACK_1024x.jpg?v=1785333201",
             "price": 250,
+            "description": "Medium-flex all-mountain strap binding with an S1 Duraflex ST highback and Exoframe 4.0 ankle strap.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           },
           "budget": {
@@ -4792,6 +6675,15 @@
             "model": "Flite Pro",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_FLITE_PRO_BLACK_1024x.jpg?v=1785333250",
             "price": 180,
+            "description": "Lightweight, soft-flexing strap binding with an S8 Duraflex baseplate and CP3 highback.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "entry": "Traditional",
+            "response": "Playful",
             "stepOn": false
           }
         },
@@ -4802,6 +6694,14 @@
             "model": "Faction Boa",
             "image": "https://cdn.dam.salomon.com/eda3d183-166b-40cf-9bbc-b36001090e5c/L49140500/PNG-2000px-max-72dpi.png?width=2000&fit=cover&optimize=low&bg-color=transparent&format=pjpg&canvas=116p%2C144p",
             "price": 279.95,
+            "description": "Soft-flex men's snowboard boot with a single-dial BOA closure for comfort and easy progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -4810,6 +6710,14 @@
             "model": "Lasso",
             "image": "https://cdn.media.amplience.net/i/ride/ride_2627_lasso_black_RD261897_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Medium-flex men's all-mountain boot with BOA shell adjustment and Tongue Tied heel-retention control.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "budget": {
@@ -4818,6 +6726,14 @@
             "model": "Sentinel TLS",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11015-101_Sentinel-TLS-Boots_Black_Product-1.jpg?v=1779339465&width=1600",
             "price": 259.99,
+            "description": "Balanced men's all-mountain snowboard boot with Nitro's dual-zone TLS speed-lacing system.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Speed Lace",
             "stepOn": false
           }
         }
@@ -4995,6 +6911,14 @@
             "model": "Nebula",
             "image": "https://www.jonessnowboards.com/cdn/shop/files/J.27.BNU.NBL.595-gallery-1.webp?v=1785146629",
             "price": 300,
+            "description": "Nebula FASE is a medium-flex two-strap binding with assisted fast entry and plush cushioning.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Unisex",
+            "flexScale": 3,
+            "entry": "Hands Free",
+            "response": "Playful",
             "stepOn": false
           },
           "upgrade": {
@@ -5003,6 +6927,14 @@
             "model": "Step On",
             "image": "https://nitrosnowboardsusa.com/cdn/shop/files/42_532a8973-eb9e-4f9f-9a56-30f6fb9f535a.png?v=1786040760&width=1800",
             "price": 330,
+            "description": "Strapless Step On binding with three boot connection points and HYPER Foam damping.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Men's",
+            "entry": "Step On",
+            "response": "Precise",
             "stepOn": true
           },
           "budget": {
@@ -5011,6 +6943,15 @@
             "model": "Juliet",
             "image": "https://unionbindingcompany.com/cdn/shop/files/UN26_JULIET_BLACK_1024x.jpg?v=1785333215",
             "price": 200,
+            "description": "Women’s medium-flex all-mountain strap binding for beginner to intermediate progression.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 3,
+            "entry": "Traditional",
+            "response": "Balanced",
             "stepOn": false
           }
         },
@@ -5021,6 +6962,14 @@
             "model": "Contour",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_contour_nantucket-breeze_KB261673_1?w=1792&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 379.95,
+            "description": "Supportive women's all-mountain snowboard boot with BOA shell closure and separate Conda liner-lacing adjustment.",
+            "ability": [
+              "Intermediate",
+              "Advanced"
+            ],
+            "gender": "Women's",
+            "flexScale": 4,
+            "closure": "Dual BOA",
             "stepOn": false
           },
           "upgrade": {
@@ -5029,6 +6978,13 @@
             "model": "Sentinel Step On Boa",
             "image": "https://www.nitrosnowboards.com/cdn/shop/files/13BT11013-101_Sentinel-Step-On-BOA-Boots_Black_Product-1.jpg?v=1779339446&width=1600",
             "price": 389.99,
+            "description": "Medium-flex men's boot built for Burton Step On binding compatibility with a single-dial BOA closure.",
+            "ability": [
+              "Intermediate"
+            ],
+            "gender": "Men's",
+            "flexScale": 3,
+            "closure": "Single BOA",
             "stepOn": true
           },
           "budget": {
@@ -5037,6 +6993,14 @@
             "model": "Haven",
             "image": "https://cdn.media.amplience.net/i/k2/k2_2627_haven_rose_KB261675_1?w=412&qlt=90&fmt=auto&fmt.interlaced=true&bg=white&dpi=144",
             "price": 279.95,
+            "description": "Comfort-focused women's snowboard boot with a forgiving flex and quick single-dial BOA closure.",
+            "ability": [
+              "Beginner",
+              "Intermediate"
+            ],
+            "gender": "Women's",
+            "flexScale": 2,
+            "closure": "Single BOA",
             "stepOn": false
           }
         }

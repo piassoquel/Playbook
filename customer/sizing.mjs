@@ -137,3 +137,9 @@ export function evaluateSkiSizing(board,answers={}){
   }
   return {kind:'ski',best:best.map(l=>l.size),possible:best.map(l=>l.size),source:null,alternatives};
 }
+// Brake arms should reach at least the ski's waist and no more than 15mm past it; take the narrowest width that does.
+const BRAKE_OVER_WAIST_MAX_MM=15;
+export function brakeWidthFor(waist,widths=[]){
+  if(!waist)return null;
+  return widths.filter(w=>w>=waist&&w<=waist+BRAKE_OVER_WAIST_MAX_MM).sort((a,b)=>a-b)[0]??null;
+}

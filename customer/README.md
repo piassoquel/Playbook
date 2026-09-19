@@ -18,9 +18,15 @@ The customer detail page puts the personalized size and setup above the longer e
 
 ## Ski
 
-Skis use the same CMS schema and Firestore collection (`customerBoards`, tagged `sport: "ski"`), projected from `SKIS`, `SKIBIND`, and `SKIBOOT` products with the same Recommended/Upgrade/Budget pairings. The ski journey asks ability, terrain, flex feel, height and weight (no boot size, because ski length does not depend on it), and Men's/Women's/Youth/All Skis. Ski waist width is projected from `ShapeOrWidth`. `DINRange` is not projected: Sheets has converted several ranges to dates (for example `2026-04-13` for `4-13`).
+Skis use the same CMS schema and Firestore collection (`customerBoards`, tagged `sport: "ski"`), projected from `SKIS`, `SKIBIND`, and `SKIBOOT` products with the same Recommended/Upgrade/Budget pairings. The ski journey asks ability, terrain, flex feel, height and weight (no boot size, because ski length does not depend on it), and Men's/Women's/Youth/All Skis. Ski waist width is projected from `ShapeOrWidth`.
 
 Ski length has no manufacturer chart in the CMS, so `evaluateSkiSizing` in `sizing.mjs` uses the common retail rule of thumb, not a maker guarantee: height plus an ability offset (beginner −12 cm, intermediate −5, advanced 0, expert +5), plus a terrain offset (park −5, powder +7), plus ±3 cm for a rider heavy or light for their height. The target never exceeds height +5 cm, and a length within ±6 cm qualifies. If none does, the nearest length up to 15 cm short (or 10 cm long) is used so tall riders are not left empty-handed. Adjacent lengths within 11 cm of the target appear as dashed alternatives, like snowboard sizes. All of these numbers are constants at the top of that block and should be reviewed by a ski fitter.
+
+## Boot and binding details
+
+Tapping a boot or binding card opens a details sheet: photo, price, description, flex (a 1–5 meter for snowboard boots and bindings, the numeric flex index for ski boots, “Soft (junior boot)” for youth ski boots that have no rating), last width, closure, entry style, response, DIN range, brake width, who it is good for, and its gender. Terrain, selling tips, talking points, and comparison notes are not projected. A DIN value that is not a plain `a-b` range (for example a Sheets date) is dropped rather than shown.
+
+For ski bindings opened from a ski page, the sheet picks the narrowest brake width that reaches the ski's waist without passing it by more than 15 mm (`brakeWidthFor` in `sizing.mjs`), or says none fits. That check depends on the ski's `ShapeOrWidth` waist and the binding's `Brake Width` variants in the CMS.
 
 No ski is tagged `Expert` yet, so an expert skier matches `Advanced` skis and the reason chip says “advanced”.
 
