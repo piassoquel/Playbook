@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { attachSizeCharts, evaluateSizing } from '../sizing.mjs';
+import { attachSizeCharts, evaluateSizing, brakeWidthFor } from '../sizing.mjs';
 
 const charts=JSON.parse(await readFile(new URL('../size-charts.json',import.meta.url),'utf8'));
 test('catalog charts cover 22 matching models and never invent unlisted variants',async()=>{
@@ -111,4 +111,13 @@ test('ski length offers adjacent lengths as alternatives and excludes far-off sk
 test('ski target never runs more than 5cm past height, so tall riders still get the longest skis',()=>{
   const ski={sport:'ski',sizes:['174','182']};
   assert.deepEqual(evaluateSizing(ski,{height:74,weight:210,ability:'Expert',terrain:'Powder'}).best,['182']);
+});
+test('brake width is the narrowest that reaches the waist without passing it by more than 15mm',()=>{
+  assert.equal(brakeWidthFor(97,[90,100]),100);
+  assert.equal(brakeWidthFor(90,[90,100,115]),90);
+  assert.equal(brakeWidthFor(84,[95,105]),95);
+  assert.equal(brakeWidthFor(105,[90,100]),null);
+  assert.equal(brakeWidthFor(90,[110,120]),null);
+  assert.equal(brakeWidthFor(null,[90,100]),null);
+  assert.equal(brakeWidthFor(97),null);
 });

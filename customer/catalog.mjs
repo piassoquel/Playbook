@@ -7,6 +7,19 @@ const SPORTS = {
   SKI: { sport: 'ski', board: 'SKIS', binding: 'SKIBIND', boot: 'SKIBOOT' },
 };
 
+// Customer-facing spec for a boot or binding. Terrain, selling tips, talking points and comparison notes are deliberately left out.
+const gearSpec = target => {
+  const number = value => Number(value) || null;
+  const brakeWidths = (target.Variants || []).filter(v => /brake/i.test(clean(v.VariantType))).map(v => Number(clean(v.VariantValue))).filter(n => n > 0).sort((a, b) => a - b);
+  const spec = {
+    description: clean(target.Description), ability: clean(target.Ability).split('|').map(clean).filter(Boolean), gender: clean(target.Gender),
+    flexScale: number(target.BootFlex) || number(target.BindingFlex), flexIndex: number(target.BootFlexIndex),
+    closure: clean(target.ClosureSystem), entry: clean(target.EntryStyle), response: clean(target.Response),
+    lastWidth: number(target.LastWidth), din: /^\d+(\.\d+)?\s*-\s*\d+(\.\d+)?$/.test(clean(target.DINRange)) ? clean(target.DINRange) : '', brakeWidths,
+  };
+  return Object.fromEntries(Object.entries(spec).filter(([, value]) => Array.isArray(value) ? value.length : value));
+};
+
 export function projectCatalog(source) {
   if (source?.success !== true || !Array.isArray(source.products)) throw new Error('Invalid CMS catalog');
   const allowed = source.products.filter(published);
@@ -35,7 +48,7 @@ export function projectCatalog(source) {
         if (target && target.SportID === p.SportID && target.CategoryID === SPORTS[p.SportID][type.toLowerCase()]) {
           rec[type.toLowerCase()][tier.toLowerCase()] = {
             id: clean(target.ProductID), brand: clean(brands.get(target.BrandID) || target.BrandID),
-            model: clean(target.Model), image: webUrl(target.ImageURL), price: Number(target.MSRP) || null,
+            model: clean(target.Model), image: webUrl(target.ImageURL), price: Number(target.MSRP) || null, ...gearSpec(target),
             stepOn: type === 'Binding'
               ? clean(target.EntryStyle).toLowerCase() === 'step on'
               : /\bstep on\b/i.test(clean(target.Model)),

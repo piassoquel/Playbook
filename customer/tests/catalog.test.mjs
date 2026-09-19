@@ -48,11 +48,11 @@ test('setup tiers keep a Step On mismatch out of alternate choices',()=>{
 });
 const skiSource={success:true,brands:[{BrandID:'BR',Name:'Brand'}],products:[
   {ProductID:'K1',SportID:'SKI',CategoryID:'SKIS',BrandID:'BR',Model:'Ski',Active:true,Status:'Published',Gender:'Unisex',Ability:'Intermediate',ShapeOrWidth:88,Profile:'Rocker',Flex:'Medium',Variants:[{VariantType:'length',VariantValue:'169'},{VariantType:'length',VariantValue:'175'}],Recommendations:{Binding:{Recommended:'KD'},Boot:{Recommended:'KB'}}},
-  {ProductID:'KD',SportID:'SKI',CategoryID:'SKIBIND',BrandID:'BR',Model:'Ski Binding',Active:true,Status:'Published',DINRange:'2026-04-13'},
+  {ProductID:'KD',SportID:'SKI',CategoryID:'SKIBIND',BrandID:'BR',Model:'Ski Binding',Active:true,Status:'Published',DINRange:'4-13'},
   {ProductID:'KB',SportID:'SKI',CategoryID:'SKIBOOT',BrandID:'BR',Model:'Ski Boot',Active:true,Status:'Published'},
   {ProductID:'SB',SportID:'SNB',CategoryID:'SNBBOOT',BrandID:'BR',Model:'Snowboard Boot',Active:true,Status:'Published'},
 ]};
-test('ski products project alongside snowboards with ski-only pairings and no DIN',()=>{
+test('ski products project alongside snowboards with ski-only pairings',()=>{
   const [ski]=projectCatalog(skiSource);
   assert.equal(ski.sport,'ski');
   assert.equal(ski.waist,88);
@@ -60,7 +60,7 @@ test('ski products project alongside snowboards with ski-only pairings and no DI
   assert.deepEqual(ski.sizes,['169','175']);
   assert.equal(ski.recommendations.binding.recommended.id,'KD');
   assert.equal(ski.recommendations.boot.recommended.id,'KB');
-  assert.ok(!JSON.stringify(ski).includes('2026-04-13'));
+  assert.equal(ski.recommendations.binding.recommended.din,'4-13');
   const crossed=structuredClone(skiSource);
   crossed.products[0].Recommendations.Boot.Recommended='SB';
   assert.equal(projectCatalog(crossed)[0].recommendations.boot.recommended,undefined);
@@ -80,4 +80,27 @@ test('an expert skier matches Advanced skis, but snowboard matching stays exact'
   assert.deepEqual(expert.reasons,['Great for advanced riders']);
   assert.equal(rankBoards([{...ski,sport:'snowboard'}],{ability:'Expert'})[0].eligible,false);
   assert.equal(rankBoards([{...ski,ability:['Intermediate']}],{ability:'Expert'})[0].eligible,false);
+});
+test('boot and binding specs project customer-safe fields only',()=>{
+  const src=structuredClone(skiSource);
+  Object.assign(src.products[1],{Description:'A binding.',Ability:'Intermediate|Advanced',Gender:'Unisex',DINRange:'3-11',BindingFlex:'3',Response:'Balanced',EntryStyle:'Traditional',
+    Terrain:'All Mountain',TerrainPark:5,SellingTips:'internal tip',TalkingPoints:'internal talk',ComparisonNotes:'Choose this over that.',CommonQuestions:'internal q',CustomerProfile:'internal profile',
+    Variants:[{VariantType:'Brake Width',VariantValue:'100'},{VariantType:'Brake Width',VariantValue:'90'}]});
+  Object.assign(src.products[2],{Description:'A boot.',Gender:"Men's",BootFlexIndex:'90',LastWidth:'103',ClosureSystem:'Traditional Buckles'});
+  const [ski]=projectCatalog(src);
+  const bind=ski.recommendations.binding.recommended,boot=ski.recommendations.boot.recommended;
+  assert.deepEqual(bind.brakeWidths,[90,100]);
+  assert.equal(bind.din,'3-11');
+  assert.equal(bind.flexScale,3);
+  assert.deepEqual(bind.ability,['Intermediate','Advanced']);
+  assert.equal(boot.flexIndex,90);
+  assert.equal(boot.lastWidth,103);
+  assert.equal(boot.closure,'Traditional Buckles');
+  const text=JSON.stringify(ski.recommendations);
+  for(const banned of ['internal','Choose this over that','Terrain','All Mountain'])assert.ok(!text.includes(banned),banned);
+});
+test('a DIN range that Sheets turned into a date is never projected',()=>{
+  const src=structuredClone(skiSource);
+  src.products[1].DINRange='2026-04-13';
+  assert.equal(projectCatalog(src)[0].recommendations.binding.recommended.din,undefined);
 });
