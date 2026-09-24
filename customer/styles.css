@@ -125,3 +125,8 @@ body.zoom-lock{overflow:hidden}
 .gear-actions{display:flex;gap:10px;margin-top:16px}
 .gear-actions button{flex:1;min-height:46px;font-weight:700;border-radius:3px;border:1px solid var(--night-action);background:#fff;color:var(--night-action)}
 .gear-actions .primary{background:var(--night-action);color:#fff}
+
+.finder-actions-top{margin:-6px 0 22px}
+.results-links{display:flex;justify-content:space-between;gap:16px;margin-top:20px;font-weight:700;font-size:13px}
+.results-links a{text-decoration:underline;color:var(--night-ink)}
+.results-head .result-tools{margin-top:28px}
