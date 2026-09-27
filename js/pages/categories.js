@@ -1,3 +1,9 @@
+import { PLAYBOOK_CONFIG } from "../config/app-config.js";
+
+const HIDDEN_CATEGORIES = new Set(
+  (PLAYBOOK_CONFIG.hiddenCategories || []).map((name) => name.toLowerCase())
+);
+
 export function renderCategoriesPage(container, sport) {
   const heroClass =
     sport.id === "ski"
@@ -39,9 +45,11 @@ export function renderCategoriesPage(container, sport) {
 
   const grid = container.querySelector("#category-choice-grid");
 
-  sport.categories.forEach((category, index) => {
-    grid.append(createCategoryChoiceCard(category, sport.id, index));
-  });
+  sport.categories
+    .filter((category) => !HIDDEN_CATEGORIES.has(String(category.name || "").toLowerCase()))
+    .forEach((category, index) => {
+      grid.append(createCategoryChoiceCard(category, sport.id, index));
+    });
 }
 
 function createCategoryChoiceCard(category, sportId, index) {
