@@ -1,3 +1,5 @@
+import { formatAbility, formatMultiValue } from "../services/product-filter.js";
+
 export function createSearchResultCard(product, brand) {
   const link = document.createElement("a");
   link.className = "search-result-card";
@@ -10,8 +12,8 @@ export function createSearchResultCard(product, brand) {
     "";
 
   const facts = [
-    product.Ability,
-    product.Terrain,
+    formatAbility(product.Ability),
+    formatMultiValue(product.Terrain),
     product.Width ? `${product.Width} mm` : ""
   ].filter(Boolean);
 

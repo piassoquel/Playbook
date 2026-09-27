@@ -1,4 +1,6 @@
 import {
+  formatAbility,
+  formatMultiValue,
   getBrandById,
   getProductById
 } from "../services/product-filter.js";
@@ -52,8 +54,8 @@ export function renderComparePage(
     </section>
 
     <section class="comparison-table">
-      ${createComparisonRow("Ability", primary.Ability, secondary.Ability)}
-      ${createComparisonRow("Terrain", primary.Terrain, secondary.Terrain)}
+      ${createComparisonRow("Ability", formatAbility(primary.Ability), formatAbility(secondary.Ability))}
+      ${createComparisonRow("Terrain", formatMultiValue(primary.Terrain), formatMultiValue(secondary.Terrain))}
       ${createComparisonRow("Flex", primary.Flex, secondary.Flex)}
       ${createComparisonRow("Width", formatWidth(primary.Width), formatWidth(secondary.Width))}
       ${createComparisonRow("Price", formatPrice(primary.MSRP), formatPrice(secondary.MSRP))}
@@ -127,7 +129,7 @@ function renderComparePicker(container, primary, products, brands) {
         <h2>${escapeHtml(product.Model || "")}</h2>
         <span>
           ${escapeHtml(
-            [product.Ability, product.Terrain, formatWidth(product.Width)]
+            [formatAbility(product.Ability), formatMultiValue(product.Terrain), formatWidth(product.Width)]
               .filter(Boolean)
               .join(" · ")
           )}
@@ -171,8 +173,8 @@ function formatContent(value) {
 
 function buildBestFor(product) {
   return [
-    product.Ability ? `${product.Ability} ability` : "",
-    product.Terrain ? `${product.Terrain} use` : "",
+    product.Ability ? `${formatAbility(product.Ability)} ability` : "",
+    product.Terrain ? `${formatMultiValue(product.Terrain)} use` : "",
     product.Width ? `${formatWidth(product.Width)} platform` : ""
   ]
     .filter(Boolean)
