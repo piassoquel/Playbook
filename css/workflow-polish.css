@@ -192,6 +192,27 @@
   align-self: center;
 }
 
+/* Inner pages: a slim photo banner so the categories sit above the fold. */
+.category-hero {
+  min-height: 0;
+  /* The sport photos have a card's arrow button baked into their lower
+     right; zooming from the top-left keeps it out of the slim banner. */
+  background-position: left top;
+  background-size: 130% auto;
+  margin-bottom: 1.1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 1.1rem;
+}
+
+.category-hero h1 {
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+}
+
+.category-hero p {
+  margin-top: .35rem;
+  font-size: .92rem;
+}
+
 .product-card--visual > .circle-arrow {
   align-self: center;
   margin-right: 1rem;
