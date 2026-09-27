@@ -23,7 +23,7 @@ export function renderHomePage(container, data) {
             </span>
 
             <h1>Skiing</h1>
-            <p>Explore skis, boots, bindings, helmets, outerwear, and more.</p>
+            <p>Learn the skis, boots, and bindings we carry.</p>
           </div>
 
           <span class="showcase-sport-card__arrow showcase-sport-card__arrow--orange" aria-hidden="true">→</span>
@@ -42,7 +42,7 @@ export function renderHomePage(container, data) {
             </span>
 
             <h1>Snowboarding</h1>
-            <p>Explore boards, boots, bindings, helmets, outerwear, and more.</p>
+            <p>Learn the boards, boots, and bindings we carry.</p>
           </div>
 
           <span class="showcase-sport-card__arrow showcase-sport-card__arrow--blue" aria-hidden="true">→</span>
