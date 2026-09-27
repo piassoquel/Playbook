@@ -1,3 +1,5 @@
+import { formatAbility, formatMultiValue } from "../services/product-filter.js";
+
 const ABILITY_LABELS = {
   1: "Beginner",
   2: "Beginner / Intermediate",
@@ -188,7 +190,7 @@ export function bindPerformanceEducation(container) {
 }
 
 function createAbilityGauge(product, level) {
-  const label = String(product.Ability || ABILITY_LABELS[level] || "");
+  const label = String(formatAbility(product.Ability) || ABILITY_LABELS[level] || "");
   const gaugeAngles = {
     1: -150,
     2: -122,

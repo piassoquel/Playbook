@@ -15,8 +15,8 @@ export function renderCategoriesPage(container, sport) {
       <div class="category-hero__overlay"></div>
 
       <div class="category-hero__content">
-        <p class="eyebrow">${escapeHtml(sport.name)}</p>
-        <h1>${escapeHtml(sport.name)} Training</h1>
+        <p class="eyebrow">Product training</p>
+        <h1>${escapeHtml(sport.name)}</h1>
         <p>Choose a product category to start learning.</p>
       </div>
     </section>

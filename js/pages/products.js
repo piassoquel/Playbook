@@ -3,9 +3,19 @@ import {
   getBrandById,
   getProductsByBrand,
   getProductsByFlag,
+  getFilterValues,
   getProductsByMultiValueField,
   getProductsForCategory
 } from "../services/product-filter.js";
+
+// Filter pills shown when browsing a whole category.
+const LIST_FILTERS = [
+  { key: "terrain", fieldName: "Terrain", label: "Terrain" },
+  { key: "ability", fieldName: "Ability", label: "Ability" },
+  { key: "gender", fieldName: "Gender", label: "Gender" }
+];
+
+const ABILITY_ORDER = ["beginner", "intermediate", "advanced", "expert"];
 
 export function renderProductListPage(
   container,
@@ -47,27 +57,18 @@ export function renderProductListPage(
       `#/sport/${sport.id}/category/${category.id}/brands`;
   }
 
-  if (filter.type === "ability" || filter.type === "terrain" || filter.type === "gender") {
-    const fieldName =
-      filter.type === "ability"
-        ? "Ability"
-        : filter.type === "terrain"
-        ? "Terrain"
-        : "Gender";
+  // Browsing a whole category: filters are pills on the list itself. Old
+  // /ability/<value>-style links land here with that pill preselected.
+  const isBrowse = ["all", "ability", "terrain", "gender"].includes(filter.type);
+  const presetFilters = {};
 
-    filteredProducts = getProductsByMultiValueField(
-      categoryProducts,
-      fieldName,
-      filter.value
-    );
-
-    heading = filter.value;
-    eyebrow =
-      `${category.name} · ` +
-      `${filter.type === "ability" ? "Shop by Ability" : filter.type === "terrain" ? "Shop by Terrain" : "Shop by Gender"}`;
-
-    backHref =
-      `#/sport/${sport.id}/category/${category.id}/${filter.type}`;
+  if (isBrowse) {
+    heading = category.name;
+    eyebrow = sport.name;
+    backHref = `#/sport/${sport.id}`;
+    if (filter.type !== "all" && filter.value) {
+      presetFilters[filter.type] = filter.value;
+    }
   }
 
   if (filter.type === "favorites") {
@@ -94,7 +95,13 @@ export function renderProductListPage(
   const isSkiBootList = String(sport.sourceId || sport.id).toUpperCase() === "SKI" &&
     ["SKIBOOT", "SKIBOOTS"].includes(String(category.sourceId || category.id).toUpperCase());
   const listStateKey = `playbook-product-list:${window.location.hash}`;
-  const savedState = readListState(listStateKey);
+  const savedState = readListState(listStateKey, presetFilters);
+  const filterOptions = isBrowse
+    ? LIST_FILTERS.map((config) => ({
+        ...config,
+        values: sortFilterValues(config.key, getFilterValues(baseProducts, config.fieldName))
+      })).filter((config) => config.values.length > 1)
+    : [];
 
   container.innerHTML = `
     <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -102,11 +109,15 @@ export function renderProductListPage(
       <span aria-hidden="true">›</span>
       <a href="#/sport/${sport.id}">${escapeHtml(sport.name)}</a>
       <span aria-hidden="true">›</span>
-      <a href="#/sport/${sport.id}/category/${category.id}">
-        ${escapeHtml(category.name)}
-      </a>
-      <span aria-hidden="true">›</span>
-      <span>${escapeHtml(heading)}</span>
+      ${
+        isBrowse
+          ? `<span>${escapeHtml(category.name)}</span>`
+          : `<a href="#/sport/${sport.id}/category/${category.id}">
+               ${escapeHtml(category.name)}
+             </a>
+             <span aria-hidden="true">›</span>
+             <span>${escapeHtml(heading)}</span>`
+      }
     </nav>
 
     <a class="back-button" href="${backHref}">
@@ -128,16 +139,32 @@ export function renderProductListPage(
         <span class="sr-only">Search products</span>
         <input type="search" placeholder="Search brand or model" data-product-list-search>
       </label>
-      <label class="product-list-sort">
-        <span>Sort</span>
+      <div class="product-list-pills">
+        ${filterOptions.map((config) => `
+          <label class="product-list-pill">
+            <span class="sr-only">${escapeHtml(config.label)}</span>
+            <select data-product-list-filter="${config.key}">
+              <option value="">${escapeHtml(config.label)}: All</option>
+              ${config.values.map((value) => `
+                <option value="${escapeHtml(value)}">${escapeHtml(value)} (${
+                  getProductsByMultiValueField(baseProducts, config.fieldName, value).length
+                })</option>
+              `).join("")}
+            </select>
+          </label>
+        `).join("")}
+        <label class="product-list-pill product-list-pill--sort">
+        <span class="sr-only">Sort</span>
         <select data-product-list-sort>
-          <option value="name">Name A-Z</option>
-          <option value="brand">Brand A-Z</option>
-          <option value="price-low">Price Low-High</option>
-          <option value="price-high">Price High-Low</option>
-          ${isSkiBootList ? '<option value="last-narrow">Last Narrow-Wide</option><option value="last-wide">Last Wide-Narrow</option>' : ""}
+          <option value="name">Sort: Name A-Z</option>
+          <option value="brand">Sort: Brand A-Z</option>
+          <option value="price-low">Sort: Price Low-High</option>
+          <option value="price-high">Sort: Price High-Low</option>
+          ${isSkiBootList ? '<option value="last-narrow">Sort: Last Narrow-Wide</option><option value="last-wide">Sort: Last Wide-Narrow</option>' : ""}
         </select>
-      </label>
+        </label>
+        ${filterOptions.length ? `<button class="product-list-clear" type="button" data-product-list-clear hidden>Clear</button>` : ""}
+      </div>
     </section>
 
     <section id="product-list" class="product-list" aria-label="Products"></section>
@@ -148,8 +175,15 @@ export function renderProductListPage(
   const sortSelect = container.querySelector("[data-product-list-sort]");
   const count = container.querySelector("[data-product-count]");
   const countLabel = container.querySelector("[data-product-count-label]");
+  const filterSelects = [...container.querySelectorAll("[data-product-list-filter]")];
+  const clearButton = container.querySelector("[data-product-list-clear]");
 
   searchInput.value = savedState.search;
+  filterSelects.forEach((select) => {
+    const saved = normalizeSearch(savedState.filters[select.dataset.productListFilter]);
+    const match = [...select.options].find((option) => normalizeSearch(option.value) === saved);
+    select.value = match ? match.value : "";
+  });
   if ([...sortSelect.options].some((option) => option.value === savedState.sort)) {
     sortSelect.value = savedState.sort;
   }
@@ -158,7 +192,10 @@ export function renderProductListPage(
     try {
       window.sessionStorage.setItem(listStateKey, JSON.stringify({
         search: searchInput.value,
-        sort: sortSelect.value
+        sort: sortSelect.value,
+        filters: Object.fromEntries(
+          filterSelects.map((select) => [select.dataset.productListFilter, select.value])
+        )
       }));
     } catch (error) {
       // List controls still work when browser storage is unavailable.
@@ -167,8 +204,19 @@ export function renderProductListPage(
 
   const renderProducts = () => {
     const query = normalizeSearch(searchInput?.value || "");
+    const activeFilters = filterSelects.filter((select) => select.value);
+    filterSelects.forEach((select) => {
+      select.closest(".product-list-pill").classList.toggle("product-list-pill--active", Boolean(select.value));
+    });
+    if (clearButton) clearButton.hidden = activeFilters.length === 0;
+
+    const filtered = activeFilters.reduce((items, select) => {
+      const config = LIST_FILTERS.find((item) => item.key === select.dataset.productListFilter);
+      return getProductsByMultiValueField(items, config.fieldName, select.value);
+    }, baseProducts);
+
     const visibleProducts = sortProducts(
-      baseProducts.filter((product) => {
+      filtered.filter((product) => {
         if (!query) return true;
         const brand = getBrandById(brands, product.BrandID);
         const searchable = normalizeSearch([
@@ -196,7 +244,7 @@ export function renderProductListPage(
       list.innerHTML = `
         <div class="empty-state">
           <h2>No products found</h2>
-          <p>Try a different search or sort option.</p>
+          <p>Try a different search or clear a filter.</p>
         </div>
       `;
       return;
@@ -247,6 +295,19 @@ export function renderProductListPage(
     saveListState();
     renderProducts();
   });
+  filterSelects.forEach((select) => {
+    select.addEventListener("change", () => {
+      saveListState();
+      renderProducts();
+    });
+  });
+  clearButton?.addEventListener("click", () => {
+    filterSelects.forEach((select) => {
+      select.value = "";
+    });
+    saveListState();
+    renderProducts();
+  });
   renderProducts();
 }
 
@@ -284,16 +345,26 @@ function parseWidth(value) {
   return Number.isFinite(width) ? width : null;
 }
 
-function readListState(key) {
+function readListState(key, presetFilters = {}) {
   try {
     const state = JSON.parse(window.sessionStorage.getItem(key) || "null");
     return {
       search: typeof state?.search === "string" ? state.search : "",
-      sort: typeof state?.sort === "string" ? state.sort : "name"
+      sort: typeof state?.sort === "string" ? state.sort : "name",
+      filters: state?.filters && typeof state.filters === "object" ? state.filters : presetFilters
     };
   } catch (error) {
-    return { search: "", sort: "name" };
+    return { search: "", sort: "name", filters: presetFilters };
   }
+}
+
+function sortFilterValues(key, values) {
+  if (key !== "ability") return values;
+  const rank = (value) => {
+    const index = ABILITY_ORDER.indexOf(normalizeSearch(value));
+    return index === -1 ? ABILITY_ORDER.length : index;
+  };
+  return [...values].sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
 }
 
 function getProductName(product) {

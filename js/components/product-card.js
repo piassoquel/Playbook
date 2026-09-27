@@ -1,3 +1,5 @@
+import { formatAbility, formatMultiValue } from "../services/product-filter.js";
+
 export function createProductCard(product, brand, href, options = {}) {
   const link = document.createElement("a");
   link.className = "product-card product-card--visual";
@@ -14,8 +16,8 @@ export function createProductCard(product, brand, href, options = {}) {
     "";
 
   const facts = [
-    product.Ability,
-    product.Terrain,
+    formatAbility(product.Ability),
+    formatMultiValue(product.Terrain),
     formatWidth(product.Width)
   ].filter(Boolean);
   const price = formatPrice(product.MSRP);

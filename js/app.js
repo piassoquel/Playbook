@@ -1,9 +1,7 @@
 import { loadAppData } from "./services/api.js";
 import { renderHomePage } from "./pages/home.js";
 import { renderCategoriesPage } from "./pages/categories.js";
-import { renderLearningPathsPage } from "./pages/learning-paths.js";
 import { renderBrandsPage } from "./pages/brands.js";
-import { renderFilterOptionsPage } from "./pages/filter-options.js";
 import { renderProductListPage } from "./pages/products.js";
 import { renderProductDetailPage } from "./pages/product-detail.js";
 import { renderComparePage } from "./pages/compare.js";
@@ -136,11 +134,13 @@ function renderRoute() {
       }
 
       if (parts.length === 4) {
-        renderLearningPathsPage(
+        renderProductListPage(
           main,
           sport,
           category,
-          appData.products || []
+          appData.products || [],
+          appData.brands || [],
+          { type: "all" }
         );
         main.focus();
         return;
@@ -162,12 +162,13 @@ function renderRoute() {
         (parts[4] === "ability" || parts[4] === "terrain" || parts[4] === "gender") &&
         parts.length === 5
       ) {
-        renderFilterOptionsPage(
+        renderProductListPage(
           main,
           sport,
           category,
           appData.products || [],
-          parts[4]
+          appData.brands || [],
+          { type: "all" }
         );
         main.focus();
         return;

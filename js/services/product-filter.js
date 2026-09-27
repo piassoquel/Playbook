@@ -80,6 +80,15 @@ export function getBrandById(brands, brandId) {
   );
 }
 
+// Sheet cells hold multi-values as "Beginner|Intermediate"; show them readably.
+export function formatAbility(value) {
+  return splitMultiValue(value).join("–");
+}
+
+export function formatMultiValue(value) {
+  return splitMultiValue(value).join(", ");
+}
+
 function splitMultiValue(value) {
   return String(value || "")
     .split(/[|,]/)
